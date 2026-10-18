@@ -4,7 +4,8 @@ Thumbs.db
 
 # Node & package artifacts
 node_modules/
-package-lock.json
+dist/
+*.tsbuildinfo
 
 # Logs
 *.log

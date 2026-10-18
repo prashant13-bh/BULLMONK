@@ -1,56 +1,71 @@
 # ⚡ BULLMONK — Global Intelligence & Market Truth
 
-> **Unfiltered Global Journalism, Geopolitical Analysis & Financial Truth**
+> **Unfiltered Global Journalism, Geopolitical Analysis & Financial Truth**  
+> Built with **React 19 + TypeScript + Vite + Lucide Icons + Vanilla CSS Design System**
 
-BullMonk is a high-conviction international news and analysis platform built to bridge fast-paced market intelligence and disciplined global reporting.
-
----
-
-## 🌟 Key Features
-
-- **🏛️ Flagship Wire (`index.html`)**: Real-time scrolling market ticker (S&P 500, NASDAQ, FTSE 100, Nikkei 225, Brent, Gold, BTC), breaking news alerts, lead hero dispatches, category filtering, live search, and "The Morning Monk" newsletter dispatch.
-- **✍️ BullMonk Editorial Studio (`write.html`)**: Full-featured CMS allowing correspondents to compose, format, pick image presets, flag breaking news, and publish stories live to the global wire with client-side persistence.
-- **🎙️ Standalone Reader Experience (`article.html`)**: Deep reader view featuring simulated synthetic audio voice briefings with waveform animation, font-size zoom, bookmarking, social sharing, drop-cap typography, and interactive verified reader commentary.
-- **🌐 Continental Bureaus & Manifesto (`about.html`)**: Details the founding thesis—**The Bull** (market momentum) & **The Monk** (ascetic verification rigor)—across 6 global hubs (Zurich, London, Tokyo, Singapore, Dubai, New York).
-- **⚖️ Legal Suite & Ethics Charter (`legal.html`)**: Complete compliance center covering Terms of Service, Privacy Shield (GDPR/CCPA/FADP), Editorial Standards & Ethics, and Cookie Telemetry policies.
-- **🔒 Encrypted Whistleblower Tip Line (`contact.html`)**: Zero-knowledge whistleblower portal with PGP fingerprint, bureau directory, and interactive FAQ.
-- **🌗 Dual-Mode Design System (`styles.css`)**: **Night Terminal** (obsidian & monastic gold) and **Prestige Paper** (warm luxury newsprint) with vanilla CSS tokens and responsive grid architecture.
+BullMonk is an international news and analytical intelligence platform engineered to bridge fast-paced financial markets and rigorous, monastic investigative journalism.
 
 ---
 
-## 🚀 Getting Started
+## 🌟 Architecture & Features
 
-No build step or external dependencies required! Simply open the pages in your browser or run any static web server:
+- **🏛️ Flagship Wire (`HomePage.tsx`)**: Real-time scrolling market ticker (S&P 500, NASDAQ, FTSE 100, Nikkei 225, Brent Crude, Gold, Bitcoin), breaking news alerts, lead hero dispatches, multi-category filter tabs, live search with instant filtering, macroeconomic radar, and daily institutional newsletter.
+- **✍️ BullMonk Editorial Studio (`WriteStudioPage.tsx`)**: Full-featured CMS authoring suite allowing journalists to compose headlines, subdecks, bureau locations, author credentials, pick high-resolution editorial visual presets, use rich formatting toolbars, preview stories live, and publish instantly to the global wire with client-side persistence and story management.
+- **🎙️ Immersive Reader View (`ArticleReaderPage.tsx`)**: Standalone reading view featuring a simulated synthetic audio voice briefing player with dynamic waveform equalizer animations, font-size zoom toggles, one-click sharing, dossier bookmarking, and interactive verified commentary.
+- **🌐 Continental Bureaus & Manifesto (`AboutPage.tsx`)**: The founding thesis—**The Bull** (market momentum & animal spirits) and **The Monk** (disciplined forensic verification)—with 6 continental bureaus (Zurich, London, Tokyo, Singapore, Dubai, New York) and the Editorial Board.
+- **⚖️ Legal Suite & Ethics Charter (`LegalPage.tsx`)**: Tabbed compliance center covering Terms of Service, Privacy Shield (GDPR / CCPA / Swiss FADP), Editorial Standards & Ethics, and Cookie Telemetry policies.
+- **🔒 Encrypted Whistleblower Tip Line (`ContactPage.tsx`)**: Zero-knowledge whistleblower portal with PGP fingerprint, bureau directory, and interactive FAQ.
+- **📱 100% Device Responsiveness**: Handcrafted responsive breakpoints for Mobile Portrait (<640px), Mobile Landscape / Tablets (640px-1024px), and Widescreen Desktops (>1024px) with custom mobile drawer navigation.
+- **🌗 Dual-Mode Design System**: **Night Terminal** (obsidian & monastic gold) and **Prestige Paper** (warm luxury newsprint) with CSS variables and instant theme toggling.
+
+---
+
+## 🚀 Running Locally
 
 ```bash
-# Using Python
-python -m http.server 8080
+# Install dependencies
+npm install
 
-# Using Node / npx
-npx serve .
+# Start Vite dev server
+npm run dev
+
+# Build for production
+npm run build
 ```
 
 Then visit:
 ```
-http://localhost:8080/index.html
+http://localhost:5173
 ```
 
 ---
 
-## 📂 Project Architecture
+## 📂 Project Structure
 
 ```
 BullMonk/
-├── index.html        # Flagship landing page & global news wire
-├── write.html        # Editorial Studio for composing & publishing articles
-├── article.html      # Deep reading view with synthetic audio briefing
-├── about.html        # About BullMonk, founding thesis & global bureaus
-├── contact.html      # Contact directory & encrypted whistleblower tip line
-├── legal.html        # Legal center (Terms, Privacy, Editorial Ethics, Cookies)
-├── styles.css        # Complete vanilla CSS design system (Dark & Light)
-├── app.js            # App controller, audio player, ticker & search logic
-├── data.js           # Global news seed data & local storage manager
-└── README.md         # Repository documentation
+├── src/
+│   ├── components/
+│   │   ├── Navbar.tsx         # Header, ticker marquee, mobile drawer, theme toggle
+│   │   └── Footer.tsx         # Desk links, bureau directory, governance links
+│   ├── pages/
+│   │   ├── HomePage.tsx       # Flagship landing wire & macro radar
+│   │   ├── WriteStudioPage.tsx# CMS Studio for drafting & broadcasting stories
+│   │   ├── ArticleReaderPage.tsx # Deep reader view & audio briefing player
+│   │   ├── AboutPage.tsx      # Founding manifesto & 6 continental bureaus
+│   │   ├── ContactPage.tsx    # Whistleblower tip line & press inquiry form
+│   │   └── LegalPage.tsx      # Tabbed legal, privacy, and ethics center
+│   ├── data/
+│   │   └── newsData.ts        # Seed articles, market tickers, and storage manager
+│   ├── types/
+│   │   └── index.ts           # Strongly typed data models
+│   ├── styles/
+│   │   └── index.css          # Vanilla CSS responsive design system
+│   ├── App.tsx                # Main controller & state routing
+│   └── main.tsx               # React root entry point
+├── index.html                 # HTML shell with meta tags & SEO schema
+├── vite.config.ts             # Vite configuration
+└── tsconfig.json              # TypeScript configuration
 ```
 
 ---
