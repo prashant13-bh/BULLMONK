@@ -84,6 +84,10 @@ export const HomePage: React.FC<HomePageProps> = ({
     .sort((a, b) => b.views - a.views)
     .slice(0, 5);
 
+  const heroSrc = leadArticle ? leadArticle.heroImage : "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=65&fm=webp";
+  const hero600 = heroSrc.includes('w=') ? heroSrc.replace(/w=\d+/, 'w=600') : heroSrc;
+  const hero800 = heroSrc.includes('w=') ? heroSrc.replace(/w=\d+/, 'w=800') : heroSrc;
+
 
 
   return (
@@ -199,8 +203,8 @@ export const HomePage: React.FC<HomePageProps> = ({
               >
                 <div className="grand-hero-media">
                   <img 
-                    src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=65&fm=webp" 
-                    srcSet="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=65&fm=webp 600w, https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=65&fm=webp 800w"
+                    src={hero600} 
+                    srcSet={`${hero600} 600w, ${hero800} 800w`}
                     sizes="(max-width: 768px) 100vw, 800px"
                     alt={leadArticle.title} 
                     className="grand-hero-img" 
@@ -490,6 +494,12 @@ export const HomePage: React.FC<HomePageProps> = ({
                     <div className="card-media">
                       <img 
                         src={art.heroImage} 
+                        srcSet={
+                          art.heroImage.includes('w=')
+                            ? `${art.heroImage.replace(/w=\d+/, 'w=400')} 400w, ${art.heroImage.replace(/w=\d+/, 'w=640')} 640w`
+                            : undefined
+                        }
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 380px"
                         alt={art.title} 
                         className="card-img" 
                         loading="lazy" 

@@ -69,6 +69,67 @@ export const ArticleReaderPage: React.FC<ArticleReaderPageProps> = ({
     }
   };
 
+  // Google News & Search Schema.org/NewsArticle JSON-LD structured data injection
+  useEffect(() => {
+    const originalTitle = document.title;
+    document.title = `${article.title} | BULLMONK Intelligence`;
+
+    const scriptId = 'bullmonk-article-schema';
+    let script = document.getElementById(scriptId) as HTMLScriptElement | null;
+    if (!script) {
+      script = document.createElement('script');
+      script.id = scriptId;
+      script.type = 'application/ld+json';
+      document.head.appendChild(script);
+    }
+
+    const jsonLd = {
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": `https://www.govtnaukri4u.com/#article/${article.id}`
+      },
+      "headline": article.title,
+      "description": article.deck || article.title,
+      "image": [
+        article.heroImage
+      ],
+      "datePublished": article.publishedAt,
+      "dateModified": article.publishedAt,
+      "author": {
+        "@type": "Person",
+        "name": article.author.name,
+        "jobTitle": article.author.title,
+        "worksFor": {
+          "@type": "NewsMediaOrganization",
+          "name": "BULLMONK International Intelligence"
+        }
+      },
+      "publisher": {
+        "@type": "NewsMediaOrganization",
+        "name": "BULLMONK",
+        "url": "https://www.govtnaukri4u.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.govtnaukri4u.com/logo192.png",
+          "width": 192,
+          "height": 192
+        }
+      },
+      "articleSection": article.category,
+      "keywords": article.tags.join(', ')
+    };
+
+    script.textContent = JSON.stringify(jsonLd);
+
+    return () => {
+      document.title = originalTitle;
+      const el = document.getElementById(scriptId);
+      if (el) el.remove();
+    };
+  }, [article]);
+
   const handleShare = () => {
     navigator.clipboard.writeText(window.location.href);
     showToast('Dispatch link copied to clipboard!');
@@ -159,7 +220,15 @@ export const ArticleReaderPage: React.FC<ArticleReaderPageProps> = ({
         {/* Bylines & Action Bar */}
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderTop: '1px solid var(--border-subtle)', borderBottom: '1px solid var(--border-subtle)', padding: '1rem 0', margin: '1.5rem 0 2rem', flexWrap: 'wrap', gap: '1rem' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-            <img src={article.author.avatar} alt={article.author.name} style={{ width: '44px', height: '44px', borderRadius: '50%', objectFit: 'cover', border: '1px solid var(--accent-gold)' }} />
+            <img 
+              src={article.author.avatar} 
+              alt={article.author.name} 
+              width={44}
+              height={44}
+              loading="lazy"
+              decoding="async"
+              style={{ width: '44px', height: '44px', borderRadius: '50%', objectFit: 'cover', border: '1px solid var(--accent-gold)' }} 
+            />
             <div>
               <div style={{ fontWeight: 700, fontSize: '0.95rem' }}>{article.author.name}</div>
               <div style={{ fontSize: '0.74rem', color: 'var(--text-muted)' }}>
@@ -243,19 +312,25 @@ export const ArticleReaderPage: React.FC<ArticleReaderPageProps> = ({
         </span>
       </div>
 
-      {/* Hero Media */}
-      <figure style={{ borderRadius: 'var(--radius-md)', overflow: 'hidden', border: '1px solid var(--border-subtle)', marginBottom: '2rem' }}>
+      {/* Responsive Hero Media */}
+      <figure className="reader-hero-figure">
         <img 
           src={article.heroImage} 
+          srcSet={
+            article.heroImage.includes('w=')
+              ? `${article.heroImage.replace(/w=\d+/, 'w=480')} 480w, ${article.heroImage.replace(/w=\d+/, 'w=800')} 800w, ${article.heroImage.replace(/w=\d+/, 'w=1200')} 1200w`
+              : undefined
+          }
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 840px"
           alt={article.title} 
           width={800}
           height={450}
           loading="eager"
           decoding="async"
-          style={{ width: '100%', maxHeight: '480px', objectFit: 'cover' }} 
+          className="reader-hero-img"
         />
         {article.imageCaption && (
-          <figcaption style={{ padding: '0.65rem 1rem', fontSize: '0.78rem', color: 'var(--text-muted)', background: 'var(--bg-surface)', borderTop: '1px solid var(--border-subtle)', fontStyle: 'italic' }}>
+          <figcaption className="reader-hero-caption">
             {article.imageCaption}
           </figcaption>
         )}
@@ -375,6 +450,10 @@ export const ArticleReaderPage: React.FC<ArticleReaderPageProps> = ({
         <img 
           src={article.author.avatar} 
           alt={article.author.name} 
+          width={64}
+          height={64}
+          loading="lazy"
+          decoding="async"
           style={{ width: '64px', height: '64px', borderRadius: '50%', objectFit: 'cover', border: '2px solid var(--accent-gold)' }} 
         />
         <div style={{ flex: 1, minWidth: '220px' }}>
@@ -448,7 +527,15 @@ export const ArticleReaderPage: React.FC<ArticleReaderPageProps> = ({
                 }}
               >
                 <div style={{ height: '140px', overflow: 'hidden' }}>
-                  <img src={rel.heroImage} alt={rel.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                  <img 
+                    src={rel.heroImage} 
+                    alt={rel.title} 
+                    width={320}
+                    height={140}
+                    loading="lazy"
+                    decoding="async"
+                    style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+                  />
                 </div>
                 <div style={{ padding: '1rem' }}>
                   <span style={{ fontSize: '0.68rem', color: 'var(--accent-gold)', fontWeight: 700, textTransform: 'uppercase' }}>{rel.region} • {rel.category}</span>

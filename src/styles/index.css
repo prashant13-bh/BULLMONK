@@ -2853,6 +2853,43 @@ html, body {
   .grand-hero-action-tools {
     width: 100%;
     justify-content: space-between;
+  }
+}
+
+/* Fluid responsive article media and typography */
+.reader-hero-figure {
+  width: 100%;
+  margin: 0 0 2rem 0;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+  background: #06090F;
+}
+
+.reader-hero-img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+}
+
+.reader-hero-caption {
+  padding: 0.65rem 1rem;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  background: var(--bg-surface);
+  border-top: 1px solid var(--border-subtle);
+  font-style: italic;
+}
+
+.article-prose img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius-sm);
+  display: block;
+  margin: 1.75rem auto;
+  box-shadow: var(--shadow-sm);
 }
 
 @media (max-width: 640px) {
@@ -2874,11 +2911,26 @@ html, body {
     grid-template-columns: 1fr;
     gap: 1.25rem;
   }
+  .card-media {
+    height: clamp(190px, 50vw, 240px);
+  }
   .bureau-grid {
     grid-template-columns: 1fr;
   }
   .team-grid {
     grid-template-columns: 1fr;
+  }
+  .reader-container {
+    margin: 1.25rem auto 3.5rem;
+    padding: 0 1rem;
+  }
+  .article-main-title {
+    font-size: 1.75rem;
+    line-height: 1.25;
+  }
+  .article-prose {
+    font-size: 1.05rem;
+    line-height: 1.75;
   }
   .toast-box {
     left: 1rem;
