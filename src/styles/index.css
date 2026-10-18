@@ -3,8 +3,6 @@
    Bloomberg & Financial Times Tier-1 Architecture • Pristine Light Default
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,600;1,700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap');
-
 /* --- Root & Light Theme (Default: Swiss Bank & Financial Times Prestige) --- */
 :root,
 [data-theme="light"] {
@@ -2359,7 +2357,7 @@ html, body {
   align-items: center;
   gap: 6px;
   font-size: 0.74rem;
-  color: #64748B;
+  color: #94A3B8;
 }
 
 /* 2. Global Bureaus Grid */
@@ -2407,8 +2405,8 @@ html, body {
 }
 
 .footer-bureau-desk {
-  font-size: 0.68rem;
-  color: #64748B;
+  font-size: 0.72rem;
+  color: #94A3B8;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -2523,8 +2521,8 @@ html, body {
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 1.25rem;
-  font-size: 0.78rem;
-  color: #64748B;
+  font-size: 0.8rem;
+  color: #94A3B8;
 }
 
 .footer-copyright-text {
@@ -2613,6 +2611,9 @@ html, body {
    Universal Multi-Device Responsiveness (Mobile, Foldables, Tablets, Desktops)
    ========================================================================== */
 @media (max-width: 860px) {
+  .grand-hero-card {
+    order: -1;
+  }
   .wire-feed-column {
     position: static !important;
     top: auto !important;
@@ -2628,7 +2629,6 @@ html, body {
   .grand-hero-action-tools {
     width: 100%;
     justify-content: space-between;
-  }
 }
 
 @media (max-width: 640px) {

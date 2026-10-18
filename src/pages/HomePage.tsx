@@ -127,10 +127,11 @@ export const HomePage: React.FC<HomePageProps> = ({
         </div>
       </section>
 
-      {/* 2. Top Responsive AdSense Leaderboard */}
-      <div className="container">
+      {/* 2. Top Responsive AdSense Leaderboard (Desktop / Tablet only) */}
+      <div className="container hide-on-mobile">
         <AdBanner slotType="leaderboard" slotId="top-home-leaderboard" />
       </div>
+
 
       {/* 3. Bloomberg-Caliber 3-Column Hero Centerpiece */}
       <section className="hero-dispatch-section">
@@ -242,13 +243,19 @@ export const HomePage: React.FC<HomePageProps> = ({
                     e.stopPropagation();
                     if (onStartAudioBriefing) onStartAudioBriefing(leadArticle);
                   }}>
-                    <button className="audio-pill-btn" title="Listen to 3-Min Executive Audio Briefing">
+                    <button 
+                      type="button" 
+                      className="audio-pill-btn" 
+                      title="Listen to 3-Min Executive Audio Briefing"
+                      aria-label="Listen to 3-Min Executive Audio Briefing"
+                    >
                       <Volume2 size={15} />
                       <span>Listen to Executive Audio Dispatch (3 min 45s)</span>
                       <div className="audio-mini-visualizer">
                         <span></span><span></span><span></span><span></span>
                       </div>
                     </button>
+
                   </div>
 
                   {/* Key Intelligence Takeaways Box */}
@@ -291,15 +298,18 @@ export const HomePage: React.FC<HomePageProps> = ({
                         <Eye size={13} /> {leadArticle.views.toLocaleString()}
                       </span>
                       <button 
+                        type="button"
                         className={`btn-icon ${isBookmarked(leadArticle.id) ? 'active-bookmark' : ''}`}
                         onClick={(e) => {
                           e.stopPropagation();
                           onToggleBookmark(leadArticle.id);
                         }}
                         title="Bookmark to Private Dossier"
+                        aria-label="Bookmark Grand Hero Article"
                       >
                         <Bookmark size={14} fill={isBookmarked(leadArticle.id) ? 'currentColor' : 'none'} />
                       </button>
+
                     </div>
                   </div>
                 </div>
@@ -398,6 +408,9 @@ export const HomePage: React.FC<HomePageProps> = ({
             {categories.map((cat) => (
               <button
                 key={cat.id}
+                type="button"
+                role="tab"
+                aria-selected={selectedCategory === cat.id}
                 className={`cat-tab ${selectedCategory === cat.id ? 'active' : ''}`}
                 onClick={() => setSelectedCategory(cat.id)}
               >
@@ -407,6 +420,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                 </span>
               </button>
             ))}
+
           </div>
 
           <div className="search-input-wrap">

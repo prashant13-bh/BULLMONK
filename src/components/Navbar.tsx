@@ -147,13 +147,17 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <span>Whistleblower Tip</span>
               </button>
               <span className="masthead-separator hide-on-mobile">•</span>
-              <span 
+              <button 
+                type="button"
                 className="masthead-edition-badge hide-on-mobile"
                 onClick={() => handleNavClick('about')}
                 title="View BullMonk Bureaus & Editorial Board"
+                aria-label="View BullMonk Bureaus & Editorial Board"
+                style={{ background: 'none', border: 'none', font: 'inherit', padding: 0 }}
               >
                 Vol. IV • Intl Edition
-              </span>
+              </button>
+
             </div>
           </div>
         </div>
