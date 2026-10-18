@@ -79,6 +79,9 @@ export const App: React.FC = () => {
   useEffect(() => {
     const savedTheme = (localStorage.getItem('BULLMONK_REACT_THEME') as 'dark' | 'light') || 'light';
     document.documentElement.setAttribute('data-theme', savedTheme);
+    document.body.setAttribute('data-theme', savedTheme);
+    const meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute('content', savedTheme === 'dark' ? '#080C14' : '#F8F9FA');
   }, []);
 
   // Theme switch
@@ -87,6 +90,9 @@ export const App: React.FC = () => {
     setTheme(nextTheme);
     localStorage.setItem('BULLMONK_REACT_THEME', nextTheme);
     document.documentElement.setAttribute('data-theme', nextTheme);
+    document.body.setAttribute('data-theme', nextTheme);
+    const meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute('content', nextTheme === 'dark' ? '#080C14' : '#F8F9FA');
     showToast(`Switched to ${nextTheme === 'dark' ? 'Night Terminal' : 'Prestige Paper'} edition`);
   };
 

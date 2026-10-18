@@ -104,6 +104,8 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg-app);
+  color: var(--text-primary);
 }
 
 body {
@@ -118,10 +120,11 @@ body {
   overflow-x: hidden;
 }
 
-#root {
+#root, main {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  background-color: var(--bg-app);
 }
 
 html, body {
