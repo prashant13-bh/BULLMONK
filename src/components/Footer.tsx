@@ -174,7 +174,7 @@ export const Footer: React.FC<FooterProps> = ({ setCurrentPage, setSelectedCateg
                 </button>
               </li>
               <li>
-                <button type="button" className="footer-link-btn" style={{ color: 'var(--accent-gold)', fontWeight: 700 }} onClick={() => navigate('tools')}>
+                <button type="button" className="footer-link-btn suite-hub-link" onClick={() => navigate('tools')}>
                   Quantitative Tools & Forensics →
                 </button>
               </li>

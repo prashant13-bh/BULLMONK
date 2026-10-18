@@ -57,7 +57,7 @@ export const DEFAULT_ARTICLES: Article[] = [
     author: {
       name: "Marcus Vance",
       title: "Senior Macroeconomics Editor",
-      avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=96&q=75&fm=webp",
+      avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=48&q=70&fm=webp",
       location: "New York Bureau",
       credentials: "MS in Financial Economics, Former Federal Reserve Research Associate",
       email: "m.vance@bullmonk.intelligence",
@@ -105,7 +105,7 @@ export const DEFAULT_ARTICLES: Article[] = [
     author: {
       name: "Siddharth Rao",
       title: "Global Tech & Industrial Analyst",
-      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=96&q=75&fm=webp",
+      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=48&q=70&fm=webp",
       location: "Bengaluru Desk",
       credentials: "B.Tech IIT Madras, MBA London Business School",
       email: "s.rao@bullmonk.intelligence",
@@ -151,7 +151,7 @@ export const DEFAULT_ARTICLES: Article[] = [
     author: {
       name: "Julian Thorne",
       title: "Senior European Economics Correspondent",
-      avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=96&q=75&fm=webp",
+      avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=48&q=70&fm=webp",
       location: "Frankfurt Bureau",
       credentials: "Chartered Financial Analyst (CFA), Former Bundesbank Advisor",
       email: "j.thorne@bullmonk.intelligence"
@@ -191,7 +191,7 @@ export const DEFAULT_ARTICLES: Article[] = [
     author: {
       name: "Evelyn Tremblay",
       title: "Natural Resources & Sovereign Energy Correspondent",
-      avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=96&q=75&fm=webp",
+      avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=48&q=70&fm=webp",
       location: "Toronto Bureau",
       credentials: "B.Sc Geological Engineering, McGill University",
       email: "e.tremblay@bullmonk.intelligence"
@@ -231,7 +231,7 @@ export const DEFAULT_ARTICLES: Article[] = [
     author: {
       name: "Hamish MacLeod",
       title: "Asia-Pacific Mining & Commodities Editor",
-      avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=96&q=75&fm=webp",
+      avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=48&q=70&fm=webp",
       location: "Sydney Bureau",
       credentials: "B.Ec University of Sydney, Former Australian Treasury Analyst",
       email: "h.macleod@bullmonk.intelligence"
@@ -271,7 +271,7 @@ export const DEFAULT_ARTICLES: Article[] = [
     author: {
       name: "Aleksei Voronov",
       title: "Eurasian Geopolitical & Energy Analyst",
-      avatar: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=96&q=75&fm=webp",
+      avatar: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=48&q=70&fm=webp",
       location: "Eurasia Intelligence Desk",
       credentials: "MA International Security, Sciences Po Paris",
       email: "a.voronov@bullmonk.intelligence"
@@ -316,7 +316,7 @@ export const DEFAULT_ARTICLES: Article[] = [
     author: {
       name: "Helena Brandt",
       title: "Senior Sovereign Asset Specialist",
-      avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=96&q=75&fm=webp",
+      avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=48&q=70&fm=webp",
       location: "Zurich Bureau",
       credentials: "Ph.D. Monetary Economics, University of St. Gallen",
       email: "h.brandt@bullmonk.intelligence"
@@ -334,7 +334,7 @@ export const DEFAULT_ARTICLES: Article[] = [
 ];
 
 export const BullMonkStorage = {
-  STORAGE_KEY: 'BULLMONK_PRO_ARTICLES_V5',
+  STORAGE_KEY: 'BULLMONK_PRO_ARTICLES_V6',
   BOOKMARKS_KEY: 'BULLMONK_PRO_BOOKMARKS',
 
   getAllArticles(): Article[] {
@@ -368,7 +368,7 @@ export const BullMonkStorage = {
       author: articleData.author || {
         name: 'BullMonk Senior Fellow',
         title: 'Special Contributor',
-        avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=96&q=75&fm=webp',
+        avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=48&q=70&fm=webp',
         location: 'Global Bureau'
       },
       publishedAt: new Date().toISOString(),

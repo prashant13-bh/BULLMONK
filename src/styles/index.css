@@ -1338,8 +1338,10 @@ html, body {
 }
 
 .author-avatar-img {
-  width: 38px;
-  height: 38px;
+  width: 36px;
+  height: 36px;
+  aspect-ratio: 1 / 1;
+  flex-shrink: 0;
   border-radius: 50%;
   object-fit: cover;
   border: 2px solid var(--accent-gold);
@@ -1914,6 +1916,8 @@ html, body {
 .card-author-avatar {
   width: 24px;
   height: 24px;
+  aspect-ratio: 1 / 1;
+  flex-shrink: 0;
   border-radius: 50%;
   object-fit: cover;
 }

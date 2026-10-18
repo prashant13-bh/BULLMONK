@@ -206,6 +206,8 @@ export const HomePage: React.FC<HomePageProps> = ({
                 <div className="grand-hero-media">
                   <img 
                     src={leadArticle.heroImage} 
+                    srcSet={`${leadArticle.heroImage.replace('w=800', 'w=480')} 480w, ${leadArticle.heroImage} 800w`}
+                    sizes="(max-width: 768px) 100vw, 800px"
                     alt={leadArticle.title} 
                     className="grand-hero-img" 
                     width={800}
@@ -275,6 +277,10 @@ export const HomePage: React.FC<HomePageProps> = ({
                         src={leadArticle.author.avatar} 
                         alt={leadArticle.author.name} 
                         className="author-avatar-img"
+                        width={36}
+                        height={36}
+                        loading="lazy"
+                        decoding="async"
                       />
                       <div>
                         <div className="author-name-with-seal">
@@ -517,7 +523,15 @@ export const HomePage: React.FC<HomePageProps> = ({
 
                       <div className="card-footer">
                         <div className="card-author-group">
-                          <img src={art.author.avatar} alt={art.author.name} className="card-author-avatar" />
+                          <img 
+                            src={art.author.avatar} 
+                            alt={art.author.name} 
+                            className="card-author-avatar" 
+                            width={24}
+                            height={24}
+                            loading="lazy"
+                            decoding="async"
+                          />
                           <span className="card-author-name">{art.author.name}</span>
                         </div>
                         <span className="card-read-time">

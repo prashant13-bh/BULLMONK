@@ -58,25 +58,25 @@ export const AboutPage: React.FC<AboutPageProps> = ({ setCurrentPage }) => {
     {
       name: 'Marcus Vance',
       role: 'Editor-in-Chief & Macro Chief',
-      img: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=96&q=75&fm=webp',
+      img: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=48&q=70&fm=webp',
       bio: 'Former BIS senior research fellow and veteran financial correspondent with 22 years tracking sovereign liquidity.'
     },
     {
       name: 'Helena Lindqvist',
       role: 'Maritime & Energy Bureau Chief',
-      img: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=96&q=75&fm=webp',
+      img: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=48&q=70&fm=webp',
       bio: 'Leading maritime investigator specializing in polar shipping corridors, seabed treaties, and LNG trade flows.'
     },
     {
       name: 'Siddharth Rao',
       role: 'Lead Technology & AI Analyst',
-      img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=96&q=75&fm=webp',
+      img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=48&q=70&fm=webp',
       bio: 'Specialist in lithography, photonic computation, and rare earth supply chains across East Asia and the West.'
     },
     {
       name: 'Amara Okonjo',
       role: 'Geopolitics & Sovereignty Director',
-      img: 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=96&q=75&fm=webp',
+      img: 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=48&q=70&fm=webp',
       bio: 'Former multilateral policy advisor researching sovereign AI initiatives, BRICS expansion, and critical minerals.'
     }
   ];
