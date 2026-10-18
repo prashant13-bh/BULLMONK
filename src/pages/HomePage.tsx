@@ -93,6 +93,9 @@ export const HomePage: React.FC<HomePageProps> = ({
 
   return (
     <main>
+      {/* Semantic H1 for 100% SEO & Screen Reader Accessibility */}
+      <h1 className="sr-only">BULLMONK | Global News, Macroeconomic Forensics & Sovereign Financial Journal</h1>
+
       {/* 1. Regional Bureau Fast Navigation Bar */}
       <section className="regional-desks-bar">
         <div className="container">
@@ -209,7 +212,11 @@ export const HomePage: React.FC<HomePageProps> = ({
                     src={leadArticle.heroImage} 
                     alt={leadArticle.title} 
                     className="grand-hero-img" 
-                    loading="eager" 
+                    width={800}
+                    height={450}
+                    loading="eager"
+                    fetchPriority="high"
+                    decoding="async"
                   />
                   <div className="grand-hero-badge-overlay">
                     <span className="badge badge-breaking">
@@ -403,8 +410,10 @@ export const HomePage: React.FC<HomePageProps> = ({
           </div>
 
           <div className="search-input-wrap">
-            <Search size={15} className="search-icon" />
+            <Search size={15} className="search-icon" aria-hidden="true" />
+            <label htmlFor="homepage-filter-input" className="sr-only">Filter dispatches by keyword or author</label>
             <input 
+              id="homepage-filter-input"
               type="text"
               className="search-field"
               placeholder="Filter by keyword, commodity, ticker, author..."
@@ -457,7 +466,15 @@ export const HomePage: React.FC<HomePageProps> = ({
                     onClick={() => onSelectArticle(art)}
                   >
                     <div className="card-media">
-                      <img src={art.heroImage} alt={art.title} className="card-img" loading="lazy" />
+                      <img 
+                        src={art.heroImage} 
+                        alt={art.title} 
+                        className="card-img" 
+                        loading="lazy" 
+                        decoding="async"
+                        width={400}
+                        height={205}
+                      />
                       <div className="card-badge-container">
                         <span className={`badge ${art.breaking ? 'badge-breaking' : 'badge-category'}`}>
                           {art.category}
@@ -474,6 +491,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                           onToggleBookmark(art.id);
                         }}
                         title="Bookmark Story"
+                        aria-label={`Bookmark ${art.title}`}
                       >
                         <Bookmark size={13} fill={saved ? 'currentColor' : 'none'} />
                       </button>
@@ -576,7 +594,9 @@ export const HomePage: React.FC<HomePageProps> = ({
           </div>
 
           <form onSubmit={handleNewsletterSubmit} className="newsletter-form">
+            <label htmlFor="newsletter-email-input" className="sr-only">Institutional email address for daily briefing</label>
             <input 
+              id="newsletter-email-input"
               type="email"
               className="form-control"
               style={{ flex: '1 1 240px' }}
@@ -585,7 +605,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               onChange={(e) => setNewsletterEmail(e.target.value)}
               required
             />
-            <button type="submit" className="btn btn-primary" style={{ flexShrink: 0 }}>
+            <button type="submit" className="btn btn-primary" style={{ flexShrink: 0 }} aria-label="Subscribe to The Morning Monk">
               <Send size={15} /> Subscribe
             </button>
           </form>

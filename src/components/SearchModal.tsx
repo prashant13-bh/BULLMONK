@@ -99,13 +99,14 @@ export const SearchModal: React.FC<SearchModalProps> = ({
           padding: '1rem 1.25rem',
           borderBottom: '1px solid var(--border-subtle)'
         }}>
-          <Search size={20} color="var(--accent-gold)" />
+          <Search size={20} color="var(--accent-gold)" aria-hidden="true" />
           <input
             ref={inputRef}
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search global intelligence, central banks, commodities, tech..."
+            aria-label="Search global intelligence records"
             style={{
               flex: 1,
               background: 'transparent',
@@ -119,6 +120,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({
           {query && (
             <button
               onClick={() => setQuery('')}
+              aria-label="Clear search input"
               style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text-muted)' }}
             >
               <X size={18} />

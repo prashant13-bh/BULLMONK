@@ -33,6 +33,7 @@ export const Footer: React.FC<FooterProps> = ({ setCurrentPage, setSelectedCateg
                 className="btn btn-secondary" 
                 style={{ fontSize: '0.74rem', padding: '0.4rem 0.85rem' }}
                 onClick={() => navigate('contact')}
+                aria-label="Open Zero-Knowledge Tip Line"
               >
                 <Lock size={13} /> Zero-Knowledge Tip Line
               </button>

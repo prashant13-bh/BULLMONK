@@ -146,6 +146,7 @@ export const AudioDock: React.FC<AudioDockProps> = ({
               cursor: 'pointer'
             }}
             title="Playback Speed"
+            aria-label={`Playback speed ${playbackRate}x`}
           >
             {playbackRate}x
           </button>
@@ -166,6 +167,7 @@ export const AudioDock: React.FC<AudioDockProps> = ({
               boxShadow: '0 2px 8px var(--accent-gold-glow)'
             }}
             title={isPlaying ? 'Pause Briefing' : 'Play Briefing'}
+            aria-label={isPlaying ? 'Pause Briefing' : 'Play Briefing'}
           >
             {isPlaying ? <Pause size={16} /> : <Play size={16} style={{ marginLeft: '2px' }} />}
           </button>
@@ -185,6 +187,7 @@ export const AudioDock: React.FC<AudioDockProps> = ({
             }}
             className="hide-on-mobile"
             title="Read Full Dispatch"
+            aria-label="Read Full Dispatch"
           >
             <ExternalLink size={14} /> Read
           </button>
@@ -201,6 +204,7 @@ export const AudioDock: React.FC<AudioDockProps> = ({
               justifyContent: 'center'
             }}
             title="Close Audio Briefing"
+            aria-label="Close Audio Briefing"
           >
             <X size={18} />
           </button>

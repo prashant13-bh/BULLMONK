@@ -156,11 +156,17 @@ export const ArticleReaderPage: React.FC<ArticleReaderPageProps> = ({
               onClick={() => onToggleBookmark(article.id)}
               style={{ color: isBookmarked ? 'var(--accent-gold)' : 'inherit' }}
               title="Bookmark story"
+              aria-label="Bookmark this story"
             >
               <Bookmark size={16} fill={isBookmarked ? 'currentColor' : 'none'} />
             </button>
 
-            <button className="btn-icon" onClick={handleShare} title="Copy link">
+            <button 
+              className="btn-icon" 
+              onClick={handleShare} 
+              title="Copy link"
+              aria-label="Share article link"
+            >
               <Share2 size={16} />
             </button>
 
@@ -168,6 +174,7 @@ export const ArticleReaderPage: React.FC<ArticleReaderPageProps> = ({
               className="btn-icon" 
               onClick={() => setLargeFont(!largeFont)}
               title="Toggle reading font size"
+              aria-label="Toggle reading font size"
               style={{ color: largeFont ? 'var(--accent-gold)' : 'inherit' }}
             >
               <Type size={16} />
@@ -178,7 +185,12 @@ export const ArticleReaderPage: React.FC<ArticleReaderPageProps> = ({
 
       {/* Audio Briefing Player */}
       <div className={`audio-bar ${isPlayingAudio ? 'playing' : ''}`}>
-        <button className="audio-play-btn" onClick={toggleAudio}>
+        <button 
+          className="audio-play-btn" 
+          onClick={toggleAudio}
+          title={isPlayingAudio ? 'Pause synthetic voice' : 'Listen to audio briefing'}
+          aria-label={isPlayingAudio ? 'Pause audio briefing' : 'Play audio briefing'}
+        >
           {isPlayingAudio ? <Pause size={18} /> : <Play size={18} fill="currentColor" />}
         </button>
         <div style={{ flex: 1 }}>
@@ -204,7 +216,15 @@ export const ArticleReaderPage: React.FC<ArticleReaderPageProps> = ({
 
       {/* Hero Media */}
       <figure style={{ borderRadius: 'var(--radius-md)', overflow: 'hidden', border: '1px solid var(--border-subtle)', marginBottom: '2.5rem' }}>
-        <img src={article.heroImage} alt={article.title} style={{ width: '100%', maxHeight: '480px', objectFit: 'cover' }} />
+        <img 
+          src={article.heroImage} 
+          alt={article.title} 
+          width={800}
+          height={450}
+          loading="eager"
+          decoding="async"
+          style={{ width: '100%', maxHeight: '480px', objectFit: 'cover' }} 
+        />
         {article.imageCaption && (
           <figcaption style={{ padding: '0.65rem 1rem', fontSize: '0.78rem', color: 'var(--text-muted)', background: 'var(--bg-surface)', borderTop: '1px solid var(--border-subtle)', fontStyle: 'italic' }}>
             {article.imageCaption}

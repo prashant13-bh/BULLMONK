@@ -202,7 +202,14 @@ export const Navbar: React.FC<NavbarProps> = ({
             </div>
 
             {/* Center: Brand Logo */}
-            <div className="brand-logo-container" onClick={() => handleNavClick('home', 'all')}>
+            <div 
+              className="brand-logo-container" 
+              onClick={() => handleNavClick('home', 'all')}
+              role="button"
+              tabIndex={0}
+              aria-label="BULLMONK Home Wire"
+              onKeyDown={(e) => { if (e.key === 'Enter') handleNavClick('home', 'all'); }}
+            >
               <div className="brand-logo">
                 <div className="brand-emblem">BM</div>
                 <span className="brand-text">BULLMONK</span>
@@ -216,6 +223,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 className="btn btn-primary"
                 onClick={() => handleNavClick('contact')}
                 title="Zero-Knowledge Encrypted Whistleblower Line"
+                aria-label="Open Whistleblower Tip Line"
               >
                 <Lock size={14} />
                 <span>Tip Line</span>

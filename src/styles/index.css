@@ -26,7 +26,7 @@
 
   --text-primary: #0F172A;
   --text-secondary: #334155;
-  --text-muted: #64748B;
+  --text-muted: #475569;
   --text-inverse: #FFFFFF;
 
   --accent-gold: #B45309;
@@ -133,6 +133,19 @@ body {
   margin-right: auto;
   padding-left: clamp(1rem, 2.5vw, 2rem);
   padding-right: clamp(1rem, 2.5vw, 2rem);
+}
+
+/* Screen Reader Only Utility for 100% Lighthouse Accessibility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }
 
 /* --- 1. Masthead Clock Bar --- */
