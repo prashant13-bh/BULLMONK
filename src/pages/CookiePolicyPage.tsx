@@ -196,7 +196,7 @@ export const CookiePolicyPage: React.FC<CookiePolicyPageProps> = ({ setCurrentPa
                     <td style={{ padding: '0.65rem 0.75rem' }}>Persistent (Local)</td>
                   </tr>
                   <tr style={{ borderBottom: '1px solid var(--border-subtle)' }}>
-                    <td style={{ padding: '0.65rem 0.75rem' }}><code>BULLMONK_PRO_ARTICLES_V3</code></td>
+                    <td style={{ padding: '0.65rem 0.75rem' }}><code>BULLMONK_PRO_ARTICLES_V5</code></td>
                     <td style={{ padding: '0.65rem 0.75rem' }}>BullMonk First-Party</td>
                     <td style={{ padding: '0.65rem 0.75rem' }}>Caches reading dossiers & bookmarks</td>
                     <td style={{ padding: '0.65rem 0.75rem' }}>Persistent (Local)</td>

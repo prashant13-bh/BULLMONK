@@ -24,17 +24,17 @@
 
   --text-primary: #0F172A;
   --text-secondary: #334155;
-  --text-muted: #475569;
+  --text-muted: #334155;
   --text-inverse: #FFFFFF;
 
-  --accent-gold: #B45309;
-  --accent-gold-hover: #92400E;
-  --accent-gold-glow: rgba(180, 83, 9, 0.18);
-  --accent-gold-light: #FDE68A;
-  --accent-red: #DC2626;
-  --accent-red-glow: rgba(220, 38, 38, 0.12);
-  --accent-green: #059669;
-  --accent-green-glow: rgba(5, 150, 105, 0.12);
+  --accent-gold: #92400E;
+  --accent-gold-hover: #78350F;
+  --accent-gold-glow: rgba(146, 64, 14, 0.16);
+  --accent-gold-light: #FEF3C7;
+  --accent-red: #B91C1C;
+  --accent-red-glow: rgba(185, 28, 28, 0.12);
+  --accent-green: #047857;
+  --accent-green-glow: rgba(4, 120, 87, 0.12);
   --accent-blue: #0284C7;
 
   --btn-primary-bg: linear-gradient(135deg, #D97706 0%, #B45309 100%);
@@ -70,17 +70,17 @@
 
   --text-primary: #F8FAFC;
   --text-secondary: #94A3B8;
-  --text-muted: #64748B;
+  --text-muted: #CBD5E1;
   --text-inverse: #090E1A;
 
-  --accent-gold: #EAB308;
-  --accent-gold-hover: #CA8A04;
-  --accent-gold-glow: rgba(234, 179, 8, 0.18);
-  --accent-gold-light: #FDE68A;
-  --accent-red: #EF4444;
-  --accent-red-glow: rgba(239, 68, 68, 0.2);
-  --accent-green: #10B981;
-  --accent-green-glow: rgba(16, 185, 129, 0.16);
+  --accent-gold: #FACC15;
+  --accent-gold-hover: #EAB308;
+  --accent-gold-glow: rgba(250, 204, 21, 0.18);
+  --accent-gold-light: #FEF08A;
+  --accent-red: #F87171;
+  --accent-red-glow: rgba(248, 113, 113, 0.2);
+  --accent-green: #34D399;
+  --accent-green-glow: rgba(52, 211, 153, 0.16);
   --accent-blue: #38BDF8;
 
   --btn-primary-bg: linear-gradient(135deg, #EAB308 0%, #D97706 100%);
@@ -220,6 +220,11 @@ html, body {
 
 .clock-time {
   color: var(--accent-gold);
+  font-weight: 700;
+}
+
+[data-theme="dark"] .clock-time {
+  color: #FDE68A;
 }
 
 .masthead-right-group {
@@ -232,13 +237,23 @@ html, body {
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  color: var(--accent-gold);
+  color: #92400E;
+  background: transparent;
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
   cursor: pointer;
-  font-weight: 600;
+  font-weight: 700;
+  transition: opacity var(--transition-fast);
+}
+
+[data-theme="dark"] .whistleblower-link {
+  color: #FDE68A;
 }
 
 .whistleblower-link:hover {
   text-decoration: underline;
+  opacity: 0.85;
 }
 
 .masthead-edition-badge {
@@ -417,13 +432,20 @@ html, body {
   gap: 5px;
   font-size: 0.72rem;
   font-family: var(--font-mono);
-  font-weight: 700;
-  color: var(--accent-gold);
+  font-weight: 800;
+  color: #78350F;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   padding: 3px 8px;
   border-radius: var(--radius-xs);
-  background: var(--accent-gold-glow);
+  background: #FEF3C7;
+  border: 1px solid rgba(180, 83, 9, 0.3);
+}
+
+[data-theme="dark"] .header-edition-tag {
+  color: #FDE68A;
+  background: rgba(234, 179, 8, 0.15);
+  border-color: rgba(234, 179, 8, 0.35);
 }
 
 /* Brand Monogram & Crest */
@@ -435,6 +457,8 @@ html, body {
   text-align: center;
   user-select: none;
   flex-shrink: 0;
+  min-height: 58px;
+  contain: layout;
 }
 
 .brand-logo {
@@ -970,7 +994,7 @@ html, body {
 
 .bloomberg-three-col-grid {
   display: grid;
-  grid-template-columns: 290px 1fr 340px;
+  grid-template-columns: 290px minmax(0, 1fr) 340px;
   gap: 1.5rem;
   align-items: start;
 }
@@ -1372,6 +1396,7 @@ html, body {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  contain: layout;
 }
 
 .sector-heatmap-widget,

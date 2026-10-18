@@ -437,9 +437,9 @@ export const HomePage: React.FC<HomePageProps> = ({
       <section className="container" style={{ marginBottom: '3rem' }}>
         <div className="section-masthead-header">
           <div>
-            <h3 className="section-heading-brand">
+            <h2 className="section-heading-brand">
               Global Dispatches & Analytical Archive
-            </h3>
+            </h2>
             <span className="section-sub-filter-info">
               Surveillance Desk: {selectedRegion !== 'all' ? selectedRegion : 'Global Desks'} • {selectedCategory !== 'all' ? selectedCategory : 'All Categories'}
             </span>
@@ -452,7 +452,7 @@ export const HomePage: React.FC<HomePageProps> = ({
         {filteredArticles.length === 0 ? (
           <div className="no-results-box">
             <Search size={40} color="var(--accent-gold)" style={{ margin: '0 auto 1rem' }} />
-            <h4 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.4rem', marginBottom: '0.5rem' }}>No Intelligence Found</h4>
+            <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.4rem', marginBottom: '0.5rem' }}>No Intelligence Found</h3>
             <p style={{ color: 'var(--text-muted)', maxWidth: '420px', margin: '0 auto 1.5rem', fontSize: '0.9rem' }}>
               We could not find any active dispatches matching "{searchQuery}".
             </p>
@@ -595,9 +595,9 @@ export const HomePage: React.FC<HomePageProps> = ({
               <Calculator size={13} color="var(--accent-gold)" />
               <span>BULLMONK QUANTITATIVE SUITE • LIVE TERMINAL</span>
             </div>
-            <h3 className="tools-gateway-title">
+            <h2 className="tools-gateway-title">
               Institutional Financial Forensics & Macro Computational Engines
-            </h3>
+            </h2>
             <p className="tools-gateway-deck">
               Interactive analytical models designed for portfolio managers, sovereign wealth desks, and investigative researchers. Model bond yield duration sensitivity, measure purchasing power debasement, evaluate purchasing power parity deviations, and forecast multi-decade reserve accumulation.
             </p>
@@ -608,7 +608,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               <div className="tools-mini-icon">
                 <BarChart3 size={18} color="var(--accent-gold)" />
               </div>
-              <h4 className="tools-mini-heading">Sovereign Bond & Duration</h4>
+              <h3 className="tools-mini-heading">Sovereign Bond & Duration</h3>
               <p className="tools-mini-desc">Estimate clean bond pricing, Macaulay duration, and basis point yield shock impact.</p>
               <span className="tools-mini-action">Launch Bond Terminal →</span>
             </div>
@@ -617,7 +617,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               <div className="tools-mini-icon">
                 <TrendingUp size={18} color="var(--accent-green)" />
               </div>
-              <h4 className="tools-mini-heading">Inflation & Real CAGR</h4>
+              <h3 className="tools-mini-heading">Inflation & Real CAGR</h3>
               <p className="tools-mini-desc">Quantify purchasing power erosion, monetary debasement drag, and real returns.</p>
               <span className="tools-mini-action">Run Inflation Model →</span>
             </div>
@@ -626,7 +626,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               <div className="tools-mini-icon">
                 <Globe2 size={18} color="var(--accent-blue)" />
               </div>
-              <h4 className="tools-mini-heading">FX Arbitrage & PPP Matrix</h4>
+              <h3 className="tools-mini-heading">FX Arbitrage & PPP Matrix</h3>
               <p className="tools-mini-desc">Audit implied PPP currency over/undervaluations and central bank real policy spreads.</p>
               <span className="tools-mini-action">Audit FX Matrix →</span>
             </div>
@@ -635,7 +635,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               <div className="tools-mini-icon">
                 <Zap size={18} color="var(--accent-gold)" />
               </div>
-              <h4 className="tools-mini-heading">Compound Capital Forecaster</h4>
+              <h3 className="tools-mini-heading">Compound Capital Forecaster</h3>
               <p className="tools-mini-desc">Model monthly reserve capital inflows, dividend reinvestment, and multi-decade wealth.</p>
               <span className="tools-mini-action">Simulate Reserves →</span>
             </div>

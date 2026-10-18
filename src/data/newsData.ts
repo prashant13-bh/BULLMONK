@@ -113,7 +113,7 @@ export const DEFAULT_ARTICLES: Article[] = [
     },
     publishedAt: "2026-10-18T16:15:00Z",
     readTime: "8 min read",
-    heroImage: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=75&fm=webp",
+    heroImage: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=500&q=75&fm=webp",
     imageCaption: "Automated wafer handling robot in cleanroom microelectronics fabrication.",
     featured: true,
     breaking: true,
@@ -158,7 +158,7 @@ export const DEFAULT_ARTICLES: Article[] = [
     },
     publishedAt: "2026-10-18T13:40:00Z",
     readTime: "6 min read",
-    heroImage: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=75&fm=webp",
+    heroImage: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=500&q=75&fm=webp",
     imageCaption: "Financial towers in the City of London banking quarter.",
     featured: false,
     breaking: false,
@@ -198,7 +198,7 @@ export const DEFAULT_ARTICLES: Article[] = [
     },
     publishedAt: "2026-10-18T11:20:00Z",
     readTime: "7 min read",
-    heroImage: "https://images.unsplash.com/photo-1578328819058-b69f3a3b0f6b?auto=format&fit=crop&w=800&q=75&fm=webp",
+    heroImage: "https://images.unsplash.com/photo-1578328819058-b69f3a3b0f6b?auto=format&fit=crop&w=500&q=75&fm=webp",
     imageCaption: "Remote mining operation and mineral processing site in northern Canadian shield.",
     featured: false,
     breaking: false,
@@ -238,7 +238,7 @@ export const DEFAULT_ARTICLES: Article[] = [
     },
     publishedAt: "2026-10-18T08:50:00Z",
     readTime: "6 min read",
-    heroImage: "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=800&q=75&fm=webp",
+    heroImage: "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=500&q=75&fm=webp",
     imageCaption: "Heavy industrial rail haulage and export terminals along the Western Australian coastline.",
     featured: false,
     breaking: false,
@@ -278,7 +278,7 @@ export const DEFAULT_ARTICLES: Article[] = [
     },
     publishedAt: "2026-10-18T05:30:00Z",
     readTime: "8 min read",
-    heroImage: "https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?auto=format&fit=crop&w=800&q=75&fm=webp",
+    heroImage: "https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?auto=format&fit=crop&w=500&q=75&fm=webp",
     imageCaption: "Crude oil tanker navigating international commercial shipping channel.",
     featured: false,
     breaking: true,
@@ -323,7 +323,7 @@ export const DEFAULT_ARTICLES: Article[] = [
     },
     publishedAt: "2026-10-18T03:10:00Z",
     readTime: "9 min read",
-    heroImage: "https://images.unsplash.com/photo-1610375461246-83df859d849d?auto=format&fit=crop&w=800&q=75&fm=webp",
+    heroImage: "https://images.unsplash.com/photo-1610375461246-83df859d849d?auto=format&fit=crop&w=500&q=75&fm=webp",
     imageCaption: "Standard 400-troy-ounce physical gold bullion bars in high-security custodial vault.",
     featured: true,
     breaking: false,
@@ -334,7 +334,7 @@ export const DEFAULT_ARTICLES: Article[] = [
 ];
 
 export const BullMonkStorage = {
-  STORAGE_KEY: 'BULLMONK_PRO_ARTICLES_V4',
+  STORAGE_KEY: 'BULLMONK_PRO_ARTICLES_V5',
   BOOKMARKS_KEY: 'BULLMONK_PRO_BOOKMARKS',
 
   getAllArticles(): Article[] {

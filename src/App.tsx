@@ -1,23 +1,25 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense, lazy } from 'react';
 import { PageView, Article } from './types';
 import { BullMonkStorage, MARKET_TICKERS } from './data/newsData';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { HomePage } from './pages/HomePage';
-import { ArticleReaderPage } from './pages/ArticleReaderPage';
-import { AboutPage } from './pages/AboutPage';
-import { ContactPage } from './pages/ContactPage';
-import { LegalPage } from './pages/LegalPage';
-import { PrivacyPolicyPage } from './pages/PrivacyPolicyPage';
-import { TermsOfServicePage } from './pages/TermsOfServicePage';
-import { FinancialDisclaimerPage } from './pages/FinancialDisclaimerPage';
-import { EditorialStandardsPage } from './pages/EditorialStandardsPage';
-import { CookiePolicyPage } from './pages/CookiePolicyPage';
-import { CorrectionsPage } from './pages/CorrectionsPage';
-import { FinancialToolsPage } from './pages/FinancialToolsPage';
 import { SearchModal } from './components/SearchModal';
 import { AudioDock } from './components/AudioDock';
 import { Sparkles } from 'lucide-react';
+
+// Asynchronous Route Splitting for 95+ PageSpeed & Low Initial Payload
+const ArticleReaderPage = lazy(() => import('./pages/ArticleReaderPage').then(m => ({ default: m.ArticleReaderPage })));
+const FinancialToolsPage = lazy(() => import('./pages/FinancialToolsPage').then(m => ({ default: m.FinancialToolsPage })));
+const AboutPage = lazy(() => import('./pages/AboutPage').then(m => ({ default: m.AboutPage })));
+const ContactPage = lazy(() => import('./pages/ContactPage').then(m => ({ default: m.ContactPage })));
+const LegalPage = lazy(() => import('./pages/LegalPage').then(m => ({ default: m.LegalPage })));
+const PrivacyPolicyPage = lazy(() => import('./pages/PrivacyPolicyPage').then(m => ({ default: m.PrivacyPolicyPage })));
+const FinancialDisclaimerPage = lazy(() => import('./pages/FinancialDisclaimerPage').then(m => ({ default: m.FinancialDisclaimerPage })));
+const TermsOfServicePage = lazy(() => import('./pages/TermsOfServicePage').then(m => ({ default: m.TermsOfServicePage })));
+const EditorialStandardsPage = lazy(() => import('./pages/EditorialStandardsPage').then(m => ({ default: m.EditorialStandardsPage })));
+const CookiePolicyPage = lazy(() => import('./pages/CookiePolicyPage').then(m => ({ default: m.CookiePolicyPage })));
+const CorrectionsPage = lazy(() => import('./pages/CorrectionsPage').then(m => ({ default: m.CorrectionsPage })));
 
 export const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<PageView>('home');
@@ -159,61 +161,70 @@ export const App: React.FC = () => {
         />
       )}
 
-      {currentPage === 'article' && selectedArticle && (
-        <ArticleReaderPage 
-          article={selectedArticle}
-          relatedArticles={articles.filter((a) => a.id !== selectedArticle.id && a.category === selectedArticle.category)}
-          onSelectArticle={handleSelectArticle}
-          onToggleBookmark={handleToggleBookmark}
-          isBookmarked={BullMonkStorage.isBookmarked(selectedArticle.id)}
-          onBackToWire={() => navigateToPage('home')}
-          showToast={showToast}
-          onNavigateToTools={() => navigateToPage('tools')}
-        />
-      )}
+      <Suspense fallback={
+        <div style={{ padding: '6rem 2rem', textAlign: 'center', minHeight: '60vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '1rem' }}>
+          <div className="status-dot" style={{ width: '10px', height: '10px', background: 'var(--accent-gold)' }}></div>
+          <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.82rem', color: 'var(--text-muted)', letterSpacing: '0.08em' }}>
+            DECRYPTING DISPATCH DOSSIER...
+          </span>
+        </div>
+      }>
+        {currentPage === 'article' && selectedArticle && (
+          <ArticleReaderPage 
+            article={selectedArticle}
+            relatedArticles={articles.filter((a) => a.id !== selectedArticle.id && a.category === selectedArticle.category)}
+            onSelectArticle={handleSelectArticle}
+            onToggleBookmark={handleToggleBookmark}
+            isBookmarked={BullMonkStorage.isBookmarked(selectedArticle.id)}
+            onBackToWire={() => navigateToPage('home')}
+            showToast={showToast}
+            onNavigateToTools={() => navigateToPage('tools')}
+          />
+        )}
 
-      {currentPage === 'about' && (
-        <AboutPage setCurrentPage={navigateToPage} />
-      )}
+        {currentPage === 'about' && (
+          <AboutPage setCurrentPage={navigateToPage} />
+        )}
 
-      {currentPage === 'contact' && (
-        <ContactPage setCurrentPage={navigateToPage} showToast={showToast} />
-      )}
+        {currentPage === 'contact' && (
+          <ContactPage setCurrentPage={navigateToPage} showToast={showToast} />
+        )}
 
-      {/* Quantitative & Macro Intelligence Tools Suite */}
-      {currentPage === 'tools' && (
-        <FinancialToolsPage setCurrentPage={navigateToPage} showToast={showToast} />
-      )}
+        {/* Quantitative & Macro Intelligence Tools Suite */}
+        {currentPage === 'tools' && (
+          <FinancialToolsPage setCurrentPage={navigateToPage} showToast={showToast} />
+        )}
 
-      {/* Legal & Compliance Suite Portal Hub */}
-      {currentPage === 'legal' && (
-        <LegalPage setCurrentPage={navigateToPage} />
-      )}
+        {/* Legal & Compliance Suite Portal Hub */}
+        {currentPage === 'legal' && (
+          <LegalPage setCurrentPage={navigateToPage} />
+        )}
 
-      {/* 6 Dedicated Separate Legal Pages */}
-      {currentPage === 'privacy' && (
-        <PrivacyPolicyPage setCurrentPage={navigateToPage} />
-      )}
+        {/* 6 Dedicated Separate Legal Pages */}
+        {currentPage === 'privacy' && (
+          <PrivacyPolicyPage setCurrentPage={navigateToPage} />
+        )}
 
-      {currentPage === 'disclaimer' && (
-        <FinancialDisclaimerPage setCurrentPage={navigateToPage} />
-      )}
+        {currentPage === 'disclaimer' && (
+          <FinancialDisclaimerPage setCurrentPage={navigateToPage} />
+        )}
 
-      {currentPage === 'terms' && (
-        <TermsOfServicePage setCurrentPage={navigateToPage} />
-      )}
+        {currentPage === 'terms' && (
+          <TermsOfServicePage setCurrentPage={navigateToPage} />
+        )}
 
-      {currentPage === 'editorial' && (
-        <EditorialStandardsPage setCurrentPage={navigateToPage} />
-      )}
+        {currentPage === 'editorial' && (
+          <EditorialStandardsPage setCurrentPage={navigateToPage} />
+        )}
 
-      {currentPage === 'cookies' && (
-        <CookiePolicyPage setCurrentPage={navigateToPage} showToast={showToast} />
-      )}
+        {currentPage === 'cookies' && (
+          <CookiePolicyPage setCurrentPage={navigateToPage} showToast={showToast} />
+        )}
 
-      {currentPage === 'corrections' && (
-        <CorrectionsPage setCurrentPage={navigateToPage} />
-      )}
+        {currentPage === 'corrections' && (
+          <CorrectionsPage setCurrentPage={navigateToPage} />
+        )}
+      </Suspense>
 
       {/* Global Command Palette / Search Modal */}
       <SearchModal 

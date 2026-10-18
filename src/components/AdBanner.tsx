@@ -24,14 +24,15 @@ export const AdBanner: React.FC<AdBannerProps> = ({
 
   return (
     <aside 
-      className={`ad-container ${className}`}
+      className={`ad-container ad-${slotType} ${className}`}
       aria-label="Sponsor & AdSense Network"
       style={{
         margin: slotType === 'leaderboard' ? '1.5rem auto' : '2.5rem auto',
         textAlign: 'center',
         maxWidth: slotType === 'rectangle' ? '360px' : '980px',
         width: '100%',
-        clear: 'both'
+        clear: 'both',
+        contain: 'layout'
       }}
     >
       <div style={{
@@ -60,13 +61,13 @@ export const AdBanner: React.FC<AdBannerProps> = ({
           background: 'var(--bg-surface)',
           border: '1px solid var(--border-medium)',
           borderRadius: 'var(--radius-md)',
-          padding: slotType === 'rectangle' ? '1.75rem 1.25rem' : '1.25rem 1.5rem',
-          minHeight: slotType === 'leaderboard' ? '100px' : (slotType === 'rectangle' ? '280px' : '130px'),
+          padding: slotType === 'rectangle' ? '1.5rem 1.25rem' : '0.85rem 1.25rem',
+          minHeight: slotType === 'leaderboard' ? '105px' : (slotType === 'rectangle' ? '280px' : '130px'),
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
-          gap: '8px',
+          gap: '6px',
           boxShadow: 'var(--shadow-sm)',
           position: 'relative',
           overflow: 'hidden'
