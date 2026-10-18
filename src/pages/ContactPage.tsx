@@ -20,8 +20,8 @@ export const ContactPage: React.FC<ContactPageProps> = ({ setCurrentPage, showTo
 
   const faqs = [
     {
-      q: 'How can an outside analyst or journalist publish articles on BullMonk?',
-      a: 'We offer our browser-based BullMonk Editorial Studio, which allows contributors to compose stories with rich typography, select visual presets, and publish directly to the global front. Submissions for our institutional terminal feed are evaluated by our Zurich standards council within 48 hours.'
+      q: 'How can an outside analyst or journalist submit manuscripts or pitches?',
+      a: 'Editorial pitches, investigative dossiers, and macroeconomic research whitepapers may be submitted directly through our Editorial Desk contact form above or via encrypted transmission to editor@bullmonk.intelligence. Submissions are evaluated by our standards council within 48 hours.'
     },
     {
       q: 'How does BullMonk guarantee whistleblower confidentiality?',
@@ -235,17 +235,17 @@ export const ContactPage: React.FC<ContactPageProps> = ({ setCurrentPage, showTo
 
           <div style={{ background: 'var(--bg-surface-elevated)', border: '1px solid var(--border-subtle)', borderRadius: 'var(--radius-md)', padding: '1.75rem' }}>
             <h4 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.15rem', marginBottom: '0.5rem' }}>
-              Want to Author a Story Right Now?
+              Editorial Desk Submissions & Inquiries
             </h4>
             <p style={{ fontSize: '0.86rem', color: 'var(--text-secondary)', lineHeight: '1.6', marginBottom: '1.25rem' }}>
-              You don't need to wait for pitch approvals—launch the BullMonk Editorial Studio to compose and broadcast stories directly to our global feed.
+              For confidential investigative leads, research manuscripts, or corporate earnings dispatches, connect with our bureau chiefs using the secure form.
             </p>
             <button 
               className="btn btn-secondary" 
               style={{ width: '100%' }}
-              onClick={() => setCurrentPage('write')}
+              onClick={() => setCurrentPage('about')}
             >
-              <Sparkles size={14} /> Open BullMonk Studio →
+              <Shield size={14} /> View Global Bureaus & Board →
             </button>
           </div>
         </div>

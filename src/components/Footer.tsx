@@ -31,17 +31,10 @@ export const Footer: React.FC<FooterProps> = ({ setCurrentPage, setSelectedCateg
             <div style={{ display: 'flex', gap: '0.6rem', flexWrap: 'wrap' }}>
               <button 
                 className="btn btn-secondary" 
-                style={{ fontSize: '0.74rem', padding: '0.4rem 0.75rem' }}
-                onClick={() => navigate('write')}
-              >
-                <PenSquare size={13} /> Write Story
-              </button>
-              <button 
-                className="btn btn-secondary" 
-                style={{ fontSize: '0.74rem', padding: '0.4rem 0.75rem' }}
+                style={{ fontSize: '0.74rem', padding: '0.4rem 0.85rem' }}
                 onClick={() => navigate('contact')}
               >
-                <Lock size={13} /> Secure Tip Line
+                <Lock size={13} /> Zero-Knowledge Tip Line
               </button>
             </div>
           </div>
@@ -70,7 +63,7 @@ export const Footer: React.FC<FooterProps> = ({ setCurrentPage, setSelectedCateg
               <li><span style={{ cursor: 'pointer' }} onClick={() => navigate('about')}>Global Bureaus</span></li>
               <li><span style={{ cursor: 'pointer' }} onClick={() => navigate('contact')}>Contact & Press Desk</span></li>
               <li><span style={{ cursor: 'pointer' }} onClick={() => navigate('contact')}>Whistleblower Tip Line</span></li>
-              <li><span style={{ cursor: 'pointer' }} onClick={() => navigate('write')}>BullMonk Studio</span></li>
+              <li><span style={{ cursor: 'pointer' }} onClick={() => navigate('legal')}>Editorial Charter & Ethics</span></li>
             </ul>
           </div>
 

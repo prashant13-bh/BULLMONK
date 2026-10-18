@@ -1,6 +1,6 @@
 import React from 'react';
 import { PageView } from '../types';
-import { Shield, PenSquare, Lock } from 'lucide-react';
+import { Shield, Lock, Globe2 } from 'lucide-react';
 
 interface AboutPageProps {
   setCurrentPage: (page: PageView) => void;
@@ -193,8 +193,8 @@ export const AboutPage: React.FC<AboutPageProps> = ({ setCurrentPage }) => {
           We invite guest columns, economic whitepapers, and field dispatches from analysts and verified correspondents worldwide.
         </p>
         <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-          <button className="btn btn-primary" onClick={() => setCurrentPage('write')}>
-            <PenSquare size={15} /> Launch BullMonk Studio
+          <button className="btn btn-primary" onClick={() => setCurrentPage('home')}>
+            <Globe2 size={15} /> Explore Global Wire
           </button>
           <button className="btn btn-secondary" onClick={() => setCurrentPage('contact')}>
             <Lock size={15} /> Submit Encrypted Tip

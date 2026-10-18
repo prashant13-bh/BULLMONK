@@ -210,15 +210,15 @@ export const Navbar: React.FC<NavbarProps> = ({
               <span className="brand-tagline">The Sovereign Chronicle of Global Finance & Geopolitics</span>
             </div>
 
-            {/* Right: Actions: Write, Theme, Mobile Drawer */}
+            {/* Right: Actions: Tip Line, Theme, Mobile Drawer */}
             <div className="header-actions">
               <button 
-                className="btn btn-primary btn-write-story"
-                onClick={() => handleNavClick('write')}
-                title="Open BullMonk Editorial Studio"
+                className="btn btn-primary"
+                onClick={() => handleNavClick('contact')}
+                title="Zero-Knowledge Encrypted Whistleblower Line"
               >
-                <PenSquare size={15} />
-                <span>Publish Dispatch</span>
+                <Lock size={14} />
+                <span>Tip Line</span>
               </button>
 
               <button 
@@ -284,15 +284,6 @@ export const Navbar: React.FC<NavbarProps> = ({
                   <Flame size={13} /> Commodities & Energy
                 </span>
               </li>
-              <li className="nav-item">
-                <span 
-                  className={`nav-link ${currentPage === 'write' ? 'active' : ''}`}
-                  onClick={() => handleNavClick('write')}
-                  style={{ color: 'var(--accent-gold)' }}
-                >
-                  <Sparkles size={13} /> Studio
-                </span>
-              </li>
             </ul>
 
             <div className="nav-secondary-links hide-on-tablet">
@@ -351,13 +342,6 @@ export const Navbar: React.FC<NavbarProps> = ({
               onClick={() => handleNavClick('home', 'Energy & Climate')}
             >
               Energy & Commodities
-            </span>
-            <span 
-              className={`nav-link ${currentPage === 'write' ? 'active' : ''}`}
-              onClick={() => handleNavClick('write')}
-              style={{ color: 'var(--accent-gold)' }}
-            >
-              BullMonk Editorial Studio
             </span>
             <span className="nav-link" onClick={() => handleNavClick('about')}>
               Editorial Board & Bureaus

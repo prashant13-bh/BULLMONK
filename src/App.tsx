@@ -4,7 +4,6 @@ import { BullMonkStorage, MARKET_TICKERS } from './data/newsData';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { HomePage } from './pages/HomePage';
-import { WriteStudioPage } from './pages/WriteStudioPage';
 import { ArticleReaderPage } from './pages/ArticleReaderPage';
 import { AboutPage } from './pages/AboutPage';
 import { ContactPage } from './pages/ContactPage';
@@ -143,16 +142,6 @@ export const App: React.FC = () => {
         />
       )}
 
-      {currentPage === 'write' && (
-        <WriteStudioPage 
-          onPublish={handlePublish}
-          onSelectArticle={handleSelectArticle}
-          publishedArticles={articles}
-          onDeleteArticle={handleDeleteArticle}
-          onBackToWire={() => setCurrentPage('home')}
-          showToast={showToast}
-        />
-      )}
 
       {currentPage === 'article' && selectedArticle && (
         <ArticleReaderPage 
