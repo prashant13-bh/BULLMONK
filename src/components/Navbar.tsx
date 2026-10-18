@@ -351,13 +351,12 @@ export const Navbar: React.FC<NavbarProps> = ({
               <li className="nav-item">
                 <button 
                   type="button"
-                  className={`nav-link ${currentPage === 'tools' ? 'active' : ''}`}
+                  className={`nav-link ${currentPage === 'tools' ? 'active' : ''} nav-tools-link`}
                   onClick={() => handleNavClick('tools')}
-                  style={{ color: 'var(--accent-gold)' }}
                 >
                   <Calculator size={13} />
                   <span>Financial Tools</span>
-                  <span className="nav-hot-badge" style={{ background: 'var(--accent-gold)', color: '#000', fontWeight: 800 }}>New</span>
+                  <span className="nav-new-badge">New</span>
                 </button>
               </li>
             </ul>
@@ -365,9 +364,8 @@ export const Navbar: React.FC<NavbarProps> = ({
             <div className="nav-secondary-links hide-on-tablet">
               <button 
                 type="button"
-                className={`nav-secondary-link ${currentPage === 'tools' ? 'active' : ''}`} 
+                className={`nav-secondary-link ${currentPage === 'tools' ? 'active' : ''} nav-tools-link`} 
                 onClick={() => handleNavClick('tools')}
-                style={{ fontWeight: 700, color: 'var(--accent-gold)' }}
               >
                 Macro Tools
               </button>
@@ -505,8 +503,8 @@ export const Navbar: React.FC<NavbarProps> = ({
                       style={{ background: 'rgba(180, 83, 9, 0.08)', border: '1px solid rgba(180, 83, 9, 0.25)' }}
                     >
                       <Calculator size={16} color="var(--accent-gold)" />
-                      <span style={{ fontWeight: 700, color: 'var(--accent-gold)' }}>Financial Tools & Calculators</span>
-                      <span className="nav-hot-badge" style={{ background: 'var(--accent-gold)', color: '#000', fontWeight: 800 }}>New</span>
+                      <span className="nav-tools-link">Financial Tools & Calculators</span>
+                      <span className="nav-new-badge">New</span>
                       <ChevronRight size={14} className="chevron" style={{ marginLeft: 'auto' }} />
                     </button>
                   </div>

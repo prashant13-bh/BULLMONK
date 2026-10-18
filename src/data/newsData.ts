@@ -57,7 +57,7 @@ export const DEFAULT_ARTICLES: Article[] = [
     author: {
       name: "Marcus Vance",
       title: "Senior Macroeconomics Editor",
-      avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=48&q=70&fm=webp",
+      avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=36&q=55&fm=webp",
       location: "New York Bureau",
       credentials: "MS in Financial Economics, Former Federal Reserve Research Associate",
       email: "m.vance@bullmonk.intelligence",
@@ -105,7 +105,7 @@ export const DEFAULT_ARTICLES: Article[] = [
     author: {
       name: "Siddharth Rao",
       title: "Global Tech & Industrial Analyst",
-      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=48&q=70&fm=webp",
+      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=36&q=55&fm=webp",
       location: "Bengaluru Desk",
       credentials: "B.Tech IIT Madras, MBA London Business School",
       email: "s.rao@bullmonk.intelligence",
@@ -113,7 +113,7 @@ export const DEFAULT_ARTICLES: Article[] = [
     },
     publishedAt: "2026-10-18T16:15:00Z",
     readTime: "8 min read",
-    heroImage: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=500&q=75&fm=webp",
+    heroImage: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=400&q=60&fm=webp",
     imageCaption: "Automated wafer handling robot in cleanroom microelectronics fabrication.",
     featured: true,
     breaking: true,
@@ -151,14 +151,14 @@ export const DEFAULT_ARTICLES: Article[] = [
     author: {
       name: "Julian Thorne",
       title: "Senior European Economics Correspondent",
-      avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=48&q=70&fm=webp",
+      avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=36&q=55&fm=webp",
       location: "Frankfurt Bureau",
       credentials: "Chartered Financial Analyst (CFA), Former Bundesbank Advisor",
       email: "j.thorne@bullmonk.intelligence"
     },
     publishedAt: "2026-10-18T13:40:00Z",
     readTime: "6 min read",
-    heroImage: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=500&q=75&fm=webp",
+    heroImage: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=400&q=60&fm=webp",
     imageCaption: "Financial towers in the City of London banking quarter.",
     featured: false,
     breaking: false,
@@ -191,14 +191,14 @@ export const DEFAULT_ARTICLES: Article[] = [
     author: {
       name: "Evelyn Tremblay",
       title: "Natural Resources & Sovereign Energy Correspondent",
-      avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=48&q=70&fm=webp",
+      avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=36&q=55&fm=webp",
       location: "Toronto Bureau",
       credentials: "B.Sc Geological Engineering, McGill University",
       email: "e.tremblay@bullmonk.intelligence"
     },
     publishedAt: "2026-10-18T11:20:00Z",
     readTime: "7 min read",
-    heroImage: "https://images.unsplash.com/photo-1578328819058-b69f3a3b0f6b?auto=format&fit=crop&w=500&q=75&fm=webp",
+    heroImage: "https://images.unsplash.com/photo-1578328819058-b69f3a3b0f6b?auto=format&fit=crop&w=400&q=60&fm=webp",
     imageCaption: "Remote mining operation and mineral processing site in northern Canadian shield.",
     featured: false,
     breaking: false,
@@ -231,14 +231,14 @@ export const DEFAULT_ARTICLES: Article[] = [
     author: {
       name: "Hamish MacLeod",
       title: "Asia-Pacific Mining & Commodities Editor",
-      avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=48&q=70&fm=webp",
+      avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=36&q=55&fm=webp",
       location: "Sydney Bureau",
       credentials: "B.Ec University of Sydney, Former Australian Treasury Analyst",
       email: "h.macleod@bullmonk.intelligence"
     },
     publishedAt: "2026-10-18T08:50:00Z",
     readTime: "6 min read",
-    heroImage: "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=500&q=75&fm=webp",
+    heroImage: "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=400&q=60&fm=webp",
     imageCaption: "Heavy industrial rail haulage and export terminals along the Western Australian coastline.",
     featured: false,
     breaking: false,
@@ -271,14 +271,14 @@ export const DEFAULT_ARTICLES: Article[] = [
     author: {
       name: "Aleksei Voronov",
       title: "Eurasian Geopolitical & Energy Analyst",
-      avatar: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=48&q=70&fm=webp",
+      avatar: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=36&q=55&fm=webp",
       location: "Eurasia Intelligence Desk",
       credentials: "MA International Security, Sciences Po Paris",
       email: "a.voronov@bullmonk.intelligence"
     },
     publishedAt: "2026-10-18T05:30:00Z",
     readTime: "8 min read",
-    heroImage: "https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?auto=format&fit=crop&w=500&q=75&fm=webp",
+    heroImage: "https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?auto=format&fit=crop&w=400&q=60&fm=webp",
     imageCaption: "Crude oil tanker navigating international commercial shipping channel.",
     featured: false,
     breaking: true,
@@ -316,14 +316,14 @@ export const DEFAULT_ARTICLES: Article[] = [
     author: {
       name: "Helena Brandt",
       title: "Senior Sovereign Asset Specialist",
-      avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=48&q=70&fm=webp",
+      avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=36&q=55&fm=webp",
       location: "Zurich Bureau",
       credentials: "Ph.D. Monetary Economics, University of St. Gallen",
       email: "h.brandt@bullmonk.intelligence"
     },
     publishedAt: "2026-10-18T03:10:00Z",
     readTime: "9 min read",
-    heroImage: "https://images.unsplash.com/photo-1610375461246-83df859d849d?auto=format&fit=crop&w=500&q=75&fm=webp",
+    heroImage: "https://images.unsplash.com/photo-1610375461246-83df859d849d?auto=format&fit=crop&w=400&q=60&fm=webp",
     imageCaption: "Standard 400-troy-ounce physical gold bullion bars in high-security custodial vault.",
     featured: true,
     breaking: false,
@@ -334,7 +334,7 @@ export const DEFAULT_ARTICLES: Article[] = [
 ];
 
 export const BullMonkStorage = {
-  STORAGE_KEY: 'BULLMONK_PRO_ARTICLES_V6',
+  STORAGE_KEY: 'BULLMONK_PRO_ARTICLES_V7',
   BOOKMARKS_KEY: 'BULLMONK_PRO_BOOKMARKS',
 
   getAllArticles(): Article[] {

@@ -24,9 +24,17 @@ const CorrectionsPage = lazy(() => import('./pages/CorrectionsPage').then(m => (
 export const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<PageView>('home');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
-  const [selectedArticle, setSelectedArticle] = useState<Article | null>(null);
-  const [articles, setArticles] = useState<Article[]>([]);
-  const [theme, setTheme] = useState<'dark' | 'light'>('light');
+  const [articles, setArticles] = useState<Article[]>(() => BullMonkStorage.getAllArticles());
+  const [selectedArticle, setSelectedArticle] = useState<Article | null>(() => {
+    const loaded = BullMonkStorage.getAllArticles();
+    return loaded.length > 0 ? loaded[0] : null;
+  });
+  const [theme, setTheme] = useState<'dark' | 'light'>(() => {
+    if (typeof window !== 'undefined') {
+      return (localStorage.getItem('BULLMONK_REACT_THEME') as 'dark' | 'light') || 'light';
+    }
+    return 'light';
+  });
   const [toastMessage, setToastMessage] = useState<string | null>(null);
   const [readingProgress, setReadingProgress] = useState(0);
 
@@ -67,16 +75,9 @@ export const App: React.FC = () => {
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
-  // Initialize articles and theme
+  // Theme attribute synchronization
   useEffect(() => {
-    const loaded = BullMonkStorage.getAllArticles();
-    setArticles(loaded);
-    if (loaded.length > 0) {
-      setSelectedArticle(loaded[0]);
-    }
-
     const savedTheme = (localStorage.getItem('BULLMONK_REACT_THEME') as 'dark' | 'light') || 'light';
-    setTheme(savedTheme);
     document.documentElement.setAttribute('data-theme', savedTheme);
   }, []);
 

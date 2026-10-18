@@ -1,0 +1,22 @@
+{
+  "$schema": "https://agenticresourcediscovery.org/schema/v1/ai-catalog.json",
+  "name": "BULLMONK Intelligence",
+  "description": "Premier international macroeconomic and sovereign financial journalism platform.",
+  "url": "https://www.govtnaukri4u.com",
+  "provider": {
+    "name": "BullMonk Global Editorial Board",
+    "url": "https://www.govtnaukri4u.com/#about"
+  },
+  "capabilities": [
+    {
+      "type": "content",
+      "description": "Macroeconomic dispatches, central banking analysis, and semiconductor industry forensics.",
+      "accessUrl": "https://www.govtnaukri4u.com/"
+    },
+    {
+      "type": "tools",
+      "description": "Quantitative macroeconomic calculators and sovereign risk modeling suites.",
+      "accessUrl": "https://www.govtnaukri4u.com/#tools"
+    }
+  ]
+}

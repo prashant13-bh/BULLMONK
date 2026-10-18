@@ -675,6 +675,30 @@ html, body {
   text-transform: uppercase;
 }
 
+.nav-new-badge {
+  font-size: 0.55rem;
+  padding: 1px 5px;
+  border-radius: 3px;
+  background: #0F172A;
+  color: #FBBF24;
+  margin-left: 4px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border: 1px solid rgba(251, 191, 36, 0.4);
+}
+
+[data-theme="dark"] .nav-new-badge {
+  background: #020617;
+  color: #FACC15;
+  border-color: rgba(250, 204, 21, 0.5);
+}
+
+.nav-tools-link {
+  color: var(--accent-gold) !important;
+  font-weight: 700;
+}
+
 .nav-secondary-links {
   display: flex;
   align-items: center;
@@ -999,9 +1023,27 @@ html, body {
   align-items: start;
 }
 
+.wire-feed-column {
+  grid-column: 1;
+}
+
+.grand-hero-card {
+  grid-column: 2;
+}
+
+.market-leaderboard-column {
+  grid-column: 3;
+}
+
 @media (max-width: 1240px) {
   .bloomberg-three-col-grid {
     grid-template-columns: 280px 1fr;
+  }
+  .wire-feed-column {
+    grid-column: 1;
+  }
+  .grand-hero-card {
+    grid-column: 2;
   }
   .market-leaderboard-column {
     grid-column: span 2;
@@ -1015,8 +1057,14 @@ html, body {
   .bloomberg-three-col-grid {
     grid-template-columns: 1fr;
   }
+  .wire-feed-column {
+    grid-column: 1;
+  }
+  .grand-hero-card {
+    grid-column: 1;
+  }
   .market-leaderboard-column {
-    grid-column: span 1;
+    grid-column: 1;
     grid-template-columns: 1fr;
   }
 }
