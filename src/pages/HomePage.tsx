@@ -122,13 +122,7 @@ export const HomePage: React.FC<HomePageProps> = ({
         </div>
       </section>
 
-      {/* 2. Top Responsive AdSense Leaderboard (Desktop / Tablet only) */}
-      <div className="container hide-on-mobile">
-        <AdBanner slotType="leaderboard" slotId="top-home-leaderboard" />
-      </div>
-
-
-      {/* 3. Bloomberg-Caliber 3-Column Hero Centerpiece */}
+      {/* 2. Bloomberg-Caliber 3-Column Hero Centerpiece */}
       <section className="hero-dispatch-section">
         <div className="container">
           <div className="bloomberg-three-col-grid">

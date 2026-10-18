@@ -83,32 +83,23 @@ export const AdBanner: React.FC<AdBannerProps> = ({
           data-full-width-responsive="true"
         />
 
-        {/* Fallback & Institutional Preview Overlay */}
+        {/* Discrete Institutional Sponsor Bar Fallback */}
         <div style={{
           display: 'flex',
-          flexDirection: 'column',
           alignItems: 'center',
-          textAlign: 'center',
-          padding: '0.5rem',
-          background: 'linear-gradient(180deg, rgba(180, 83, 9, 0.03) 0%, transparent 100%)',
+          justifyContent: 'center',
+          gap: '8px',
+          padding: '0.4rem 0.75rem',
           width: '100%',
-          borderRadius: 'var(--radius-sm)'
+          flexWrap: 'wrap'
         }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '2px' }}>
-            <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--accent-green)' }}></span>
-            <span style={{ fontSize: '0.74rem', fontWeight: 700, color: 'var(--text-primary)', letterSpacing: '0.04em' }}>
-              BULLMONK GLOBAL INVESTOR NETWORK
-            </span>
-          </div>
-          <p style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', margin: '2px 0 6px', maxWidth: '580px', lineHeight: 1.4 }}>
-            {slotType === 'leaderboard' 
-              ? 'Institutional Wealth & Sovereign Portfolio Strategies • Q4 Capital Reallocation Insights'
-              : (slotType === 'rectangle'
-                ? 'High-Yield Fixed Income & Private Credit Fund Dispatches for Qualified Allocators'
-                : 'Direct Market Access & Enterprise Liquidity Clearing Infrastructure')}
-          </p>
-          <span style={{ fontSize: '0.68rem', fontFamily: 'var(--font-mono)', color: 'var(--accent-gold)', fontWeight: 600 }}>
-            Google AdSense Verified Slot: {slotType.toUpperCase()}
+          <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--accent-green)' }}></span>
+          <span style={{ fontSize: '0.72rem', fontWeight: 700, color: 'var(--text-primary)', letterSpacing: '0.04em' }}>
+            BULLMONK GLOBAL INVESTOR NETWORK
+          </span>
+          <span style={{ color: 'var(--border-medium)' }}>•</span>
+          <span style={{ fontSize: '0.70rem', color: 'var(--text-secondary)' }}>
+            Institutional Wealth & Sovereign Portfolio Strategies
           </span>
         </div>
       </div>
