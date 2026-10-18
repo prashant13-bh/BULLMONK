@@ -138,7 +138,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               <div className="wire-feed-header">
                 <div className="wire-feed-title-wrap">
                   <span className="live-pulse-dot"></span>
-                  <h3 className="wire-feed-title">THE WIRE (24/7)</h3>
+                  <h2 className="wire-feed-title">THE WIRE (24/7)</h2>
                 </div>
                 <span className="wire-feed-tag">REAL-TIME</span>
               </div>
@@ -182,7 +182,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                       </span>
                     </div>
 
-                    <h4 className="wire-card-title">{item.title}</h4>
+                    <h3 className="wire-card-title">{item.title}</h3>
 
                     <p className="wire-card-snippet">
                       {item.deck || item.content.replace(/<[^>]*>?/gm, '').slice(0, 80) + '...'}
@@ -317,10 +317,10 @@ export const HomePage: React.FC<HomePageProps> = ({
               {/* Sector Heatmap Barometer */}
               <div className="sector-heatmap-widget">
                 <div className="widget-header">
-                  <div className="widget-title">
+                  <h2 className="widget-title">
                     <BarChart3 size={15} color="var(--accent-gold)" />
                     <span>SECTOR BAROMETER</span>
-                  </div>
+                  </h2>
                   <span className="widget-subtitle">GLOBAL FLOWS</span>
                 </div>
 
@@ -345,10 +345,10 @@ export const HomePage: React.FC<HomePageProps> = ({
               {/* Ranked Leaderboard: Most Read by Allocators */}
               <div className="leaderboard-widget">
                 <div className="widget-header">
-                  <div className="widget-title">
+                  <h2 className="widget-title">
                     <Activity size={15} color="var(--accent-gold)" />
                     <span>MOST READ BY ALLOCATORS</span>
-                  </div>
+                  </h2>
                   <span className="widget-subtitle">TOP 5</span>
                 </div>
 
@@ -364,7 +364,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                         <span className="leaderboard-region-tag">
                           {item.region} • {item.category}
                         </span>
-                        <h4 className="leaderboard-item-title">{item.title}</h4>
+                        <h3 className="leaderboard-item-title">{item.title}</h3>
                         <div className="leaderboard-sub-meta">
                           <span>{item.author.name}</span>
                           <span>•</span>
@@ -379,7 +379,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               {/* Institutional Research Report Card */}
               <div className="research-sponsor-card">
                 <span className="sponsor-kicker">INSTITUTIONAL DOSSIER</span>
-                <h4 className="sponsor-headline">Global Sovereign Liquidity & Gold Re-Anchoring 2026-2027</h4>
+                <h3 className="sponsor-headline">Global Sovereign Liquidity & Gold Re-Anchoring 2026-2027</h3>
                 <p className="sponsor-text">Comprehensive 84-page surveillance report compiled across Tokyo, London, and New York research desks.</p>
                 <button 
                   className="btn btn-secondary btn-sm"
@@ -541,7 +541,7 @@ export const HomePage: React.FC<HomePageProps> = ({
         <div className="container">
           <div className="macro-matrix-header">
             <div>
-              <h3 className="macro-matrix-title">Macroeconomic Radar & Cross-Border Sovereign Matrix</h3>
+              <h2 className="macro-matrix-title">Macroeconomic Radar & Cross-Border Sovereign Matrix</h2>
               <p className="macro-matrix-deck">High-frequency surveillance across central banks, currency clearing corridors, and strategic reserves</p>
             </div>
             <span className="macro-matrix-badge">GLOBAL MACRO Q4</span>
@@ -549,9 +549,9 @@ export const HomePage: React.FC<HomePageProps> = ({
 
           <div className="macro-matrix-grid">
             <div className="macro-matrix-card">
-              <h4 className="macro-card-title">
+              <h3 className="macro-card-title">
                 🇺🇸 US Dollar & Federal Reserve Balance Sheet Normalization
-              </h4>
+              </h3>
               <p className="macro-card-text">
                 Treasury term premiums remain sensitive to overseas sovereign reserve recycling. While indirect foreign bidding remains solid, structural trade adjustments across the Atlantic and Pacific corridors continue to influence duration appetite.
               </p>
@@ -561,9 +561,9 @@ export const HomePage: React.FC<HomePageProps> = ({
             </div>
 
             <div className="macro-matrix-card">
-              <h4 className="macro-card-title">
+              <h3 className="macro-card-title">
                 🇮🇳 Asia-Pacific & Emerging Sovereign Liquidity Rails
-              </h4>
+              </h3>
               <p className="macro-card-text">
                 Record high foreign exchange reserves in India ($708B) and expanding sovereign wealth partnerships across Singapore and Tokyo demonstrate shifting capital concentration, driving industrial fabrication and battery metals logistics.
               </p>
@@ -573,9 +573,9 @@ export const HomePage: React.FC<HomePageProps> = ({
             </div>
 
             <div className="macro-matrix-card">
-              <h4 className="macro-card-title">
+              <h3 className="macro-card-title">
                 🇪🇺 European Central Bank & Cross-Border Sovereign Spreads
-              </h4>
+              </h3>
               <p className="macro-card-text">
                 Frankfurt and Zurich desks evaluate liquidity transmission mechanism behavior as industrial energy prices stabilise and defense bonds gain traction among pension funds and institutional asset managers.
               </p>

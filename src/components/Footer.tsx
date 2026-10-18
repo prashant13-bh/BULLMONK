@@ -146,7 +146,7 @@ export const Footer: React.FC<FooterProps> = ({ setCurrentPage, setSelectedCateg
 
           {/* Intelligence Desks */}
           <div className="footer-col">
-            <h4 className="footer-col-heading">Intelligence Desks</h4>
+            <h3 className="footer-col-heading">Intelligence Desks</h3>
             <ul className="footer-nav-list">
               <li>
                 <button type="button" className="footer-link-btn" onClick={() => navigate('home', 'Markets & Finance')}>
@@ -183,7 +183,7 @@ export const Footer: React.FC<FooterProps> = ({ setCurrentPage, setSelectedCateg
 
           {/* Newsroom & Board */}
           <div className="footer-col">
-            <h4 className="footer-col-heading">Newsroom & Board</h4>
+            <h3 className="footer-col-heading">Newsroom & Board</h3>
             <ul className="footer-nav-list">
               <li>
                 <button type="button" className="footer-link-btn" onClick={() => navigate('about')}>
@@ -220,7 +220,7 @@ export const Footer: React.FC<FooterProps> = ({ setCurrentPage, setSelectedCateg
 
           {/* Governance & Dedicated Legal Suite */}
           <div className="footer-col">
-            <h4 className="footer-col-heading">Governance & Legal</h4>
+            <h3 className="footer-col-heading">Governance & Legal</h3>
             <ul className="footer-nav-list">
               <li>
                 <button type="button" className="footer-link-btn legal-highlight" onClick={() => navigate('disclaimer')}>

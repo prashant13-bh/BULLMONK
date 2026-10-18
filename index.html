@@ -25,6 +25,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://images.unsplash.com">
 
+  <!-- Instant LCP Image Preload (Zero Load Delay) -->
+  <link rel="preload" as="image" href="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=75&fm=webp" fetchpriority="high">
+
   <!-- Ultra-Fast Asynchronous Google Fonts (Zero Render Blocking) -->
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=JetBrains+Mono:wght@500;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=JetBrains+Mono:wght@500;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
@@ -36,7 +39,7 @@
   <div id="root"></div>
   <script type="module" src="/src/main.tsx"></script>
 
-  <!-- Non-blocking Deferred Monetization & Telemetry Scripts -->
+  <!-- Non-blocking Zero-TBT Third-Party Monetization & Telemetry -->
   <script>
     (function() {
       window.dataLayer = window.dataLayer || [];
@@ -63,12 +66,16 @@
         document.body.appendChild(ads);
       }
 
+      // Execute on first user interaction or idle window
+      ['scroll', 'touchstart', 'mousemove', 'keydown', 'click'].forEach(function(evt) {
+        window.addEventListener(evt, injectThirdParty, { once: true, passive: true });
+      });
+
+      // Safe fallback after initial rendering completes
       if ('requestIdleCallback' in window) {
-        requestIdleCallback(injectThirdParty, { timeout: 2000 });
+        requestIdleCallback(injectThirdParty, { timeout: 4000 });
       } else {
-        window.addEventListener('load', function() {
-          setTimeout(injectThirdParty, 500);
-        });
+        setTimeout(injectThirdParty, 4000);
       }
     })();
   </script>

@@ -181,8 +181,12 @@ html, body {
   align-items: center;
   gap: 5px;
   font-weight: 700;
-  color: var(--accent-green);
+  color: #15803D;
   letter-spacing: 0.06em;
+}
+
+[data-theme="dark"] .status-live-indicator {
+  color: #4ADE80;
 }
 
 .status-dot {
@@ -1327,12 +1331,21 @@ html, body {
 }
 
 .contributor-seal {
-  font-size: 0.62rem;
+  font-size: 0.64rem;
   font-weight: 800;
-  padding: 1px 5px;
-  background: var(--accent-green-glow);
-  color: var(--accent-green);
+  padding: 2px 6px;
+  background: #DCFCE7;
+  color: #14532D;
+  border: 1px solid #86EFAC;
   border-radius: 3px;
+  display: inline-flex;
+  align-items: center;
+}
+
+[data-theme="dark"] .contributor-seal {
+  background: rgba(34, 197, 94, 0.15);
+  color: #4ADE80;
+  border-color: rgba(74, 222, 128, 0.3);
 }
 
 .author-role-sub {
@@ -1441,16 +1454,24 @@ html, body {
 }
 
 .sector-change {
-  font-size: 0.72rem;
-  font-weight: 700;
+  font-size: 0.74rem;
+  font-weight: 800;
 }
 
 .sector-tile.positive .sector-change {
-  color: var(--accent-green);
+  color: #047857;
+}
+
+[data-theme="dark"] .sector-tile.positive .sector-change {
+  color: #34D399;
 }
 
 .sector-tile.negative .sector-change {
-  color: var(--accent-red);
+  color: #B91C1C;
+}
+
+[data-theme="dark"] .sector-tile.negative .sector-change {
+  color: #F87171;
 }
 
 .sector-name {
@@ -2592,7 +2613,7 @@ html, body {
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: var(--accent-gold);
+  color: #FBBF24;
   margin-bottom: 1.25rem;
 }
 
@@ -2630,7 +2651,7 @@ html, body {
 }
 
 .footer-link-btn.suite-hub-link {
-  color: var(--accent-gold);
+  color: #F59E0B;
   font-weight: 700;
   margin-top: 0.35rem;
 }
