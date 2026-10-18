@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BullMonk Studio | Write & Publish Global Dispatches</title>
+  <meta name="description" content="BullMonk Editorial Studio: Draft, format, and broadcast global investigative journalism, market analyses, and geopolitical reports.">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23EAB308%22/><text y=%2268%22 x=%2250%22 text-anchor=%22middle%22 font-family=%22serif%22 font-weight=%22900%22 font-size=%2260%22 fill=%22%23000%22>BM</text></svg>">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Reading Progress Bar -->
+  <div id="reading-progress" class="reading-progress-bar"></div>
+
+  <!-- Live Market Ticker -->
+  <aside class="ticker-wrap" aria-label="Global Market Indices">
+    <div class="ticker-label">
+      <span class="ticker-label-pulse"></span>
+      EDITORIAL STUDIO
+    </div>
+    <div class="ticker-marquee">
+      <div class="ticker-track" id="ticker-track"></div>
+    </div>
+  </aside>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container">
+      <div class="header-top">
+        <div class="header-meta">
+          <span class="edition-badge">✍️ Bureau Contributor Studio</span>
+          <span style="font-family: var(--font-mono); font-size: 0.74rem;">Encrypted Newsroom Uplink</span>
+        </div>
+
+        <a href="index.html" class="brand-logo-container">
+          <div class="brand-logo">
+            <div class="brand-emblem">BM</div>
+            <span>BULLMONK</span>
+          </div>
+          <span class="brand-tagline">Global Intelligence & Market Truth</span>
+        </a>
+
+        <div class="header-actions">
+          <a href="index.html" class="btn btn-secondary">
+            <span>← Back to Wire</span>
+          </a>
+          <button class="btn btn-icon" id="theme-toggle-btn" title="Toggle Theme" aria-label="Toggle Theme">
+            <span id="theme-toggle-icon">☀️</span>
+          </button>
+        </div>
+      </div>
+
+      <nav class="header-nav" id="site-nav">
+        <ul class="nav-links">
+          <li class="nav-item"><a href="index.html" class="nav-link">Home Wire</a></li>
+          <li class="nav-item"><a href="write.html" class="nav-link active">BullMonk Studio</a></li>
+          <li class="nav-item"><a href="about.html" class="nav-link">About Newsroom</a></li>
+          <li class="nav-item"><a href="contact.html" class="nav-link">Tip Line</a></li>
+          <li class="nav-item"><a href="legal.html" class="nav-link">Legal & Ethics</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Editorial Composer Section -->
+  <main class="studio-container">
+    <div class="page-hero" style="margin-bottom: 2rem;">
+      <span class="page-tagline">Newsroom Content Management System</span>
+      <h1 class="page-title">Broadcast a Global Story</h1>
+      <p class="page-subtitle">
+        Compose, refine, and broadcast breaking international intelligence, macro trends, or investigative columns to the BullMonk worldwide readership.
+      </p>
+    </div>
+
+    <div class="studio-card">
+      <form id="studio-form">
+        <!-- 1. Headline -->
+        <div class="form-group">
+          <label for="article-title" class="form-label">Story Headline / Title *</label>
+          <input 
+            type="text" 
+            id="article-title" 
+            class="form-control form-control-headline" 
+            placeholder="e.g. Sovereign Debt Swaps Surge in Singapore Following Central Bank Protocol Shift" 
+            required 
+          />
+        </div>
+
+        <!-- 2. Subdeck -->
+        <div class="form-group">
+          <label for="article-deck" class="form-label">Subdeck / Executive Summary</label>
+          <textarea 
+            id="article-deck" 
+            class="form-control" 
+            rows="2" 
+            placeholder="Provide a sharp, authoritative two-sentence summary that explains why this global event matters to markets and institutions..."
+          ></textarea>
+        </div>
+
+        <!-- 3. Category & Bureau & Breaking Checkbox -->
+        <div class="form-row-3">
+          <div class="form-group">
+            <label for="article-category" class="form-label">Desk / Category *</label>
+            <select id="article-category" class="form-control" required style="cursor: pointer;">
+              <option value="Markets & Finance">Markets & Finance</option>
+              <option value="Technology & AI">Technology & AI</option>
+              <option value="World Affairs">World Affairs</option>
+              <option value="Energy & Climate">Energy & Climate</option>
+              <option value="Culture & Ideas">Culture & Ideas</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="article-author-location" class="form-label">Bureau Location</label>
+            <input 
+              type="text" 
+              id="article-author-location" 
+              class="form-control" 
+              value="Zurich Bureau" 
+              placeholder="e.g. London Bureau, Tokyo Bureau, Washington D.C." 
+            />
+          </div>
+
+          <div class="form-group" style="display:flex; flex-direction:column; justify-content:center;">
+            <label class="form-label">Priority Flag</label>
+            <label style="display:flex; align-items:center; gap: 0.5rem; cursor: pointer; margin-top: 0.4rem; font-size: 0.88rem;">
+              <input type="checkbox" id="article-breaking" style="width: 18px; height: 18px; accent-color: var(--accent-red);">
+              <span style="font-weight: 700; color: var(--accent-red);">Flag as Breaking Intelligence</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- 4. Author Bylines -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="article-author-name" class="form-label">Author Byline *</label>
+            <input 
+              type="text" 
+              id="article-author-name" 
+              class="form-control" 
+              value="BullMonk Special Correspondent" 
+              required 
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="article-author-title" class="form-label">Author Credentials / Role</label>
+            <input 
+              type="text" 
+              id="article-author-title" 
+              class="form-control" 
+              value="Senior Geopolitical & Macro Analyst" 
+            />
+          </div>
+        </div>
+
+        <!-- 5. Featured Hero Image & Preset Picker -->
+        <div class="form-group">
+          <label for="article-hero-image" class="form-label">Hero Cover Image URL *</label>
+          <input 
+            type="url" 
+            id="article-hero-image" 
+            class="form-control" 
+            value="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80" 
+            required 
+          />
+          <div style="margin-top: 0.5rem;">
+            <span style="font-size: 0.72rem; color: var(--text-muted); font-weight: 700; text-transform: uppercase;">Quick Image Presets:</span>
+            <div class="image-presets-row">
+              <span class="preset-chip" data-url="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80">📈 Financial Trading</span>
+              <span class="preset-chip" data-url="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80">⚡ Semiconductor Fab</span>
+              <span class="preset-chip" data-url="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80">🌐 Global Satellite</span>
+              <span class="preset-chip" data-url="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80">🏛️ London Financial City</span>
+              <span class="preset-chip" data-url="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=1200&q=80">⚛️ Fusion & Green Grid</span>
+              <span class="preset-chip" data-url="https://images.unsplash.com/photo-1507842229458-5776106c8252?auto=format&fit=crop&w=1200&q=80">📚 Classic Library Archive</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="article-image-caption" class="form-label">Image Attribution & Caption</label>
+          <input 
+            type="text" 
+            id="article-image-caption" 
+            class="form-control" 
+            placeholder="e.g. Delegates gather at the international banking summit in Zurich." 
+          />
+        </div>
+
+        <!-- 6. Article Body with Formatting Toolbar -->
+        <div class="form-group">
+          <label for="article-content" class="form-label">Article Body Content *</label>
+          <div class="editor-toolbar">
+            <button type="button" class="tool-btn" data-tag="b" title="Bold"><strong>B</strong></button>
+            <button type="button" class="tool-btn" data-tag="i" title="Italic"><em>I</em></button>
+            <button type="button" class="tool-btn" data-tag="h3" title="Section Heading">H3</button>
+            <button type="button" class="tool-btn" data-tag="quote" title="Pull Quote">" Quote "</button>
+            <button type="button" class="tool-btn" data-tag="p" title="Paragraph">&lt;p&gt;</button>
+          </div>
+          <textarea 
+            id="article-content" 
+            class="form-control" 
+            rows="14" 
+            style="border-radius: 0 0 var(--radius-sm) var(--radius-sm); font-family: var(--font-sans); line-height: 1.7;" 
+            placeholder="Write your comprehensive global report here. You can use standard paragraphs or HTML tags (<p>, <h3>, <blockquote class='article-quote'>)..."
+            required
+          ></textarea>
+        </div>
+
+        <!-- 7. Tags -->
+        <div class="form-group">
+          <label for="article-tags" class="form-label">Topics / Tags (comma separated)</label>
+          <input 
+            type="text" 
+            id="article-tags" 
+            class="form-control" 
+            value="Macroeconomics, Global Markets, Central Banks" 
+            placeholder="e.g. Geopolitics, AI, Rare Earths, Supply Chains" 
+          />
+        </div>
+
+        <!-- Action Buttons -->
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-top: 2rem; border-top: 1px solid var(--border-subtle); padding-top: 1.5rem;">
+          <button type="button" class="btn btn-secondary" onclick="window.location.href='index.html'">
+            Discard Draft
+          </button>
+          <button type="submit" class="btn btn-primary" style="padding: 0.75rem 2rem; font-size: 1rem;">
+            <span>🚀</span>
+            <span>Publish Story to BullMonk</span>
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Active Contributor Feed Management Section -->
+    <section style="margin-top: 4rem;">
+      <div class="section-headline">
+        <h2 class="section-title">Your Published Dispatches</h2>
+        <span style="font-size: 0.8rem; color: var(--text-muted); font-family: var(--font-mono);">LOCAL DOSSIER</span>
+      </div>
+
+      <div id="authored-list" style="display:flex; flex-direction:column; gap: 1rem;">
+        <!-- Populated via script -->
+      </div>
+    </section>
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>© 2026 BULLMONK Intelligence Group. Editorial CMS v3.4.</div>
+        <div>
+          <a href="legal.html#editorial" style="color: var(--accent-gold);">View Editorial Integrity Charter</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+  <script>
+    // Render user authored / published articles list
+    document.addEventListener("DOMContentLoaded", () => {
+      const authoredList = document.getElementById("authored-list");
+      if (!authoredList) return;
+      const articles = window.BullMonkDB.getAllArticles();
+
+      authoredList.innerHTML = articles.map(art => `
+        <div style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 1.25rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem;">
+          <div style="display:flex; align-items:center; gap: 1rem;">
+            <img src="${art.heroImage}" style="width: 60px; height: 60px; object-fit: cover; border-radius: 4px;" alt="thumbnail" />
+            <div>
+              <span style="font-size: 0.7rem; font-weight: 700; color: var(--accent-gold); text-transform: uppercase;">${art.category} • ${art.readTime}</span>
+              <h4 style="font-family: var(--font-serif); font-size: 1.05rem; margin-top: 2px;">
+                <a href="article.html?id=${art.id}" style="color: var(--text-primary);">${art.title}</a>
+              </h4>
+              <span style="font-size: 0.74rem; color: var(--text-muted);">By ${art.author.name} (${art.author.location})</span>
+            </div>
+          </div>
+          <div style="display:flex; gap: 0.5rem; flex-shrink: 0;">
+            <a href="article.html?id=${art.id}" class="btn btn-secondary" style="font-size: 0.78rem;">View</a>
+            <button class="btn btn-ghost" style="color: var(--accent-red); font-size: 0.78rem;" onclick="deleteStory('${art.id}')">Delete</button>
+          </div>
+        </div>
+      `).join("");
+    });
+
+    function deleteStory(id) {
+      if (confirm("Are you sure you wish to withdraw this dispatch from BullMonk?")) {
+        window.BullMonkDB.deleteArticle(id);
+        window.location.reload();
+      }
+    }
+  </script>
+</body>
+</html>

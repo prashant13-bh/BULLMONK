@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BULLMONK | Global News, Geopolitical Intelligence & Financial Truth</title>
+  <meta name="description" content="BullMonk delivers unfiltered global journalism, macroeconomics, geopolitical dispatches, semiconductor diplomacy, and deep analytical columns from world bureaus.">
+  <meta name="keywords" content="global news, macroeconomics, geopolitics, markets, AI technology, central banks, trade routes, investigative journalism">
+  <meta name="author" content="BullMonk Global Editorial Board">
+  
+  <!-- OpenGraph / Social Media -->
+  <meta property="og:title" content="BULLMONK | Global News & Macro Intelligence">
+  <meta property="og:description" content="Unfiltered global journalism, financial intelligence, and geopolitical dispatches from international bureaus.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://bullmonk.intelligence/">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80">
+
+  <!-- Favicon Emblem -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23EAB308%22/><text y=%2268%22 x=%2250%22 text-anchor=%22middle%22 font-family=%22serif%22 font-weight=%22900%22 font-size=%2260%22 fill=%22%23000%22>BM</text></svg>">
+  
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Structured Data JSON-LD for Global News Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "NewsMediaOrganization",
+    "name": "BULLMONK",
+    "url": "https://bullmonk.intelligence/",
+    "logo": "https://bullmonk.intelligence/logo.png",
+    "sameAs": [
+      "https://twitter.com/bullmonk_global",
+      "https://linkedin.com/company/bullmonk-intelligence"
+    ],
+    "publishingPrinciples": "https://bullmonk.intelligence/legal.html#editorial",
+    "ethicsPolicy": "https://bullmonk.intelligence/legal.html#editorial",
+    "correctionsPolicy": "https://bullmonk.intelligence/legal.html#editorial",
+    "foundingDate": "2024"
+  }
+  </script>
+</head>
+<body>
+  <!-- Reading Progress Bar -->
+  <div id="reading-progress" class="reading-progress-bar"></div>
+
+  <!-- 1. Live Market Indices & Breaking Ticker -->
+  <aside class="ticker-wrap" aria-label="Global Market Indices & Flash Briefings">
+    <div class="ticker-label">
+      <span class="ticker-label-pulse"></span>
+      MARKETS WIRE
+    </div>
+    <div class="ticker-marquee">
+      <div class="ticker-track" id="ticker-track">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+    </div>
+  </aside>
+
+  <!-- 2. Main Site Header -->
+  <header class="site-header">
+    <div class="container">
+      <div class="header-top">
+        <div class="header-meta">
+          <span class="edition-badge">
+            <span>🌐</span> Global Edition
+          </span>
+          <span id="current-date-display" style="font-family: var(--font-mono); font-size: 0.74rem;">
+            London • New York • Tokyo • Zurich
+          </span>
+        </div>
+
+        <!-- Center Brand Emblem -->
+        <a href="index.html" class="brand-logo-container" aria-label="BullMonk Homepage">
+          <div class="brand-logo">
+            <div class="brand-emblem">BM</div>
+            <span>BULLMONK</span>
+          </div>
+          <span class="brand-tagline">Global Intelligence & Market Truth</span>
+        </a>
+
+        <!-- Header Actions: Search, Write, Theme -->
+        <div class="header-actions">
+          <a href="write.html" class="btn btn-primary" title="Draft and publish an article or op-ed">
+            <span>✍️</span>
+            <span>Write Article</span>
+          </a>
+          <button class="btn btn-icon" id="theme-toggle-btn" title="Toggle Night Terminal / Day Paper Edition" aria-label="Toggle Theme">
+            <span id="theme-toggle-icon">☀️</span>
+          </button>
+          <button class="btn btn-icon mobile-nav-toggle" id="mobile-menu-toggle" aria-label="Open Mobile Menu">
+            ☰
+          </button>
+        </div>
+      </div>
+
+      <!-- Navigation Bar -->
+      <nav class="header-nav" id="site-nav" aria-label="Primary Navigation">
+        <ul class="nav-links">
+          <li class="nav-item"><a href="index.html" class="nav-link active">Home Wire</a></li>
+          <li class="nav-item"><a href="#feed-section" class="nav-link" onclick="BullMonkApp.currentCategory='Markets & Finance'; BullMonkApp.renderArticles();">Markets</a></li>
+          <li class="nav-item"><a href="#feed-section" class="nav-link" onclick="BullMonkApp.currentCategory='Technology & AI'; BullMonkApp.renderArticles();">Tech & AI <span class="nav-badge-hot">Hot</span></a></li>
+          <li class="nav-item"><a href="#feed-section" class="nav-link" onclick="BullMonkApp.currentCategory='World Affairs'; BullMonkApp.renderArticles();">Geopolitics</a></li>
+          <li class="nav-item"><a href="#feed-section" class="nav-link" onclick="BullMonkApp.currentCategory='Energy & Climate'; BullMonkApp.renderArticles();">Energy & Climate</a></li>
+          <li class="nav-item"><a href="#feed-section" class="nav-link" onclick="BullMonkApp.currentCategory='Culture & Ideas'; BullMonkApp.renderArticles();">Culture & Ideas</a></li>
+          <li class="nav-item"><a href="write.html" class="nav-link" style="color: var(--accent-gold);">BullMonk Studio</a></li>
+        </ul>
+
+        <div class="nav-secondary-links">
+          <a href="about.html" class="nav-secondary-link">About Newsroom</a>
+          <a href="contact.html" class="nav-secondary-link">Tip Line</a>
+          <a href="legal.html" class="nav-secondary-link">Legal & Ethics</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 3. Lead Hero & Breaking Section -->
+  <main>
+    <section class="hero-dispatch-section">
+      <div class="container">
+        <div class="lead-hero-grid">
+          <!-- Main Hero Lead Feature -->
+          <div id="featured-hero-container">
+            <!-- Dynamically populated by app.js -->
+          </div>
+
+          <!-- Hero Aside Column: Fast Intelligence Briefings -->
+          <aside class="hero-aside">
+            <div class="aside-panel">
+              <div class="panel-header">
+                <span class="panel-title">
+                  <span>⚡</span> Desk Briefings
+                </span>
+                <span style="font-size: 0.7rem; color: var(--text-muted); font-family: var(--font-mono);">REAL-TIME</span>
+              </div>
+              <div class="aside-article-list" id="hero-aside-list">
+                <!-- Populated by app.js -->
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Interactive Feed Controls: Category Filters & Live Search -->
+    <section class="feed-controls-section" id="feed-section">
+      <div class="container">
+        <div class="filter-bar">
+          <div class="category-tabs" role="tablist">
+            <button class="cat-tab active" data-category="all" role="tab">All Dispatches</button>
+            <button class="cat-tab" data-category="Markets & Finance" role="tab">Markets & Finance</button>
+            <button class="cat-tab" data-category="Technology & AI" role="tab">Technology & AI</button>
+            <button class="cat-tab" data-category="World Affairs" role="tab">World Affairs</button>
+            <button class="cat-tab" data-category="Energy & Climate" role="tab">Energy & Climate</button>
+            <button class="cat-tab" data-category="Culture & Ideas" role="tab">Culture & Ideas</button>
+          </div>
+
+          <div class="search-input-wrap">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="global-search-input" class="search-field" placeholder="Search dispatches, authors, tags..." aria-label="Search dispatches">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Main News Grid -->
+    <section class="news-grid-section">
+      <div class="container">
+        <div class="section-headline">
+          <h2 class="section-title">Global Dispatches & Analyses</h2>
+          <span id="articles-count-display" style="font-size: 0.8rem; color: var(--text-muted); font-family: var(--font-mono);">
+            Loading Wire...
+          </span>
+        </div>
+
+        <div class="articles-grid" id="articles-grid">
+          <!-- Populated by app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Global Macro & Central Bank Barometer -->
+    <section class="macro-section">
+      <div class="container">
+        <div class="section-headline" style="border-color: var(--border-subtle);">
+          <h2 class="section-title">Macroeconomic Radar & Policy Matrix</h2>
+          <span style="font-size: 0.8rem; color: var(--accent-gold); font-family: var(--font-mono);">Q4 2026 OUTLOOK</span>
+        </div>
+
+        <div class="macro-grid">
+          <div class="macro-box">
+            <h3 class="macro-box-title">The Sovereign Liquidity Pivot</h3>
+            <p style="color: var(--text-secondary); margin-bottom: 1.2rem; font-size: 0.95rem; line-height: 1.65;">
+              Central bank balance sheets are undergoing asymmetric normalization. While G10 sovereign yields reflect persistent term premiums, bilateral commodities settlements outside G7 payment networks continue to compress standard dollar velocity.
+            </p>
+            <div style="display:flex; justify-content:space-between; align-items:center; border-top: 1px solid var(--border-subtle); padding-top: 1rem; font-size: 0.8rem; color: var(--text-muted);">
+              <span>Coverage by Zurich & Tokyo Desks</span>
+              <a href="article.html?id=bm-2026-001" style="color: var(--accent-gold); font-weight: 700;">Read Deep Analysis →</a>
+            </div>
+          </div>
+
+          <div class="macro-box">
+            <h3 class="macro-box-title">The Photonic Infrastructure Supercycle</h3>
+            <p style="color: var(--text-secondary); margin-bottom: 1.2rem; font-size: 0.95rem; line-height: 1.65;">
+              Hyperscale computational density has decoupled from pure electrical grid capacity. Optical interconnects and modular micro-tokamak power plants now determine sovereign cloud sovereignty, restructuring supply chains across the Pacific rim.
+            </p>
+            <div style="display:flex; justify-content:space-between; align-items:center; border-top: 1px solid var(--border-subtle); padding-top: 1rem; font-size: 0.8rem; color: var(--text-muted);">
+              <span>Coverage by Singapore & Eindhoven Desks</span>
+              <a href="article.html?id=bm-2026-002" style="color: var(--accent-gold); font-weight: 700;">Read Deep Analysis →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Flagship Newsletter Banner -->
+    <section class="container">
+      <div class="newsletter-banner">
+        <div class="newsletter-content">
+          <span style="font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent-gold); display: block; margin-bottom: 0.4rem;">
+            Institutional Daily Briefing
+          </span>
+          <h3>The Morning Monk</h3>
+          <p>
+            Join 185,000+ portfolio managers, diplomats, and senior policy makers receiving our unfiltered 6:00 AM macro dispatch. Zero fluff, pure signal.
+          </p>
+        </div>
+
+        <form class="newsletter-form" id="newsletter-form">
+          <input type="email" class="newsletter-input" placeholder="Enter institutional email..." required aria-label="Email address for newsletter">
+          <button type="submit" class="btn btn-primary">Subscribe</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- 8. Global Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top-grid">
+        <div class="footer-brand">
+          <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem;">
+            <div class="brand-emblem" style="width: 26px; height: 26px; font-size: 0.9rem;">BM</div>
+            <h4 style="margin: 0; font-size: 1.3rem;">BULLMONK</h4>
+          </div>
+          <p>
+            BullMonk is an independent international news and intelligence organization dedicated to rigorous geopolitical reporting, macroeconomic forensic analysis, and sovereign technological developments.
+          </p>
+          <div style="display:flex; gap: 0.75rem;">
+            <a href="write.html" class="btn btn-secondary" style="font-size: 0.76rem; padding: 0.4rem 0.8rem;">
+              ✍️ Write Global Article
+            </a>
+            <a href="contact.html" class="btn btn-secondary" style="font-size: 0.76rem; padding: 0.4rem 0.8rem;">
+              🔒 Secure Tip Line
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <h5 class="footer-col-title">Intelligence Desks</h5>
+          <ul class="footer-links">
+            <li><a href="#feed-section" class="footer-link" onclick="BullMonkApp.currentCategory='Markets & Finance'; BullMonkApp.renderArticles();">Global Macro & Forex</a></li>
+            <li><a href="#feed-section" class="footer-link" onclick="BullMonkApp.currentCategory='Technology & AI'; BullMonkApp.renderArticles();">Semiconductors & AI</a></li>
+            <li><a href="#feed-section" class="footer-link" onclick="BullMonkApp.currentCategory='World Affairs'; BullMonkApp.renderArticles();">Geopolitics & Treaties</a></li>
+            <li><a href="#feed-section" class="footer-link" onclick="BullMonkApp.currentCategory='Energy & Climate'; BullMonkApp.renderArticles();">Energy Transition</a></li>
+            <li><a href="#feed-section" class="footer-link" onclick="BullMonkApp.currentCategory='Culture & Ideas'; BullMonkApp.renderArticles();">Culture & Philosophy</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h5 class="footer-col-title">Newsroom & Organization</h5>
+          <ul class="footer-links">
+            <li><a href="about.html" class="footer-link">About BullMonk</a></li>
+            <li><a href="about.html#bureaus" class="footer-link">Global Bureaus</a></li>
+            <li><a href="about.html#team" class="footer-link">Editorial Leadership</a></li>
+            <li><a href="contact.html" class="footer-link">Contact & Press Desk</a></li>
+            <li><a href="contact.html#whistleblower" class="footer-link">Whistleblower Tip Line</a></li>
+            <li><a href="write.html" class="footer-link">Publish a Story</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h5 class="footer-col-title">Legal & Standards</h5>
+          <ul class="footer-links">
+            <li><a href="legal.html#terms" class="footer-link">Terms of Service</a></li>
+            <li><a href="legal.html#privacy" class="footer-link">Privacy & Data Shield</a></li>
+            <li><a href="legal.html#editorial" class="footer-link">Editorial Charter & Ethics</a></li>
+            <li><a href="legal.html#cookies" class="footer-link">Cookie & Telemetry Settings</a></li>
+            <li><a href="legal.html#corrections" class="footer-link">Corrections Policy</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          © 2026 BULLMONK Intelligence Group Ltd. All global syndication rights reserved.
+        </div>
+        <div style="display:flex; gap: 1.5rem;">
+          <span>ISO 27001 Cryptographic Shield</span>
+          <span>Verified News Integrity Consortium</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

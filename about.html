@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About BULLMONK | The Vanguard of Global Intelligence</title>
+  <meta name="description" content="Learn about BullMonk's founding thesis, global newsroom bureaus, investigative leadership, and our commitment to unfiltered financial and geopolitical journalism.">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23EAB308%22/><text y=%2268%22 x=%2250%22 text-anchor=%22middle%22 font-family=%22serif%22 font-weight=%22900%22 font-size=%2260%22 fill=%22%23000%22>BM</text></svg>">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Reading Progress Bar -->
+  <div id="reading-progress" class="reading-progress-bar"></div>
+
+  <!-- Live Market Ticker -->
+  <aside class="ticker-wrap" aria-label="Global Market Indices">
+    <div class="ticker-label">
+      <span class="ticker-label-pulse"></span>
+      NEWSROOM MANIFESTO
+    </div>
+    <div class="ticker-marquee">
+      <div class="ticker-track" id="ticker-track"></div>
+    </div>
+  </aside>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container">
+      <div class="header-top">
+        <div class="header-meta">
+          <span class="edition-badge">🏛️ Institutional Profile</span>
+          <span style="font-family: var(--font-mono); font-size: 0.74rem;">Founded in Zurich & London</span>
+        </div>
+
+        <a href="index.html" class="brand-logo-container">
+          <div class="brand-logo">
+            <div class="brand-emblem">BM</div>
+            <span>BULLMONK</span>
+          </div>
+          <span class="brand-tagline">Global Intelligence & Market Truth</span>
+        </a>
+
+        <div class="header-actions">
+          <a href="write.html" class="btn btn-primary">
+            <span>✍️ Write Story</span>
+          </a>
+          <button class="btn btn-icon" id="theme-toggle-btn" title="Toggle Theme" aria-label="Toggle Theme">
+            <span id="theme-toggle-icon">☀️</span>
+          </button>
+        </div>
+      </div>
+
+      <nav class="header-nav" id="site-nav">
+        <ul class="nav-links">
+          <li class="nav-item"><a href="index.html" class="nav-link">Home Wire</a></li>
+          <li class="nav-item"><a href="write.html" class="nav-link">BullMonk Studio</a></li>
+          <li class="nav-item"><a href="about.html" class="nav-link active">About Newsroom</a></li>
+          <li class="nav-item"><a href="contact.html" class="nav-link">Tip Line</a></li>
+          <li class="nav-item"><a href="legal.html" class="nav-link">Legal & Ethics</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main About Content -->
+  <main class="about-container">
+    <div class="page-hero">
+      <span class="page-tagline">The Bull & The Monk</span>
+      <h1 class="page-title">Disciplined Truth in a Volatile World</h1>
+      <p class="page-subtitle">
+        We bridge the ferocious momentum of global markets with the contemplative, monastic rigor of investigative truth.
+      </p>
+    </div>
+
+    <!-- The BullMonk Thesis -->
+    <section style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 3rem 2.5rem; margin-bottom: 4rem;">
+      <h2 style="font-family: var(--font-serif); font-size: 2.2rem; margin-bottom: 1.5rem; color: var(--text-primary);">
+        Our Founding Philosophy
+      </h2>
+      <div style="font-size: 1.15rem; line-height: 1.8; color: var(--text-secondary);">
+        <p style="margin-bottom: 1.5rem;">
+          In an era dominated by instantaneous algorithmic churn, sensationalist click-aggregators, and opaque corporate public relations, the global public is starved of genuine, foundational context. Traditional journalism often falters between two extremes: breathless financial hot-takes on one side, and lethargic academic reports months after the fact on the other.
+        </p>
+        <p style="margin-bottom: 1.5rem;">
+          <strong>BULLMONK was established to synthesize these twin forces:</strong>
+        </p>
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2rem 0;">
+          <div style="background: var(--bg-surface-elevated); padding: 1.75rem; border-radius: var(--radius-md); border-left: 4px solid var(--accent-gold);">
+            <h3 style="font-family: var(--font-brand); font-size: 1.2rem; color: var(--accent-gold); margin-bottom: 0.5rem;">THE BULL</h3>
+            <p style="font-size: 0.95rem; line-height: 1.6; color: var(--text-secondary);">
+              Represents raw market momentum, technological acceleration, sovereign resource competition, and the relentless animal spirits that shape international trade, debt cycles, and balance sheets.
+            </p>
+          </div>
+
+          <div style="background: var(--bg-surface-elevated); padding: 1.75rem; border-radius: var(--radius-md); border-left: 4px solid var(--accent-blue);">
+            <h3 style="font-family: var(--font-brand); font-size: 1.2rem; color: var(--accent-blue); margin-bottom: 0.5rem;">THE MONK</h3>
+            <p style="font-size: 0.95rem; line-height: 1.6; color: var(--text-secondary);">
+              Represents ascetic discipline, patient forensic verification, ethical stillness, and the unwavering refusal to publish hearsay or surrender editorial sovereignty to commercial expediency.
+            </p>
+          </div>
+        </div>
+        <p>
+          Together, BullMonk delivers high-conviction, mathematically verified reporting that empowers sovereign leaders, institutional allocators, and intellectually curious citizens around the globe.
+        </p>
+      </div>
+    </section>
+
+    <!-- Global Bureaus Section -->
+    <section id="bureaus" style="margin-bottom: 4rem;">
+      <div class="section-headline">
+        <h2 class="section-title">International Newsroom Bureaus</h2>
+        <span style="font-size: 0.8rem; color: var(--text-muted); font-family: var(--font-mono);">6 CONTINENTAL HUBS</span>
+      </div>
+
+      <div class="bureau-grid">
+        <div class="bureau-card">
+          <div class="bureau-city">🇨🇭 Zurich</div>
+          <div class="bureau-focus">Macroeconomics & Sovereign Wealth</div>
+          <p class="bureau-address">
+            Bleicherweg 24, Enge Financial Quarter<br>
+            8002 Zürich, Switzerland<br>
+            <span style="color: var(--accent-gold); font-size: 0.78rem;">zurich.desk@bullmonk.intelligence</span>
+          </p>
+        </div>
+
+        <div class="bureau-card">
+          <div class="bureau-city">🇬🇧 London</div>
+          <div class="bureau-focus">Maritime Logistics & Energy Transition</div>
+          <p class="bureau-address">
+            30 St Mary Axe, City of London<br>
+            EC3A 8EP London, United Kingdom<br>
+            <span style="color: var(--accent-gold); font-size: 0.78rem;">london.desk@bullmonk.intelligence</span>
+          </p>
+        </div>
+
+        <div class="bureau-card">
+          <div class="bureau-city">🇯🇵 Tokyo</div>
+          <div class="bureau-focus">Semiconductors & Asia-Pacific Tech</div>
+          <p class="bureau-address">
+            Marunouchi Park Building, Chiyoda-ku<br>
+            Tokyo 100-8088, Japan<br>
+            <span style="color: var(--accent-gold); font-size: 0.78rem;">tokyo.desk@bullmonk.intelligence</span>
+          </p>
+        </div>
+
+        <div class="bureau-card">
+          <div class="bureau-city">🇸🇬 Singapore</div>
+          <div class="bureau-focus">ASEAN Trade & Cross-Border FinTech</div>
+          <p class="bureau-address">
+            Marina Bay Financial Centre Tower 2<br>
+            Singapore 018983<br>
+            <span style="color: var(--accent-gold); font-size: 0.78rem;">singapore.desk@bullmonk.intelligence</span>
+          </p>
+        </div>
+
+        <div class="bureau-card">
+          <div class="bureau-city">🇦🇪 Dubai</div>
+          <div class="bureau-focus">Petrodollar & Gulf Infrastructure</div>
+          <p class="bureau-address">
+            DIFC Gate Precinct 4, Level 7<br>
+            Dubai, United Arab Emirates<br>
+            <span style="color: var(--accent-gold); font-size: 0.78rem;">dubai.desk@bullmonk.intelligence</span>
+          </p>
+        </div>
+
+        <div class="bureau-card">
+          <div class="bureau-city">🇺🇸 New York</div>
+          <div class="bureau-focus">Central Banks & Capital Markets</div>
+          <p class="bureau-address">
+            One World Trade Center, Suite 7400<br>
+            New York, NY 10007, USA<br>
+            <span style="color: var(--accent-gold); font-size: 0.78rem;">ny.desk@bullmonk.intelligence</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Editorial Leadership Team -->
+    <section id="team" style="margin-bottom: 4rem;">
+      <div class="section-headline">
+        <h2 class="section-title">Editorial Board & Bureau Chiefs</h2>
+        <span style="font-size: 0.8rem; color: var(--accent-gold); font-family: var(--font-mono);">STANDARDS COUNCIL</span>
+      </div>
+
+      <div class="team-grid">
+        <div class="team-card">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=250&q=80" alt="Marcus Vance" class="team-card-img" />
+          <h4 class="team-card-name">Marcus Vance</h4>
+          <span class="team-card-role">Editor-in-Chief & Macro Chief</span>
+          <p class="team-card-bio">Former BIS senior research fellow and veteran financial correspondent with 22 years tracking sovereign liquidity.</p>
+        </div>
+
+        <div class="team-card">
+          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=250&q=80" alt="Helena Lindqvist" class="team-card-img" />
+          <h4 class="team-card-name">Helena Lindqvist</h4>
+          <span class="team-card-role">Maritime & Energy Bureau Chief</span>
+          <p class="team-card-bio">Leading maritime investigator specializing in polar shipping corridors, seabed treaties, and LNG trade flows.</p>
+        </div>
+
+        <div class="team-card">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=250&q=80" alt="Siddharth Rao" class="team-card-img" />
+          <h4 class="team-card-name">Siddharth Rao</h4>
+          <span class="team-card-role">Lead Technology & AI Analyst</span>
+          <p class="team-card-bio">Specialist in lithography, photonic computation, and rare earth supply chains across East Asia and the West.</p>
+        </div>
+
+        <div class="team-card">
+          <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=250&q=80" alt="Amara Okonjo" class="team-card-img" />
+          <h4 class="team-card-name">Amara Okonjo</h4>
+          <span class="team-card-role">Geopolitics & Sovereignty Director</span>
+          <p class="team-card-bio">Former multilateral policy advisor researching sovereign AI initiatives, BRICS expansion, and critical minerals.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Institutional Quality Callout -->
+    <section class="newsletter-banner" style="margin-top: 3rem;">
+      <div class="newsletter-content" style="grid-column: 1/-1; text-align: center;">
+        <span style="font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent-gold); display: block; margin-bottom: 0.4rem;">
+          Become a Contributor
+        </span>
+        <h3 style="font-size: 2.2rem; margin-bottom: 1rem;">Have Crucial Global Intelligence or Forensic Analysis?</h3>
+        <p style="max-width: 650px; margin: 0 auto 1.75rem; color: #CBD5E1;">
+          We accept guest columns and technical research whitepapers from economists, security researchers, and field correspondents worldwide.
+        </p>
+        <div style="display:flex; justify-content:center; gap: 1rem;">
+          <a href="write.html" class="btn btn-primary" style="padding: 0.75rem 1.8rem; font-size: 0.95rem;">
+            Open BullMonk Studio
+          </a>
+          <a href="contact.html" class="btn btn-secondary" style="padding: 0.75rem 1.8rem; font-size: 0.95rem;">
+            Submit Confidential Tip
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>© 2026 BULLMONK Intelligence Group Ltd. All rights reserved.</div>
+        <div style="display:flex; gap: 1.5rem;">
+          <a href="legal.html" class="footer-link">Legal Center</a>
+          <a href="contact.html" class="footer-link">Contact</a>
+          <a href="write.html" class="footer-link">Write Story</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

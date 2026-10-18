@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Global Dispatch | BullMonk Intelligence</title>
+  <meta name="description" content="In-depth global intelligence, macroeconomic analysis, and geopolitical dispatches from BullMonk international newsroom.">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23EAB308%22/><text y=%2268%22 x=%2250%22 text-anchor=%22middle%22 font-family=%22serif%22 font-weight=%22900%22 font-size=%2260%22 fill=%22%23000%22>BM</text></svg>">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Reading Progress Bar -->
+  <div id="reading-progress" class="reading-progress-bar"></div>
+
+  <!-- Live Market Ticker -->
+  <aside class="ticker-wrap" aria-label="Global Market Indices">
+    <div class="ticker-label">
+      <span class="ticker-label-pulse"></span>
+      MARKETS WIRE
+    </div>
+    <div class="ticker-marquee">
+      <div class="ticker-track" id="ticker-track"></div>
+    </div>
+  </aside>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container">
+      <div class="header-top">
+        <div class="header-meta">
+          <a href="index.html" class="nav-secondary-link" style="display:flex; align-items:center; gap: 4px; font-weight:700;">
+            ← Back to Wire Front
+          </a>
+        </div>
+
+        <a href="index.html" class="brand-logo-container">
+          <div class="brand-logo">
+            <div class="brand-emblem">BM</div>
+            <span>BULLMONK</span>
+          </div>
+          <span class="brand-tagline">Global Intelligence & Market Truth</span>
+        </a>
+
+        <div class="header-actions">
+          <a href="write.html" class="btn btn-primary">
+            <span>✍️</span>
+            <span>Write Article</span>
+          </a>
+          <button class="btn btn-icon" id="theme-toggle-btn" title="Toggle Theme" aria-label="Toggle Theme">
+            <span id="theme-toggle-icon">☀️</span>
+          </button>
+        </div>
+      </div>
+
+      <nav class="header-nav" id="site-nav">
+        <ul class="nav-links">
+          <li class="nav-item"><a href="index.html" class="nav-link">Home Wire</a></li>
+          <li class="nav-item"><a href="index.html#feed-section" class="nav-link">Markets</a></li>
+          <li class="nav-item"><a href="index.html#feed-section" class="nav-link">Technology</a></li>
+          <li class="nav-item"><a href="index.html#feed-section" class="nav-link">Geopolitics</a></li>
+          <li class="nav-item"><a href="write.html" class="nav-link" style="color: var(--accent-gold);">BullMonk Studio</a></li>
+        </ul>
+
+        <div class="nav-secondary-links">
+          <a href="about.html" class="nav-secondary-link">About Newsroom</a>
+          <a href="contact.html" class="nav-secondary-link">Tip Line</a>
+          <a href="legal.html" class="nav-secondary-link">Legal</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Dedicated Article Reader Container -->
+  <main class="article-reading-container" id="article-reader-container">
+    <!-- Populated dynamically by app.js using URL parameter ?id=... -->
+    <div style="text-align: center; padding: 4rem 1rem;">
+      <p style="color: var(--text-muted); font-family: var(--font-mono);">Decrypting dispatch transmission...</p>
+    </div>
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>© 2026 BULLMONK Intelligence Group. Global Syndication.</div>
+        <div style="display:flex; gap: 1rem;">
+          <a href="legal.html#editorial" class="footer-link">Editorial Charter</a>
+          <a href="legal.html#privacy" class="footer-link">Data Privacy</a>
+          <a href="contact.html" class="footer-link">Secure Tip Line</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
