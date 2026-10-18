@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { PageView, MarketTicker } from '../types';
 import { 
-  Sun, Moon, PenSquare, Menu, X, Globe, Shield, Sparkles, 
-  Search, Radio, TrendingUp, Cpu, Flame, Lock, ChevronRight 
+  Sun, Moon, Menu, X, Globe, Shield, Sparkles, 
+  Search, Radio, TrendingUp, Cpu, Flame, Lock, ChevronRight,
+  BookOpen, Landmark, Clock, ExternalLink, ArrowRight, FileText,
+  DollarSign, Cookie, AlertCircle
 } from 'lucide-react';
 
 interface NavbarProps {
@@ -29,6 +31,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [currentTimeStr, setCurrentTimeStr] = useState('');
   const [worldTimes, setWorldTimes] = useState<{ city: string; time: string }[]>([]);
+  const [mobileSearchQuery, setMobileSearchQuery] = useState('');
 
   // Real-time world clocks
   useEffect(() => {
@@ -69,6 +72,18 @@ export const Navbar: React.FC<NavbarProps> = ({
     return () => clearInterval(interval);
   }, []);
 
+  // Prevent background scroll when mobile drawer is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [mobileMenuOpen]);
+
   const handleNavClick = (page: PageView, category?: string) => {
     setCurrentPage(page);
     if (category) {
@@ -99,7 +114,7 @@ export const Navbar: React.FC<NavbarProps> = ({
       <div className="masthead-clock-bar">
         <div className="container">
           <div className="masthead-clock-inner">
-            {/* Left: Date & Market Status */}
+            {/* Left: Live Newsroom Status & Date */}
             <div className="masthead-status-group">
               <span className="status-live-indicator">
                 <span className="status-dot"></span>
@@ -119,21 +134,25 @@ export const Navbar: React.FC<NavbarProps> = ({
               ))}
             </div>
 
-            {/* Right: Security & Quick Tip */}
+            {/* Right: Whistleblower Tip & Edition */}
             <div className="masthead-right-group">
-              <span 
+              <button 
+                type="button"
                 className="whistleblower-link"
                 onClick={() => handleNavClick('contact')}
-                title="Zero-Knowledge Secure Tip Line"
+                title="Zero-Knowledge Secure Whistleblower Tip Line"
+                aria-label="Open Whistleblower Tip Line"
               >
-                <Lock size={11} /> Whistleblower Tip
-              </span>
+                <Lock size={11} /> 
+                <span>Whistleblower Tip</span>
+              </button>
               <span className="masthead-separator hide-on-mobile">•</span>
               <span 
                 className="masthead-edition-badge hide-on-mobile"
                 onClick={() => handleNavClick('about')}
+                title="View BullMonk Bureaus & Editorial Board"
               >
-                Vol. IV No. 288
+                Vol. IV • Intl Edition
               </span>
             </div>
           </div>
@@ -141,7 +160,7 @@ export const Navbar: React.FC<NavbarProps> = ({
       </div>
 
       {/* 2. Live Market Ticker Marquee with SVG Sparklines */}
-      <aside className="ticker-wrap" aria-label="Global Market Indices">
+      <aside className="ticker-wrap" aria-label="Global Market Indices & Ticker">
         <div className="ticker-label">
           <Radio size={12} className="ticker-pulse-icon" />
           <span>MARKET WIRE</span>
@@ -182,26 +201,32 @@ export const Navbar: React.FC<NavbarProps> = ({
         </div>
       </aside>
 
-      {/* 3. Main Site Header & Brand Monogram */}
+      {/* 3. Main Site Header */}
       <header className="site-header">
         <div className="container">
           <div className="header-top">
             
-            {/* Left: Quick Search Button */}
+            {/* Left Tools: Search & Global Wire Indicator */}
             <div className="header-left-tools">
               <button 
+                type="button"
                 className="btn-search-trigger"
                 onClick={onOpenSearch}
                 title="Search dispatches (Ctrl+K or ⌘K)"
-                aria-label="Open Search"
+                aria-label="Open Search Intelligence Modal"
               >
                 <Search size={15} />
                 <span className="hide-on-mobile">Search Intelligence</span>
                 <kbd className="search-shortcut hide-on-mobile">⌘K</kbd>
               </button>
+
+              <span className="header-edition-tag hide-on-tablet">
+                <Globe size={12} color="var(--accent-gold)" />
+                <span>Global Edition</span>
+              </span>
             </div>
 
-            {/* Center: Brand Logo */}
+            {/* Center: Majestic Brand Crest */}
             <div 
               className="brand-logo-container" 
               onClick={() => handleNavClick('home', 'all')}
@@ -214,34 +239,42 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <div className="brand-emblem">BM</div>
                 <span className="brand-text">BULLMONK</span>
               </div>
-              <span className="brand-tagline">The Sovereign Chronicle of Global Finance & Geopolitics</span>
+              <div className="brand-tagline-wrapper">
+                <span className="tagline-rule left-rule"></span>
+                <span className="brand-tagline">GLOBAL FINANCIAL INTELLIGENCE & GEOPOLITICAL TRUTH</span>
+                <span className="tagline-rule right-rule"></span>
+              </div>
             </div>
 
-            {/* Right: Actions: Tip Line, Theme, Mobile Drawer */}
+            {/* Right: Actions (Tip Line, Theme Toggle, Mobile Menu) */}
             <div className="header-actions">
               <button 
-                className="btn btn-primary"
+                type="button"
+                className="btn btn-primary tip-line-header-btn hide-on-mobile"
                 onClick={() => handleNavClick('contact')}
                 title="Zero-Knowledge Encrypted Whistleblower Line"
                 aria-label="Open Whistleblower Tip Line"
               >
-                <Lock size={14} />
+                <Lock size={13} />
                 <span>Tip Line</span>
               </button>
 
               <button 
+                type="button"
                 className="btn-icon theme-toggle-btn" 
                 onClick={toggleTheme}
                 title={`Switch to ${theme === 'dark' ? 'Prestige Paper' : 'Night Terminal'} theme`}
-                aria-label="Toggle Theme"
+                aria-label="Toggle Night/Light Theme"
               >
                 {theme === 'dark' ? <Sun size={17} /> : <Moon size={17} />}
               </button>
 
               <button 
+                type="button"
                 className="btn-icon mobile-nav-toggle"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                aria-label="Toggle Navigation Menu"
+                aria-label="Toggle Navigation Drawer"
+                aria-expanded={mobileMenuOpen}
               >
                 {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
               </button>
@@ -249,117 +282,319 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
 
           {/* Desktop Navigation Links Bar */}
-          <nav className="header-nav">
+          <nav className="header-nav" aria-label="Main Navigation">
             <ul className="nav-links">
               <li className="nav-item">
-                <span 
+                <button 
+                  type="button"
                   className={`nav-link ${currentPage === 'home' && selectedCategory === 'all' ? 'active' : ''}`}
                   onClick={() => handleNavClick('home', 'all')}
                 >
                   Home Wire
-                </span>
+                </button>
               </li>
               <li className="nav-item">
-                <span 
+                <button 
+                  type="button"
                   className={`nav-link ${currentPage === 'home' && selectedCategory === 'Markets & Finance' ? 'active' : ''}`}
                   onClick={() => handleNavClick('home', 'Markets & Finance')}
                 >
-                  <TrendingUp size={13} /> Markets & Rates
-                </span>
+                  <TrendingUp size={13} />
+                  <span>Markets & Rates</span>
+                </button>
               </li>
               <li className="nav-item">
-                <span 
+                <button 
+                  type="button"
                   className={`nav-link ${currentPage === 'home' && selectedCategory === 'Technology & AI' ? 'active' : ''}`}
                   onClick={() => handleNavClick('home', 'Technology & AI')}
                 >
-                  <Cpu size={13} /> Tech & Semis
+                  <Cpu size={13} />
+                  <span>Tech & Semis</span>
                   <span className="nav-hot-badge">Hot</span>
-                </span>
+                </button>
               </li>
               <li className="nav-item">
-                <span 
+                <button 
+                  type="button"
                   className={`nav-link ${currentPage === 'home' && selectedCategory === 'World Affairs' ? 'active' : ''}`}
                   onClick={() => handleNavClick('home', 'World Affairs')}
                 >
-                  <Globe size={13} /> Geopolitics
-                </span>
+                  <Globe size={13} />
+                  <span>Geopolitics</span>
+                </button>
               </li>
               <li className="nav-item">
-                <span 
+                <button 
+                  type="button"
                   className={`nav-link ${currentPage === 'home' && selectedCategory === 'Energy & Climate' ? 'active' : ''}`}
                   onClick={() => handleNavClick('home', 'Energy & Climate')}
                 >
-                  <Flame size={13} /> Commodities & Energy
-                </span>
+                  <Flame size={13} />
+                  <span>Commodities & Energy</span>
+                </button>
+              </li>
+              <li className="nav-item">
+                <button 
+                  type="button"
+                  className={`nav-link ${currentPage === 'home' && selectedCategory === 'Culture & Ideas' ? 'active' : ''}`}
+                  onClick={() => handleNavClick('home', 'Culture & Ideas')}
+                >
+                  <BookOpen size={13} />
+                  <span>Culture & Ideas</span>
+                </button>
               </li>
             </ul>
 
             <div className="nav-secondary-links hide-on-tablet">
-              <span className="nav-secondary-link" onClick={() => handleNavClick('about')}>
+              <button 
+                type="button"
+                className={`nav-secondary-link ${currentPage === 'about' ? 'active' : ''}`} 
+                onClick={() => handleNavClick('about')}
+              >
                 Bureaus & Board
-              </span>
-              <span className="nav-secondary-link" onClick={() => handleNavClick('contact')}>
-                Whistleblower
-              </span>
-              <span className="nav-secondary-link" onClick={() => handleNavClick('legal')}>
-                Disclosures
-              </span>
+              </button>
+              <button 
+                type="button"
+                className={`nav-secondary-link ${currentPage === 'contact' ? 'active' : ''}`} 
+                onClick={() => handleNavClick('contact')}
+              >
+                Tip Line
+              </button>
+              <button 
+                type="button"
+                className={`nav-secondary-link ${currentPage === 'legal' ? 'active' : ''}`} 
+                onClick={() => handleNavClick('legal')}
+              >
+                Compliance Hub
+              </button>
             </div>
           </nav>
         </div>
 
-        {/* Mobile Navigation Drawer */}
+        {/* 4. Luxury Mobile Drawer & Full-Screen Overlay */}
         {mobileMenuOpen && (
-          <div className="mobile-drawer">
-            <div className="mobile-search-row">
-              <button 
-                className="btn-search-trigger"
-                style={{ width: '100%', justifyContent: 'center' }}
-                onClick={() => { setMobileMenuOpen(false); onOpenSearch?.(); }}
-              >
-                <Search size={16} /> Search Intelligence Archive
-              </button>
-            </div>
+          <div className="mobile-drawer-backdrop" onClick={() => setMobileMenuOpen(false)}>
+            <div className="mobile-drawer" onClick={(e) => e.stopPropagation()}>
+              
+              {/* Drawer Top Header */}
+              <div className="mobile-drawer-header">
+                <div className="mobile-drawer-brand">
+                  <div className="brand-emblem" style={{ width: '28px', height: '28px', fontSize: '0.9rem' }}>BM</div>
+                  <span style={{ fontFamily: 'var(--font-brand)', fontWeight: 900, letterSpacing: '0.12em', fontSize: '1.15rem' }}>BULLMONK</span>
+                </div>
+                <button 
+                  type="button"
+                  className="btn-icon" 
+                  onClick={() => setMobileMenuOpen(false)}
+                  aria-label="Close Mobile Drawer"
+                >
+                  <X size={18} />
+                </button>
+              </div>
 
-            <span 
-              className={`nav-link ${currentPage === 'home' && selectedCategory === 'all' ? 'active' : ''}`}
-              onClick={() => handleNavClick('home', 'all')}
-            >
-              Home Wire
-            </span>
-            <span 
-              className={`nav-link ${currentPage === 'home' && selectedCategory === 'Markets & Finance' ? 'active' : ''}`}
-              onClick={() => handleNavClick('home', 'Markets & Finance')}
-            >
-              Markets & Rates
-            </span>
-            <span 
-              className={`nav-link ${currentPage === 'home' && selectedCategory === 'Technology & AI' ? 'active' : ''}`}
-              onClick={() => handleNavClick('home', 'Technology & AI')}
-            >
-              Technology & AI
-            </span>
-            <span 
-              className={`nav-link ${currentPage === 'home' && selectedCategory === 'World Affairs' ? 'active' : ''}`}
-              onClick={() => handleNavClick('home', 'World Affairs')}
-            >
-              Geopolitics & Sovereignty
-            </span>
-            <span 
-              className={`nav-link ${currentPage === 'home' && selectedCategory === 'Energy & Climate' ? 'active' : ''}`}
-              onClick={() => handleNavClick('home', 'Energy & Climate')}
-            >
-              Energy & Commodities
-            </span>
-            <span className="nav-link" onClick={() => handleNavClick('about')}>
-              Editorial Board & Bureaus
-            </span>
-            <span className="nav-link" onClick={() => handleNavClick('contact')}>
-              Zero-Knowledge Whistleblower Line
-            </span>
-            <span className="nav-link" onClick={() => handleNavClick('legal')}>
-              AdSense & YMYL Disclosures
-            </span>
+              {/* Drawer Quick Search */}
+              <div className="mobile-drawer-search">
+                <button 
+                  type="button"
+                  className="btn-search-trigger"
+                  style={{ width: '100%', justifyContent: 'flex-start', padding: '0.65rem 1rem' }}
+                  onClick={() => { setMobileMenuOpen(false); onOpenSearch?.(); }}
+                >
+                  <Search size={16} />
+                  <span>Search All Dispatches & Tickers...</span>
+                </button>
+              </div>
+
+              {/* Drawer Content Scrollable Area */}
+              <div className="mobile-drawer-content">
+                
+                {/* Desks Navigation */}
+                <div className="mobile-drawer-section">
+                  <span className="mobile-drawer-section-title">Intelligence Desks</span>
+                  <div className="mobile-drawer-links">
+                    <button 
+                      type="button"
+                      className={`mobile-nav-link ${currentPage === 'home' && selectedCategory === 'all' ? 'active' : ''}`}
+                      onClick={() => handleNavClick('home', 'all')}
+                    >
+                      <Globe size={16} color="var(--accent-gold)" />
+                      <span>Home Wire (All Bureaus)</span>
+                      <ChevronRight size={14} className="chevron" />
+                    </button>
+
+                    <button 
+                      type="button"
+                      className={`mobile-nav-link ${currentPage === 'home' && selectedCategory === 'Markets & Finance' ? 'active' : ''}`}
+                      onClick={() => handleNavClick('home', 'Markets & Finance')}
+                    >
+                      <TrendingUp size={16} color="var(--accent-gold)" />
+                      <span>Markets & Sovereign Debt</span>
+                      <ChevronRight size={14} className="chevron" />
+                    </button>
+
+                    <button 
+                      type="button"
+                      className={`mobile-nav-link ${currentPage === 'home' && selectedCategory === 'Technology & AI' ? 'active' : ''}`}
+                      onClick={() => handleNavClick('home', 'Technology & AI')}
+                    >
+                      <Cpu size={16} color="var(--accent-gold)" />
+                      <span>Semiconductors & AI</span>
+                      <span className="nav-hot-badge">Hot</span>
+                      <ChevronRight size={14} className="chevron" style={{ marginLeft: 'auto' }} />
+                    </button>
+
+                    <button 
+                      type="button"
+                      className={`mobile-nav-link ${currentPage === 'home' && selectedCategory === 'World Affairs' ? 'active' : ''}`}
+                      onClick={() => handleNavClick('home', 'World Affairs')}
+                    >
+                      <Landmark size={16} color="var(--accent-gold)" />
+                      <span>Geopolitics & Sovereignty</span>
+                      <ChevronRight size={14} className="chevron" />
+                    </button>
+
+                    <button 
+                      type="button"
+                      className={`mobile-nav-link ${currentPage === 'home' && selectedCategory === 'Energy & Climate' ? 'active' : ''}`}
+                      onClick={() => handleNavClick('home', 'Energy & Climate')}
+                    >
+                      <Flame size={16} color="var(--accent-gold)" />
+                      <span>Commodities & Energy Transition</span>
+                      <ChevronRight size={14} className="chevron" />
+                    </button>
+
+                    <button 
+                      type="button"
+                      className={`mobile-nav-link ${currentPage === 'home' && selectedCategory === 'Culture & Ideas' ? 'active' : ''}`}
+                      onClick={() => handleNavClick('home', 'Culture & Ideas')}
+                    >
+                      <BookOpen size={16} color="var(--accent-gold)" />
+                      <span>Culture & Macro-Philosophy</span>
+                      <ChevronRight size={14} className="chevron" />
+                    </button>
+                  </div>
+                </div>
+
+                {/* Newsroom & Board */}
+                <div className="mobile-drawer-section">
+                  <span className="mobile-drawer-section-title">Newsroom & Whistleblower</span>
+                  <div className="mobile-drawer-links">
+                    <button 
+                      type="button"
+                      className="mobile-nav-link" 
+                      onClick={() => handleNavClick('about')}
+                    >
+                      <Shield size={16} color="var(--accent-gold)" />
+                      <span>About BullMonk & Global Bureaus</span>
+                      <ChevronRight size={14} className="chevron" />
+                    </button>
+
+                    <button 
+                      type="button"
+                      className="mobile-nav-link" 
+                      onClick={() => handleNavClick('contact')}
+                    >
+                      <Lock size={16} color="var(--accent-red)" />
+                      <span>Zero-Knowledge Tip Line</span>
+                      <ChevronRight size={14} className="chevron" />
+                    </button>
+                  </div>
+                </div>
+
+                {/* Dedicated Legal Suite Directory */}
+                <div className="mobile-drawer-section">
+                  <span className="mobile-drawer-section-title">Compliance & Legal Suite</span>
+                  <div className="mobile-drawer-links">
+                    <button 
+                      type="button"
+                      className="mobile-nav-link" 
+                      onClick={() => handleNavClick('privacy')}
+                    >
+                      <Lock size={15} color="var(--accent-gold)" />
+                      <span>Privacy Policy (AdSense & GDPR)</span>
+                      <ChevronRight size={14} className="chevron" />
+                    </button>
+
+                    <button 
+                      type="button"
+                      className="mobile-nav-link" 
+                      onClick={() => handleNavClick('disclaimer')}
+                    >
+                      <DollarSign size={15} color="var(--accent-gold)" />
+                      <span>Financial & YMYL Disclaimer</span>
+                      <ChevronRight size={14} className="chevron" />
+                    </button>
+
+                    <button 
+                      type="button"
+                      className="mobile-nav-link" 
+                      onClick={() => handleNavClick('terms')}
+                    >
+                      <FileText size={15} color="var(--accent-gold)" />
+                      <span>Terms of Service & Syndication</span>
+                      <ChevronRight size={14} className="chevron" />
+                    </button>
+
+                    <button 
+                      type="button"
+                      className="mobile-nav-link" 
+                      onClick={() => handleNavClick('editorial')}
+                    >
+                      <BookOpen size={15} color="var(--accent-gold)" />
+                      <span>Editorial Standards & Ethics</span>
+                      <ChevronRight size={14} className="chevron" />
+                    </button>
+
+                    <button 
+                      type="button"
+                      className="mobile-nav-link" 
+                      onClick={() => handleNavClick('cookies')}
+                    >
+                      <Cookie size={15} color="var(--accent-gold)" />
+                      <span>Cookie Telemetry Manager</span>
+                      <ChevronRight size={14} className="chevron" />
+                    </button>
+
+                    <button 
+                      type="button"
+                      className="mobile-nav-link" 
+                      onClick={() => handleNavClick('corrections')}
+                    >
+                      <AlertCircle size={15} color="var(--accent-gold)" />
+                      <span>Corrections & Errata Protocol</span>
+                      <ChevronRight size={14} className="chevron" />
+                    </button>
+                  </div>
+                </div>
+
+              </div>
+
+              {/* Drawer Footer Actions */}
+              <div className="mobile-drawer-footer">
+                <button 
+                  type="button"
+                  className="btn btn-primary"
+                  style={{ width: '100%', justifyContent: 'center', padding: '0.75rem 1rem' }}
+                  onClick={() => handleNavClick('contact')}
+                >
+                  <Lock size={15} />
+                  <span>Submit Secure Whistleblower Tip</span>
+                </button>
+
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '0.75rem', fontSize: '0.78rem', color: 'var(--text-muted)' }}>
+                  <span>Theme: {theme === 'dark' ? 'Night Terminal' : 'Prestige Paper'}</span>
+                  <button 
+                    type="button"
+                    onClick={toggleTheme}
+                    style={{ background: 'none', border: 'none', color: 'var(--accent-gold)', fontWeight: 700, cursor: 'pointer', fontFamily: 'inherit' }}
+                  >
+                    Switch Theme ⇄
+                  </button>
+                </div>
+              </div>
+
+            </div>
           </div>
         )}
       </header>
