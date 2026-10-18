@@ -16,7 +16,7 @@ export const App: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [selectedArticle, setSelectedArticle] = useState<Article | null>(null);
   const [articles, setArticles] = useState<Article[]>([]);
-  const [theme, setTheme] = useState<'dark' | 'light'>('dark');
+  const [theme, setTheme] = useState<'dark' | 'light'>('light');
   const [toastMessage, setToastMessage] = useState<string | null>(null);
   const [readingProgress, setReadingProgress] = useState(0);
 
@@ -28,7 +28,7 @@ export const App: React.FC = () => {
       setSelectedArticle(loaded[0]);
     }
 
-    const savedTheme = (localStorage.getItem('BULLMONK_REACT_THEME') as 'dark' | 'light') || 'dark';
+    const savedTheme = (localStorage.getItem('BULLMONK_REACT_THEME') as 'dark' | 'light') || 'light';
     setTheme(savedTheme);
     document.documentElement.setAttribute('data-theme', savedTheme);
   }, []);
