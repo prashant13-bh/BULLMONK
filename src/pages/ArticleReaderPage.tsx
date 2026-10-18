@@ -32,7 +32,8 @@ export const ArticleReaderPage: React.FC<ArticleReaderPageProps> = ({
       author: 'Dr. Arthur Pendelton',
       affiliation: 'Oxford Institute for Global Finance',
       timeAgo: '2 hours ago',
-      content: 'The cross-border liquidity latency metrics reported here match what we have observed in synthetic stress simulations. If Phase Two sustains this throughput, Tier-1 custodians will likely reallocate reserves within the first two quarters.'
+      content: 'The cross-border liquidity latency metrics reported here match what we have observed in synthetic stress simulations. If Phase Two sustains this throughput, Tier-1 custodians will likely reallocate reserves within the first two quarters.',
+      likes: 18
     }
   ]);
 
@@ -74,7 +75,8 @@ export const ArticleReaderPage: React.FC<ArticleReaderPageProps> = ({
       author: 'You (Verified Analyst)',
       affiliation: 'Institutional Reader',
       timeAgo: 'Just now',
-      content: commentText.trim()
+      content: commentText.trim(),
+      likes: 0
     };
 
     setComments([newComment, ...comments]);

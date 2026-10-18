@@ -9,6 +9,8 @@ import { ArticleReaderPage } from './pages/ArticleReaderPage';
 import { AboutPage } from './pages/AboutPage';
 import { ContactPage } from './pages/ContactPage';
 import { LegalPage } from './pages/LegalPage';
+import { SearchModal } from './components/SearchModal';
+import { AudioDock } from './components/AudioDock';
 import { Sparkles } from 'lucide-react';
 
 export const App: React.FC = () => {
@@ -19,6 +21,13 @@ export const App: React.FC = () => {
   const [theme, setTheme] = useState<'dark' | 'light'>('light');
   const [toastMessage, setToastMessage] = useState<string | null>(null);
   const [readingProgress, setReadingProgress] = useState(0);
+
+  // Search Modal state
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+
+  // Audio Dock state
+  const [audioArticle, setAudioArticle] = useState<Article | null>(null);
+  const [isAudioPlaying, setIsAudioPlaying] = useState(false);
 
   // Initialize articles and theme
   useEffect(() => {
@@ -60,6 +69,13 @@ export const App: React.FC = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Global Audio Briefing trigger
+  const handleStartAudioBriefing = (article: Article) => {
+    setAudioArticle(article);
+    setIsAudioPlaying(true);
+    showToast(`Streaming audio briefing: ${article.title.slice(0, 40)}...`);
+  };
 
   // Handlers
   const handleSelectArticle = (article: Article) => {
@@ -110,6 +126,7 @@ export const App: React.FC = () => {
         tickers={MARKET_TICKERS}
         theme={theme}
         toggleTheme={toggleTheme}
+        onOpenSearch={() => setIsSearchOpen(true)}
       />
 
       {/* Dynamic Page Routing */}
@@ -121,6 +138,7 @@ export const App: React.FC = () => {
           onSelectArticle={handleSelectArticle}
           onToggleBookmark={handleToggleBookmark}
           isBookmarked={(id) => BullMonkStorage.isBookmarked(id)}
+          onStartAudioBriefing={handleStartAudioBriefing}
           showToast={showToast}
         />
       )}
@@ -159,6 +177,26 @@ export const App: React.FC = () => {
       {currentPage === 'legal' && (
         <LegalPage setCurrentPage={setCurrentPage} />
       )}
+
+      {/* Global Command Palette / Search Modal */}
+      <SearchModal 
+        isOpen={isSearchOpen}
+        onClose={() => setIsSearchOpen(false)}
+        articles={articles}
+        onSelectArticle={handleSelectArticle}
+      />
+
+      {/* Floating Audio Briefing Dock */}
+      <AudioDock 
+        article={audioArticle}
+        isPlaying={isAudioPlaying}
+        onTogglePlay={() => setIsAudioPlaying(!isAudioPlaying)}
+        onClose={() => {
+          setIsAudioPlaying(false);
+          setAudioArticle(null);
+        }}
+        onOpenArticle={handleSelectArticle}
+      />
 
       {/* Footer */}
       <Footer setCurrentPage={setCurrentPage} setSelectedCategory={setSelectedCategory} />

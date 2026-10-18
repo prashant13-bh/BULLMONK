@@ -1,4 +1,4 @@
-// BULLMONK Type Definitions - AdSense & Global Media Compliant
+// BULLMONK Enterprise Type Definitions - Tier-1 Global Media & AdSense Architecture
 
 export interface Author {
   name: string;
@@ -7,6 +7,8 @@ export interface Author {
   location: string;
   credentials?: string;
   bio?: string;
+  email?: string;
+  twitter?: string;
 }
 
 export type Region = 
@@ -26,6 +28,7 @@ export interface Article {
   region: Region;
   deck: string;
   content: string;
+  keyTakeaways?: string[];
   author: Author;
   publishedAt: string;
   updatedAt?: string;
@@ -45,6 +48,17 @@ export interface MarketTicker {
   value: string;
   change: string;
   positive: boolean;
+  sparkline: number[]; // Points for SVG mini chart
+  high: string;
+  low: string;
+}
+
+export interface SectorPerformance {
+  name: string;
+  ticker: string;
+  change: string;
+  positive: boolean;
+  volume: string;
 }
 
 export interface Comment {
@@ -53,6 +67,7 @@ export interface Comment {
   affiliation: string;
   timeAgo: string;
   content: string;
+  likes: number;
 }
 
 export type PageView = 'home' | 'write' | 'article' | 'about' | 'contact' | 'legal';
