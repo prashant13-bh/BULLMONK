@@ -80,8 +80,9 @@ export const Footer: React.FC<FooterProps> = ({ setCurrentPage, setSelectedCateg
               Governance & Legal
             </h5>
             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
+              <li><span style={{ cursor: 'pointer' }} onClick={() => navigate('legal')}>Financial & YMYL Disclaimer</span></li>
+              <li><span style={{ cursor: 'pointer' }} onClick={() => navigate('legal')}>Privacy Policy (AdSense & GDPR)</span></li>
               <li><span style={{ cursor: 'pointer' }} onClick={() => navigate('legal')}>Terms of Service</span></li>
-              <li><span style={{ cursor: 'pointer' }} onClick={() => navigate('legal')}>Privacy Shield (GDPR/CCPA)</span></li>
               <li><span style={{ cursor: 'pointer' }} onClick={() => navigate('legal')}>Editorial Ethics Charter</span></li>
               <li><span style={{ cursor: 'pointer' }} onClick={() => navigate('legal')}>Cookie Telemetry Policy</span></li>
               <li><span style={{ cursor: 'pointer' }} onClick={() => navigate('legal')}>Corrections Policy</span></li>

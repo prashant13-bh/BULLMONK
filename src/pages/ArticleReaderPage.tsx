@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Article, Comment } from '../types';
-import { Play, Pause, Bookmark, Share2, Type, ArrowLeft, Send, Clock, UserCheck } from 'lucide-react';
+import { AdBanner } from '../components/AdBanner';
+import { Play, Pause, Bookmark, Share2, Type, ArrowLeft, Send, Clock, UserCheck, ShieldCheck, AlertCircle, MapPin } from 'lucide-react';
 
 interface ArticleReaderPageProps {
   article: Article;
@@ -90,13 +91,24 @@ export const ArticleReaderPage: React.FC<ArticleReaderPageProps> = ({
   return (
     <main className="reader-container">
       {/* Back button */}
-      <button 
-        className="btn btn-secondary" 
-        onClick={onBackToWire}
-        style={{ marginBottom: '1.5rem', fontSize: '0.8rem' }}
-      >
-        <ArrowLeft size={14} /> Back to Global Wire
-      </button>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.5rem', flexWrap: 'wrap', gap: '0.75rem' }}>
+        <button 
+          className="btn btn-secondary" 
+          onClick={onBackToWire}
+          style={{ fontSize: '0.8rem' }}
+        >
+          <ArrowLeft size={14} /> Back to Global Wire
+        </button>
+
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.75rem', color: 'var(--text-muted)' }}>
+          <span style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+            <ShieldCheck size={14} color="var(--accent-green)" /> Fact-Checked & Editorial Board Verified
+          </span>
+        </div>
+      </div>
+
+      {/* Top Article Ad Placement */}
+      <AdBanner slotType="leaderboard" slotId="top-article-slot" />
 
       {/* Header & Meta */}
       <header>
@@ -104,12 +116,15 @@ export const ArticleReaderPage: React.FC<ArticleReaderPageProps> = ({
           <span className={`badge ${article.breaking ? 'badge-breaking' : 'badge-category'}`}>
             {article.category}
           </span>
+          <span className="badge badge-desk" style={{ background: 'var(--bg-surface-elevated)', color: 'var(--text-primary)', border: '1px solid var(--border-medium)' }}>
+            <MapPin size={11} style={{ marginRight: '2px' }} /> {article.region}
+          </span>
           <span style={{ fontSize: '0.78rem', color: 'var(--accent-gold)', fontWeight: 700, textTransform: 'uppercase' }}>
-            {article.author.location} Bureau
+            {article.author.location}
           </span>
           <span style={{ color: 'var(--text-muted)' }}>•</span>
           <span style={{ fontSize: '0.8rem', color: 'var(--text-secondary)' }}>
-            {new Date(article.publishedAt).toLocaleDateString(undefined, {
+            Published: {new Date(article.publishedAt).toLocaleDateString(undefined, {
               weekday: 'long',
               year: 'numeric',
               month: 'long',
@@ -127,7 +142,9 @@ export const ArticleReaderPage: React.FC<ArticleReaderPageProps> = ({
             <img src={article.author.avatar} alt={article.author.name} style={{ width: '44px', height: '44px', borderRadius: '50%', objectFit: 'cover', border: '1px solid var(--accent-gold)' }} />
             <div>
               <div style={{ fontWeight: 700, fontSize: '0.95rem' }}>{article.author.name}</div>
-              <div style={{ fontSize: '0.74rem', color: 'var(--text-muted)' }}>{article.author.title} • {article.author.location}</div>
+              <div style={{ fontSize: '0.74rem', color: 'var(--text-muted)' }}>
+                {article.author.title} • {article.author.credentials || article.author.location}
+              </div>
             </div>
           </div>
 
@@ -200,8 +217,31 @@ export const ArticleReaderPage: React.FC<ArticleReaderPageProps> = ({
         dangerouslySetInnerHTML={{ __html: article.content }}
       />
 
+      {/* Mid-Article AdSense Banner (High-CPM In-Article format) */}
+      <AdBanner slotType="in-article" slotId="in-article-flow" />
+
+      {/* Mandatory YMYL Financial Disclaimer for Google AdSense Compliance */}
+      <div style={{
+        background: 'var(--bg-surface-elevated)',
+        border: '1px solid var(--border-medium)',
+        borderLeft: '4px solid var(--accent-gold)',
+        borderRadius: 'var(--radius-sm)',
+        padding: '1.25rem 1.5rem',
+        margin: '2.5rem 0',
+        fontSize: '0.84rem',
+        color: 'var(--text-secondary)',
+        lineHeight: '1.6'
+      }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '0.35rem' }}>
+          <AlertCircle size={15} color="var(--accent-gold)" /> Institutional Financial & Risk Disclaimer (YMYL Policy)
+        </div>
+        <p style={{ margin: 0 }}>
+          The macroeconomic analyses, asset valuations, and sovereign policy commentaries published by BULLMONK are provided strictly for informational, educational, and journalistic purposes. Nothing contained herein constitutes investment, legal, accounting, or tax advice. Market instruments and cross-border securities involve substantial capital risk. Consult an accredited fiduciary advisor before executing transactions.
+        </p>
+      </div>
+
       {/* Topic Tags */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap', margin: '2.5rem 0', paddingTop: '1.5rem', borderTop: '1px solid var(--border-subtle)' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap', margin: '2rem 0', paddingTop: '1.5rem', borderTop: '1px solid var(--border-subtle)' }}>
         <span style={{ fontSize: '0.78rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase' }}>Topics:</span>
         {article.tags.map((tag, idx) => (
           <span key={idx} className="cat-tab" style={{ fontSize: '0.74rem' }}>
@@ -268,7 +308,7 @@ export const ArticleReaderPage: React.FC<ArticleReaderPageProps> = ({
                   <img src={rel.heroImage} alt={rel.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 </div>
                 <div style={{ padding: '1rem' }}>
-                  <span style={{ fontSize: '0.68rem', color: 'var(--accent-gold)', fontWeight: 700, textTransform: 'uppercase' }}>{rel.category}</span>
+                  <span style={{ fontSize: '0.68rem', color: 'var(--accent-gold)', fontWeight: 700, textTransform: 'uppercase' }}>{rel.region} • {rel.category}</span>
                   <h4 style={{ fontFamily: 'var(--font-serif)', fontSize: '0.98rem', margin: '0.3rem 0' }}>{rel.title}</h4>
                   <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}><Clock size={11} style={{ display: 'inline', marginRight: '3px' }} /> {rel.readTime}</span>
                 </div>
@@ -277,6 +317,9 @@ export const ArticleReaderPage: React.FC<ArticleReaderPageProps> = ({
           </div>
         </section>
       )}
+
+      {/* Bottom Ad Unit */}
+      <AdBanner slotType="leaderboard" slotId="bottom-article-slot" />
     </main>
   );
 };

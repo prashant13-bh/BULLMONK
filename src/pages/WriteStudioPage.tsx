@@ -22,6 +22,7 @@ export const WriteStudioPage: React.FC<WriteStudioPageProps> = ({
   const [title, setTitle] = useState('');
   const [deck, setDeck] = useState('');
   const [category, setCategory] = useState('Markets & Finance');
+  const [region, setRegion] = useState('United States');
   const [location, setLocation] = useState('Zurich Bureau');
   const [authorName, setAuthorName] = useState('BullMonk Special Correspondent');
   const [authorTitle, setAuthorTitle] = useState('Senior Macro & Geopolitical Analyst');
@@ -73,6 +74,7 @@ export const WriteStudioPage: React.FC<WriteStudioPageProps> = ({
       title,
       deck,
       category,
+      region: region as any,
       content: formattedContent,
       author: {
         name: authorName,
@@ -176,8 +178,8 @@ export const WriteStudioPage: React.FC<WriteStudioPageProps> = ({
               />
             </div>
 
-            {/* Row 1: Category, Bureau, Breaking Toggle */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1.25rem', marginBottom: '1.4rem' }}>
+            {/* Row 1: Category, Region, Bureau, Breaking Toggle */}
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.25rem', marginBottom: '1.4rem' }}>
               <div className="form-group" style={{ margin: 0 }}>
                 <label className="form-label">Category Desk *</label>
                 <select 
@@ -191,6 +193,24 @@ export const WriteStudioPage: React.FC<WriteStudioPageProps> = ({
                   <option value="World Affairs">World Affairs</option>
                   <option value="Energy & Climate">Energy & Climate</option>
                   <option value="Culture & Ideas">Culture & Ideas</option>
+                </select>
+              </div>
+
+              <div className="form-group" style={{ margin: 0 }}>
+                <label className="form-label">Target Region *</label>
+                <select 
+                  className="form-control" 
+                  value={region} 
+                  onChange={(e) => setRegion(e.target.value)}
+                  style={{ cursor: 'pointer' }}
+                >
+                  <option value="United States">🇺🇸 United States</option>
+                  <option value="Europe">🇪🇺 Europe</option>
+                  <option value="India">🇮🇳 India</option>
+                  <option value="Canada">🇨🇦 Canada</option>
+                  <option value="Australia & NZ">🇦🇺 Australia & NZ</option>
+                  <option value="Russia & Eurasia">🇷🇺 Russia & Eurasia</option>
+                  <option value="Global">🌐 Global Macro</option>
                 </select>
               </div>
 
