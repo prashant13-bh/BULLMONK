@@ -1,6 +1,6 @@
 import React from 'react';
 import { PageView } from '../types';
-import { Shield, PenSquare, Lock } from 'lucide-react';
+import { Shield, Lock, ExternalLink } from 'lucide-react';
 
 interface FooterProps {
   setCurrentPage: (page: PageView) => void;
@@ -50,7 +50,7 @@ export const Footer: React.FC<FooterProps> = ({ setCurrentPage, setSelectedCateg
               <li><span style={{ cursor: 'pointer' }} onClick={() => navigate('home', 'Technology & AI')}>Semiconductors & AI</span></li>
               <li><span style={{ cursor: 'pointer' }} onClick={() => navigate('home', 'World Affairs')}>Geopolitics & Treaties</span></li>
               <li><span style={{ cursor: 'pointer' }} onClick={() => navigate('home', 'Energy & Climate')}>Energy Transition</span></li>
-              <li><span style={{ cursor: 'pointer' }} onClick={() => navigate('home', 'Culture & Ideas')}>Culture & Philosophy</span></li>
+              <li><span style={{ cursor: 'pointer' }} onClick={() => navigate('home', 'Culture & Ideas')}>Culture & Ideas</span></li>
             </ul>
           </div>
 
@@ -64,7 +64,7 @@ export const Footer: React.FC<FooterProps> = ({ setCurrentPage, setSelectedCateg
               <li><span style={{ cursor: 'pointer' }} onClick={() => navigate('about')}>Global Bureaus</span></li>
               <li><span style={{ cursor: 'pointer' }} onClick={() => navigate('contact')}>Contact & Press Desk</span></li>
               <li><span style={{ cursor: 'pointer' }} onClick={() => navigate('contact')}>Whistleblower Tip Line</span></li>
-              <li><span style={{ cursor: 'pointer' }} onClick={() => navigate('legal')}>Editorial Charter & Ethics</span></li>
+              <li><span style={{ cursor: 'pointer' }} onClick={() => navigate('editorial')}>Editorial Charter & Ethics</span></li>
             </ul>
           </div>
 
@@ -74,12 +74,13 @@ export const Footer: React.FC<FooterProps> = ({ setCurrentPage, setSelectedCateg
               Governance & Legal
             </h5>
             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
-              <li><span style={{ cursor: 'pointer' }} onClick={() => navigate('legal')}>Financial & YMYL Disclaimer</span></li>
-              <li><span style={{ cursor: 'pointer' }} onClick={() => navigate('legal')}>Privacy Policy (AdSense & GDPR)</span></li>
-              <li><span style={{ cursor: 'pointer' }} onClick={() => navigate('legal')}>Terms of Service</span></li>
-              <li><span style={{ cursor: 'pointer' }} onClick={() => navigate('legal')}>Editorial Ethics Charter</span></li>
-              <li><span style={{ cursor: 'pointer' }} onClick={() => navigate('legal')}>Cookie Telemetry Policy</span></li>
-              <li><span style={{ cursor: 'pointer' }} onClick={() => navigate('legal')}>Corrections Policy</span></li>
+              <li><span style={{ cursor: 'pointer' }} onClick={() => navigate('disclaimer')}>Financial & YMYL Disclaimer</span></li>
+              <li><span style={{ cursor: 'pointer' }} onClick={() => navigate('privacy')}>Privacy Policy (AdSense & GDPR)</span></li>
+              <li><span style={{ cursor: 'pointer' }} onClick={() => navigate('terms')}>Terms of Service</span></li>
+              <li><span style={{ cursor: 'pointer' }} onClick={() => navigate('editorial')}>Editorial Ethics Charter</span></li>
+              <li><span style={{ cursor: 'pointer' }} onClick={() => navigate('cookies')}>Cookie Telemetry Policy</span></li>
+              <li><span style={{ cursor: 'pointer' }} onClick={() => navigate('corrections')}>Corrections & Errata</span></li>
+              <li><span style={{ cursor: 'pointer', color: 'var(--accent-gold)', fontWeight: 600 }} onClick={() => navigate('legal')}>All Governance Charters →</span></li>
             </ul>
           </div>
 

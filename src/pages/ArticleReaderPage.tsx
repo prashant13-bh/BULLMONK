@@ -3,6 +3,8 @@ import { Article, Comment } from '../types';
 import { AdBanner } from '../components/AdBanner';
 import { Play, Pause, Bookmark, Share2, Type, ArrowLeft, Send, Clock, UserCheck, ShieldCheck, AlertCircle, MapPin } from 'lucide-react';
 
+import { Breadcrumbs } from '../components/Breadcrumbs';
+
 interface ArticleReaderPageProps {
   article: Article;
   relatedArticles: Article[];
@@ -92,22 +94,32 @@ export const ArticleReaderPage: React.FC<ArticleReaderPageProps> = ({
 
   return (
     <main className="reader-container">
-      {/* Back button */}
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.5rem', flexWrap: 'wrap', gap: '0.75rem' }}>
-        <button 
-          className="btn btn-secondary" 
-          onClick={onBackToWire}
-          style={{ fontSize: '0.8rem' }}
-        >
-          <ArrowLeft size={14} /> Back to Global Wire
-        </button>
+      {/* Top Breadcrumb Navigation & Verification Badge */}
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.25rem', flexWrap: 'wrap', gap: '0.75rem' }}>
+        <Breadcrumbs 
+          items={[
+            { label: article.category, onClick: onBackToWire },
+            { label: article.region, onClick: onBackToWire },
+            { label: article.title.length > 45 ? article.title.slice(0, 42) + '...' : article.title, active: true }
+          ]}
+        />
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.75rem', color: 'var(--text-muted)' }}>
+          <button 
+            type="button"
+            className="btn btn-secondary" 
+            onClick={onBackToWire}
+            style={{ fontSize: '0.76rem', padding: '0.3rem 0.65rem' }}
+            aria-label="Back to Global Wire"
+          >
+            <ArrowLeft size={13} /> Back to Wire
+          </button>
           <span style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
-            <ShieldCheck size={14} color="var(--accent-green)" /> Fact-Checked & Editorial Board Verified
+            <ShieldCheck size={14} color="var(--accent-green)" /> Fact-Checked
           </span>
         </div>
       </div>
+
 
       {/* Top Article Ad Placement */}
       <AdBanner slotType="leaderboard" slotId="top-article-slot" />

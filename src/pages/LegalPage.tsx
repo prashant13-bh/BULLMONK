@@ -1,263 +1,226 @@
 import React, { useState } from 'react';
-import { LegalTab, PageView } from '../types';
-import { FileText, Lock, Shield, Cookie, AlertCircle, ArrowLeft, DollarSign } from 'lucide-react';
+import { PageView } from '../types';
+import { Breadcrumbs } from '../components/Breadcrumbs';
+import { LegalNav } from '../components/LegalNav';
+import { 
+  Shield, Lock, FileText, DollarSign, BookOpen, Cookie, 
+  AlertCircle, ArrowRight, Search, CheckCircle, ExternalLink 
+} from 'lucide-react';
 
 interface LegalPageProps {
   setCurrentPage: (page: PageView) => void;
 }
 
 export const LegalPage: React.FC<LegalPageProps> = ({ setCurrentPage }) => {
-  const [activeTab, setActiveTab] = useState<LegalTab>('privacy');
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const documents: {
+    page: PageView;
+    title: string;
+    badge: string;
+    description: string;
+    keyPoints: string[];
+    icon: React.ReactNode;
+    docRef: string;
+  }[] = [
+    {
+      page: 'privacy',
+      title: 'Privacy Policy & Advertising Disclosures',
+      badge: 'Google AdSense & GDPR Certified',
+      description: 'Comprehensive disclosures regarding Google AdSense (ca-pub-7155174810446636), DoubleClick DART cookies, GDPR, CCPA opt-out tools, and zero-knowledge whistleblower telemetry.',
+      keyPoints: ['Google AdSense compliance', 'DoubleClick DART opt-outs', 'GDPR & CCPA reader rights', 'Zero-metadata whistleblower tip line'],
+      icon: <Lock size={22} color="var(--accent-gold)" />,
+      docRef: 'BM-SEC-PRIV-2026.04'
+    },
+    {
+      page: 'disclaimer',
+      title: 'Financial & YMYL Investment Disclaimer',
+      badge: 'YMYL Regulatory Compliance',
+      description: 'Mandatory statutory disclosure clarifying that BullMonk is pure macroeconomic journalism, not a registered investment advisor. High-risk volatility warnings for Forex, bonds, and equities.',
+      keyPoints: ['Zero investment advisory capacity', 'SEC / FINRA / FCA / SEBI notices', 'Capital loss & volatility disclaimers', 'No commercial ad endorsement'],
+      icon: <DollarSign size={22} color="var(--accent-gold)" />,
+      docRef: 'BM-YMYL-DISC-2026.02'
+    },
+    {
+      page: 'terms',
+      title: 'Terms of Service & Syndication Charter',
+      badge: 'Binding Institutional Contract',
+      description: 'Governs all access to digital editions, fair use quotation allowances (150 words with canonical link), and explicit prohibitions against unauthorized AI scraping and model training ingest.',
+      keyPoints: ['150-word fair use quotation rule', 'Strict AI scraper prohibitions', 'Institutional syndication licensing', 'LCIA arbitration jurisdiction'],
+      icon: <FileText size={22} color="var(--accent-gold)" />,
+      docRef: 'BM-TOS-2026.4'
+    },
+    {
+      page: 'editorial',
+      title: 'Editorial Standards & Newsroom Ethics Code',
+      badge: 'Two-Source Verified Journalism',
+      description: 'Our newsroom code of honor: absolute editorial independence from commercial advertisers, two-source corroboration mandate, and 72-hour securities trading moratorium for journalists.',
+      keyPoints: ['Commercial firewall from advertisers', 'Two-source verification rule', '72-hour trading moratorium', '100% human investigative reporting'],
+      icon: <BookOpen size={22} color="var(--accent-gold)" />,
+      docRef: 'BM-ED-ETHICS-2026'
+    },
+    {
+      page: 'cookies',
+      title: 'Cookie Telemetry & Client-Side Storage',
+      badge: 'Interactive Consent Manager',
+      description: 'Full technical inventory of platform cookies and LocalStorage items with interactive toggles for Google AdSense personalization and Google Analytics telemetry.',
+      keyPoints: ['Interactive consent controls', 'Audit table of active cookies', 'Browser erasure instructions', 'Industry-wide DAA/EDAA opt-outs'],
+      icon: <Cookie size={22} color="var(--accent-gold)" />,
+      docRef: 'BM-COOKIE-2026.02'
+    },
+    {
+      page: 'corrections',
+      title: 'Corrections, Errata & Public Accountability',
+      badge: 'Public Accountability Ledger',
+      description: 'Our commitment to public transparency: classifications for substantive corrections, clarifications, and retractions, accompanied by an open ledger of recent dispatch revisions.',
+      keyPoints: ['Classification of errata', 'Recent public corrections log', '24-hour response SLA', 'Direct corrections email desk'],
+      icon: <AlertCircle size={22} color="var(--accent-gold)" />,
+      docRef: 'BM-ERRATA-2026'
+    }
+  ];
+
+  const filteredDocs = documents.filter(doc => 
+    doc.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    doc.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    doc.keyPoints.some(k => k.toLowerCase().includes(searchQuery.toLowerCase()))
+  );
 
   return (
-    <main className="container" style={{ margin: '3rem auto 6rem', maxWidth: '1040px' }}>
-      <button 
-        className="btn btn-secondary" 
-        onClick={() => setCurrentPage('home')}
-        style={{ marginBottom: '1.5rem', fontSize: '0.8rem' }}
-      >
-        <ArrowLeft size={14} /> Back to Global Wire
-      </button>
+    <main className="container" style={{ margin: '2rem auto 5rem', maxWidth: '1080px' }}>
+      {/* 1. Breadcrumbs */}
+      <Breadcrumbs 
+        items={[
+          { label: 'Legal & Governance Suite', active: true }
+        ]}
+        setCurrentPage={setCurrentPage}
+      />
 
-      <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-        <span style={{ fontFamily: 'var(--font-brand)', fontSize: '0.82rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.16em', color: 'var(--accent-gold)' }}>
-          Transparency, Privacy & Editorial Sovereignty
+      {/* 2. Legal Sub-Nav */}
+      <LegalNav currentPage="legal" setCurrentPage={setCurrentPage} />
+
+      {/* 3. Header */}
+      <header style={{ textAlign: 'center', marginBottom: '3rem' }}>
+        <span style={{ fontFamily: 'var(--font-brand)', fontSize: '0.82rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.16em', color: 'var(--accent-gold)', display: 'block', marginBottom: '0.5rem' }}>
+          Transparency, Privacy & Regulatory Compliance
         </span>
-        <h1 style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800, margin: '0.5rem 0 0.8rem' }}>
-          Legal Suite & Compliance Architecture
+        <h1 style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(2.1rem, 4vw, 3rem)', fontWeight: 800, margin: '0 0 1rem' }}>
+          Legal & Governance Suite
         </h1>
-        <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', maxWidth: '680px', margin: '0 auto' }}>
-          Fully compliant with Google AdSense Publisher Policies, GDPR, CCPA, Swiss FADP, and international financial disclosure standards.
+        <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', maxWidth: '720px', margin: '0 auto', lineHeight: 1.7 }}>
+          Select any dedicated charter below to view full institutional terms, regulatory disclosures, and compliance policies. Each document is maintained independently with dedicated breadcrumbs and canonical references.
         </p>
-      </div>
 
-      {/* Tabs */}
-      <div style={{ display: 'flex', gap: '0.5rem', borderBottom: '1px solid var(--border-subtle)', marginBottom: '2.5rem', overflowX: 'auto', paddingBottom: '2px' }}>
-        <button 
-          className={`cat-tab ${activeTab === 'privacy' ? 'active' : ''}`}
-          onClick={() => setActiveTab('privacy')}
-          style={{ borderRadius: 'var(--radius-xs)', padding: '0.65rem 1.25rem', fontSize: '0.86rem' }}
-        >
-          <Lock size={14} style={{ display: 'inline', marginRight: '5px' }} /> Privacy Policy (AdSense & GDPR)
-        </button>
+        {/* Search Bar */}
+        <div style={{ maxWidth: '480px', margin: '2rem auto 0', position: 'relative' }}>
+          <label htmlFor="legal-search-input" className="sr-only">Search legal policies and compliance charters</label>
+          <Search size={16} style={{ position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)' }} />
+          <input 
+            id="legal-search-input"
+            type="search" 
+            placeholder="Search clauses, AdSense, GDPR, YMYL..." 
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            style={{
+              width: '100%',
+              padding: '0.75rem 1rem 0.75rem 2.75rem',
+              borderRadius: 'var(--radius-full)',
+              border: '1px solid var(--border-medium)',
+              background: 'var(--bg-surface)',
+              color: 'var(--text-primary)',
+              fontSize: '0.9rem',
+              outline: 'none',
+              fontFamily: 'inherit'
+            }}
+          />
+        </div>
+      </header>
 
-        <button 
-          className={`cat-tab ${activeTab === 'financial-disclaimer' ? 'active' : ''}`}
-          onClick={() => setActiveTab('financial-disclaimer')}
-          style={{ borderRadius: 'var(--radius-xs)', padding: '0.65rem 1.25rem', fontSize: '0.86rem' }}
-        >
-          <DollarSign size={14} style={{ display: 'inline', marginRight: '5px' }} /> Financial & YMYL Disclaimer
-        </button>
-
-        <button 
-          className={`cat-tab ${activeTab === 'terms' ? 'active' : ''}`}
-          onClick={() => setActiveTab('terms')}
-          style={{ borderRadius: 'var(--radius-xs)', padding: '0.65rem 1.25rem', fontSize: '0.86rem' }}
-        >
-          <FileText size={14} style={{ display: 'inline', marginRight: '5px' }} /> Terms of Service
-        </button>
-
-        <button 
-          className={`cat-tab ${activeTab === 'editorial' ? 'active' : ''}`}
-          onClick={() => setActiveTab('editorial')}
-          style={{ borderRadius: 'var(--radius-xs)', padding: '0.65rem 1.25rem', fontSize: '0.86rem' }}
-        >
-          <Shield size={14} style={{ display: 'inline', marginRight: '5px' }} /> Editorial Standards & Ethics
-        </button>
-
-        <button 
-          className={`cat-tab ${activeTab === 'cookies' ? 'active' : ''}`}
-          onClick={() => setActiveTab('cookies')}
-          style={{ borderRadius: 'var(--radius-xs)', padding: '0.65rem 1.25rem', fontSize: '0.86rem' }}
-        >
-          <Cookie size={14} style={{ display: 'inline', marginRight: '5px' }} /> Cookie Telemetry
-        </button>
-
-        <button 
-          className={`cat-tab ${activeTab === 'corrections' ? 'active' : ''}`}
-          onClick={() => setActiveTab('corrections')}
-          style={{ borderRadius: 'var(--radius-xs)', padding: '0.65rem 1.25rem', fontSize: '0.86rem' }}
-        >
-          <AlertCircle size={14} style={{ display: 'inline', marginRight: '5px' }} /> Corrections Policy
-        </button>
-      </div>
-
-      {/* Content Panes */}
-      <div style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-subtle)', borderRadius: 'var(--radius-md)', padding: 'clamp(1.5rem, 4vw, 2.75rem)', lineHeight: '1.75' }}>
-        
-        {/* 1. Privacy Policy (AdSense Strict Requirement) */}
-        {activeTab === 'privacy' && (
-          <div>
-            <span style={{ fontSize: '0.72rem', color: 'var(--accent-gold)', fontWeight: 800, textTransform: 'uppercase' }}>
-              Google AdSense, GDPR, CCPA & Swiss FADP Compliant • Effective October 2026
-            </span>
-            <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.8rem', margin: '1.25rem 0 0.75rem' }}>
-              Privacy Policy & Advertising Disclosures
-            </h2>
-            <p style={{ color: 'var(--text-secondary)', marginBottom: '1.25rem' }}>
-              At <strong>BULLMONK Intelligence Group Ltd.</strong> ("BullMonk", "we", "our", or "us"), we prioritize data sovereignty and transparent user privacy. This Privacy Policy outlines our data handling policies, cookie telemetry, and third-party advertising disclosures in full compliance with Google AdSense publisher terms, the General Data Protection Regulation (GDPR), the California Consumer Privacy Act (CCPA), and international standards.
-            </p>
-
-            <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.35rem', margin: '1.75rem 0 0.5rem', color: 'var(--text-primary)' }}>
-              1. Third-Party Advertising & Google AdSense Disclosure
-            </h3>
-            <p style={{ color: 'var(--text-secondary)', marginBottom: '1rem' }}>
-              BullMonk partners with third-party advertising networks, primarily <strong>Google AdSense</strong>, to display commercial advertisements when you visit our website. Please be advised of the following required disclosures:
-            </p>
-            <ul style={{ color: 'var(--text-secondary)', marginLeft: '1.5rem', marginBottom: '1.25rem' }}>
-              <li style={{ marginBottom: '0.5rem' }}>
-                <strong>Cookie Usage for Advertising:</strong> Third-party vendors, including Google, use cookies to serve ads based on a user's prior visits to this website or other websites across the Internet.
-              </li>
-              <li style={{ marginBottom: '0.5rem' }}>
-                <strong>DoubleClick DART Cookie:</strong> Google's use of advertising cookies enables it and its partner network to serve personalized advertisements to users based on their visits to BullMonk and/or other sites on the web.
-              </li>
-              <li style={{ marginBottom: '0.5rem' }}>
-                <strong>Opt-Out Mechanism:</strong> Users may opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-gold)', textDecoration: 'underline' }}>Google Ads Settings</a>. Alternatively, you can opt out of third-party vendor cookies for personalized advertising by visiting <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-gold)', textDecoration: 'underline' }}>www.aboutads.info</a>.
-              </li>
-            </ul>
-
-            <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.35rem', margin: '1.75rem 0 0.5rem', color: 'var(--text-primary)' }}>
-              2. Information We Collect
-            </h3>
-            <p style={{ color: 'var(--text-secondary)', marginBottom: '1rem' }}>
-              We restrict direct data collection to minimal operational requirements:
-            </p>
-            <ul style={{ color: 'var(--text-secondary)', marginLeft: '1.5rem', marginBottom: '1.25rem' }}>
-              <li style={{ marginBottom: '0.5rem' }}><strong>Email Subscriptions:</strong> Institutional email addresses provided voluntarily for "The Morning Monk" daily newsletter.</li>
-              <li style={{ marginBottom: '0.5rem' }}><strong>Local Dossier Preferences:</strong> Bookmarked stories, drafts, and theme preferences stored locally in your browser's LocalStorage.</li>
-              <li><strong>Anonymous Web Telemetry:</strong> Anonymized server telemetry (via Google Analytics gtag.js) for page view statistics, load speed optimization, and country-level traffic distribution.</li>
-            </ul>
-
-            <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.35rem', margin: '1.75rem 0 0.5rem', color: 'var(--text-primary)' }}>
-              3. Whistleblower & Source Confidentiality
-            </h3>
-            <p style={{ color: 'var(--text-secondary)' }}>
-              Submissions received through our Secure Whistleblower Tip Line are processed through air-gapped zero-metadata channels. IP addresses and browser fingerprints are permanently discarded upon receipt.
-            </p>
-          </div>
-        )}
-
-        {/* 2. Financial Disclaimer (YMYL Policy for AdSense) */}
-        {activeTab === 'financial-disclaimer' && (
-          <div>
-            <span style={{ fontSize: '0.72rem', color: 'var(--accent-gold)', fontWeight: 800, textTransform: 'uppercase' }}>
-              Your Money Your Life (YMYL) Governance Charter
-            </span>
-            <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.8rem', margin: '1.25rem 0 0.75rem' }}>
-              Financial, Macroeconomic & Investment Risk Disclaimer
-            </h2>
-            <div style={{ background: 'var(--bg-surface-elevated)', borderLeft: '4px solid var(--accent-gold)', padding: '1.25rem 1.5rem', borderRadius: '0 var(--radius-sm) var(--radius-sm) 0', margin: '1.5rem 0' }}>
-              <strong style={{ color: 'var(--text-primary)' }}>CRITICAL NOTICE:</strong> BullMonk is an independent journalistic publication and news agency. We do not provide personalized financial, legal, tax, or investment advice.
-            </div>
-
-            <p style={{ color: 'var(--text-secondary)', marginBottom: '1.25rem' }}>
-              All articles, macroeconomic models, currency indicators, bond yield reports, commodity statistics, and central bank analyses published on BullMonk are prepared exclusively for general informational, educational, and journalistic purposes.
-            </p>
-
-            <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.3rem', margin: '1.5rem 0 0.5rem' }}>No Fiduciary Relationship</h3>
-            <p style={{ color: 'var(--text-secondary)', marginBottom: '1.25rem' }}>
-              Viewing, reading, or referencing content on BullMonk does not create a fiduciary, advisory, broker-dealer, or client relationship. Neither BullMonk nor its contributing journalists, editors, or analysts are registered investment advisors (RIAs), registered broker-dealers, or financial planners under United States FINRA/SEC regulations, UK FCA rules, European ESMA guidelines, or Indian SEBI regulations.
-            </p>
-
-            <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.3rem', margin: '1.5rem 0 0.5rem' }}>Capital Loss & Volatility Risk</h3>
-            <p style={{ color: 'var(--text-secondary)', marginBottom: '1.25rem' }}>
-              Sovereign bonds, foreign exchange (Forex), equities, digital assets, and commodities involve substantial volatility and potential risk of total capital loss. Historical price movements and central bank policy precedents discussed in our dispatches do not guarantee future performance. Readers must conduct independent due diligence and consult accredited fiduciary financial advisors before allocating capital.
-            </p>
-          </div>
-        )}
-
-        {/* 3. Terms of Service */}
-        {activeTab === 'terms' && (
-          <div>
-            <span style={{ fontSize: '0.72rem', color: 'var(--accent-gold)', fontWeight: 800, textTransform: 'uppercase' }}>
-              Document Ref: BM-TOS-2026.4
-            </span>
-            <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.8rem', margin: '1.25rem 0 0.75rem' }}>Terms of Service</h2>
-            <p style={{ color: 'var(--text-secondary)', marginBottom: '1.25rem' }}>
-              By accessing, referencing, syndicating, or subscribing to the digital publications, market indicators, data streams, and investigative articles provided by BULLMONK Intelligence Group Ltd., you agree to be bound by these Terms of Service.
-            </p>
-            <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.3rem', margin: '1.5rem 0 0.5rem' }}>Intellectual Property & Syndication</h3>
-            <p style={{ color: 'var(--text-secondary)', marginBottom: '1.25rem' }}>
-              All proprietary reporting, investigative prose, quantitative charts, and trademarks displayed on BullMonk are the intellectual property of BullMonk Intelligence Group and its correspondents, protected under international copyright conventions.
-            </p>
-            <p style={{ color: 'var(--text-secondary)' }}>
-              Non-commercial quotations up to 150 words are permitted with active canonical hyperlinking. Wholesale aggregation or unauthorized AI model training ingest requires express written syndication licensing.
-            </p>
-          </div>
-        )}
-
-        {/* 4. Editorial Standards */}
-        {activeTab === 'editorial' && (
-          <div>
-            <span style={{ fontSize: '0.72rem', color: 'var(--accent-gold)', fontWeight: 800, textTransform: 'uppercase' }}>
-              BullMonk Editorial Code of Honor
-            </span>
-            <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.8rem', margin: '1.25rem 0 0.75rem' }}>Editorial Standards & Ethics</h2>
-            <p style={{ color: 'var(--text-secondary)', marginBottom: '1.25rem' }}>
-              BullMonk operates under total editorial independence. No commercial advertiser, sponsor, or sovereign entity exercises pre-publication review or editorial veto over our investigations.
-            </p>
-            <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.3rem', margin: '1.5rem 0 0.5rem' }}>Two-Source Verification Protocol</h3>
-            <p style={{ color: 'var(--text-secondary)', marginBottom: '1.25rem' }}>
-              Factual claims and leaked documents must undergo independent corroboration by at least two distinct verified sources or cryptographically authenticated primary records before publishing.
-            </p>
-            <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.3rem', margin: '1.5rem 0 0.5rem' }}>Trading Prohibition</h3>
-            <p style={{ color: 'var(--text-secondary)' }}>
-              Our financial correspondents and editors are barred from trading securities or derivatives within seventy-two (72) hours of authoring or editing reports regarding those specific assets or sectors.
-            </p>
-          </div>
-        )}
-
-        {/* 5. Cookie Telemetry */}
-        {activeTab === 'cookies' && (
-          <div>
-            <span style={{ fontSize: '0.72rem', color: 'var(--accent-gold)', fontWeight: 800, textTransform: 'uppercase' }}>
-              Telemetry & Storage Preferences
-            </span>
-            <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.8rem', margin: '1.25rem 0 0.75rem' }}>Cookie & Telemetry Policy</h2>
-            <p style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem' }}>
-              BullMonk respects client-side state sovereignty. You can inspect and toggle your cookie preferences below:
-            </p>
-
-            <div style={{ background: 'var(--bg-surface-elevated)', border: '1px solid var(--border-subtle)', borderRadius: 'var(--radius-sm)', padding: '1.5rem' }}>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                <label style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: '0.9rem' }}>
-                  <span><strong>Essential Platform Cookies</strong> (Theme state, routing)</span>
-                  <input type="checkbox" defaultChecked disabled style={{ accentColor: 'var(--accent-gold)' }} />
-                </label>
-                <label style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: '0.9rem' }}>
-                  <span><strong>Advertising Cookies</strong> (Google AdSense personalization opt-in)</span>
-                  <input type="checkbox" defaultChecked style={{ accentColor: 'var(--accent-gold)' }} />
-                </label>
-                <label style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: '0.9rem' }}>
-                  <span><strong>Performance Analytics</strong> (Google Analytics gtag.js anonymous metrics)</span>
-                  <input type="checkbox" defaultChecked style={{ accentColor: 'var(--accent-gold)' }} />
-                </label>
+      {/* 4. Grid of Legal Documents */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '1.75rem' }}>
+        {filteredDocs.map((doc) => (
+          <article 
+            key={doc.page}
+            style={{
+              background: 'var(--bg-surface)',
+              border: '1px solid var(--border-subtle)',
+              borderRadius: 'var(--radius-md)',
+              padding: '1.75rem',
+              display: 'flex',
+              flexDirection: 'column',
+              boxShadow: 'var(--shadow-sm)',
+              transition: 'transform var(--transition-fast), box-shadow var(--transition-fast)'
+            }}
+          >
+            <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '0.75rem', marginBottom: '1rem' }}>
+              <div style={{ background: 'var(--bg-surface-elevated)', padding: '0.65rem', borderRadius: 'var(--radius-sm)' }}>
+                {doc.icon}
               </div>
+              <span className="region-pill" style={{ fontSize: '0.7rem' }}>
+                {doc.badge}
+              </span>
             </div>
-          </div>
-        )}
 
-        {/* 6. Corrections Policy */}
-        {activeTab === 'corrections' && (
-          <div>
-            <span style={{ fontSize: '0.72rem', color: 'var(--accent-gold)', fontWeight: 800, textTransform: 'uppercase' }}>
-              Transparent Accountability
-            </span>
-            <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.8rem', margin: '1.25rem 0 0.75rem' }}>Corrections & Errata Protocol</h2>
-            <p style={{ color: 'var(--text-secondary)', marginBottom: '1.25rem' }}>
-              Trust is non-negotiable. When factual or quantitative errors occur in our reporting, BullMonk corrects them promptly and with full public transparency.
+            <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', color: 'var(--text-muted)', marginBottom: '0.35rem' }}>
+              {doc.docRef}
+            </div>
+
+            <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.35rem', fontWeight: 700, margin: '0 0 0.75rem', color: 'var(--text-primary)' }}>
+              {doc.title}
+            </h2>
+
+            <p style={{ color: 'var(--text-secondary)', fontSize: '0.88rem', lineHeight: '1.6', marginBottom: '1.25rem', flexGrow: 1 }}>
+              {doc.description}
             </p>
-            <ul style={{ color: 'var(--text-secondary)', marginLeft: '1.5rem', marginBottom: '1.25rem' }}>
-              <li style={{ marginBottom: '0.5rem' }}><strong>Substantive Corrections:</strong> Any alteration to fact, quote, or statistical figure is prominently noted at the foot of the dispatch, detailing the exact previous text and timestamp.</li>
-              <li><strong>Retraction Standards:</strong> If an article’s core premise is proven inaccurate, it is formally retracted with a signed statement by the Editor-in-Chief.</li>
+
+            <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 1.5rem', display: 'flex', flexDirection: 'column', gap: '0.4rem', fontSize: '0.82rem', color: 'var(--text-muted)' }}>
+              {doc.keyPoints.map((point, idx) => (
+                <li key={idx} style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                  <CheckCircle size={13} color="var(--accent-gold)" style={{ flexShrink: 0 }} />
+                  <span>{point}</span>
+                </li>
+              ))}
             </ul>
-            <p style={{ color: 'var(--text-secondary)' }}>
-              To report errors, contact <code style={{ color: 'var(--accent-gold)' }}>corrections@bullmonk.intelligence</code>.
-            </p>
-          </div>
-        )}
 
+            <button
+              type="button"
+              className="btn btn-secondary"
+              onClick={() => {
+                setCurrentPage(doc.page);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+              style={{ width: '100%', justifyContent: 'center', gap: '0.45rem', fontSize: '0.86rem', padding: '0.65rem 1rem' }}
+              aria-label={`Open dedicated ${doc.title}`}
+            >
+              <span>Read Full Document</span>
+              <ArrowRight size={14} />
+            </button>
+          </article>
+        ))}
       </div>
+
+      {/* 5. Institutional Bottom Information */}
+      <section style={{ marginTop: '4rem', background: 'var(--bg-surface-elevated)', border: '1px solid var(--border-subtle)', borderRadius: 'var(--radius-md)', padding: '2rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1.5rem' }}>
+        <div>
+          <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.2rem', margin: '0 0 0.35rem' }}>
+            Need Custom Corporate Syndication or Compliance Verification?
+          </h3>
+          <p style={{ margin: 0, color: 'var(--text-secondary)', fontSize: '0.88rem' }}>
+            Our Legal Directorate handles compliance verification, institutional licensing, and ombudsman inquiries directly.
+          </p>
+        </div>
+
+        <button
+          type="button"
+          className="btn btn-primary"
+          onClick={() => {
+            setCurrentPage('contact');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }}
+          style={{ fontSize: '0.85rem' }}
+        >
+          Contact Legal Directorate
+        </button>
+      </section>
     </main>
   );
 };

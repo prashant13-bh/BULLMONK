@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { PageView } from '../types';
 import { Shield, Lock, Send, ChevronDown, ChevronUp, Mail, Phone, MapPin, Sparkles } from 'lucide-react';
+import { Breadcrumbs } from '../components/Breadcrumbs';
 
 interface ContactPageProps {
   setCurrentPage: (page: PageView) => void;
   showToast: (msg: string) => void;
 }
+
 
 export const ContactPage: React.FC<ContactPageProps> = ({ setCurrentPage, showToast }) => {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
@@ -51,8 +53,16 @@ export const ContactPage: React.FC<ContactPageProps> = ({ setCurrentPage, showTo
   };
 
   return (
-    <main className="container" style={{ margin: '3rem auto 6rem' }}>
+    <main className="container" style={{ margin: '2rem auto 6rem' }}>
+      <Breadcrumbs 
+        items={[
+          { label: 'Communications & Whistleblower Ingestion', active: true }
+        ]}
+        setCurrentPage={setCurrentPage}
+      />
+
       <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
+
         <span style={{ fontFamily: 'var(--font-brand)', fontSize: '0.82rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.16em', color: 'var(--accent-gold)' }}>
           Communications & Ingestion
         </span>

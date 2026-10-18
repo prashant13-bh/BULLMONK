@@ -1962,3 +1962,42 @@ body {
   z-index: 100;
   transition: width 0.1s ease-out;
 }
+
+/* ==========================================================================
+   Breadcrumbs & Dedicated Legal Architecture
+   ========================================================================== */
+.bm-breadcrumbs {
+  font-family: var(--font-sans);
+}
+
+.breadcrumb-btn:hover {
+  color: var(--accent-gold) !important;
+  text-decoration: underline;
+}
+
+.breadcrumb-btn:focus-visible {
+  outline: 2px solid var(--accent-gold);
+  outline-offset: 2px;
+}
+
+.legal-nav-strip::-webkit-scrollbar {
+  height: 4px;
+}
+
+.legal-nav-strip::-webkit-scrollbar-thumb {
+  background: var(--border-medium);
+  border-radius: var(--radius-full);
+}
+
+@media (max-width: 860px) {
+  .legal-layout-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+
+  .legal-layout-grid aside {
+    position: static !important;
+    order: -1;
+  }
+}
+

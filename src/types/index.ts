@@ -70,6 +70,19 @@ export interface Comment {
   likes: number;
 }
 
-export type PageView = 'home' | 'write' | 'article' | 'about' | 'contact' | 'legal';
+export type PageView = 
+  | 'home' 
+  | 'write' 
+  | 'article' 
+  | 'about' 
+  | 'contact' 
+  | 'legal'
+  | 'privacy'
+  | 'terms'
+  | 'disclaimer'
+  | 'editorial'
+  | 'cookies'
+  | 'corrections';
 
 export type LegalTab = 'terms' | 'privacy' | 'editorial' | 'cookies' | 'corrections' | 'financial-disclaimer';
+

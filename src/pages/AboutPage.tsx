@@ -1,6 +1,7 @@
 import React from 'react';
 import { PageView } from '../types';
 import { Shield, Lock, Globe2 } from 'lucide-react';
+import { Breadcrumbs } from '../components/Breadcrumbs';
 
 interface AboutPageProps {
   setCurrentPage: (page: PageView) => void;
@@ -8,6 +9,7 @@ interface AboutPageProps {
 
 export const AboutPage: React.FC<AboutPageProps> = ({ setCurrentPage }) => {
   const bureaus = [
+
     {
       flag: '🇨🇭',
       city: 'Zurich',
@@ -80,8 +82,16 @@ export const AboutPage: React.FC<AboutPageProps> = ({ setCurrentPage }) => {
   ];
 
   return (
-    <main className="container" style={{ margin: '3rem auto 6rem' }}>
+    <main className="container" style={{ margin: '2rem auto 6rem' }}>
+      <Breadcrumbs 
+        items={[
+          { label: 'About BullMonk & Global Bureaus', active: true }
+        ]}
+        setCurrentPage={setCurrentPage}
+      />
+
       <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
+
         <span style={{ fontFamily: 'var(--font-brand)', fontSize: '0.82rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.16em', color: 'var(--accent-gold)' }}>
           The Bull & The Monk
         </span>

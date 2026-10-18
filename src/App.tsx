@@ -8,6 +8,12 @@ import { ArticleReaderPage } from './pages/ArticleReaderPage';
 import { AboutPage } from './pages/AboutPage';
 import { ContactPage } from './pages/ContactPage';
 import { LegalPage } from './pages/LegalPage';
+import { PrivacyPolicyPage } from './pages/PrivacyPolicyPage';
+import { TermsOfServicePage } from './pages/TermsOfServicePage';
+import { FinancialDisclaimerPage } from './pages/FinancialDisclaimerPage';
+import { EditorialStandardsPage } from './pages/EditorialStandardsPage';
+import { CookiePolicyPage } from './pages/CookiePolicyPage';
+import { CorrectionsPage } from './pages/CorrectionsPage';
 import { SearchModal } from './components/SearchModal';
 import { AudioDock } from './components/AudioDock';
 import { Sparkles } from 'lucide-react';
@@ -27,6 +33,36 @@ export const App: React.FC = () => {
   // Audio Dock state
   const [audioArticle, setAudioArticle] = useState<Article | null>(null);
   const [isAudioPlaying, setIsAudioPlaying] = useState(false);
+
+  // URL Hash synchronization
+  const navigateToPage = (page: PageView) => {
+    setCurrentPage(page);
+    if (page === 'home') {
+      history.pushState(null, '', window.location.pathname + window.location.search);
+    } else {
+      window.location.hash = page;
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash.replace('#', '') as PageView;
+      const validPages: PageView[] = [
+        'home', 'about', 'contact', 'legal', 
+        'privacy', 'terms', 'disclaimer', 'editorial', 'cookies', 'corrections'
+      ];
+      if (validPages.includes(hash)) {
+        setCurrentPage(hash);
+      }
+    };
+
+    // Check hash on initial load
+    handleHashChange();
+
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
 
   // Initialize articles and theme
   useEffect(() => {
@@ -84,27 +120,6 @@ export const App: React.FC = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const handlePublish = (articleData: Partial<Article>) => {
-    const created = BullMonkStorage.addArticle(articleData);
-    const updated = BullMonkStorage.getAllArticles();
-    setArticles(updated);
-    setSelectedArticle(created);
-    setCurrentPage('article');
-    showToast('Success! Story broadcasted live to BullMonk Global Wire.');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  const handleDeleteArticle = (id: string) => {
-    BullMonkStorage.deleteArticle(id);
-    const updated = BullMonkStorage.getAllArticles();
-    setArticles(updated);
-    showToast('Article retracted from publication database.');
-    if (selectedArticle?.id === id) {
-      setSelectedArticle(updated[0] || null);
-      setCurrentPage('home');
-    }
-  };
-
   const handleToggleBookmark = (id: string) => {
     const isNowSaved = BullMonkStorage.toggleBookmark(id);
     setArticles([...BullMonkStorage.getAllArticles()]);
@@ -119,7 +134,7 @@ export const App: React.FC = () => {
       {/* Navigation */}
       <Navbar 
         currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
+        setCurrentPage={navigateToPage}
         selectedCategory={selectedCategory}
         setSelectedCategory={setSelectedCategory}
         tickers={MARKET_TICKERS}
@@ -142,7 +157,6 @@ export const App: React.FC = () => {
         />
       )}
 
-
       {currentPage === 'article' && selectedArticle && (
         <ArticleReaderPage 
           article={selectedArticle}
@@ -150,21 +164,47 @@ export const App: React.FC = () => {
           onSelectArticle={handleSelectArticle}
           onToggleBookmark={handleToggleBookmark}
           isBookmarked={BullMonkStorage.isBookmarked(selectedArticle.id)}
-          onBackToWire={() => setCurrentPage('home')}
+          onBackToWire={() => navigateToPage('home')}
           showToast={showToast}
         />
       )}
 
       {currentPage === 'about' && (
-        <AboutPage setCurrentPage={setCurrentPage} />
+        <AboutPage setCurrentPage={navigateToPage} />
       )}
 
       {currentPage === 'contact' && (
-        <ContactPage setCurrentPage={setCurrentPage} showToast={showToast} />
+        <ContactPage setCurrentPage={navigateToPage} showToast={showToast} />
       )}
 
+      {/* Legal & Compliance Suite Portal Hub */}
       {currentPage === 'legal' && (
-        <LegalPage setCurrentPage={setCurrentPage} />
+        <LegalPage setCurrentPage={navigateToPage} />
+      )}
+
+      {/* 6 Dedicated Separate Legal Pages */}
+      {currentPage === 'privacy' && (
+        <PrivacyPolicyPage setCurrentPage={navigateToPage} />
+      )}
+
+      {currentPage === 'disclaimer' && (
+        <FinancialDisclaimerPage setCurrentPage={navigateToPage} />
+      )}
+
+      {currentPage === 'terms' && (
+        <TermsOfServicePage setCurrentPage={navigateToPage} />
+      )}
+
+      {currentPage === 'editorial' && (
+        <EditorialStandardsPage setCurrentPage={navigateToPage} />
+      )}
+
+      {currentPage === 'cookies' && (
+        <CookiePolicyPage setCurrentPage={navigateToPage} showToast={showToast} />
+      )}
+
+      {currentPage === 'corrections' && (
+        <CorrectionsPage setCurrentPage={navigateToPage} />
       )}
 
       {/* Global Command Palette / Search Modal */}
@@ -188,7 +228,7 @@ export const App: React.FC = () => {
       />
 
       {/* Footer */}
-      <Footer setCurrentPage={setCurrentPage} setSelectedCategory={setSelectedCategory} />
+      <Footer setCurrentPage={navigateToPage} setSelectedCategory={setSelectedCategory} />
 
       {/* Toast Notification Box */}
       {toastMessage && (
