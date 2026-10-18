@@ -5,7 +5,7 @@ import { AdBanner } from '../components/AdBanner';
 import { 
   Search, Bookmark, Clock, Eye, Sparkles, TrendingUp, Cpu, Globe2, 
   Zap, BookOpen, Send, MapPin, Volume2, ShieldCheck, Activity, 
-  Flame, ArrowUpRight, BarChart3, ChevronRight 
+  Flame, ArrowUpRight, BarChart3, ChevronRight, Calculator
 } from 'lucide-react';
 
 interface HomePageProps {
@@ -17,6 +17,7 @@ interface HomePageProps {
   isBookmarked: (id: string) => boolean;
   onStartAudioBriefing?: (article: Article) => void;
   showToast: (msg: string) => void;
+  onNavigateToTools?: () => void;
 }
 
 export const HomePage: React.FC<HomePageProps> = ({
@@ -27,12 +28,12 @@ export const HomePage: React.FC<HomePageProps> = ({
   onToggleBookmark,
   isBookmarked,
   onStartAudioBriefing,
-  showToast
+  showToast,
+  onNavigateToTools
 }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedRegion, setSelectedRegion] = useState<string>('all');
   const [wireFilter, setWireFilter] = useState<'all' | 'macro' | 'tech'>('all');
-  const [newsletterEmail, setNewsletterEmail] = useState('');
 
   const categories = [
     { id: 'all', label: 'All Desks', icon: <Sparkles size={13} /> },
@@ -83,13 +84,7 @@ export const HomePage: React.FC<HomePageProps> = ({
     .sort((a, b) => b.views - a.views)
     .slice(0, 5);
 
-  const handleNewsletterSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (newsletterEmail) {
-      showToast(`Subscribed! "The Morning Monk" daily finance dispatch scheduled for ${newsletterEmail}`);
-      setNewsletterEmail('');
-    }
-  };
+
 
   return (
     <main>
@@ -592,37 +587,74 @@ export const HomePage: React.FC<HomePageProps> = ({
         </div>
       </section>
 
-      {/* 7. Flagship Daily Finance Newsletter */}
+      {/* 7. Institutional Quantitative Suite Gateway */}
       <section className="container" style={{ marginBottom: '4rem' }}>
-        <div className="newsletter-callout-box">
-          <div>
-            <span className="newsletter-kicker">
-              Institutional Daily Briefing
-            </span>
-            <h3 className="newsletter-title">
-              The Morning Monk
+        <div className="tools-gateway-card">
+          <div className="tools-gateway-header">
+            <div className="tools-gateway-badge">
+              <Calculator size={13} color="var(--accent-gold)" />
+              <span>BULLMONK QUANTITATIVE SUITE • LIVE TERMINAL</span>
+            </div>
+            <h3 className="tools-gateway-title">
+              Institutional Financial Forensics & Macro Computational Engines
             </h3>
-            <p className="newsletter-deck">
-              Join 185,000+ portfolio managers, diplomats, and senior policy makers receiving our unfiltered 6:00 AM macro dispatch. Zero fluff, pure signal.
+            <p className="tools-gateway-deck">
+              Interactive analytical models designed for portfolio managers, sovereign wealth desks, and investigative researchers. Model bond yield duration sensitivity, measure purchasing power debasement, evaluate purchasing power parity deviations, and forecast multi-decade reserve accumulation.
             </p>
           </div>
 
-          <form onSubmit={handleNewsletterSubmit} className="newsletter-form">
-            <label htmlFor="newsletter-email-input" className="sr-only">Institutional email address for daily briefing</label>
-            <input 
-              id="newsletter-email-input"
-              type="email"
-              className="form-control"
-              style={{ flex: '1 1 240px' }}
-              placeholder="Enter institutional email..."
-              value={newsletterEmail}
-              onChange={(e) => setNewsletterEmail(e.target.value)}
-              required
-            />
-            <button type="submit" className="btn btn-primary" style={{ flexShrink: 0 }} aria-label="Subscribe to The Morning Monk">
-              <Send size={15} /> Subscribe
+          <div className="tools-gateway-grid">
+            <div className="tools-mini-card" onClick={onNavigateToTools} role="button" tabIndex={0}>
+              <div className="tools-mini-icon">
+                <BarChart3 size={18} color="var(--accent-gold)" />
+              </div>
+              <h4 className="tools-mini-heading">Sovereign Bond & Duration</h4>
+              <p className="tools-mini-desc">Estimate clean bond pricing, Macaulay duration, and basis point yield shock impact.</p>
+              <span className="tools-mini-action">Launch Bond Terminal →</span>
+            </div>
+
+            <div className="tools-mini-card" onClick={onNavigateToTools} role="button" tabIndex={0}>
+              <div className="tools-mini-icon">
+                <TrendingUp size={18} color="var(--accent-green)" />
+              </div>
+              <h4 className="tools-mini-heading">Inflation & Real CAGR</h4>
+              <p className="tools-mini-desc">Quantify purchasing power erosion, monetary debasement drag, and real returns.</p>
+              <span className="tools-mini-action">Run Inflation Model →</span>
+            </div>
+
+            <div className="tools-mini-card" onClick={onNavigateToTools} role="button" tabIndex={0}>
+              <div className="tools-mini-icon">
+                <Globe2 size={18} color="var(--accent-blue)" />
+              </div>
+              <h4 className="tools-mini-heading">FX Arbitrage & PPP Matrix</h4>
+              <p className="tools-mini-desc">Audit implied PPP currency over/undervaluations and central bank real policy spreads.</p>
+              <span className="tools-mini-action">Audit FX Matrix →</span>
+            </div>
+
+            <div className="tools-mini-card" onClick={onNavigateToTools} role="button" tabIndex={0}>
+              <div className="tools-mini-icon">
+                <Zap size={18} color="var(--accent-gold)" />
+              </div>
+              <h4 className="tools-mini-heading">Compound Capital Forecaster</h4>
+              <p className="tools-mini-desc">Model monthly reserve capital inflows, dividend reinvestment, and multi-decade wealth.</p>
+              <span className="tools-mini-action">Simulate Reserves →</span>
+            </div>
+          </div>
+
+          <div className="tools-gateway-footer">
+            <button 
+              type="button" 
+              className="btn btn-primary"
+              onClick={onNavigateToTools}
+              style={{ padding: '0.75rem 1.75rem', fontSize: '0.92rem' }}
+            >
+              <span>Open Quantitative Intelligence Terminal</span>
+              <ArrowUpRight size={16} />
             </button>
-          </form>
+            <span style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>
+              Zero Latency • Fiduciary Mathematical Standard • 100% Free Open Access
+            </span>
+          </div>
         </div>
       </section>
     </main>

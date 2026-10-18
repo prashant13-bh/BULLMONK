@@ -173,6 +173,11 @@ export const Footer: React.FC<FooterProps> = ({ setCurrentPage, setSelectedCateg
                   Culture & Macroeconomic Philosophy
                 </button>
               </li>
+              <li>
+                <button type="button" className="footer-link-btn" style={{ color: 'var(--accent-gold)', fontWeight: 700 }} onClick={() => navigate('tools')}>
+                  Quantitative Tools & Forensics →
+                </button>
+              </li>
             </ul>
           </div>
 

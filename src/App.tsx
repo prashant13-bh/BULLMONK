@@ -14,6 +14,7 @@ import { FinancialDisclaimerPage } from './pages/FinancialDisclaimerPage';
 import { EditorialStandardsPage } from './pages/EditorialStandardsPage';
 import { CookiePolicyPage } from './pages/CookiePolicyPage';
 import { CorrectionsPage } from './pages/CorrectionsPage';
+import { FinancialToolsPage } from './pages/FinancialToolsPage';
 import { SearchModal } from './components/SearchModal';
 import { AudioDock } from './components/AudioDock';
 import { Sparkles } from 'lucide-react';
@@ -49,7 +50,7 @@ export const App: React.FC = () => {
     const handleHashChange = () => {
       const hash = window.location.hash.replace('#', '') as PageView;
       const validPages: PageView[] = [
-        'home', 'about', 'contact', 'legal', 
+        'home', 'about', 'contact', 'tools', 'legal', 
         'privacy', 'terms', 'disclaimer', 'editorial', 'cookies', 'corrections'
       ];
       if (validPages.includes(hash)) {
@@ -154,6 +155,7 @@ export const App: React.FC = () => {
           isBookmarked={(id) => BullMonkStorage.isBookmarked(id)}
           onStartAudioBriefing={handleStartAudioBriefing}
           showToast={showToast}
+          onNavigateToTools={() => navigateToPage('tools')}
         />
       )}
 
@@ -166,6 +168,7 @@ export const App: React.FC = () => {
           isBookmarked={BullMonkStorage.isBookmarked(selectedArticle.id)}
           onBackToWire={() => navigateToPage('home')}
           showToast={showToast}
+          onNavigateToTools={() => navigateToPage('tools')}
         />
       )}
 
@@ -175,6 +178,11 @@ export const App: React.FC = () => {
 
       {currentPage === 'contact' && (
         <ContactPage setCurrentPage={navigateToPage} showToast={showToast} />
+      )}
+
+      {/* Quantitative & Macro Intelligence Tools Suite */}
+      {currentPage === 'tools' && (
+        <FinancialToolsPage setCurrentPage={navigateToPage} showToast={showToast} />
       )}
 
       {/* Legal & Compliance Suite Portal Hub */}

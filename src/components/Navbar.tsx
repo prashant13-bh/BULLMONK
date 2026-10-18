@@ -4,7 +4,7 @@ import {
   Sun, Moon, Menu, X, Globe, Shield, Sparkles, 
   Search, Radio, TrendingUp, Cpu, Flame, Lock, ChevronRight,
   BookOpen, Landmark, Clock, ExternalLink, ArrowRight, FileText,
-  DollarSign, Cookie, AlertCircle
+  DollarSign, Cookie, AlertCircle, Calculator
 } from 'lucide-react';
 
 interface NavbarProps {
@@ -348,9 +348,29 @@ export const Navbar: React.FC<NavbarProps> = ({
                   <span>Culture & Ideas</span>
                 </button>
               </li>
+              <li className="nav-item">
+                <button 
+                  type="button"
+                  className={`nav-link ${currentPage === 'tools' ? 'active' : ''}`}
+                  onClick={() => handleNavClick('tools')}
+                  style={{ color: 'var(--accent-gold)' }}
+                >
+                  <Calculator size={13} />
+                  <span>Financial Tools</span>
+                  <span className="nav-hot-badge" style={{ background: 'var(--accent-gold)', color: '#000', fontWeight: 800 }}>New</span>
+                </button>
+              </li>
             </ul>
 
             <div className="nav-secondary-links hide-on-tablet">
+              <button 
+                type="button"
+                className={`nav-secondary-link ${currentPage === 'tools' ? 'active' : ''}`} 
+                onClick={() => handleNavClick('tools')}
+                style={{ fontWeight: 700, color: 'var(--accent-gold)' }}
+              >
+                Macro Tools
+              </button>
               <button 
                 type="button"
                 className={`nav-secondary-link ${currentPage === 'about' ? 'active' : ''}`} 
@@ -476,6 +496,18 @@ export const Navbar: React.FC<NavbarProps> = ({
                       <BookOpen size={16} color="var(--accent-gold)" />
                       <span>Culture & Macro-Philosophy</span>
                       <ChevronRight size={14} className="chevron" />
+                    </button>
+
+                    <button 
+                      type="button"
+                      className={`mobile-nav-link ${currentPage === 'tools' ? 'active' : ''}`}
+                      onClick={() => handleNavClick('tools')}
+                      style={{ background: 'rgba(180, 83, 9, 0.08)', border: '1px solid rgba(180, 83, 9, 0.25)' }}
+                    >
+                      <Calculator size={16} color="var(--accent-gold)" />
+                      <span style={{ fontWeight: 700, color: 'var(--accent-gold)' }}>Financial Tools & Calculators</span>
+                      <span className="nav-hot-badge" style={{ background: 'var(--accent-gold)', color: '#000', fontWeight: 800 }}>New</span>
+                      <ChevronRight size={14} className="chevron" style={{ marginLeft: 'auto' }} />
                     </button>
                   </div>
                 </div>

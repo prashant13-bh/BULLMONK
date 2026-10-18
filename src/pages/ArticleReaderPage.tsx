@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Article, Comment } from '../types';
 import { AdBanner } from '../components/AdBanner';
-import { Play, Pause, Bookmark, Share2, Type, ArrowLeft, Send, Clock, UserCheck, ShieldCheck, AlertCircle, MapPin } from 'lucide-react';
+import { 
+  Play, Pause, Bookmark, Share2, Type, ArrowLeft, Send, Clock, 
+  UserCheck, ShieldCheck, AlertCircle, MapPin, Printer, Calculator, 
+  Sparkles, Building2, CheckCircle2, ArrowRight
+} from 'lucide-react';
 
 import { Breadcrumbs } from '../components/Breadcrumbs';
 
@@ -13,6 +17,7 @@ interface ArticleReaderPageProps {
   isBookmarked: boolean;
   onBackToWire: () => void;
   showToast: (msg: string) => void;
+  onNavigateToTools?: () => void;
 }
 
 export const ArticleReaderPage: React.FC<ArticleReaderPageProps> = ({
@@ -22,7 +27,8 @@ export const ArticleReaderPage: React.FC<ArticleReaderPageProps> = ({
   onToggleBookmark,
   isBookmarked,
   onBackToWire,
-  showToast
+  showToast,
+  onNavigateToTools
 }) => {
   const [isPlayingAudio, setIsPlayingAudio] = useState(false);
   const [audioSeconds, setAudioSeconds] = useState(0);
@@ -183,6 +189,7 @@ export const ArticleReaderPage: React.FC<ArticleReaderPageProps> = ({
             </button>
 
             <button 
+              type="button"
               className="btn-icon" 
               onClick={() => setLargeFont(!largeFont)}
               title="Toggle reading font size"
@@ -190,6 +197,16 @@ export const ArticleReaderPage: React.FC<ArticleReaderPageProps> = ({
               style={{ color: largeFont ? 'var(--accent-gold)' : 'inherit' }}
             >
               <Type size={16} />
+            </button>
+
+            <button 
+              type="button"
+              className="btn-icon hide-on-mobile" 
+              onClick={() => window.print()}
+              title="Print Dispatch"
+              aria-label="Print Dispatch"
+            >
+              <Printer size={16} />
             </button>
           </div>
         </div>
@@ -227,7 +244,7 @@ export const ArticleReaderPage: React.FC<ArticleReaderPageProps> = ({
       </div>
 
       {/* Hero Media */}
-      <figure style={{ borderRadius: 'var(--radius-md)', overflow: 'hidden', border: '1px solid var(--border-subtle)', marginBottom: '2.5rem' }}>
+      <figure style={{ borderRadius: 'var(--radius-md)', overflow: 'hidden', border: '1px solid var(--border-subtle)', marginBottom: '2rem' }}>
         <img 
           src={article.heroImage} 
           alt={article.title} 
@@ -244,12 +261,71 @@ export const ArticleReaderPage: React.FC<ArticleReaderPageProps> = ({
         )}
       </figure>
 
+      {/* Executive Key Takeaways Box */}
+      {article.keyTakeaways && article.keyTakeaways.length > 0 && (
+        <div style={{
+          background: 'var(--bg-surface-elevated)',
+          border: '1px solid var(--border-medium)',
+          borderLeft: '4px solid var(--accent-gold)',
+          borderRadius: 'var(--radius-md)',
+          padding: '1.5rem',
+          marginBottom: '2.5rem',
+          boxShadow: '0 4px 20px -2px rgba(15, 23, 42, 0.04)'
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontWeight: 800, fontSize: '0.86rem', color: 'var(--accent-gold)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '0.75rem' }}>
+            <ShieldCheck size={16} /> Key Intelligence Takeaways & Forensic Data
+          </div>
+          <ul style={{ margin: 0, paddingLeft: '1.25rem', display: 'flex', flexDirection: 'column', gap: '0.6rem', color: 'var(--text-primary)', fontSize: '0.98rem', lineHeight: '1.6' }}>
+            {article.keyTakeaways.map((takeaway, i) => (
+              <li key={i}>{takeaway}</li>
+            ))}
+          </ul>
+        </div>
+      )}
+
       {/* Body Prose */}
       <div 
         className="article-prose"
         style={{ fontSize: largeFont ? '1.3rem' : '1.15rem' }}
         dangerouslySetInnerHTML={{ __html: article.content }}
       />
+
+      {/* Quantitative Suite Cross-Link Callout */}
+      {onNavigateToTools && (
+        <div style={{
+          background: 'linear-gradient(135deg, rgba(180, 83, 9, 0.08) 0%, var(--bg-surface) 100%)',
+          border: '1px solid var(--border-medium)',
+          borderRadius: 'var(--radius-md)',
+          padding: '1.5rem 1.75rem',
+          margin: '2.5rem 0',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          flexWrap: 'wrap',
+          gap: '1.25rem'
+        }}>
+          <div>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', fontSize: '0.76rem', fontWeight: 800, color: 'var(--accent-gold)', textTransform: 'uppercase', marginBottom: '0.35rem' }}>
+              <Calculator size={14} /> BullMonk Quantitative Suite Integration
+            </div>
+            <h4 style={{ fontFamily: 'var(--font-brand)', fontSize: '1.15rem', margin: 0, color: 'var(--text-primary)' }}>
+              Stress-Test Sovereign Yields, FX Parity & Inflation Drag
+            </h4>
+            <p style={{ margin: '0.35rem 0 0', fontSize: '0.86rem', color: 'var(--text-secondary)' }}>
+              Run interactive duration calculations, measure purchasing power parity deviations, and evaluate central bank policy spreads.
+            </p>
+          </div>
+          <button 
+            type="button" 
+            className="btn btn-primary"
+            onClick={onNavigateToTools}
+            style={{ padding: '0.65rem 1.25rem', fontSize: '0.85rem' }}
+          >
+            <span>Launch Financial Tools</span>
+            <ArrowRight size={14} />
+          </button>
+        </div>
+      )}
 
       {/* Mid-Article AdSense Banner (High-CPM In-Article format) */}
       <AdBanner slotType="in-article" slotId="in-article-flow" />
@@ -282,6 +358,39 @@ export const ArticleReaderPage: React.FC<ArticleReaderPageProps> = ({
             #{tag}
           </span>
         ))}
+      </div>
+
+      {/* Author & Bureau Chief Dossier Card */}
+      <div style={{
+        background: 'var(--bg-surface)',
+        border: '1px solid var(--border-medium)',
+        borderRadius: 'var(--radius-md)',
+        padding: '1.75rem',
+        margin: '2.5rem 0',
+        display: 'flex',
+        alignItems: 'center',
+        gap: '1.5rem',
+        flexWrap: 'wrap'
+      }}>
+        <img 
+          src={article.author.avatar} 
+          alt={article.author.name} 
+          style={{ width: '64px', height: '64px', borderRadius: '50%', objectFit: 'cover', border: '2px solid var(--accent-gold)' }} 
+        />
+        <div style={{ flex: 1, minWidth: '220px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
+            <span style={{ fontWeight: 800, fontSize: '1.1rem' }}>{article.author.name}</span>
+            <span style={{ fontSize: '0.72rem', background: 'rgba(16, 185, 129, 0.12)', color: 'var(--accent-green)', padding: '0.15rem 0.5rem', borderRadius: '4px', fontWeight: 700 }}>
+              ✓ Bureau Fellow
+            </span>
+          </div>
+          <div style={{ fontSize: '0.82rem', color: 'var(--accent-gold)', fontWeight: 600, marginBottom: '0.5rem' }}>
+            {article.author.title} • {article.author.location} Bureau
+          </div>
+          <p style={{ margin: 0, fontSize: '0.86rem', color: 'var(--text-secondary)', lineHeight: '1.55' }}>
+            {article.author.bio || `Specializing in cross-border forensic capital audits, semiconductor supply networks, and sovereign monetary mechanisms for the BULLMONK International Bureau.`}
+          </p>
+        </div>
       </div>
 
       {/* Reader Dialogue / Comments */}
