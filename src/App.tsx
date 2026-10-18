@@ -7,6 +7,7 @@ import { HomePage } from './pages/HomePage';
 import { SearchModal } from './components/SearchModal';
 import { AudioDock } from './components/AudioDock';
 import { Sparkles } from 'lucide-react';
+import { initWebMCPTools } from './utils/webmcp';
 
 // Asynchronous Route Splitting for 95+ PageSpeed & Low Initial Payload
 const ArticleReaderPage = lazy(() => import('./pages/ArticleReaderPage').then(m => ({ default: m.ArticleReaderPage })));
@@ -82,6 +83,16 @@ export const App: React.FC = () => {
     document.body.setAttribute('data-theme', savedTheme);
     const meta = document.querySelector('meta[name="theme-color"]');
     if (meta) meta.setAttribute('content', savedTheme === 'dark' ? '#080C14' : '#F8F9FA');
+
+    // Register WebMCP Tools for in-browser AI agents
+    initWebMCPTools(
+      (query) => {
+        navigateToPage('home');
+      },
+      (page) => {
+        navigateToPage(page as PageView);
+      }
+    );
   }, []);
 
   // Theme switch

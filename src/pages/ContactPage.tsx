@@ -97,7 +97,13 @@ export const ContactPage: React.FC<ContactPageProps> = ({ setCurrentPage, showTo
           PGP Fingerprint: 4F2A 991B EC71 3908 C844 7120 A8BF 1419 6E93 DD41
         </div>
 
-        <form onSubmit={handleTipSubmit}>
+        <form 
+          onSubmit={handleTipSubmit}
+          toolname="submit_whistleblower_tip"
+          tooldescription="Submit encrypted whistleblower intelligence tip to BullMonk investigative council"
+          data-webmcp-tool="submit_whistleblower_tip"
+          data-webmcp-description="Submit encrypted whistleblower intelligence tip to BullMonk investigative council"
+        >
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1rem', marginBottom: '1rem' }}>
             <div>
               <label className="form-label">Classification Desk</label>
@@ -106,6 +112,8 @@ export const ContactPage: React.FC<ContactPageProps> = ({ setCurrentPage, showTo
                 value={tipCategory}
                 onChange={(e) => setTipCategory(e.target.value)}
                 style={{ cursor: 'pointer' }}
+                toolparam="category"
+                data-webmcp-input="category"
               >
                 <option>Corporate & Banking Fraud</option>
                 <option>Sovereign & Multilateral Treaty Violation</option>
@@ -123,6 +131,8 @@ export const ContactPage: React.FC<ContactPageProps> = ({ setCurrentPage, showTo
                 placeholder="Signal handle, ProtonMail, or leave blank for total anonymity"
                 value={tipHandle}
                 onChange={(e) => setTipHandle(e.target.value)}
+                toolparam="contactHandle"
+                data-webmcp-input="contactHandle"
               />
             </div>
           </div>
@@ -136,6 +146,8 @@ export const ContactPage: React.FC<ContactPageProps> = ({ setCurrentPage, showTo
               value={tipDetails}
               onChange={(e) => setTipDetails(e.target.value)}
               required
+              toolparam="briefingDetails"
+              data-webmcp-input="briefingDetails"
             />
           </div>
 
@@ -158,7 +170,13 @@ export const ContactPage: React.FC<ContactPageProps> = ({ setCurrentPage, showTo
             General & Newsroom Inquiries
           </h3>
 
-          <form onSubmit={handleGeneralSubmit}>
+          <form 
+            onSubmit={handleGeneralSubmit}
+            toolname="submit_newsroom_inquiry"
+            tooldescription="Submit editorial, syndication, or research inquiry to BullMonk bureau staff"
+            data-webmcp-tool="submit_newsroom_inquiry"
+            data-webmcp-description="Submit editorial, syndication, or research inquiry to BullMonk bureau staff"
+          >
             <div className="form-group">
               <label className="form-label">Full Name / Institutional Title *</label>
               <input 

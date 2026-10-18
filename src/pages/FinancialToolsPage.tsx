@@ -456,7 +456,14 @@ Generated via BullMonk Financial Intelligence Suite (bullmonk.org)`;
                 <Sliders size={18} color="var(--accent-gold)" /> Terminal Parameters
               </h2>
 
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+              <form 
+                toolname="bond_duration_calculator"
+                tooldescription="Calculate sovereign bond duration, convexity, and hypothetical yield shocks"
+                data-webmcp-tool="bond_duration_calculator"
+                data-webmcp-description="Calculate sovereign bond duration, convexity, and hypothetical yield shocks"
+                onSubmit={(e) => e.preventDefault()}
+                style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}
+              >
                 <div>
                   <label htmlFor="bond-par" style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.84rem', fontWeight: 600, marginBottom: '0.4rem' }}>
                     <span>Face / Par Value ($)</span>
@@ -544,7 +551,7 @@ Generated via BullMonk Financial Intelligence Suite (bullmonk.org)`;
                     <span>+200 bps (Hawkish Tightening)</span>
                   </div>
                 </div>
-              </div>
+              </form>
             </div>
 
             {/* Live Analytics Dashboard */}
@@ -645,7 +652,14 @@ Generated via BullMonk Financial Intelligence Suite (bullmonk.org)`;
                 <TrendingUp size={18} color="var(--accent-gold)" /> Portfolio & Inflation Parameters
               </h2>
 
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+              <form 
+                toolname="inflation_drag_calculator"
+                tooldescription="Calculate real capital purchasing power net of inflation drag and capital taxes"
+                data-webmcp-tool="inflation_drag_calculator"
+                data-webmcp-description="Calculate real capital purchasing power net of inflation drag and capital taxes"
+                onSubmit={(e) => e.preventDefault()}
+                style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}
+              >
                 <div>
                   <label htmlFor="inf-principal" style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.84rem', fontWeight: 600, marginBottom: '0.4rem' }}>
                     <span>Initial Capital Portfolio ($)</span>
@@ -724,7 +738,7 @@ Generated via BullMonk Financial Intelligence Suite (bullmonk.org)`;
                     style={{ width: '100%', accentColor: 'var(--accent-gold)', cursor: 'pointer' }}
                   />
                 </div>
-              </div>
+              </form>
             </div>
 
             {/* Results Output */}
@@ -843,7 +857,14 @@ Generated via BullMonk Financial Intelligence Suite (bullmonk.org)`;
                 <Globe size={18} color="var(--accent-gold)" /> Cross-Border FX Remittance & Arbitrage
               </h2>
 
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+              <form 
+                toolname="fx_remittance_calculator"
+                tooldescription="Calculate cross-border foreign exchange conversion, spreads, and purchasing power parity"
+                data-webmcp-tool="fx_remittance_calculator"
+                data-webmcp-description="Calculate cross-border foreign exchange conversion, spreads, and purchasing power parity"
+                onSubmit={(e) => e.preventDefault()}
+                style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}
+              >
                 <div>
                   <label htmlFor="fx-amount" style={{ fontSize: '0.84rem', fontWeight: 600, display: 'block', marginBottom: '0.4rem' }}>
                     Capital Amount to Convert:
@@ -908,7 +929,7 @@ Generated via BullMonk Financial Intelligence Suite (bullmonk.org)`;
                     1 {fxBase} = {fxConversion.directRate} {fxTarget}
                   </div>
                 </div>
-              </div>
+              </form>
             </div>
 
             {/* Implied PPP Valuation Card */}
@@ -1062,7 +1083,14 @@ Generated via BullMonk Financial Intelligence Suite (bullmonk.org)`;
                 <Layers size={18} color="var(--accent-gold)" /> Compound Accumulation Setup
               </h2>
 
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+              <form 
+                toolname="compound_capital_calculator"
+                tooldescription="Forecast sovereign compound capital growth and periodic institutional allocations"
+                data-webmcp-tool="compound_capital_calculator"
+                data-webmcp-description="Forecast sovereign compound capital growth and periodic institutional allocations"
+                onSubmit={(e) => e.preventDefault()}
+                style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}
+              >
                 <div>
                   <label htmlFor="comp-initial" style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.84rem', fontWeight: 600, marginBottom: '0.4rem' }}>
                     <span>Initial Reserve Deposit ($)</span>
@@ -1151,7 +1179,7 @@ Generated via BullMonk Financial Intelligence Suite (bullmonk.org)`;
                     style={{ width: '100%', accentColor: 'var(--accent-gold)', cursor: 'pointer' }}
                   />
                 </div>
-              </div>
+              </form>
             </div>
 
             {/* Live Accumulation Results */}

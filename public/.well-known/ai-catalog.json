@@ -1,0 +1,57 @@
+{
+  "$schema": "https://agenticresourcediscovery.org/schema/v1/ai-catalog.json",
+  "specVersion": "1.0",
+  "host": "www.govtnaukri4u.com",
+  "name": "BULLMONK Intelligence",
+  "description": "Premier international macroeconomic research, sovereign market dispatches, and quantitative financial intelligence platform.",
+  "entries": [
+    {
+      "identifier": "bullmonk-search-dispatches",
+      "type": "tool",
+      "name": "Search Intelligence Dispatches",
+      "description": "Search BullMonk global macroeconomic, semiconductor diplomacy, and sovereign bond intelligence dispatches by keyword, ticker, or regional bureau.",
+      "url": "https://www.govtnaukri4u.com/",
+      "representativeQueries": [
+        "Search macroeconomic intelligence dispatches",
+        "Find central bank liquidity and bond market analysis",
+        "Look up semiconductor fabrication corridor reports"
+      ]
+    },
+    {
+      "identifier": "bullmonk-sovereign-yield-tool",
+      "type": "tool",
+      "name": "Sovereign Real Yield Calculator",
+      "description": "Quantitative financial tool calculating real bond yield after adjusting for domestic inflation drag, currency risk, and tax haircuts.",
+      "url": "https://www.govtnaukri4u.com/#tools",
+      "representativeQueries": [
+        "Calculate sovereign real yield",
+        "Calculate bond yield after inflation and taxes",
+        "Evaluate treasury return across G10 economies"
+      ]
+    },
+    {
+      "identifier": "bullmonk-fx-import-cover-tool",
+      "type": "tool",
+      "name": "FX Reserve Import Cover Ratio",
+      "description": "Model central bank foreign exchange reserve adequacy in months of import cover and evaluate currency defense capability against external capital shocks.",
+      "url": "https://www.govtnaukri4u.com/#tools",
+      "representativeQueries": [
+        "Calculate foreign exchange reserve import cover duration",
+        "Check central bank foreign reserve adequacy",
+        "Model foreign exchange import cover ratio"
+      ]
+    },
+    {
+      "identifier": "bullmonk-supply-chain-risk-tool",
+      "type": "tool",
+      "name": "Geopolitical Supply Chain Risk Matrix",
+      "description": "Evaluate semiconductor, critical mineral, and maritime shipping choke points across critical transit corridors.",
+      "url": "https://www.govtnaukri4u.com/#tools",
+      "representativeQueries": [
+        "Assess semiconductor supply chain risk",
+        "Evaluate critical mineral trade corridor vulnerability",
+        "Analyze maritime shipping choke points"
+      ]
+    }
+  ]
+}

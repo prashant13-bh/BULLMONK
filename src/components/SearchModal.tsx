@@ -92,17 +92,30 @@ export const SearchModal: React.FC<SearchModalProps> = ({
         }}
       >
         {/* Search Input Bar */}
-        <div style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: '12px',
-          padding: '1rem 1.25rem',
-          borderBottom: '1px solid var(--border-subtle)'
-        }}>
+        <form 
+          role="search"
+          onSubmit={(e) => e.preventDefault()}
+          toolname="modal_search_dispatches"
+          tooldescription="Fast modal search for global financial intelligence and macroeconomic records"
+          data-webmcp-tool="modal_search_dispatches"
+          data-webmcp-description="Fast modal search for global financial intelligence and macroeconomic records"
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '12px',
+            padding: '1rem 1.25rem',
+            borderBottom: '1px solid var(--border-subtle)'
+          }}
+        >
           <Search size={20} color="var(--accent-gold)" aria-hidden="true" />
           <input
             ref={inputRef}
-            type="text"
+            type="search"
+            name="query"
+            toolparam="query"
+            toolparamdescription="Search query string"
+            data-webmcp-input="query"
+            data-webmcp-description="Search query string"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search global intelligence, central banks, commodities, tech..."
@@ -119,6 +132,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({
           />
           {query && (
             <button
+              type="button"
               onClick={() => setQuery('')}
               aria-label="Clear search input"
               style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text-muted)' }}
@@ -137,7 +151,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({
           }}>
             ESC
           </span>
-        </div>
+        </form>
 
         {/* Results List */}
         <div style={{ maxHeight: '420px', overflowY: 'auto', padding: '0.75rem' }}>

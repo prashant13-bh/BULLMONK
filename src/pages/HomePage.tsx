@@ -199,8 +199,8 @@ export const HomePage: React.FC<HomePageProps> = ({
               >
                 <div className="grand-hero-media">
                   <img 
-                    src={leadArticle.heroImage} 
-                    srcSet={`${leadArticle.heroImage.replace('w=800', 'w=480')} 480w, ${leadArticle.heroImage} 800w`}
+                    src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=65&fm=webp" 
+                    srcSet="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=65&fm=webp 600w, https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=65&fm=webp 800w"
                     sizes="(max-width: 768px) 100vw, 800px"
                     alt={leadArticle.title} 
                     className="grand-hero-img" 
@@ -418,18 +418,31 @@ export const HomePage: React.FC<HomePageProps> = ({
 
           </div>
 
-          <div className="search-input-wrap">
+          <form 
+            role="search"
+            onSubmit={(e) => e.preventDefault()}
+            toolname="search_dispatches"
+            tooldescription="Search BullMonk global macroeconomic, semiconductor diplomacy, and sovereign bond intelligence dispatches"
+            data-webmcp-tool="search_dispatches"
+            data-webmcp-description="Search BullMonk global macroeconomic, semiconductor diplomacy, and sovereign bond intelligence dispatches"
+            className="search-input-wrap"
+          >
             <Search size={15} className="search-icon" aria-hidden="true" />
             <label htmlFor="homepage-filter-input" className="sr-only">Filter dispatches by keyword or author</label>
             <input 
               id="homepage-filter-input"
-              type="text"
+              type="search"
+              name="query"
+              toolparam="query"
+              toolparamdescription="Search keyword, commodity, ticker, or author"
+              data-webmcp-input="query"
+              data-webmcp-description="Search keyword, commodity, ticker, or author"
               className="search-field"
               placeholder="Filter by keyword, commodity, ticker, author..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
-          </div>
+          </form>
         </div>
       </section>
 
