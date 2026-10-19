@@ -84,6 +84,26 @@ export const HomePage: React.FC<HomePageProps> = ({
     .sort((a, b) => b.views - a.views)
     .slice(0, 5);
 
+  const handleSectorClick = (sec: typeof SECTOR_HEATMAP[0]) => {
+    if (sec.ticker === 'SOXX') {
+      setSelectedCategory('Technology & AI');
+      showToast(`Sector Intelligence: ${sec.name} (${sec.ticker} ${sec.change})`);
+    } else if (sec.ticker === 'XLF' || sec.ticker === 'TLT') {
+      setSelectedCategory('Markets & Finance');
+      showToast(`Sector Intelligence: ${sec.name} (${sec.ticker} ${sec.change})`);
+    } else if (sec.ticker === 'ICLN' || sec.ticker === 'LIT' || sec.ticker === 'XLE') {
+      setSelectedCategory('Energy & Climate');
+      showToast(`Sector Intelligence: ${sec.name} (${sec.ticker} ${sec.change})`);
+    } else {
+      showToast(`Sector Flow: ${sec.ticker} ${sec.change} (Vol: ${sec.volume})`);
+    }
+
+    const target = document.getElementById('intel-feed-anchor');
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   const heroSrc = leadArticle ? leadArticle.heroImage : "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=65&fm=webp";
   const hero600 = heroSrc.includes('w=') ? heroSrc.replace(/w=\d+/, 'w=600') : heroSrc;
   const hero800 = heroSrc.includes('w=') ? heroSrc.replace(/w=\d+/, 'w=800') : heroSrc;
@@ -333,14 +353,33 @@ export const HomePage: React.FC<HomePageProps> = ({
                     <div 
                       key={idx} 
                       className={`sector-tile ${sec.positive ? 'positive' : 'negative'}`}
-                      title={`${sec.name}: ${sec.change} (Volume: ${sec.volume})`}
+                      onClick={() => handleSectorClick(sec)}
+                      role="button"
+                      tabIndex={0}
+                      onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') handleSectorClick(sec); }}
+                      title={`Click to analyze ${sec.name}: ${sec.change} (Volume: ${sec.volume})`}
+                      aria-label={`${sec.name} ${sec.ticker} ${sec.change}`}
                     >
                       <div className="sector-tile-top">
                         <span className="sector-ticker">{sec.ticker}</span>
-                        <span className="sector-change">{sec.change}</span>
+                        <span className="sector-change">
+                          <span className="sector-change-arrow" aria-hidden="true">{sec.positive ? '▲' : '▼'}</span>
+                          <span>{sec.change}</span>
+                        </span>
                       </div>
                       <div className="sector-name">{sec.name}</div>
-                      <div className="sector-vol">Vol: {sec.volume}</div>
+                      <div className="sector-vol-row">
+                        <span className="sector-vol">Vol: {sec.volume}</span>
+                        <span className="sector-action-link" aria-hidden="true">Intel →</span>
+                      </div>
+                      <div className="sector-momentum-track" aria-hidden="true">
+                        <div 
+                          className="sector-momentum-fill"
+                          style={{ 
+                            width: `${Math.min(100, Math.max(30, parseFloat(sec.change.replace(/[^0-9.]/g, '')) * 26))}%` 
+                          }}
+                        />
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -401,7 +440,7 @@ export const HomePage: React.FC<HomePageProps> = ({
       </section>
 
       {/* 4. Controls: Category Desk Tabs & Live Search Bar */}
-      <section className="container" style={{ marginTop: '2rem' }}>
+      <section id="intel-feed-anchor" className="container" style={{ marginTop: '2rem' }}>
         <div className="filter-bar">
           <div className="category-tabs" role="tablist">
             {categories.map((cat) => (
