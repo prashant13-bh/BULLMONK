@@ -1,7 +1,7 @@
 {
   "$schema": "https://agenticresourcediscovery.org/schema/v1/ai-catalog.json",
   "specVersion": "1.0",
-  "host": "www.govtnaukri4u.com",
+  "host": "govtnaukri4u.com",
   "name": "BULLMONK Intelligence",
   "description": "Premier international macroeconomic research, sovereign market dispatches, and quantitative financial intelligence platform.",
   "entries": [
@@ -10,7 +10,7 @@
       "type": "tool",
       "name": "Search Intelligence Dispatches",
       "description": "Search BullMonk global macroeconomic, semiconductor diplomacy, and sovereign bond intelligence dispatches by keyword, ticker, or regional bureau.",
-      "url": "https://www.govtnaukri4u.com/",
+      "url": "https://govtnaukri4u.com/",
       "representativeQueries": [
         "Search macroeconomic intelligence dispatches",
         "Find central bank liquidity and bond market analysis",
@@ -22,7 +22,7 @@
       "type": "tool",
       "name": "Sovereign Real Yield Calculator",
       "description": "Quantitative financial tool calculating real bond yield after adjusting for domestic inflation drag, currency risk, and tax haircuts.",
-      "url": "https://www.govtnaukri4u.com/#tools",
+      "url": "https://govtnaukri4u.com/tools",
       "representativeQueries": [
         "Calculate sovereign real yield",
         "Calculate bond yield after inflation and taxes",
@@ -34,7 +34,7 @@
       "type": "tool",
       "name": "FX Reserve Import Cover Ratio",
       "description": "Model central bank foreign exchange reserve adequacy in months of import cover and evaluate currency defense capability against external capital shocks.",
-      "url": "https://www.govtnaukri4u.com/#tools",
+      "url": "https://govtnaukri4u.com/tools",
       "representativeQueries": [
         "Calculate foreign exchange reserve import cover duration",
         "Check central bank foreign reserve adequacy",
@@ -46,11 +46,51 @@
       "type": "tool",
       "name": "Geopolitical Supply Chain Risk Matrix",
       "description": "Evaluate semiconductor, critical mineral, and maritime shipping choke points across critical transit corridors.",
-      "url": "https://www.govtnaukri4u.com/#tools",
+      "url": "https://govtnaukri4u.com/tools",
       "representativeQueries": [
         "Assess semiconductor supply chain risk",
         "Evaluate critical mineral trade corridor vulnerability",
         "Analyze maritime shipping choke points"
+      ]
+    },
+    {
+      "identifier": "bullmonk-pdf-word-converter-tool",
+      "type": "tool",
+      "name": "PDF & Document Conversion Studio",
+      "description": "Convert PDF documents to editable Microsoft Word format and compile rich text or markdown into publication-ready PDF dossiers.",
+      "url": "https://govtnaukri4u.com/doc-tools",
+      "representativeQueries": [
+        "Convert PDF to Word document",
+        "Convert Word doc to PDF",
+        "Extract text and tables from PDF",
+        "Compress PDF file size"
+      ]
+    },
+    {
+      "identifier": "bullmonk-image-enhancer-tool",
+      "type": "tool",
+      "name": "AI Image Enhancer & 2x Super-Resolution",
+      "description": "Client-side image restoration, Laplacian high-pass sharpening, contrast optimization, and 2x resolution upscaling.",
+      "url": "https://govtnaukri4u.com/doc-tools",
+      "representativeQueries": [
+        "Enhance image quality and sharpness",
+        "Upscale image resolution 2x",
+        "Clean and restore low-resolution photo",
+        "Extract text from image using OCR"
+      ]
+    },
+    {
+      "identifier": "bullmonk-investigative-dispatches",
+      "type": "publication",
+      "name": "Global Sovereign & Macroeconomic Intelligence Dispatches",
+      "description": "Deep investigative dispatches on Project mBridge, post-quantum banking, critical minerals, and sovereign debt corridors.",
+      "url": "https://govtnaukri4u.com/",
+      "representativeQueries": [
+        "Read Project mBridge oil settlement investigation",
+        "Read post-quantum Fedwire cryptography report",
+        "Atacama lithium sovereign nationalization analysis",
+        "Satellite constellation spectrum congestion war",
+        "Solar cell TOPCon silver paste inventory run"
       ]
     }
   ]

@@ -99,6 +99,39 @@ export const ArticleReaderPage: React.FC<ArticleReaderPageProps> = ({
     const originalTitle = document.title;
     document.title = `${article.title} | BULLMONK Intelligence`;
 
+    const canonicalUrl = `https://govtnaukri4u.com/article/${article.id}`;
+
+    // Update Meta Description
+    let metaDesc = document.querySelector('meta[name="description"]') as HTMLMetaElement | null;
+    const originalDesc = metaDesc ? metaDesc.content : '';
+    if (metaDesc && article.deck) {
+      metaDesc.content = article.deck;
+    }
+
+    // Update OpenGraph Tags
+    let ogTitle = document.querySelector('meta[property="og:title"]') as HTMLMetaElement | null;
+    const originalOgTitle = ogTitle ? ogTitle.content : '';
+    if (ogTitle) ogTitle.content = `${article.title} | BULLMONK Intelligence`;
+
+    let ogDesc = document.querySelector('meta[property="og:description"]') as HTMLMetaElement | null;
+    const originalOgDesc = ogDesc ? ogDesc.content : '';
+    if (ogDesc && article.deck) ogDesc.content = article.deck;
+
+    let ogUrl = document.querySelector('meta[property="og:url"]') as HTMLMetaElement | null;
+    const originalOgUrl = ogUrl ? ogUrl.content : '';
+    if (ogUrl) ogUrl.content = canonicalUrl;
+
+    let ogImage = document.querySelector('meta[property="og:image"]') as HTMLMetaElement | null;
+    const originalOgImage = ogImage ? ogImage.content : '';
+    if (ogImage && article.heroImage) ogImage.content = article.heroImage;
+
+    // Update Canonical Link
+    let canonicalLink = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
+    const originalCanonical = canonicalLink ? canonicalLink.href : 'https://govtnaukri4u.com/';
+    if (canonicalLink) {
+      canonicalLink.href = canonicalUrl;
+    }
+
     const scriptId = 'bullmonk-article-schema';
     let script = document.getElementById(scriptId) as HTMLScriptElement | null;
     if (!script) {
@@ -113,8 +146,9 @@ export const ArticleReaderPage: React.FC<ArticleReaderPageProps> = ({
       "@type": "NewsArticle",
       "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": `https://www.govtnaukri4u.com/#article/${article.id}`
+        "@id": canonicalUrl
       },
+      "url": canonicalUrl,
       "headline": article.title,
       "description": article.deck || article.title,
       "image": [
@@ -134,10 +168,10 @@ export const ArticleReaderPage: React.FC<ArticleReaderPageProps> = ({
       "publisher": {
         "@type": "NewsMediaOrganization",
         "name": "BULLMONK",
-        "url": "https://www.govtnaukri4u.com",
+        "url": "https://govtnaukri4u.com",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://www.govtnaukri4u.com/logo192.png",
+          "url": "https://govtnaukri4u.com/logo192.png",
           "width": 192,
           "height": 192
         }
@@ -149,6 +183,12 @@ export const ArticleReaderPage: React.FC<ArticleReaderPageProps> = ({
 
     return () => {
       document.title = originalTitle;
+      if (metaDesc) metaDesc.content = originalDesc;
+      if (ogTitle) ogTitle.content = originalOgTitle;
+      if (ogDesc) ogDesc.content = originalOgDesc;
+      if (ogUrl) ogUrl.content = originalOgUrl;
+      if (ogImage) ogImage.content = originalOgImage;
+      if (canonicalLink) canonicalLink.href = originalCanonical;
       const el = document.getElementById(scriptId);
       if (el) el.remove();
     };

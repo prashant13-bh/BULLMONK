@@ -825,7 +825,7 @@ export const DEFAULT_ARTICLES: Article[] = [
 ];
 
 export const BullMonkStorage = {
-  STORAGE_KEY: 'BULLMONK_PRO_ARTICLES_V12',
+  STORAGE_KEY: 'BULLMONK_PRO_ARTICLES_V13',
   BOOKMARKS_KEY: 'BULLMONK_PRO_BOOKMARKS',
 
   getAllArticles(): Article[] {
