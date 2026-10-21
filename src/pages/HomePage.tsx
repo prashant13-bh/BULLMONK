@@ -242,25 +242,81 @@ export const HomePage: React.FC<HomePageProps> = ({
                     fetchPriority="high"
                     decoding="async"
                   />
-                  <div className="grand-hero-badge-overlay">
-                    <span className="badge badge-breaking">
-                      <span className="ticker-pulse"></span> EXCLUSIVE INVESTIGATION
-                    </span>
-                    <span className="badge badge-category">{leadArticle.category}</span>
-                    <span className="badge badge-desk">{leadArticle.region}</span>
+                  <div className="grand-hero-overlay">
+                    <div className="grand-hero-top-meta">
+                      <div className="grand-hero-badge-overlay">
+                        <span className="badge badge-breaking">
+                          <span className="ticker-pulse"></span> EXCLUSIVE INVESTIGATION
+                        </span>
+                        <span className="badge badge-category">{leadArticle.category}</span>
+                        <span className="badge badge-desk">{leadArticle.region}</span>
+                      </div>
+                    </div>
+
+                    <div className="grand-hero-overlay-body">
+                      <div className="grand-hero-eyebrow">
+                        <span>{leadArticle.author.location.toUpperCase()} BUREAU</span>
+                        <span>•</span>
+                        <span>VERIFIED STRATEGIC INTELLIGENCE</span>
+                      </div>
+
+                      <h2 className="grand-hero-title">{leadArticle.title}</h2>
+                      <p className="grand-hero-deck">{leadArticle.deck}</p>
+
+                      {/* Author Byline & Metrics directly in overlay */}
+                      <div className="grand-hero-author-row overlay-author-row">
+                        <div className="grand-hero-author-info">
+                          <img 
+                            src={leadArticle.author.avatar} 
+                            alt={leadArticle.author.name} 
+                            className="author-avatar-img"
+                            width={36}
+                            height={36}
+                            loading="lazy"
+                            decoding="async"
+                          />
+                          <div>
+                            <div className="author-name-with-seal">
+                              <span style={{ color: '#FFFFFF' }}>{leadArticle.author.name}</span>
+                              <span className="contributor-seal" title="Verified BullMonk Institutional Fellow">✓ Verified</span>
+                            </div>
+                            <div className="author-role-sub" style={{ color: 'rgba(255, 255, 255, 0.75)' }}>
+                              {leadArticle.author.title} • {leadArticle.author.location}
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="grand-hero-action-tools">
+                          <span className="hero-metric-item" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
+                            <Clock size={13} /> {leadArticle.readTime}
+                          </span>
+                          <span className="hero-metric-item hide-on-mobile" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
+                            <Eye size={13} /> {leadArticle.views.toLocaleString()}
+                          </span>
+                          <button 
+                            type="button"
+                            className={`btn-icon ${isBookmarked(leadArticle.id) ? 'active-bookmark' : ''}`}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              onToggleBookmark(leadArticle.id);
+                            }}
+                            title="Bookmark to Private Dossier"
+                            aria-label="Bookmark Grand Hero Article"
+                            style={{ 
+                              background: 'rgba(255, 255, 255, 0.15)', 
+                              borderColor: 'rgba(255, 255, 255, 0.25)', 
+                              color: '#FFFFFF' 
+                            }}
+                          >
+                            <Bookmark size={15} fill={isBookmarked(leadArticle.id) ? 'currentColor' : 'none'} />
+                          </button>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
                 <div className="grand-hero-content">
-                  <div className="grand-hero-eyebrow">
-                    <span>{leadArticle.author.location.toUpperCase()} BUREAU</span>
-                    <span>•</span>
-                    <span>VERIFIED STRATEGIC INTELLIGENCE</span>
-                  </div>
-
-                  <h2 className="grand-hero-title">{leadArticle.title}</h2>
-                  <p className="grand-hero-deck">{leadArticle.deck}</p>
-
                   {/* Audio Briefing Pill */}
                   <div className="grand-hero-audio-bar" onClick={(e) => {
                     e.stopPropagation();
@@ -271,14 +327,16 @@ export const HomePage: React.FC<HomePageProps> = ({
                       className="audio-pill-btn" 
                       title="Listen to 3-Min Executive Audio Briefing"
                       aria-label="Listen to 3-Min Executive Audio Briefing"
+                      style={{ width: '100%', justifyContent: 'space-between' }}
                     >
-                      <Volume2 size={15} />
-                      <span>Listen to Executive Audio Dispatch (3 min 45s)</span>
+                      <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+                        <Volume2 size={15} />
+                        <span>Listen to Executive Audio Dispatch ({leadArticle.readTime})</span>
+                      </span>
                       <div className="audio-mini-visualizer">
                         <span></span><span></span><span></span><span></span>
                       </div>
                     </button>
-
                   </div>
 
                   {/* Key Intelligence Takeaways Box */}
@@ -295,50 +353,6 @@ export const HomePage: React.FC<HomePageProps> = ({
                       </ul>
                     </div>
                   )}
-
-                  {/* Author Byline & Metrics */}
-                  <div className="grand-hero-author-row">
-                    <div className="grand-hero-author-info">
-                      <img 
-                        src={leadArticle.author.avatar} 
-                        alt={leadArticle.author.name} 
-                        className="author-avatar-img"
-                        width={36}
-                        height={36}
-                        loading="lazy"
-                        decoding="async"
-                      />
-                      <div>
-                        <div className="author-name-with-seal">
-                          <span>{leadArticle.author.name}</span>
-                          <span className="contributor-seal" title="Verified BullMonk Institutional Fellow">✓ Verified</span>
-                        </div>
-                        <div className="author-role-sub">{leadArticle.author.title} • {leadArticle.author.location}</div>
-                      </div>
-                    </div>
-
-                    <div className="grand-hero-action-tools">
-                      <span className="hero-metric-item">
-                        <Clock size={13} /> {leadArticle.readTime}
-                      </span>
-                      <span className="hero-metric-item">
-                        <Eye size={13} /> {leadArticle.views.toLocaleString()}
-                      </span>
-                      <button 
-                        type="button"
-                        className={`btn-icon ${isBookmarked(leadArticle.id) ? 'active-bookmark' : ''}`}
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          onToggleBookmark(leadArticle.id);
-                        }}
-                        title="Bookmark to Private Dossier"
-                        aria-label="Bookmark Grand Hero Article"
-                      >
-                        <Bookmark size={14} fill={isBookmarked(leadArticle.id) ? 'currentColor' : 'none'} />
-                      </button>
-
-                    </div>
-                  </div>
                 </div>
               </article>
             )}
