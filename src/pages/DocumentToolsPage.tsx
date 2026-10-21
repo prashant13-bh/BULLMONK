@@ -4,8 +4,9 @@ import {
   FileText, FileUp, Download, Image as ImageIcon, Sliders, 
   Sparkles, ShieldCheck, RefreshCw, Copy, Check, Eye, EyeOff, 
   Layers, ArrowRight, Zap, Lock, FileSpreadsheet, ScanText,
-  Maximize2, Cpu, Scissors, CheckCircle2, AlertCircle
+  Maximize2, Cpu, Scissors, CheckCircle2, AlertCircle, CloudUpload, Share2
 } from 'lucide-react';
+import { SupabaseStorage } from '../utils/supabase';
 
 interface DocumentToolsPageProps {
   setCurrentPage: (page: any) => void;
@@ -29,6 +30,8 @@ export const DocumentToolsPage: React.FC<DocumentToolsPageProps> = ({
   const [pdfExtractedText, setPdfExtractedText] = useState<string>('');
   const [pdfConversionDone, setPdfConversionDone] = useState(false);
   const [preserveFormatting, setPreserveFormatting] = useState(true);
+  const [cloudDocUrl, setCloudDocUrl] = useState<string | null>(null);
+  const [isCloudDocUploading, setIsCloudDocUploading] = useState(false);
 
   const handlePdfUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -112,6 +115,35 @@ export const DocumentToolsPage: React.FC<DocumentToolsPageProps> = ({
     document.body.removeChild(link);
     URL.revokeObjectURL(url);
     showToast(`Downloaded ${baseName}.doc`);
+  };
+
+  const uploadWordDocToCloud = async () => {
+    if (!pdfExtractedText) return;
+    setIsCloudDocUploading(true);
+    const baseName = pdfFile ? pdfFile.name.replace(/\.[^/.]+$/, "") : "document";
+    const docxContent = `
+      <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+      <head><meta charset='utf-8'><title>${baseName}</title></head>
+      <body>
+        <h1>BULLMONK DOCUMENT INTELLIGENCE</h1>
+        <div>${pdfExtractedText.split('\n\n').map(p => `<p>${p.replace(/\n/g, '<br>')}</p>`).join('')}</div>
+      </body>
+      </html>
+    `;
+    const blob = new Blob([docxContent], { type: 'application/msword' });
+    const storagePath = `word_docs/${Date.now()}_${baseName}.doc`;
+
+    try {
+      await SupabaseStorage.uploadFile('documents', storagePath, blob);
+      const publicUrl = SupabaseStorage.getPublicUrl('documents', storagePath);
+      setCloudDocUrl(publicUrl);
+      navigator.clipboard.writeText(publicUrl);
+      showToast('Document uploaded to Supabase Storage! Public link copied.');
+    } catch (e: any) {
+      showToast(e?.message ? `Supabase: ${e.message}` : 'Uploaded locally. Ensure "documents" bucket exists in Supabase.');
+    } finally {
+      setIsCloudDocUploading(false);
+    }
   };
 
   // -------------------------------------------------------------
@@ -727,18 +759,62 @@ All counterparty clearing margins and reserve custodial allocations referenced w
                 </button>
 
                 {pdfConversionDone && (
-                  <button 
-                    type="button" 
-                    className="btn btn-secondary"
-                    onClick={downloadWordDoc}
-                    style={{ background: 'var(--accent-green-glow)', borderColor: 'var(--accent-green)', color: 'var(--accent-green)' }}
-                  >
-                    <Download size={14} />
-                    <span>Download .doc File</span>
-                  </button>
+                  <div style={{ display: 'flex', gap: '0.65rem', flexWrap: 'wrap' }}>
+                    <button 
+                      type="button" 
+                      className="btn btn-secondary"
+                      onClick={downloadWordDoc}
+                      style={{ background: 'var(--accent-green-glow)', borderColor: 'var(--accent-green)', color: 'var(--accent-green)' }}
+                    >
+                      <Download size={14} />
+                      <span>Download .doc File</span>
+                    </button>
+
+                    <button 
+                      type="button" 
+                      className="btn btn-secondary"
+                      onClick={uploadWordDocToCloud}
+                      disabled={isCloudDocUploading}
+                      style={{ borderColor: 'var(--accent-gold)', color: 'var(--accent-gold)' }}
+                    >
+                      <CloudUpload size={14} />
+                      <span>{isCloudDocUploading ? 'Uploading to Cloud...' : 'Save to Supabase Storage'}</span>
+                    </button>
+                  </div>
                 )}
               </div>
             </div>
+
+            {/* Cloud URL Alert Banner */}
+            {cloudDocUrl && (
+              <div style={{
+                marginTop: '1.25rem',
+                padding: '0.85rem 1.15rem',
+                background: 'rgba(180, 83, 9, 0.08)',
+                border: '1px solid rgba(180, 83, 9, 0.3)',
+                borderRadius: 'var(--radius-sm)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                flexWrap: 'wrap',
+                gap: '0.75rem'
+              }}>
+                <div style={{ fontSize: '0.82rem', color: 'var(--text-primary)' }}>
+                  <strong>Supabase Cloud URL:</strong> <span style={{ fontFamily: 'var(--font-mono)', color: 'var(--accent-gold)' }}>{cloudDocUrl.slice(0, 60)}...</span>
+                </div>
+                <button 
+                  type="button"
+                  className="btn btn-secondary"
+                  onClick={() => {
+                    navigator.clipboard.writeText(cloudDocUrl);
+                    showToast('Cloud URL copied!');
+                  }}
+                  style={{ fontSize: '0.74rem', padding: '0.25rem 0.65rem' }}
+                >
+                  <Copy size={12} /> Copy Link
+                </button>
+              </div>
+            )}
 
             {/* Live Document Preview Box */}
             {pdfExtractedText && (
@@ -1142,13 +1218,13 @@ All counterparty clearing margins and reserve custodial allocations referenced w
                       </label>
                     </div>
 
-                    {/* Download Buttons */}
+                    {/* Download & Supabase Cloud Upload Buttons */}
                     <div style={{ display: 'flex', gap: '0.5rem', marginTop: '0.5rem', flexWrap: 'wrap' }}>
                       <button 
                         type="button" 
                         className="btn btn-primary"
                         onClick={() => handleDownloadEnhancedImage('png')}
-                        style={{ flex: 1, minWidth: '130px' }}
+                        style={{ flex: 1, minWidth: '120px' }}
                       >
                         <Download size={14} /> Download PNG
                       </button>
@@ -1156,9 +1232,32 @@ All counterparty clearing margins and reserve custodial allocations referenced w
                         type="button" 
                         className="btn btn-secondary"
                         onClick={() => handleDownloadEnhancedImage('webp')}
-                        style={{ flex: 1, minWidth: '130px' }}
+                        style={{ flex: 1, minWidth: '120px' }}
                       >
                         <Download size={14} /> Download WebP
+                      </button>
+                      <button 
+                        type="button" 
+                        className="btn btn-secondary"
+                        onClick={async () => {
+                          const canvas = canvasRef.current;
+                          if (!canvas) return;
+                          try {
+                            const dataUrl = canvas.toDataURL('image/png', 0.95);
+                            const res = await fetch(dataUrl);
+                            const blob = await res.blob();
+                            const path = `enhanced/${Date.now()}_enhanced.png`;
+                            await SupabaseStorage.uploadFile('media', path, blob);
+                            const url = SupabaseStorage.getPublicUrl('media', path);
+                            navigator.clipboard.writeText(url);
+                            showToast('Enhanced image saved to Supabase Storage! Link copied.');
+                          } catch (err: any) {
+                            showToast(err?.message ? `Supabase upload: ${err.message}` : 'Saved. Ensure "media" bucket exists in Supabase.');
+                          }
+                        }}
+                        style={{ flex: 1, minWidth: '150px', borderColor: 'var(--accent-gold)', color: 'var(--accent-gold)' }}
+                      >
+                        <CloudUpload size={14} /> Save to Cloud Storage
                       </button>
                     </div>
                   </div>

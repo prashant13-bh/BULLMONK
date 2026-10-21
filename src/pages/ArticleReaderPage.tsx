@@ -8,6 +8,7 @@ import {
 } from 'lucide-react';
 
 import { Breadcrumbs } from '../components/Breadcrumbs';
+import { SupabaseDB } from '../utils/supabase';
 
 interface ArticleReaderPageProps {
   article: Article;
@@ -46,6 +47,26 @@ export const ArticleReaderPage: React.FC<ArticleReaderPageProps> = ({
   ]);
 
   // Audio briefing timer simulation
+  useEffect(() => {
+    let isMounted = true;
+    async function loadCloudComments() {
+      try {
+        const remote = await SupabaseDB.fetchComments(article.id);
+        if (isMounted && remote && remote.length > 0) {
+          setComments(prev => {
+            const existingIds = new Set(prev.map(c => c.id));
+            const fresh = remote.filter(r => !existingIds.has(r.id));
+            return [...prev, ...fresh];
+          });
+        }
+      } catch (err) {
+        // Fallback silently to local state
+      }
+    }
+    loadCloudComments();
+    return () => { isMounted = false; };
+  }, [article.id]);
+
   useEffect(() => {
     let timer: any;
     if (isPlayingAudio) {
@@ -151,6 +172,9 @@ export const ArticleReaderPage: React.FC<ArticleReaderPageProps> = ({
     setComments([newComment, ...comments]);
     setCommentText('');
     showToast('Analysis commentary broadcasted to reader room!');
+
+    // Async persist to Supabase Database
+    SupabaseDB.addComment(article.id, newComment);
   };
 
   const formatAudioTime = (totalSec: number) => {
