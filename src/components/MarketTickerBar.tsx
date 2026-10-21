@@ -116,71 +116,62 @@ export const MarketTickerBar: React.FC<MarketTickerBarProps> = ({
           </button>
         </div>
 
-        {/* Scrollable Horizontal Tape */}
-        <div 
-          className="ticker-tape-scroll"
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            overflowX: 'auto',
-            whiteSpace: 'nowrap',
-            scrollbarWidth: 'none',
-            msOverflowStyle: 'none',
-            padding: '0.35rem 0.75rem',
-            gap: '1.25rem'
-          }}
-        >
-          {tickers.map((t, idx) => (
-            <a 
-              key={idx}
-              href={TRADINGVIEW_AFFILIATE_URL}
-              target="_blank"
-              rel="sponsored noopener noreferrer"
-              title={`${t.symbol}: High ${t.high} • Low ${t.low} (Click to open TradingView chart)`}
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '8px',
-                textDecoration: 'none',
-                color: 'inherit',
-                padding: '2px 6px',
-                borderRadius: '4px',
-                transition: 'background 0.15s ease'
-              }}
-            >
-              <span style={{ fontWeight: 700, color: 'var(--text-secondary)', fontSize: '0.74rem' }}>
-                {t.symbol}
-              </span>
-              <span style={{ fontWeight: 800, fontFamily: 'var(--font-mono)', color: 'var(--text-primary)', fontSize: '0.78rem' }}>
-                {t.value}
-              </span>
-              <span style={{ 
-                fontWeight: 700, 
-                fontSize: '0.7rem', 
-                fontFamily: 'var(--font-mono)',
-                color: t.positive ? 'var(--accent-green)' : 'var(--accent-red)',
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '2px'
-              }}>
-                {t.positive ? '▲' : '▼'} {t.change}
-              </span>
+        {/* Continuous Infinite Running Marquee Track */}
+        <div className="ticker-viewport">
+          <div className="running-ticker-track">
+            {[...tickers, ...tickers].map((t, idx) => (
+              <a 
+                key={`${t.symbol}-${idx}`}
+                href={TRADINGVIEW_AFFILIATE_URL}
+                target="_blank"
+                rel="sponsored noopener noreferrer"
+                title={`${t.symbol}: High ${t.high} • Low ${t.low} (Click to open TradingView chart)`}
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  textDecoration: 'none',
+                  color: 'inherit',
+                  padding: '4px 8px',
+                  borderRadius: '4px',
+                  transition: 'background 0.15s ease',
+                  flexShrink: 0
+                }}
+              >
+                <span style={{ fontWeight: 700, color: 'var(--text-secondary)', fontSize: '0.74rem' }}>
+                  {t.symbol}
+                </span>
+                <span style={{ fontWeight: 800, fontFamily: 'var(--font-mono)', color: 'var(--text-primary)', fontSize: '0.78rem' }}>
+                  {t.value}
+                </span>
+                <span style={{ 
+                  fontWeight: 700, 
+                  fontSize: '0.7rem', 
+                  fontFamily: 'var(--font-mono)',
+                  color: t.positive ? 'var(--accent-green)' : 'var(--accent-red)',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '2px'
+                }}>
+                  {t.positive ? '▲' : '▼'} {t.change}
+                </span>
 
-              {/* Mini SVG Sparkline */}
-              {t.sparkline && t.sparkline.length > 0 && (
-                <svg width="36" height="13" style={{ overflow: 'visible', opacity: 0.85 }}>
-                  <polyline
-                    fill="none"
-                    stroke={t.positive ? 'var(--accent-green)' : 'var(--accent-red)'}
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    points={generateSvgPoints(t.sparkline, 36, 13)}
-                  />
-                </svg>
-              )}
-            </a>
-          ))}
+                {/* Mini SVG Sparkline */}
+                {t.sparkline && t.sparkline.length > 0 && (
+                  <svg width="36" height="13" style={{ overflow: 'visible', opacity: 0.85 }}>
+                    <polyline
+                      fill="none"
+                      stroke={t.positive ? 'var(--accent-green)' : 'var(--accent-red)'}
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      points={generateSvgPoints(t.sparkline, 36, 13)}
+                    />
+                  </svg>
+                )}
+              </a>
+            ))}
+          </div>
         </div>
 
         {/* Right Partner Indicator */}

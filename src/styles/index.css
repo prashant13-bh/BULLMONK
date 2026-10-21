@@ -3312,6 +3312,40 @@ html, body {
 }
 
 /* ==========================================================================
+   Continuous Running Ticker Marquee Architecture
+   ========================================================================== */
+.ticker-viewport {
+  overflow: hidden;
+  position: relative;
+  flex: 1;
+  mask-image: linear-gradient(to right, transparent 0%, black 20px, black calc(100% - 20px), transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 20px, black calc(100% - 20px), transparent 100%);
+}
+
+.running-ticker-track {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  width: max-content;
+  white-space: nowrap;
+  animation: ticker-stream 45s linear infinite;
+  will-change: transform;
+}
+
+.running-ticker-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes ticker-stream {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+/* ==========================================================================
    Institutional Print & PDF Dispatch Architecture
    ========================================================================== */
 .print-only-header {
