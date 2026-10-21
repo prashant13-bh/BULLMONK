@@ -63,23 +63,44 @@ export const App: React.FC = () => {
   };
 
   useEffect(() => {
-    const handleHashChange = () => {
-      const hash = window.location.hash.replace('#', '') as PageView;
+    const handleNavigation = () => {
+      const hash = window.location.hash.replace(/^#\/?/, '') as PageView;
+      const pathname = window.location.pathname.replace(/^\//, '').replace(/\/$/, '') as PageView;
+
       const validPages: PageView[] = [
         'home', 'admin', 'write', 'about', 'contact', 'tools', 'doc-tools', 'legal', 
         'privacy', 'terms', 'disclaimer', 'editorial', 'cookies', 'corrections'
       ];
+
+      // Handle article deep links e.g. /article/bm-nuc-018 or #article/bm-nuc-018
+      const raw = window.location.hash || window.location.pathname;
+      const match = raw.match(/article\/([a-zA-Z0-9_-]+)/);
+      if (match && match[1]) {
+        const found = articles.find((a) => a.id === match[1] || a.slug === match[1]);
+        if (found) {
+          setSelectedArticle(found);
+          setCurrentPage('article');
+          return;
+        }
+      }
+
       if (validPages.includes(hash)) {
         setCurrentPage(hash);
+      } else if (validPages.includes(pathname)) {
+        setCurrentPage(pathname);
       }
     };
 
-    // Check hash on initial load
-    handleHashChange();
+    // Check on initial load
+    handleNavigation();
 
-    window.addEventListener('hashchange', handleHashChange);
-    return () => window.removeEventListener('hashchange', handleHashChange);
-  }, []);
+    window.addEventListener('hashchange', handleNavigation);
+    window.addEventListener('popstate', handleNavigation);
+    return () => {
+      window.removeEventListener('hashchange', handleNavigation);
+      window.removeEventListener('popstate', handleNavigation);
+    };
+  }, [articles]);
 
   // Admin Session State
   const [adminUser, setAdminUser] = useState(() => AdminAuth.getCurrentUser());
