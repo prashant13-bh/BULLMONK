@@ -1,14 +1,23 @@
 import { createClient } from '@supabase/supabase-js';
 import { Article, Comment } from '../types';
 
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || 'https://aedelnskedncqmqmocoo.supabase.co';
-const supabaseKey = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY || 'sb_publishable_3Q6Jdo45UCWs8Zi-yJesKA_J2DfHTBr';
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || '';
+const supabaseKey = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY || '';
+
+/**
+ * Indicates whether Supabase cloud environment variables are properly initialized.
+ */
+export const isSupabaseConfigured = Boolean(supabaseUrl && supabaseKey);
 
 /**
  * Global Supabase Client Instance
- * Configured with BullMonk environment variables for storage, real-time database, and authentication.
+ * Configured via environment variables (VITE_SUPABASE_URL & VITE_SUPABASE_PUBLISHABLE_KEY).
+ * Protected by PostgreSQL Row Level Security (RLS) policies.
  */
-export const supabase = createClient(supabaseUrl, supabaseKey);
+export const supabase = createClient(
+  supabaseUrl || 'https://placeholder.supabase.co',
+  supabaseKey || 'placeholder-anon-key'
+);
 
 /**
  * BullMonk Supabase Storage Engine
