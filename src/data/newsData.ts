@@ -1,4 +1,5 @@
 import { Article, MarketTicker, SectorPerformance } from '../types';
+import { TRENDING_DISPATCHES } from './trendingDispatches';
 
 export const MARKET_TICKERS: MarketTicker[] = [
   { symbol: "S&P 500", value: "5,864.67", change: "+0.82%", positive: true, sparkline: [40, 45, 42, 48, 52, 50, 58, 62, 65], high: "5,872.10", low: "5,830.40" },
@@ -819,11 +820,12 @@ export const DEFAULT_ARTICLES: Article[] = [
     tags: ["India", "National Security", "Mumbai Police", "Crime Branch", "Hawala", "Bollywood"],
     views: 48600,
     bookmarks: 3410
-  }
+  },
+  ...TRENDING_DISPATCHES
 ];
 
 export const BullMonkStorage = {
-  STORAGE_KEY: 'BULLMONK_PRO_ARTICLES_V11',
+  STORAGE_KEY: 'BULLMONK_PRO_ARTICLES_V12',
   BOOKMARKS_KEY: 'BULLMONK_PRO_BOOKMARKS',
 
   getAllArticles(): Article[] {
