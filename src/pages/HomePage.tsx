@@ -435,6 +435,13 @@ export const HomePage: React.FC<HomePageProps> = ({
                 </button>
               </div>
 
+              {/* Google Reader Revenue Manager: Official Inline CTA */}
+              <div 
+                {...{ 'rrm-inline-cta': '6431d91b-b87a-445f-86a2-b9b9d1608b0b' }} 
+                className="rrm-inline-cta-container"
+                style={{ margin: '1.5rem 0', minHeight: '60px' }}
+              />
+
             </aside>
 
           </div>
