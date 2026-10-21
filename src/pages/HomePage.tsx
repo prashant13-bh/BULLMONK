@@ -47,6 +47,11 @@ export const HomePage: React.FC<HomePageProps> = ({
     { id: 'Culture & Ideas', label: 'Strategy & Ideas', icon: <BookOpen size={13} /> }
   ];
 
+  const getCategoryCount = (id: string) => {
+    if (id === 'all') return articles.length;
+    return articles.filter(a => a.category.toLowerCase().includes(id.toLowerCase())).length;
+  };
+
   const regions: { id: string; label: string; flag: string }[] = [
     { id: 'all', label: 'Global Macro', flag: '🌐' },
     { id: 'United States', label: 'USA (Wall St)', flag: '🇺🇸' },
@@ -468,6 +473,17 @@ export const HomePage: React.FC<HomePageProps> = ({
                 <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
                   {cat.icon}
                   {cat.label}
+                  <span style={{
+                    fontSize: '0.64rem',
+                    fontWeight: 800,
+                    padding: '1px 6px',
+                    borderRadius: '10px',
+                    background: selectedCategory === cat.id ? 'var(--accent-gold)' : 'var(--bg-surface-subtle)',
+                    color: selectedCategory === cat.id ? '#FFFFFF' : 'var(--text-muted)',
+                    fontFamily: 'var(--font-mono)'
+                  }}>
+                    {getCategoryCount(cat.id)}
+                  </span>
                 </span>
               </button>
             ))}

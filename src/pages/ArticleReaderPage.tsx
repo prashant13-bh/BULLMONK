@@ -142,7 +142,6 @@ export const ArticleReaderPage: React.FC<ArticleReaderPageProps> = ({
       "articleSection": article.category,
       "keywords": article.tags.join(', ')
     };
-
     script.textContent = JSON.stringify(jsonLd);
 
     return () => {
@@ -151,6 +150,20 @@ export const ArticleReaderPage: React.FC<ArticleReaderPageProps> = ({
       if (el) el.remove();
     };
   }, [article]);
+
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
+      if (totalScroll > 0) {
+        const currentProgress = (window.scrollY / totalScroll) * 100;
+        setScrollProgress(Math.min(100, Math.max(0, currentProgress)));
+      }
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const handleShare = () => {
     navigator.clipboard.writeText(window.location.href);
@@ -185,8 +198,29 @@ export const ArticleReaderPage: React.FC<ArticleReaderPageProps> = ({
   };
 
   return (
-    <main className="reader-container">
-      {/* Top Breadcrumb Navigation & Verification Badge */}
+    <>
+      {/* Precision Scroll Reading Progress Line (Bloomberg / FT Standard) */}
+      <div 
+        role="progressbar"
+        aria-label="Article reading progress"
+        aria-valuenow={Math.round(scrollProgress)}
+        aria-valuemin={0}
+        aria-valuemax={100}
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: `${scrollProgress}%`,
+          height: '3px',
+          background: 'linear-gradient(90deg, #B45309, #F59E0B)',
+          zIndex: 10000,
+          transition: 'width 0.1s linear',
+          boxShadow: '0 0 8px rgba(180, 83, 9, 0.4)'
+        }}
+      />
+
+      <main className="reader-container">
+        {/* Top Breadcrumb Navigation & Verification Badge */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.25rem', flexWrap: 'wrap', gap: '0.75rem' }}>
         <Breadcrumbs 
           items={[
@@ -586,5 +620,79 @@ export const ArticleReaderPage: React.FC<ArticleReaderPageProps> = ({
       {/* Bottom Ad Unit */}
       <AdBanner slotType="leaderboard" slotId="bottom-article-slot" />
     </main>
+
+    {/* Floating Responsive Mobile / Tablet Reading Dock (Bloomberg / FT Mobile ergonomics) */}
+    {scrollProgress > 5 && (
+      <div 
+        className="hide-on-desktop"
+        style={{
+          position: 'fixed',
+          bottom: '1.25rem',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          zIndex: 990,
+          background: 'var(--bg-surface-elevated)',
+          backdropFilter: 'blur(16px)',
+          border: '1px solid var(--border-medium)',
+          borderRadius: 'var(--radius-full)',
+          padding: '0.45rem 1rem',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '0.75rem',
+          boxShadow: '0 8px 30px rgba(0, 0, 0, 0.22)',
+          maxWidth: '92vw',
+          animation: 'fadeIn 0.2s ease-out'
+        }}
+      >
+        <button 
+          type="button"
+          className="btn-icon" 
+          onClick={onBackToWire}
+          title="Return to Wire"
+          style={{ width: '32px', height: '32px', padding: 0 }}
+        >
+          <ArrowLeft size={15} />
+        </button>
+
+        <div style={{ height: '18px', width: '1px', background: 'var(--border-medium)' }} />
+
+        <span style={{ fontSize: '0.72rem', fontWeight: 800, fontFamily: 'var(--font-mono)', color: 'var(--accent-gold)' }}>
+          {Math.round(scrollProgress)}% READ
+        </span>
+
+        <div style={{ height: '18px', width: '1px', background: 'var(--border-medium)' }} />
+
+        <button 
+          type="button"
+          className="btn-icon" 
+          onClick={() => onToggleBookmark(article.id)}
+          style={{ width: '32px', height: '32px', padding: 0, color: isBookmarked ? 'var(--accent-gold)' : 'inherit' }}
+          title="Bookmark"
+        >
+          <Bookmark size={15} fill={isBookmarked ? 'currentColor' : 'none'} />
+        </button>
+
+        <button 
+          type="button"
+          className="btn-icon" 
+          onClick={handleShare}
+          style={{ width: '32px', height: '32px', padding: 0 }}
+          title="Share"
+        >
+          <Share2 size={15} />
+        </button>
+
+        <button 
+          type="button"
+          className="btn-icon" 
+          onClick={() => setLargeFont(!largeFont)}
+          style={{ width: '32px', height: '32px', padding: 0, color: largeFont ? 'var(--accent-gold)' : 'inherit' }}
+          title="Font Size"
+        >
+          <Type size={15} />
+        </button>
+      </div>
+    )}
+  </>
   );
 };
