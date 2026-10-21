@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Article, Region } from '../types';
 import { SECTOR_HEATMAP } from '../data/newsData';
 import { AdBanner } from '../components/AdBanner';
+import { TradingViewBanner } from '../components/TradingViewBanner';
 import { 
   Search, Bookmark, Clock, Eye, Sparkles, TrendingUp, Cpu, Globe2, 
   Zap, BookOpen, Send, MapPin, Volume2, ShieldCheck, Activity, 
@@ -434,6 +435,9 @@ export const HomePage: React.FC<HomePageProps> = ({
                   Download Executive Briefing (PDF)
                 </button>
               </div>
+
+              {/* Official Financial Charting Partner: TradingView */}
+              <TradingViewBanner variant="compact" />
 
               {/* Google Reader Revenue Manager: Official Inline CTA */}
               <div 

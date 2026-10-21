@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { AdBanner } from '../components/AdBanner';
+import { TradingViewBanner } from '../components/TradingViewBanner';
 import { 
   Calculator, TrendingUp, ShieldAlert, DollarSign, Percent, 
   ArrowRight, RefreshCw, Copy, Check, BarChart2, Globe, 
@@ -1264,6 +1265,9 @@ Generated via BullMonk Financial Intelligence Suite (bullmonk.org)`;
           </div>
         </section>
       )}
+
+      {/* Official Financial Charting Partner: TradingView */}
+      <TradingViewBanner variant="full" />
 
       {/* Mandatory Regulatory & YMYL Disclaimer */}
       <div style={{ 

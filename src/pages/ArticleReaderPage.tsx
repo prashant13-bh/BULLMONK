@@ -8,6 +8,7 @@ import {
 } from 'lucide-react';
 
 import { Breadcrumbs } from '../components/Breadcrumbs';
+import { TradingViewBanner } from '../components/TradingViewBanner';
 import { SupabaseDB } from '../utils/supabase';
 
 interface ArticleReaderPageProps {
@@ -432,6 +433,9 @@ export const ArticleReaderPage: React.FC<ArticleReaderPageProps> = ({
           </button>
         </div>
       )}
+
+      {/* Official Financial Charting Partner: TradingView */}
+      <TradingViewBanner variant="full" />
 
       {/* Mid-Article AdSense Banner (High-CPM In-Article format) */}
       <AdBanner slotType="in-article" slotId="in-article-flow" />
