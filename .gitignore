@@ -9,3 +9,8 @@ dist/
 
 # Logs
 *.log
+
+# Environment variables & secrets
+.env
+.env.*
+!.env.example
