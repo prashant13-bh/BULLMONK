@@ -9,8 +9,10 @@ import { AudioDock } from './components/AudioDock';
 import { Sparkles } from 'lucide-react';
 import { initWebMCPTools } from './utils/webmcp';
 import { SupabaseDB } from './utils/supabase';
+import { AdminAuth } from './utils/adminAuth';
 
 // Asynchronous Route Splitting for 95+ PageSpeed & Low Initial Payload
+const AdminDashboardPage = lazy(() => import('./pages/AdminDashboardPage').then(m => ({ default: m.AdminDashboardPage })));
 const WriteStudioPage = lazy(() => import('./pages/WriteStudioPage').then(m => ({ default: m.WriteStudioPage })));
 const ArticleReaderPage = lazy(() => import('./pages/ArticleReaderPage').then(m => ({ default: m.ArticleReaderPage })));
 const FinancialToolsPage = lazy(() => import('./pages/FinancialToolsPage').then(m => ({ default: m.FinancialToolsPage })));
@@ -64,7 +66,7 @@ export const App: React.FC = () => {
     const handleHashChange = () => {
       const hash = window.location.hash.replace('#', '') as PageView;
       const validPages: PageView[] = [
-        'home', 'write', 'about', 'contact', 'tools', 'doc-tools', 'legal', 
+        'home', 'admin', 'write', 'about', 'contact', 'tools', 'doc-tools', 'legal', 
         'privacy', 'terms', 'disclaimer', 'editorial', 'cookies', 'corrections'
       ];
       if (validPages.includes(hash)) {
@@ -77,6 +79,14 @@ export const App: React.FC = () => {
 
     window.addEventListener('hashchange', handleHashChange);
     return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
+  // Admin Session State
+  const [adminUser, setAdminUser] = useState(() => AdminAuth.getCurrentUser());
+
+  useEffect(() => {
+    const unsubscribe = AdminAuth.subscribe((user) => setAdminUser(user));
+    return () => unsubscribe();
   }, []);
 
   // Synchronize remote community and sovereign articles from Supabase DB
@@ -239,6 +249,7 @@ export const App: React.FC = () => {
         theme={theme}
         toggleTheme={toggleTheme}
         onOpenSearch={() => setIsSearchOpen(true)}
+        adminUser={adminUser}
       />
 
       {/* Dynamic Page Routing */}
@@ -265,6 +276,18 @@ export const App: React.FC = () => {
           </span>
         </div>
       }>
+        {/* Managing Editor & Bureau Command Center */}
+        {currentPage === 'admin' && (
+          <AdminDashboardPage 
+            setCurrentPage={navigateToPage}
+            articles={articles}
+            onSelectArticle={handleSelectArticle}
+            onDeleteArticle={handleDeleteArticle}
+            showToast={showToast}
+          />
+        )}
+
+        {/* Restricted Write Studio for Admin */}
         {currentPage === 'write' && (
           <WriteStudioPage 
             onPublish={handlePublish}
@@ -272,6 +295,7 @@ export const App: React.FC = () => {
             publishedArticles={articles.filter(a => a.userCreated)}
             onDeleteArticle={handleDeleteArticle}
             onBackToWire={() => navigateToPage('home')}
+            onNavigateToAdmin={() => navigateToPage('admin')}
             showToast={showToast}
           />
         )}
@@ -359,7 +383,11 @@ export const App: React.FC = () => {
       />
 
       {/* Footer */}
-      <Footer setCurrentPage={navigateToPage} setSelectedCategory={setSelectedCategory} />
+      <Footer 
+        setCurrentPage={navigateToPage} 
+        setSelectedCategory={setSelectedCategory}
+        adminUser={adminUser}
+      />
 
       {/* Toast Notification Box */}
       {toastMessage && (

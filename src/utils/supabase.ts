@@ -197,5 +197,60 @@ export const SupabaseDB = {
     } catch (e) {
       return false;
     }
+  },
+
+  /**
+   * Delete an article from Supabase
+   */
+  async deleteArticle(id: string): Promise<boolean> {
+    try {
+      const { error } = await supabase
+        .from('articles')
+        .delete()
+        .eq('id', id);
+      return !error;
+    } catch (e) {
+      return false;
+    }
+  },
+
+  /**
+   * Fetch all comments for editorial moderation
+   */
+  async fetchAllComments(): Promise<Comment[]> {
+    try {
+      const { data, error } = await supabase
+        .from('comments')
+        .select('*')
+        .order('created_at', { ascending: false })
+        .limit(100);
+
+      if (error || !data) return [];
+      return data.map((c: any) => ({
+        id: c.id,
+        author: c.author,
+        affiliation: c.affiliation,
+        timeAgo: new Date(c.created_at).toLocaleDateString(),
+        content: c.content,
+        likes: c.likes || 0
+      }));
+    } catch (e) {
+      return [];
+    }
+  },
+
+  /**
+   * Delete a comment by ID (for admin moderation)
+   */
+  async deleteComment(id: string): Promise<boolean> {
+    try {
+      const { error } = await supabase
+        .from('comments')
+        .delete()
+        .eq('id', id);
+      return !error;
+    } catch (e) {
+      return false;
+    }
   }
 };

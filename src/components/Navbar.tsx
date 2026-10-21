@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { PageView, MarketTicker } from '../types';
+import { PageView, MarketTicker, AdminUser } from '../types';
 import { 
   Sun, Moon, Menu, X, Globe, Shield, Sparkles, 
   Search, Radio, TrendingUp, Cpu, Flame, Lock, ChevronRight,
   BookOpen, Landmark, Clock, ExternalLink, ArrowRight, FileText,
-  DollarSign, Cookie, AlertCircle, Calculator, PenTool
+  DollarSign, Cookie, AlertCircle, Calculator, PenTool, ShieldCheck
 } from 'lucide-react';
 
 interface NavbarProps {
@@ -16,6 +16,7 @@ interface NavbarProps {
   theme: 'dark' | 'light';
   toggleTheme: () => void;
   onOpenSearch?: () => void;
+  adminUser?: AdminUser | null;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -26,7 +27,8 @@ export const Navbar: React.FC<NavbarProps> = ({
   tickers,
   theme,
   toggleTheme,
-  onOpenSearch
+  onOpenSearch,
+  adminUser
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [currentTimeStr, setCurrentTimeStr] = useState('');
@@ -372,15 +374,17 @@ export const Navbar: React.FC<NavbarProps> = ({
             </ul>
 
             <div className="nav-secondary-links hide-on-tablet">
-              <button 
-                type="button"
-                className={`nav-secondary-link ${currentPage === 'write' ? 'active' : ''}`} 
-                onClick={() => handleNavClick('write')}
-                style={{ color: 'var(--accent-gold)', fontWeight: 700 }}
-              >
-                <PenTool size={12} style={{ marginRight: '4px', verticalAlign: 'middle' }} />
-                Write Dispatch
-              </button>
+              {adminUser && (
+                <button 
+                  type="button"
+                  className={`nav-secondary-link ${currentPage === 'admin' ? 'active' : ''}`} 
+                  onClick={() => handleNavClick('admin')}
+                  style={{ color: 'var(--accent-gold)', fontWeight: 800, display: 'inline-flex', alignItems: 'center', gap: '4px' }}
+                >
+                  <ShieldCheck size={13} color="var(--accent-gold)" />
+                  Managing Desk
+                </button>
+              )}
               <button 
                 type="button"
                 className={`nav-secondary-link ${currentPage === 'tools' ? 'active' : ''} nav-tools-link`} 
@@ -544,15 +548,18 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <div className="mobile-drawer-section">
                   <span className="mobile-drawer-section-title">Newsroom & Whistleblower</span>
                   <div className="mobile-drawer-links">
-                    <button 
-                      type="button"
-                      className={`mobile-nav-link ${currentPage === 'write' ? 'active' : ''}`}
-                      onClick={() => handleNavClick('write')}
-                    >
-                      <PenTool size={16} color="var(--accent-gold)" />
-                      <span>Write & Publish Dispatch</span>
-                      <ChevronRight size={14} className="chevron" />
-                    </button>
+                    {adminUser && (
+                      <button 
+                        type="button"
+                        className={`mobile-nav-link ${currentPage === 'admin' ? 'active' : ''}`}
+                        onClick={() => handleNavClick('admin')}
+                        style={{ background: 'rgba(180, 83, 9, 0.08)', border: '1px solid rgba(180, 83, 9, 0.25)' }}
+                      >
+                        <ShieldCheck size={16} color="var(--accent-gold)" />
+                        <span style={{ fontWeight: 700, color: 'var(--accent-gold)' }}>Managing Desk (Admin)</span>
+                        <ChevronRight size={14} className="chevron" style={{ marginLeft: 'auto' }} />
+                      </button>
+                    )}
 
                     <button 
                       type="button"

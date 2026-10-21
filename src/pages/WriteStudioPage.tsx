@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Article } from '../types';
-import { Sparkles, Eye, Send, Bold, Italic, Heading, Quote, Trash2, ArrowLeft, CheckCircle2, UploadCloud } from 'lucide-react';
+import { Sparkles, Eye, Send, Bold, Italic, Heading, Quote, Trash2, ArrowLeft, CheckCircle2, UploadCloud, Lock, ShieldCheck } from 'lucide-react';
 import { SupabaseStorage } from '../utils/supabase';
+import { AdminAuth } from '../utils/adminAuth';
 
 interface WriteStudioPageProps {
   onPublish: (newArticle: Partial<Article>) => void;
@@ -9,6 +10,7 @@ interface WriteStudioPageProps {
   publishedArticles: Article[];
   onDeleteArticle: (id: string) => void;
   onBackToWire: () => void;
+  onNavigateToAdmin?: () => void;
   showToast: (msg: string) => void;
 }
 
@@ -18,8 +20,44 @@ export const WriteStudioPage: React.FC<WriteStudioPageProps> = ({
   publishedArticles,
   onDeleteArticle,
   onBackToWire,
+  onNavigateToAdmin,
   showToast
 }) => {
+  const isAuth = AdminAuth.isAuthenticated();
+
+  if (!isAuth) {
+    return (
+      <main className="container" style={{ margin: '4rem auto 6rem', maxWidth: '580px', textAlign: 'center' }}>
+        <div style={{ display: 'inline-flex', padding: '16px', background: 'rgba(180, 83, 9, 0.1)', borderRadius: '50%', marginBottom: '1.25rem', border: '1px solid var(--accent-gold)' }}>
+          <Lock size={36} color="var(--accent-gold)" />
+        </div>
+        <h1 style={{ fontFamily: 'var(--font-brand)', fontSize: '1.85rem', fontWeight: 900, marginBottom: '0.5rem', letterSpacing: '0.03em' }}>
+          RESTRICTED EDITORIAL DESK
+        </h1>
+        <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: 1.6, marginBottom: '2rem' }}>
+          Dispatch composition and sovereign publishing are exclusively reserved for verified Managing Editors and Bureau Chiefs.
+        </p>
+        <div style={{ display: 'flex', gap: '0.75rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+          <button 
+            type="button" 
+            className="btn btn-primary"
+            onClick={onNavigateToAdmin || onBackToWire}
+            style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', fontWeight: 700 }}
+          >
+            <Lock size={15} />
+            <span>Authenticate at Managing Terminal</span>
+          </button>
+          <button 
+            type="button" 
+            className="btn btn-secondary"
+            onClick={onBackToWire}
+          >
+            Return to Public Wire
+          </button>
+        </div>
+      </main>
+    );
+  }
   const [title, setTitle] = useState('');
   const [deck, setDeck] = useState('');
   const [category, setCategory] = useState('Markets & Finance');
@@ -115,13 +153,22 @@ export const WriteStudioPage: React.FC<WriteStudioPageProps> = ({
       {/* Header Bar */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '2rem', flexWrap: 'wrap', gap: '1rem' }}>
         <div>
-          <button 
-            className="btn btn-secondary" 
-            onClick={onBackToWire}
-            style={{ marginBottom: '0.75rem', fontSize: '0.8rem' }}
-          >
-            <ArrowLeft size={14} /> Back to Global Wire
-          </button>
+          <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '0.75rem', flexWrap: 'wrap' }}>
+            <button 
+              className="btn btn-secondary" 
+              onClick={onNavigateToAdmin || onBackToWire}
+              style={{ fontSize: '0.8rem', display: 'inline-flex', alignItems: 'center', gap: '0.4rem', border: '1px solid var(--accent-gold)' }}
+            >
+              <ShieldCheck size={14} color="var(--accent-gold)" /> Back to Admin Terminal
+            </button>
+            <button 
+              className="btn btn-secondary" 
+              onClick={onBackToWire}
+              style={{ fontSize: '0.8rem', display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}
+            >
+              <ArrowLeft size={14} /> Public Wire
+            </button>
+          </div>
           <h1 style={{ fontFamily: 'var(--font-brand)', fontSize: 'clamp(1.8rem, 3.5vw, 2.4rem)', fontWeight: 900, letterSpacing: '0.04em' }}>
             BullMonk Editorial Studio
           </h1>

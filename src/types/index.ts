@@ -73,6 +73,7 @@ export interface Comment {
 export type PageView = 
   | 'home' 
   | 'write' 
+  | 'admin' 
   | 'article' 
   | 'about' 
   | 'contact' 
@@ -87,4 +88,12 @@ export type PageView =
   | 'corrections';
 
 export type LegalTab = 'terms' | 'privacy' | 'editorial' | 'cookies' | 'corrections' | 'financial-disclaimer';
+
+export interface AdminUser {
+  email: string;
+  role: 'managing_editor' | 'bureau_chief' | 'editor';
+  name: string;
+  avatar?: string;
+  authenticatedAt: string;
+}
 

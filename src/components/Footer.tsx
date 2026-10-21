@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { PageView } from '../types';
+import { PageView, AdminUser } from '../types';
 import { 
   Shield, Lock, Mail, ArrowRight, CheckCircle2, ChevronUp, 
   ExternalLink, Globe, Sparkles, Building2, Award, Landmark 
@@ -8,9 +8,10 @@ import {
 interface FooterProps {
   setCurrentPage: (page: PageView) => void;
   setSelectedCategory: (cat: string) => void;
+  adminUser?: AdminUser | null;
 }
 
-export const Footer: React.FC<FooterProps> = ({ setCurrentPage, setSelectedCategory }) => {
+export const Footer: React.FC<FooterProps> = ({ setCurrentPage, setSelectedCategory, adminUser }) => {
   const [newsletterEmail, setNewsletterEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
 
@@ -221,8 +222,14 @@ export const Footer: React.FC<FooterProps> = ({ setCurrentPage, setSelectedCateg
                 </button>
               </li>
               <li>
-                <button type="button" className="footer-link-btn suite-hub-link" onClick={() => navigate('write')} style={{ color: 'var(--accent-gold)', fontWeight: 600 }}>
-                  ✦ Correspondent Write Studio →
+                <button 
+                  type="button" 
+                  className="footer-link-btn suite-hub-link" 
+                  onClick={() => navigate('admin')} 
+                  style={{ color: 'var(--accent-gold)', fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: '5px' }}
+                >
+                  <Lock size={12} />
+                  <span>{adminUser ? 'Managing Editor Terminal →' : 'Bureau Staff Portal →'}</span>
                 </button>
               </li>
             </ul>

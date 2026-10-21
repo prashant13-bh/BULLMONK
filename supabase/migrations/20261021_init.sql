@@ -65,6 +65,11 @@ CREATE POLICY "Public Insert Comments"
 ON public.comments FOR INSERT 
 WITH CHECK (true);
 
+DROP POLICY IF EXISTS "Allow Delete Comments" ON public.comments;
+CREATE POLICY "Allow Delete Comments" 
+ON public.comments FOR DELETE 
+USING (true);
+
 -- 4. Dynamic Newsroom Articles Table
 CREATE TABLE IF NOT EXISTS public.articles (
   id TEXT PRIMARY KEY,
@@ -97,3 +102,13 @@ DROP POLICY IF EXISTS "Allow Insert Custom Articles" ON public.articles;
 CREATE POLICY "Allow Insert Custom Articles" 
 ON public.articles FOR INSERT 
 WITH CHECK (true);
+
+DROP POLICY IF EXISTS "Allow Delete Custom Articles" ON public.articles;
+CREATE POLICY "Allow Delete Custom Articles" 
+ON public.articles FOR DELETE 
+USING (true);
+
+DROP POLICY IF EXISTS "Allow Update Custom Articles" ON public.articles;
+CREATE POLICY "Allow Update Custom Articles" 
+ON public.articles FOR UPDATE 
+USING (true);
