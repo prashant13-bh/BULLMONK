@@ -6,11 +6,24 @@ interface AdBannerProps {
   className?: string;
 }
 
+/**
+ * Google AdSense Approval Gate:
+ * Kept FALSE prior to official Google AdSense domain approval to eliminate empty blank
+ * placeholder spaces, zero-content boxes, and unnecessary layout gaps.
+ * Set to TRUE once the site is approved by Google AdSense to activate live ad slots.
+ */
+export const ADSENSE_APPROVED = false;
+
 export const AdBanner: React.FC<AdBannerProps> = ({ 
   slotType, 
   slotId = '7155174810', 
   className = '' 
 }) => {
+  // Do not render empty containers or reserve vacant heights prior to AdSense approval
+  if (!ADSENSE_APPROVED) {
+    return null;
+  }
+
   useEffect(() => {
     try {
       if (typeof window !== 'undefined') {
@@ -49,7 +62,7 @@ export const AdBanner: React.FC<AdBannerProps> = ({
           color: 'var(--text-muted)',
           fontWeight: 700
         }}>
-          ADVERTISEMENT & SPONSORED DISPATCH
+          ADVERTISEMENT
         </span>
         <span style={{ fontSize: '0.55rem', padding: '1px 5px', borderRadius: '3px', background: 'var(--bg-surface-subtle)', color: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }}>
           PUB-7155174810446636
@@ -82,26 +95,6 @@ export const AdBanner: React.FC<AdBannerProps> = ({
           data-ad-format="auto"
           data-full-width-responsive="true"
         />
-
-        {/* Discrete Institutional Sponsor Bar Fallback */}
-        <div style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          gap: '8px',
-          padding: '0.4rem 0.75rem',
-          width: '100%',
-          flexWrap: 'wrap'
-        }}>
-          <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--accent-green)' }}></span>
-          <span style={{ fontSize: '0.72rem', fontWeight: 700, color: 'var(--text-primary)', letterSpacing: '0.04em' }}>
-            BULLMONK GLOBAL INVESTOR NETWORK
-          </span>
-          <span style={{ color: 'var(--border-medium)' }}>•</span>
-          <span style={{ fontSize: '0.70rem', color: 'var(--text-secondary)' }}>
-            Institutional Wealth & Sovereign Portfolio Strategies
-          </span>
-        </div>
       </div>
     </aside>
   );
