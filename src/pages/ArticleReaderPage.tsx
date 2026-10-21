@@ -10,6 +10,9 @@ import {
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { TradingViewBanner } from '../components/TradingViewBanner';
 import { SupabaseDB } from '../utils/supabase';
+import { TableOfContents, TocItem } from '../components/TableOfContents';
+import { ShareModal } from '../components/ShareModal';
+import { PrintModal, PrintOptions } from '../components/PrintModal';
 
 interface ArticleReaderPageProps {
   article: Article;
@@ -165,9 +168,114 @@ export const ArticleReaderPage: React.FC<ArticleReaderPageProps> = ({
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const [isShareOpen, setIsShareOpen] = useState(false);
+  const [isPrintOpen, setIsPrintOpen] = useState(false);
+  const [tocItems, setTocItems] = useState<TocItem[]>([]);
+  const [activeTocId, setActiveTocId] = useState<string>('');
+
+  // Dynamically extract headings and structure from article prose and metadata
+  useEffect(() => {
+    const items: TocItem[] = [];
+
+    if (article.keyTakeaways && article.keyTakeaways.length > 0) {
+      items.push({
+        id: 'sec-takeaways',
+        text: 'Executive Key Takeaways & Forensic Data',
+        level: 2
+      });
+    }
+
+    // Inspect heading elements rendered in .article-prose
+    const proseEl = document.querySelector('.article-prose');
+    if (proseEl) {
+      const headings = proseEl.querySelectorAll('h2, h3');
+      headings.forEach((heading, idx) => {
+        let headingId = heading.id;
+        if (!headingId) {
+          headingId = `sec-heading-${idx + 1}`;
+          heading.id = headingId;
+        }
+        items.push({
+          id: headingId,
+          text: heading.textContent || `Section ${idx + 1}`,
+          level: heading.tagName.toLowerCase() === 'h3' ? 3 : 2
+        });
+      });
+    }
+
+    items.push({
+      id: 'sec-disclaimer',
+      text: 'Institutional Risk & YMYL Disclaimer',
+      level: 2
+    });
+
+    items.push({
+      id: 'sec-comments',
+      text: 'Analyst Commentary & Reader Room',
+      level: 2
+    });
+
+    setTocItems(items);
+    if (items.length > 0) {
+      setActiveTocId(items[0].id);
+    }
+  }, [article.id, article.content]);
+
+  // Active TOC section tracking with IntersectionObserver
+  useEffect(() => {
+    if (tocItems.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveTocId(entry.target.id);
+          }
+        });
+      },
+      { rootMargin: '-70px 0px -60% 0px' }
+    );
+
+    tocItems.forEach((item) => {
+      const el = document.getElementById(item.id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, [tocItems]);
+
+  const handleTocClick = (id: string) => {
+    setActiveTocId(id);
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
+  const handleConfirmPrint = (options: PrintOptions) => {
+    if (!options.includeHeroImage) document.body.classList.add('print-hide-images');
+    if (!options.includeTakeaways) document.body.classList.add('print-hide-takeaways');
+    if (!options.includeComments) document.body.classList.add('print-hide-comments');
+    if (!options.includeDisclaimer) document.body.classList.add('print-hide-disclaimer');
+    if (options.inkSavingMode) document.body.classList.add('print-eco-mode');
+
+    const cleanup = () => {
+      document.body.classList.remove(
+        'print-hide-images',
+        'print-hide-takeaways',
+        'print-hide-comments',
+        'print-hide-disclaimer',
+        'print-eco-mode'
+      );
+      window.removeEventListener('afterprint', cleanup);
+    };
+
+    window.addEventListener('afterprint', cleanup);
+    setTimeout(cleanup, 12000);
+  };
+
   const handleShare = () => {
-    navigator.clipboard.writeText(window.location.href);
-    showToast('Dispatch link copied to clipboard!');
+    setIsShareOpen(true);
   };
 
   const handleCommentSubmit = (e: React.FormEvent) => {
@@ -220,6 +328,17 @@ export const ArticleReaderPage: React.FC<ArticleReaderPageProps> = ({
       />
 
       <main className="reader-container">
+        {/* Institutional Print / PDF Masthead (Visible in @media print) */}
+        <div className="print-only-header">
+          <h1 className="print-masthead-title">BULLMONK GLOBAL FINANCIAL INTELLIGENCE</h1>
+          <div className="print-masthead-sub">
+            <span>DISPATCH REF: BM-INTEL-{article.id.toUpperCase()}</span>
+            <span>PUBLISHED: {new Date(article.publishedAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+            <span>DESK: {article.region} ({article.category})</span>
+            <span>AUTHOR: {article.author.name}</span>
+          </div>
+        </div>
+
         {/* Top Breadcrumb Navigation & Verification Badge */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.25rem', flexWrap: 'wrap', gap: '0.75rem' }}>
         <Breadcrumbs 
@@ -330,9 +449,9 @@ export const ArticleReaderPage: React.FC<ArticleReaderPageProps> = ({
             <button 
               type="button"
               className="btn-icon hide-on-mobile" 
-              onClick={() => window.print()}
-              title="Print Dispatch"
-              aria-label="Print Dispatch"
+              onClick={() => setIsPrintOpen(true)}
+              title="Print Dispatch / PDF Export"
+              aria-label="Print Dispatch or Export PDF"
             >
               <Printer size={16} />
             </button>
@@ -397,15 +516,19 @@ export const ArticleReaderPage: React.FC<ArticleReaderPageProps> = ({
 
       {/* Executive Key Takeaways Box */}
       {article.keyTakeaways && article.keyTakeaways.length > 0 && (
-        <div style={{
-          background: 'var(--bg-surface-elevated)',
-          border: '1px solid var(--border-medium)',
-          borderLeft: '4px solid var(--accent-gold)',
-          borderRadius: 'var(--radius-md)',
-          padding: '1.5rem',
-          marginBottom: '2.5rem',
-          boxShadow: '0 4px 20px -2px rgba(15, 23, 42, 0.04)'
-        }}>
+        <div 
+          id="sec-takeaways"
+          className="executive-takeaways-box"
+          style={{
+            background: 'var(--bg-surface-elevated)',
+            border: '1px solid var(--border-medium)',
+            borderLeft: '4px solid var(--accent-gold)',
+            borderRadius: 'var(--radius-md)',
+            padding: '1.5rem',
+            marginBottom: '2.5rem',
+            boxShadow: '0 4px 20px -2px rgba(15, 23, 42, 0.04)'
+          }}
+        >
           <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontWeight: 800, fontSize: '0.86rem', color: 'var(--accent-gold)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '0.75rem' }}>
             <ShieldCheck size={16} /> Key Intelligence Takeaways & Forensic Data
           </div>
@@ -416,6 +539,14 @@ export const ArticleReaderPage: React.FC<ArticleReaderPageProps> = ({
           </ul>
         </div>
       )}
+
+      {/* Dynamic Interactive Table of Contents */}
+      <TableOfContents 
+        items={tocItems} 
+        activeId={activeTocId} 
+        onItemClick={handleTocClick}
+        readTime={article.readTime}
+      />
 
       {/* Body Prose */}
       <div 
@@ -475,17 +606,21 @@ export const ArticleReaderPage: React.FC<ArticleReaderPageProps> = ({
       <AdBanner slotType="in-article" slotId="in-article-flow" />
 
       {/* Mandatory YMYL Financial Disclaimer for Google AdSense Compliance */}
-      <div style={{
-        background: 'var(--bg-surface-elevated)',
-        border: '1px solid var(--border-medium)',
-        borderLeft: '4px solid var(--accent-gold)',
-        borderRadius: 'var(--radius-sm)',
-        padding: '1.25rem 1.5rem',
-        margin: '2.5rem 0',
-        fontSize: '0.84rem',
-        color: 'var(--text-secondary)',
-        lineHeight: '1.6'
-      }}>
+      <div 
+        id="sec-disclaimer"
+        className="ymyl-disclaimer-box"
+        style={{
+          background: 'var(--bg-surface-elevated)',
+          border: '1px solid var(--border-medium)',
+          borderLeft: '4px solid var(--accent-gold)',
+          borderRadius: 'var(--radius-sm)',
+          padding: '1.25rem 1.5rem',
+          margin: '2.5rem 0',
+          fontSize: '0.84rem',
+          color: 'var(--text-secondary)',
+          lineHeight: '1.6'
+        }}
+      >
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '0.35rem' }}>
           <AlertCircle size={15} color="var(--accent-gold)" /> Institutional Financial & Risk Disclaimer (YMYL Policy)
         </div>
@@ -542,13 +677,21 @@ export const ArticleReaderPage: React.FC<ArticleReaderPageProps> = ({
       </div>
 
       {/* Reader Dialogue / Comments */}
-      <section style={{ marginTop: '3.5rem', paddingTop: '2.5rem', borderTop: '1px solid var(--border-subtle)' }}>
+      <section 
+        id="sec-comments"
+        className="comments-section-container"
+        style={{ marginTop: '3.5rem', paddingTop: '2.5rem', borderTop: '1px solid var(--border-subtle)' }}
+      >
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
           <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.6rem' }}>Global Reader Dialogue</h3>
           <span style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>Verified Subscribers & Institutional Analysts</span>
         </div>
 
-        <form onSubmit={handleCommentSubmit} style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-subtle)', borderRadius: 'var(--radius-md)', padding: '1.5rem', marginBottom: '2rem' }}>
+        <form 
+          className="comment-form-container"
+          onSubmit={handleCommentSubmit} 
+          style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-subtle)', borderRadius: 'var(--radius-md)', padding: '1.5rem', marginBottom: '2rem' }}
+        >
           <textarea 
             className="form-control" 
             rows={3}
@@ -691,8 +834,36 @@ export const ArticleReaderPage: React.FC<ArticleReaderPageProps> = ({
         >
           <Type size={15} />
         </button>
+
+        <button 
+          type="button"
+          className="btn-icon" 
+          onClick={() => setIsPrintOpen(true)}
+          style={{ width: '32px', height: '32px', padding: 0 }}
+          title="Print Dispatch / PDF"
+        >
+          <Printer size={15} />
+        </button>
       </div>
     )}
+
+    {/* Institutional Social Syndication & Citations Modal */}
+    <ShareModal 
+      isOpen={isShareOpen}
+      onClose={() => setIsShareOpen(false)}
+      article={article}
+      showToast={showToast}
+    />
+
+    {/* Institutional Print & PDF Export Modal */}
+    <PrintModal 
+      isOpen={isPrintOpen}
+      onClose={() => setIsPrintOpen(false)}
+      article={article}
+      commentsCount={comments.length}
+      onConfirmPrint={handleConfirmPrint}
+      showToast={showToast}
+    />
   </>
   );
 };

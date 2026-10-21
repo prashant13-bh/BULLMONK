@@ -3311,5 +3311,132 @@ html, body {
   }
 }
 
+/* ==========================================================================
+   Institutional Print & PDF Dispatch Architecture
+   ========================================================================== */
+.print-only-header {
+  display: none;
+}
 
+@media print {
+  @page {
+    margin: 1.6cm 1.6cm;
+    size: portrait;
+  }
 
+  body {
+    background: #FFFFFF !important;
+    color: #0F172A !important;
+    font-size: 11pt !important;
+    line-height: 1.65 !important;
+  }
+
+  /* Hide screen chrome, navigation, widgets, and ads */
+  .site-header,
+  .masthead-clock-bar,
+  .market-ticker-strip,
+  .site-footer,
+  .audio-bar,
+  .toc-container,
+  .grand-hero-action-tools,
+  .btn,
+  .btn-icon,
+  .btn-search-trigger,
+  .rrm-inline-cta-container,
+  .ad-banner,
+  .share-modal-backdrop,
+  .print-modal-backdrop,
+  .comment-form-container,
+  .hide-on-print,
+  .quant-callout {
+    display: none !important;
+  }
+
+  /* Display formal print masthead */
+  .print-only-header {
+    display: block !important;
+    border-bottom: 2px solid #0F172A;
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+  }
+
+  .print-masthead-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 20pt;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #0F172A;
+    margin: 0;
+  }
+
+  .print-masthead-sub {
+    font-size: 8pt;
+    font-family: 'JetBrains Mono', monospace;
+    color: #475569;
+    margin-top: 4px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .reader-container {
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  .article-main-title {
+    font-size: 24pt !important;
+    color: #0F172A !important;
+    margin-bottom: 12pt !important;
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+
+  .article-prose {
+    font-size: 11pt !important;
+    color: #1E293B !important;
+    line-height: 1.7 !important;
+  }
+
+  .article-prose h2,
+  .article-prose h3 {
+    page-break-after: avoid;
+    break-after: avoid;
+    color: #0F172A !important;
+    margin-top: 18pt !important;
+  }
+
+  .executive-takeaways-box,
+  .reader-hero-figure,
+  .article-quote {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  /* Dynamic Print Class Toggles */
+  body.print-hide-images .reader-hero-figure {
+    display: none !important;
+  }
+
+  body.print-hide-takeaways .executive-takeaways-box {
+    display: none !important;
+  }
+
+  body.print-hide-comments .comments-section-container {
+    display: none !important;
+  }
+
+  body.print-hide-disclaimer .ymyl-disclaimer-box {
+    display: none !important;
+  }
+
+  body.print-eco-mode * {
+    background: transparent !important;
+    box-shadow: none !important;
+    border-color: #CBD5E1 !important;
+    color: #000000 !important;
+  }
+}
