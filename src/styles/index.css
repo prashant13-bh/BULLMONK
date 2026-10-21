@@ -935,7 +935,7 @@ html, body {
 .regional-desks-bar {
   background: var(--bg-surface);
   border-bottom: 1px solid var(--border-subtle);
-  padding: 0.65rem 0;
+  padding: 0.35rem 0;
   position: relative;
   z-index: 10;
 }
@@ -1015,7 +1015,7 @@ html, body {
 
 /* --- 5. Bloomberg 3-Column Centerpiece Grid --- */
 .hero-dispatch-section {
-  padding: clamp(1.5rem, 2.5vw, 2.5rem) 0 clamp(2rem, 3.5vw, 3rem);
+  padding: 0.65rem 0 clamp(1.5rem, 2.5vw, 2.5rem);
   border-bottom: 1px solid var(--border-subtle);
 }
 
