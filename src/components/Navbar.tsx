@@ -166,47 +166,8 @@ export const Navbar: React.FC<NavbarProps> = ({
         </div>
       </div>
 
-      {/* 2. Live Market Ticker Marquee with SVG Sparklines */}
-      <aside className="ticker-wrap" aria-label="Global Market Indices & Ticker">
-        <div className="ticker-label">
-          <Radio size={12} className="ticker-pulse-icon" />
-          <span>MARKET WIRE</span>
-        </div>
-        <div className="ticker-marquee">
-          <div className="ticker-track">
-            {[...tickers, ...tickers].map((item, idx) => (
-              <div key={idx} className="ticker-item">
-                <span className="ticker-symbol">{item.symbol}</span>
-                <span className="ticker-val">{item.value}</span>
-                
-                {/* Real SVG mini sparkline */}
-                {item.sparkline && item.sparkline.length > 0 && (
-                  <svg 
-                    width="36" 
-                    height="13" 
-                    viewBox="0 0 36 13" 
-                    className="ticker-sparkline"
-                    aria-hidden="true"
-                  >
-                    <polyline
-                      fill="none"
-                      stroke={item.positive ? '#10B981' : '#EF4444'}
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      points={generateSvgPoints(item.sparkline, 36, 13)}
-                    />
-                  </svg>
-                )}
-
-                <span className={`ticker-change ${item.positive ? 'pos' : 'neg'}`}>
-                  {item.positive ? '▲' : '▼'} {item.change}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </aside>
+      {/* 2. Live Global Market Ticker Bar (Multi-Asset Streaming Rails) */}
+      <MarketTickerBar initialTickers={tickers} />
 
       {/* 3. Main Site Header */}
       <header className="site-header">
@@ -388,24 +349,10 @@ export const Navbar: React.FC<NavbarProps> = ({
               )}
               <button 
                 type="button"
-                className={`nav-secondary-link ${currentPage === 'tools' ? 'active' : ''} nav-tools-link`} 
-                onClick={() => handleNavClick('tools')}
-              >
-                Macro Tools
-              </button>
-              <button 
-                type="button"
                 className={`nav-secondary-link ${currentPage === 'about' ? 'active' : ''}`} 
                 onClick={() => handleNavClick('about')}
               >
                 Bureaus & Board
-              </button>
-              <button 
-                type="button"
-                className={`nav-secondary-link ${currentPage === 'contact' ? 'active' : ''}`} 
-                onClick={() => handleNavClick('contact')}
-              >
-                Tip Line
               </button>
               <button 
                 type="button"
@@ -680,9 +627,6 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
         )}
       </header>
-
-      {/* 5. Live Global Market Ticker Strip (Streaming Crypto, FX & Indices) */}
-      <MarketTickerBar initialTickers={tickers} />
     </>
   );
 };
