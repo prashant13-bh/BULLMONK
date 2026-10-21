@@ -79,9 +79,15 @@ export const HomePage: React.FC<HomePageProps> = ({
 
   const leadArticle = filteredArticles.find(a => a.featured) || filteredArticles[0] || articles[0];
   
+  // Secondary in-depth bureau investigations in center column (eliminates dead white space)
+  const centerFeaturedArticles = articles
+    .filter(a => a.id !== leadArticle?.id)
+    .slice(0, 2);
+
   // Wire dispatches (fast feed in left column)
   const wireArticles = articles.filter(a => {
     if (a.id === leadArticle?.id) return false;
+    if (centerFeaturedArticles.some(c => c.id === a.id)) return false;
     if (wireFilter === 'macro') return a.category === 'Markets & Finance';
     if (wireFilter === 'tech') return a.category === 'Technology & AI';
     return true;
@@ -223,139 +229,211 @@ export const HomePage: React.FC<HomePageProps> = ({
               </div>
             </aside>
 
-            {/* COLUMN 2: GRAND FEATURED EDITORIAL INVESTIGATION */}
-            {leadArticle && (
-              <article 
-                className="grand-hero-card"
-                onClick={() => onSelectArticle(leadArticle)}
-              >
-                <div className="grand-hero-media">
-                  <img 
-                    src={hero600} 
-                    srcSet={`${hero600} 600w, ${hero800} 800w`}
-                    sizes="(max-width: 768px) 100vw, 800px"
-                    alt={leadArticle.title} 
-                    className="grand-hero-img" 
-                    width={800}
-                    height={450}
-                    loading="eager"
-                    fetchPriority="high"
-                    decoding="async"
-                  />
-                  <div className="grand-hero-overlay">
-                    <div className="grand-hero-top-meta">
-                      <div className="grand-hero-badge-overlay">
-                        <span className="badge badge-breaking">
-                          <span className="ticker-pulse"></span> EXCLUSIVE INVESTIGATION
-                        </span>
-                        <span className="badge badge-category">{leadArticle.category}</span>
-                        <span className="badge badge-desk">{leadArticle.region}</span>
-                      </div>
-                    </div>
-
-                    <div className="grand-hero-overlay-body">
-                      <div className="grand-hero-eyebrow">
-                        <span>{leadArticle.author.location.toUpperCase()} BUREAU</span>
-                        <span>•</span>
-                        <span>VERIFIED STRATEGIC INTELLIGENCE</span>
+            {/* COLUMN 2: CENTER INVESTIGATIVE CORE */}
+            <div className="hero-center-column">
+              {leadArticle && (
+                <article 
+                  className="grand-hero-card"
+                  onClick={() => onSelectArticle(leadArticle)}
+                >
+                  <div className="grand-hero-media">
+                    <img 
+                      src={hero600} 
+                      srcSet={`${hero600} 600w, ${hero800} 800w`}
+                      sizes="(max-width: 768px) 100vw, 800px"
+                      alt={leadArticle.title} 
+                      className="grand-hero-img" 
+                      width={800}
+                      height={450}
+                      loading="eager"
+                      fetchPriority="high"
+                      decoding="async"
+                    />
+                    <div className="grand-hero-overlay">
+                      <div className="grand-hero-top-meta">
+                        <div className="grand-hero-badge-overlay">
+                          <span className="badge badge-breaking">
+                            <span className="ticker-pulse"></span> EXCLUSIVE INVESTIGATION
+                          </span>
+                          <span className="badge badge-category">{leadArticle.category}</span>
+                          <span className="badge badge-desk">{leadArticle.region}</span>
+                        </div>
                       </div>
 
-                      <h2 className="grand-hero-title">{leadArticle.title}</h2>
-                      <p className="grand-hero-deck">{leadArticle.deck}</p>
+                      <div className="grand-hero-overlay-body">
+                        <div className="grand-hero-eyebrow">
+                          <span>{leadArticle.author.location.toUpperCase()} BUREAU</span>
+                          <span>•</span>
+                          <span>VERIFIED STRATEGIC INTELLIGENCE</span>
+                        </div>
 
-                      {/* Author Byline & Metrics directly in overlay */}
-                      <div className="grand-hero-author-row overlay-author-row">
-                        <div className="grand-hero-author-info">
-                          <img 
-                            src={leadArticle.author.avatar} 
-                            alt={leadArticle.author.name} 
-                            className="author-avatar-img"
-                            width={36}
-                            height={36}
-                            loading="lazy"
-                            decoding="async"
-                          />
-                          <div>
-                            <div className="author-name-with-seal">
-                              <span style={{ color: '#FFFFFF' }}>{leadArticle.author.name}</span>
-                              <span className="contributor-seal" title="Verified BullMonk Institutional Fellow">✓ Verified</span>
-                            </div>
-                            <div className="author-role-sub" style={{ color: 'rgba(255, 255, 255, 0.75)' }}>
-                              {leadArticle.author.title} • {leadArticle.author.location}
+                        <h2 className="grand-hero-title">{leadArticle.title}</h2>
+                        <p className="grand-hero-deck">{leadArticle.deck}</p>
+
+                        {/* Author Byline & Metrics directly in overlay */}
+                        <div className="grand-hero-author-row overlay-author-row">
+                          <div className="grand-hero-author-info">
+                            <img 
+                              src={leadArticle.author.avatar} 
+                              alt={leadArticle.author.name} 
+                              className="author-avatar-img"
+                              width={36}
+                              height={36}
+                              loading="lazy"
+                              decoding="async"
+                            />
+                            <div>
+                              <div className="author-name-with-seal">
+                                <span style={{ color: '#FFFFFF' }}>{leadArticle.author.name}</span>
+                                <span className="contributor-seal" title="Verified BullMonk Institutional Fellow">✓ Verified</span>
+                              </div>
+                              <div className="author-role-sub" style={{ color: 'rgba(255, 255, 255, 0.75)' }}>
+                                {leadArticle.author.title} • {leadArticle.author.location}
+                              </div>
                             </div>
                           </div>
-                        </div>
 
-                        <div className="grand-hero-action-tools">
-                          <span className="hero-metric-item" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
-                            <Clock size={13} /> {leadArticle.readTime}
-                          </span>
-                          <span className="hero-metric-item hide-on-mobile" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
-                            <Eye size={13} /> {leadArticle.views.toLocaleString()}
-                          </span>
-                          <button 
-                            type="button"
-                            className={`btn-icon ${isBookmarked(leadArticle.id) ? 'active-bookmark' : ''}`}
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              onToggleBookmark(leadArticle.id);
-                            }}
-                            title="Bookmark to Private Dossier"
-                            aria-label="Bookmark Grand Hero Article"
-                            style={{ 
-                              background: 'rgba(255, 255, 255, 0.15)', 
-                              borderColor: 'rgba(255, 255, 255, 0.25)', 
-                              color: '#FFFFFF' 
-                            }}
-                          >
-                            <Bookmark size={15} fill={isBookmarked(leadArticle.id) ? 'currentColor' : 'none'} />
-                          </button>
+                          <div className="grand-hero-action-tools">
+                            <span className="hero-metric-item" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
+                              <Clock size={13} /> {leadArticle.readTime}
+                            </span>
+                            <span className="hero-metric-item hide-on-mobile" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
+                              <Eye size={13} /> {leadArticle.views.toLocaleString()}
+                            </span>
+                            <button 
+                              type="button"
+                              className={`btn-icon ${isBookmarked(leadArticle.id) ? 'active-bookmark' : ''}`}
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                onToggleBookmark(leadArticle.id);
+                              }}
+                              title="Bookmark to Private Dossier"
+                              aria-label="Bookmark Grand Hero Article"
+                              style={{ 
+                                background: 'rgba(255, 255, 255, 0.15)', 
+                                borderColor: 'rgba(255, 255, 255, 0.25)', 
+                                color: '#FFFFFF' 
+                              }}
+                            >
+                              <Bookmark size={15} fill={isBookmarked(leadArticle.id) ? 'currentColor' : 'none'} />
+                            </button>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
 
-                <div className="grand-hero-content">
-                  {/* Audio Briefing Pill */}
-                  <div className="grand-hero-audio-bar" onClick={(e) => {
-                    e.stopPropagation();
-                    if (onStartAudioBriefing) onStartAudioBriefing(leadArticle);
-                  }}>
-                    <button 
-                      type="button" 
-                      className="audio-pill-btn" 
-                      title="Listen to 3-Min Executive Audio Briefing"
-                      aria-label="Listen to 3-Min Executive Audio Briefing"
-                      style={{ width: '100%', justifyContent: 'space-between' }}
-                    >
-                      <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
-                        <Volume2 size={15} />
-                        <span>Listen to Executive Audio Dispatch ({leadArticle.readTime})</span>
-                      </span>
-                      <div className="audio-mini-visualizer">
-                        <span></span><span></span><span></span><span></span>
+                  <div className="grand-hero-content">
+                    {/* Audio Briefing Pill */}
+                    <div className="grand-hero-audio-bar" onClick={(e) => {
+                      e.stopPropagation();
+                      if (onStartAudioBriefing) onStartAudioBriefing(leadArticle);
+                    }}>
+                      <button 
+                        type="button" 
+                        className="audio-pill-btn" 
+                        title="Listen to 3-Min Executive Audio Briefing"
+                        aria-label="Listen to 3-Min Executive Audio Briefing"
+                        style={{ width: '100%', justifyContent: 'space-between' }}
+                      >
+                        <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+                          <Volume2 size={15} />
+                          <span>Listen to Executive Audio Dispatch ({leadArticle.readTime})</span>
+                        </span>
+                        <div className="audio-mini-visualizer">
+                          <span></span><span></span><span></span><span></span>
+                        </div>
+                      </button>
+                    </div>
+
+                    {/* Key Intelligence Takeaways Box */}
+                    {leadArticle.keyTakeaways && leadArticle.keyTakeaways.length > 0 && (
+                      <div className="hero-takeaways-box" onClick={(e) => e.stopPropagation()}>
+                        <div className="takeaways-header">
+                          <ShieldCheck size={14} color="var(--accent-gold)" />
+                          <span>INSTITUTIONAL CORE THESIS & DATA</span>
+                        </div>
+                        <ul className="takeaways-list">
+                          {leadArticle.keyTakeaways.map((point, i) => (
+                            <li key={i}>{point}</li>
+                          ))}
+                        </ul>
                       </div>
-                    </button>
+                    )}
+                  </div>
+                </article>
+              )}
+
+              {/* Secondary In-Depth Bureau Investigations (Eliminates dead white space) */}
+              {centerFeaturedArticles.length > 0 && (
+                <div className="center-featured-subgrid">
+                  <div className="center-subgrid-header">
+                    <span className="subgrid-header-label">
+                      <TrendingUp size={13} color="var(--accent-gold)" />
+                      <span>EXECUTIVE FIELD DISPATCHES &amp; DOSSIERS</span>
+                    </span>
+                    <span className="subgrid-header-count">VERIFIED INTELLIGENCE</span>
                   </div>
 
-                  {/* Key Intelligence Takeaways Box */}
-                  {leadArticle.keyTakeaways && leadArticle.keyTakeaways.length > 0 && (
-                    <div className="hero-takeaways-box" onClick={(e) => e.stopPropagation()}>
-                      <div className="takeaways-header">
-                        <ShieldCheck size={14} color="var(--accent-gold)" />
-                        <span>INSTITUTIONAL CORE THESIS & DATA</span>
-                      </div>
-                      <ul className="takeaways-list">
-                        {leadArticle.keyTakeaways.map((point, i) => (
-                          <li key={i}>{point}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
+                  <div className="center-subgrid-cards">
+                    {centerFeaturedArticles.map((art) => (
+                      <article 
+                        key={art.id}
+                        className="center-subcard"
+                        onClick={() => onSelectArticle(art)}
+                      >
+                        <div className="center-subcard-media">
+                          <img 
+                            src={art.heroImage} 
+                            alt={art.title}
+                            className="center-subcard-img"
+                            loading="lazy"
+                            decoding="async"
+                            width={320}
+                            height={145}
+                          />
+                          <span className={`badge ${art.breaking ? 'badge-breaking' : 'badge-category'}`}>
+                            {art.category}
+                          </span>
+                        </div>
+
+                        <div className="center-subcard-body">
+                          <div className="center-subcard-meta">
+                            <span>{art.region}</span>
+                            <span>•</span>
+                            <span>{art.readTime}</span>
+                          </div>
+
+                          <h3 className="center-subcard-title">
+                            {art.title}
+                          </h3>
+
+                          <p className="center-subcard-deck">
+                            {art.deck}
+                          </p>
+
+                          <div className="center-subcard-footer">
+                            <span>By {art.author.name}</span>
+                            <button
+                              type="button"
+                              className={`btn-icon ${isBookmarked(art.id) ? 'active-bookmark' : ''}`}
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                onToggleBookmark(art.id);
+                              }}
+                              title="Bookmark"
+                              style={{ width: '28px', height: '28px', padding: 0 }}
+                            >
+                              <Bookmark size={13} fill={isBookmarked(art.id) ? 'currentColor' : 'none'} />
+                            </button>
+                          </div>
+                        </div>
+                      </article>
+                    ))}
+                  </div>
                 </div>
-              </article>
-            )}
+              )}
+            </div>
 
             {/* COLUMN 3: MARKET BAROMETER & MOST READ LEADERBOARD */}
             <aside className="market-leaderboard-column">
