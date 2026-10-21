@@ -103,6 +103,44 @@ export const AboutPage: React.FC<AboutPageProps> = ({ setCurrentPage }) => {
         </p>
       </div>
 
+      {/* Newsroom Showcase Banner */}
+      <div style={{ 
+        position: 'relative', 
+        borderRadius: 'var(--radius-lg)', 
+        overflow: 'hidden', 
+        marginBottom: '3.5rem',
+        border: '1px solid var(--border-medium)',
+        boxShadow: '0 20px 40px rgba(0,0,0,0.25)'
+      }}>
+        <img 
+          src="/images/bullmonk_global_newsroom.webp" 
+          alt="BULLMONK International Financial Intelligence Newsroom and Trading Floor"
+          style={{ width: '100%', height: 'auto', maxHeight: '520px', objectFit: 'cover', display: 'block' }}
+          loading="eager"
+        />
+        <div style={{
+          position: 'absolute',
+          bottom: 0,
+          left: 0,
+          right: 0,
+          background: 'linear-gradient(to top, rgba(8, 12, 20, 0.95) 0%, rgba(8, 12, 20, 0.7) 60%, transparent 100%)',
+          padding: 'clamp(1.2rem, 3vw, 2.2rem) clamp(1.2rem, 3.5vw, 2.5rem)',
+          color: '#F8F9FA'
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '0.4rem', flexWrap: 'wrap' }}>
+            <span className="badge badge-breaking" style={{ fontSize: '0.72rem', background: 'var(--accent-gold)', color: '#0F172A', fontWeight: 800 }}>
+              LIVE GLOBAL WIRE
+            </span>
+            <span style={{ fontSize: '0.8rem', fontFamily: 'var(--font-mono)', color: 'rgba(255,255,255,0.7)' }}>
+              CENTRAL NEWSROOM & TRADING DESK
+            </span>
+          </div>
+          <p style={{ margin: 0, fontSize: '0.95rem', color: '#E2E8F0', maxWidth: '850px', lineHeight: 1.5 }}>
+            Inside the BULLMONK International Intelligence central newsroom: investigative journalists, sovereign fixed-income analysts, and macroeconomic researchers monitoring multi-currency settlement rails, central bank liquidity, and real-time market data feeds.
+          </p>
+        </div>
+      </div>
+
       {/* Manifesto Card */}
       <section style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-subtle)', borderRadius: 'var(--radius-lg)', padding: 'clamp(1.75rem, 4vw, 3rem)', marginBottom: '4rem' }}>
         <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.8rem', marginBottom: '1.25rem' }}>
@@ -138,13 +176,55 @@ export const AboutPage: React.FC<AboutPageProps> = ({ setCurrentPage }) => {
         </div>
       </section>
 
-      {/* Global Bureaus Grid */}
+      {/* Global Bureaus Grid with Headquarters Architecture */}
       <section style={{ marginBottom: '4rem' }}>
         <div style={{ borderBottom: '2px solid var(--border-subtle)', paddingBottom: '0.75rem', marginBottom: '2rem' }}>
           <h2 style={{ fontFamily: 'var(--font-brand)', fontSize: '1.35rem', fontWeight: 800 }}>
-            International Newsroom Bureaus
+            International Newsroom Bureaus & Headquarters
           </h2>
-          <span style={{ fontSize: '0.78rem', color: 'var(--accent-gold)', fontFamily: 'var(--font-mono)' }}>6 CONTINENTAL HUBS</span>
+          <span style={{ fontSize: '0.78rem', color: 'var(--accent-gold)', fontFamily: 'var(--font-mono)' }}>6 CONTINENTAL HUBS • GLOBAL COVERAGE</span>
+        </div>
+
+        {/* Headquarters Facade Feature */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+          gap: '2rem',
+          background: 'var(--bg-surface)',
+          border: '1px solid var(--border-subtle)',
+          borderRadius: 'var(--radius-lg)',
+          overflow: 'hidden',
+          marginBottom: '2rem'
+        }}>
+          <div>
+            <img 
+              src="/images/bullmonk_headquarters_facade.webp" 
+              alt="BULLMONK International Intelligence Corporate Headquarters"
+              style={{ width: '100%', height: '100%', minHeight: '260px', objectFit: 'cover', display: 'block' }}
+              loading="lazy"
+            />
+          </div>
+          <div style={{ padding: 'clamp(1.5rem, 3vw, 2.5rem)', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+            <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.74rem', color: 'var(--accent-gold)', textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: '0.4rem' }}>
+              Corporate Headquarters
+            </span>
+            <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.5rem', margin: '0 0 0.8rem', color: 'var(--text-primary)' }}>
+              BULLMONK International Intelligence
+            </h3>
+            <p style={{ color: 'var(--text-secondary)', fontSize: '0.92rem', lineHeight: 1.6, marginBottom: '1rem' }}>
+              Located in the heart of the international financial quarter, the BULLMONK building houses our primary macroeconomics desk, editorial standards council, quantitative analytics laboratory, and secure whistleblower communications infrastructure.
+            </p>
+            <div style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap', borderTop: '1px solid var(--border-subtle)', paddingTop: '1rem' }}>
+              <div>
+                <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)', display: 'block' }}>Primary Wire Desk</span>
+                <strong style={{ fontSize: '0.85rem', color: 'var(--text-primary)' }}>24/7 Global Surveillance</strong>
+              </div>
+              <div>
+                <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)', display: 'block' }}>Verification Standard</span>
+                <strong style={{ fontSize: '0.85rem', color: 'var(--accent-gold)' }}>Two-Source Corroboration</strong>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div className="bureau-grid">

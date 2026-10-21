@@ -49,6 +49,28 @@ export const EditorialStandardsPage: React.FC<EditorialStandardsPageProps> = ({ 
         {/* Left Column: Full Articles */}
         <article style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-subtle)', borderRadius: 'var(--radius-md)', padding: 'clamp(1.5rem, 3.5vw, 2.75rem)', lineHeight: '1.8' }}>
           
+          {/* Editorial Standards Council Photography Banner */}
+          <div style={{ 
+            borderRadius: 'var(--radius-md)', 
+            overflow: 'hidden', 
+            border: '1px solid var(--border-subtle)', 
+            marginBottom: '2.5rem',
+            background: 'var(--bg-surface-elevated)'
+          }}>
+            <img 
+              src="/images/bullmonk_editorial_board.webp" 
+              alt="BULLMONK Editorial Standards Council and Senior Investigative Editors in Session"
+              style={{ width: '100%', height: 'auto', maxHeight: '360px', objectFit: 'cover', display: 'block' }}
+              loading="lazy"
+            />
+            <div style={{ padding: '1rem 1.25rem', borderTop: '1px solid var(--border-subtle)', fontSize: '0.84rem', color: 'var(--text-secondary)' }}>
+              <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', color: 'var(--accent-gold)', textTransform: 'uppercase', display: 'block', marginBottom: '0.2rem' }}>
+                EDITORIAL ETHICS COUNCIL • LONDON & FRANKFURT CHAMBERS
+              </span>
+              The BULLMONK Editorial Standards Council convened in executive review: senior editors, legal counsel, and forensic accountants verifying investigative dossiers and primary statutory filings under the Two-Source Protocol.
+            </div>
+          </div>
+
           {/* Principle 1 */}
           <section id="independence" style={{ marginBottom: '2.5rem' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.75rem' }}>

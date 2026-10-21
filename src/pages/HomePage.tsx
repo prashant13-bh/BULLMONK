@@ -533,6 +533,36 @@ export const HomePage: React.FC<HomePageProps> = ({
                 </button>
               </div>
 
+              {/* Inside the BULLMONK Bureau Showcase */}
+              <div style={{
+                background: 'var(--bg-surface)',
+                border: '1px solid var(--border-subtle)',
+                borderRadius: 'var(--radius-md)',
+                overflow: 'hidden',
+                margin: '1.25rem 0'
+              }}>
+                <img 
+                  src="/images/bullmonk_global_newsroom.webp" 
+                  alt="Inside the BULLMONK Intelligence Newsroom Floor"
+                  style={{ width: '100%', height: '140px', objectFit: 'cover', display: 'block' }}
+                  loading="lazy"
+                />
+                <div style={{ padding: '1rem' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '0.35rem' }}>
+                    <span style={{ display: 'inline-block', width: '7px', height: '7px', borderRadius: '50%', background: 'var(--accent-red)' }}></span>
+                    <span style={{ fontSize: '0.68rem', fontFamily: 'var(--font-mono)', color: 'var(--accent-gold)', fontWeight: 700, letterSpacing: '0.06em' }}>
+                      GLOBAL WIRE SURVEILLANCE
+                    </span>
+                  </div>
+                  <h4 style={{ fontFamily: 'var(--font-serif)', fontSize: '0.96rem', margin: '0 0 0.4rem', lineHeight: 1.35, color: 'var(--text-primary)' }}>
+                    Inside the Central Newsroom & Trading Desks
+                  </h4>
+                  <p style={{ fontSize: '0.78rem', color: 'var(--text-secondary)', lineHeight: 1.45, margin: 0 }}>
+                    Our international bureau desks operate around the clock across Zurich, London, New York, Tokyo, and Bengaluru.
+                  </p>
+                </div>
+              </div>
+
               {/* Official Financial Charting Partner: TradingView */}
               <TradingViewBanner variant="compact" />
 

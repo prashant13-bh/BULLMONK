@@ -97,68 +97,102 @@ export const ContactPage: React.FC<ContactPageProps> = ({ setCurrentPage, showTo
           PGP Fingerprint: 4F2A 991B EC71 3908 C844 7120 A8BF 1419 6E93 DD41
         </div>
 
-        <form 
-          onSubmit={handleTipSubmit}
-          toolname="submit_whistleblower_tip"
-          tooldescription="Submit encrypted whistleblower intelligence tip to BullMonk investigative council"
-          data-webmcp-tool="submit_whistleblower_tip"
-          data-webmcp-description="Submit encrypted whistleblower intelligence tip to BullMonk investigative council"
-        >
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1rem', marginBottom: '1rem' }}>
-            <div>
-              <label className="form-label">Classification Desk</label>
-              <select 
-                className="form-control"
-                value={tipCategory}
-                onChange={(e) => setTipCategory(e.target.value)}
-                style={{ cursor: 'pointer' }}
-                toolparam="category"
-                data-webmcp-input="category"
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(310px, 1fr))', gap: '2rem', alignItems: 'start' }}>
+          <div>
+            <form 
+              onSubmit={handleTipSubmit}
+              toolname="submit_whistleblower_tip"
+              tooldescription="Submit encrypted whistleblower intelligence tip to BullMonk investigative council"
+              data-webmcp-tool="submit_whistleblower_tip"
+              data-webmcp-description="Submit encrypted whistleblower intelligence tip to BullMonk investigative council"
+            >
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem', marginBottom: '1rem' }}>
+                <div>
+                  <label className="form-label">Classification Desk</label>
+                  <select 
+                    className="form-control"
+                    value={tipCategory}
+                    onChange={(e) => setTipCategory(e.target.value)}
+                    style={{ cursor: 'pointer' }}
+                    toolparam="category"
+                    data-webmcp-input="category"
+                  >
+                    <option>Corporate & Banking Fraud</option>
+                    <option>Sovereign & Multilateral Treaty Violation</option>
+                    <option>Critical Infrastructure & Supply Chain Chokepoints</option>
+                    <option>Deep Tech & Semiconductor Export Violations</option>
+                    <option>Environmental & Polar Maritime Violations</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="form-label">Contact Handle (Optional / Pseudonym)</label>
+                  <input 
+                    type="text" 
+                    className="form-control"
+                    placeholder="Signal, ProtonMail, or anonymous"
+                    value={tipHandle}
+                    onChange={(e) => setTipHandle(e.target.value)}
+                    toolparam="contactHandle"
+                    data-webmcp-input="contactHandle"
+                  />
+                </div>
+              </div>
+
+              <div style={{ marginBottom: '1.25rem' }}>
+                <label className="form-label">Confidential Briefing / Document Summary *</label>
+                <textarea 
+                  className="form-control"
+                  rows={4}
+                  placeholder="Provide entities, dates, document hashes, and context for our investigative journalists..."
+                  value={tipDetails}
+                  onChange={(e) => setTipDetails(e.target.value)}
+                  required
+                  toolparam="briefingDetails"
+                  data-webmcp-input="briefingDetails"
+                />
+              </div>
+
+              <button 
+                type="submit" 
+                className="btn btn-primary"
+                style={{ background: 'var(--accent-red)', borderColor: 'var(--accent-red)', color: '#fff' }}
               >
-                <option>Corporate & Banking Fraud</option>
-                <option>Sovereign & Multilateral Treaty Violation</option>
-                <option>Critical Infrastructure & Supply Chain Chokepoints</option>
-                <option>Deep Tech & Semiconductor Export Violations</option>
-                <option>Environmental & Polar Maritime Violations</option>
-              </select>
-            </div>
-
-            <div>
-              <label className="form-label">Contact Handle (Optional / Pseudonym)</label>
-              <input 
-                type="text" 
-                className="form-control"
-                placeholder="Signal handle, ProtonMail, or leave blank for total anonymity"
-                value={tipHandle}
-                onChange={(e) => setTipHandle(e.target.value)}
-                toolparam="contactHandle"
-                data-webmcp-input="contactHandle"
-              />
-            </div>
+                <Lock size={14} /> Encrypt and Transmit Secure Tip
+              </button>
+            </form>
           </div>
 
-          <div style={{ marginBottom: '1.25rem' }}>
-            <label className="form-label">Confidential Briefing / Document Summary *</label>
-            <textarea 
-              className="form-control"
-              rows={3}
-              placeholder="Provide entities, dates, document hashes, and context for our investigative journalists..."
-              value={tipDetails}
-              onChange={(e) => setTipDetails(e.target.value)}
-              required
-              toolparam="briefingDetails"
-              data-webmcp-input="briefingDetails"
+          {/* Secure Vault Image & Hardware Specs */}
+          <div style={{ 
+            borderRadius: 'var(--radius-md)', 
+            overflow: 'hidden', 
+            border: '1px solid rgba(239, 68, 68, 0.25)', 
+            background: 'var(--bg-surface-elevated)'
+          }}>
+            <img 
+              src="/images/bullmonk_secure_data_vault.webp" 
+              alt="BULLMONK Zero-Knowledge Cryptographic Data Vault and Whistleblower Ingestion Terminal" 
+              style={{ width: '100%', height: 'auto', minHeight: '220px', maxHeight: '270px', objectFit: 'cover', display: 'block' }}
+              loading="lazy"
             />
+            <div style={{ padding: '1.25rem', borderTop: '1px solid rgba(239, 68, 68, 0.2)' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', marginBottom: '0.35rem' }}>
+                <span style={{ display: 'inline-block', width: '8px', height: '8px', borderRadius: '50%', background: '#22c55e', boxShadow: '0 0 8px #22c55e' }}></span>
+                <span style={{ fontSize: '0.74rem', fontFamily: 'var(--font-mono)', color: 'var(--accent-gold)', fontWeight: 700 }}>
+                  AIR-GAPPED HARDWARE PROTOCOL ACTIVE
+                </span>
+              </div>
+              <p style={{ margin: '0 0 0.6rem', fontSize: '0.82rem', color: 'var(--text-secondary)', lineHeight: 1.5 }}>
+                Submissions pass through Hardware Security Modules (HSMs). Connection metadata, browser fingerprints, and TCP/IP headers are permanently stripped upon packet handshake.
+              </p>
+              <div style={{ display: 'flex', gap: '1rem', fontSize: '0.72rem', fontFamily: 'var(--font-mono)', color: 'var(--text-muted)' }}>
+                <span>• RSA-4096 / PQC Ready</span>
+                <span>• Zero-Metadata Storage</span>
+              </div>
+            </div>
           </div>
-
-          <button 
-            type="submit" 
-            className="btn btn-primary"
-            style={{ background: 'var(--accent-red)', borderColor: 'var(--accent-red)', color: '#fff' }}
-          >
-            <Lock size={14} /> Encrypt and Transmit Secure Tip
-          </button>
-        </form>
+        </div>
       </section>
 
       {/* Split Grid: General Inquiries & Newsroom Desks */}
