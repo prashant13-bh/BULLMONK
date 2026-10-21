@@ -4,7 +4,7 @@ import {
   Sun, Moon, Menu, X, Globe, Shield, Sparkles, 
   Search, Radio, TrendingUp, Cpu, Flame, Lock, ChevronRight,
   BookOpen, Landmark, Clock, ExternalLink, ArrowRight, FileText,
-  DollarSign, Cookie, AlertCircle, Calculator
+  DollarSign, Cookie, AlertCircle, Calculator, PenTool
 } from 'lucide-react';
 
 interface NavbarProps {
@@ -374,6 +374,15 @@ export const Navbar: React.FC<NavbarProps> = ({
             <div className="nav-secondary-links hide-on-tablet">
               <button 
                 type="button"
+                className={`nav-secondary-link ${currentPage === 'write' ? 'active' : ''}`} 
+                onClick={() => handleNavClick('write')}
+                style={{ color: 'var(--accent-gold)', fontWeight: 700 }}
+              >
+                <PenTool size={12} style={{ marginRight: '4px', verticalAlign: 'middle' }} />
+                Write Dispatch
+              </button>
+              <button 
+                type="button"
                 className={`nav-secondary-link ${currentPage === 'tools' ? 'active' : ''} nav-tools-link`} 
                 onClick={() => handleNavClick('tools')}
               >
@@ -535,6 +544,16 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <div className="mobile-drawer-section">
                   <span className="mobile-drawer-section-title">Newsroom & Whistleblower</span>
                   <div className="mobile-drawer-links">
+                    <button 
+                      type="button"
+                      className={`mobile-nav-link ${currentPage === 'write' ? 'active' : ''}`}
+                      onClick={() => handleNavClick('write')}
+                    >
+                      <PenTool size={16} color="var(--accent-gold)" />
+                      <span>Write & Publish Dispatch</span>
+                      <ChevronRight size={14} className="chevron" />
+                    </button>
+
                     <button 
                       type="button"
                       className="mobile-nav-link" 

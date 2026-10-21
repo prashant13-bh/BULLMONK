@@ -8,8 +8,10 @@ import { SearchModal } from './components/SearchModal';
 import { AudioDock } from './components/AudioDock';
 import { Sparkles } from 'lucide-react';
 import { initWebMCPTools } from './utils/webmcp';
+import { SupabaseDB } from './utils/supabase';
 
 // Asynchronous Route Splitting for 95+ PageSpeed & Low Initial Payload
+const WriteStudioPage = lazy(() => import('./pages/WriteStudioPage').then(m => ({ default: m.WriteStudioPage })));
 const ArticleReaderPage = lazy(() => import('./pages/ArticleReaderPage').then(m => ({ default: m.ArticleReaderPage })));
 const FinancialToolsPage = lazy(() => import('./pages/FinancialToolsPage').then(m => ({ default: m.FinancialToolsPage })));
 const DocumentToolsPage = lazy(() => import('./pages/DocumentToolsPage').then(m => ({ default: m.DocumentToolsPage })));
@@ -62,7 +64,7 @@ export const App: React.FC = () => {
     const handleHashChange = () => {
       const hash = window.location.hash.replace('#', '') as PageView;
       const validPages: PageView[] = [
-        'home', 'about', 'contact', 'tools', 'doc-tools', 'legal', 
+        'home', 'write', 'about', 'contact', 'tools', 'doc-tools', 'legal', 
         'privacy', 'terms', 'disclaimer', 'editorial', 'cookies', 'corrections'
       ];
       if (validPages.includes(hash)) {
@@ -75,6 +77,25 @@ export const App: React.FC = () => {
 
     window.addEventListener('hashchange', handleHashChange);
     return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
+  // Synchronize remote community and sovereign articles from Supabase DB
+  useEffect(() => {
+    const syncSupabaseArticles = async () => {
+      try {
+        const remoteArticles = await SupabaseDB.fetchArticles();
+        if (remoteArticles && remoteArticles.length > 0) {
+          setArticles((prev) => {
+            const existingIds = new Set(prev.map((a) => a.id));
+            const uniqueRemote = remoteArticles.filter((a) => !existingIds.has(a.id));
+            return [...uniqueRemote, ...prev];
+          });
+        }
+      } catch (err) {
+        console.warn('Supabase articles sync silent fallback:', err);
+      }
+    };
+    syncSupabaseArticles();
   }, []);
 
   // Theme attribute synchronization
@@ -148,6 +169,61 @@ export const App: React.FC = () => {
     showToast(isNowSaved ? 'Story added to private reading dossier' : 'Story removed from reading dossier');
   };
 
+  const handlePublish = async (newArticleData: Partial<Article>) => {
+    const fullArticle: Article = {
+      id: `art-${Date.now()}`,
+      slug: (newArticleData.title || 'dispatch')
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/(^-|-$)/g, ''),
+      title: newArticleData.title || 'Untitled Dispatch',
+      deck: newArticleData.deck || '',
+      category: newArticleData.category || 'Markets & Finance',
+      region: newArticleData.region || 'Global',
+      content: newArticleData.content || '',
+      keyTakeaways: newArticleData.keyTakeaways || [],
+      author: newArticleData.author || {
+        name: 'BullMonk Correspondent',
+        title: 'Senior Financial Analyst',
+        avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=250&q=80',
+        location: 'Global Bureau'
+      },
+      publishedAt: new Date().toISOString(),
+      readTime: `${Math.max(3, Math.ceil((newArticleData.content || '').split(' ').length / 200))} min read`,
+      heroImage: newArticleData.heroImage || 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80',
+      imageCaption: newArticleData.imageCaption || 'BullMonk Sovereign Wire Dispatch.',
+      featured: newArticleData.featured ?? true,
+      breaking: newArticleData.breaking ?? false,
+      tags: newArticleData.tags || ['Global Macro'],
+      views: 0,
+      bookmarks: 0,
+      userCreated: true
+    };
+
+    BullMonkStorage.addArticle(fullArticle);
+    setArticles(BullMonkStorage.getAllArticles());
+
+    try {
+      const saved = await SupabaseDB.saveArticle(fullArticle);
+      if (saved) {
+        showToast('Dispatch published and securely archived in Supabase Cloud.');
+      } else {
+        showToast('Dispatch published to local news wire.');
+      }
+    } catch {
+      showToast('Dispatch published to local news wire.');
+    }
+
+    setSelectedArticle(fullArticle);
+    navigateToPage('article');
+  };
+
+  const handleDeleteArticle = (id: string) => {
+    BullMonkStorage.deleteArticle(id);
+    setArticles(BullMonkStorage.getAllArticles());
+    showToast('Dispatch removed from editorial ledger.');
+  };
+
   return (
     <>
       {/* Top Reading Progress Bar */}
@@ -189,6 +265,17 @@ export const App: React.FC = () => {
           </span>
         </div>
       }>
+        {currentPage === 'write' && (
+          <WriteStudioPage 
+            onPublish={handlePublish}
+            onSelectArticle={handleSelectArticle}
+            publishedArticles={articles.filter(a => a.userCreated)}
+            onDeleteArticle={handleDeleteArticle}
+            onBackToWire={() => navigateToPage('home')}
+            showToast={showToast}
+          />
+        )}
+
         {currentPage === 'article' && selectedArticle && (
           <ArticleReaderPage 
             article={selectedArticle}

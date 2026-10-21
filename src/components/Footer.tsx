@@ -220,6 +220,11 @@ export const Footer: React.FC<FooterProps> = ({ setCurrentPage, setSelectedCateg
                   Corrections & Public Errata Log
                 </button>
               </li>
+              <li>
+                <button type="button" className="footer-link-btn suite-hub-link" onClick={() => navigate('write')} style={{ color: 'var(--accent-gold)', fontWeight: 600 }}>
+                  ✦ Correspondent Write Studio →
+                </button>
+              </li>
             </ul>
           </div>
 

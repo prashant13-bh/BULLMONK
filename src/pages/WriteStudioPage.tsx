@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Article } from '../types';
-import { Sparkles, Eye, Send, Bold, Italic, Heading, Quote, Trash2, ArrowLeft, CheckCircle2 } from 'lucide-react';
+import { Sparkles, Eye, Send, Bold, Italic, Heading, Quote, Trash2, ArrowLeft, CheckCircle2, UploadCloud } from 'lucide-react';
+import { SupabaseStorage } from '../utils/supabase';
 
 interface WriteStudioPageProps {
   onPublish: (newArticle: Partial<Article>) => void;
@@ -32,6 +33,25 @@ export const WriteStudioPage: React.FC<WriteStudioPageProps> = ({
   const [tags, setTags] = useState('Macroeconomics, Global Markets, Central Banks');
   const [breaking, setBreaking] = useState(false);
   const [previewMode, setPreviewMode] = useState(false);
+  const [uploadingImage, setUploadingImage] = useState(false);
+
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setUploadingImage(true);
+    try {
+      const filename = `hero-${Date.now()}-${file.name.replace(/[^a-zA-Z0-9.-]/g, '_')}`;
+      await SupabaseStorage.uploadFile('media', `articles/${filename}`, file);
+      const publicUrl = SupabaseStorage.getPublicUrl('media', `articles/${filename}`);
+      setHeroImage(publicUrl);
+      showToast('Cover photo uploaded to Supabase Media Bucket!');
+    } catch (err: any) {
+      showToast(`Upload failed: ${err.message || 'Check storage permissions'}`);
+    } finally {
+      setUploadingImage(false);
+    }
+  };
 
   const imagePresets = [
     { label: '📈 Financial Trading', url: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80' },
@@ -275,6 +295,21 @@ export const WriteStudioPage: React.FC<WriteStudioPageProps> = ({
                 onChange={(e) => setHeroImage(e.target.value)}
                 required
               />
+              
+              <div style={{ display: 'flex', gap: '0.6rem', alignItems: 'center', marginTop: '0.5rem', flexWrap: 'wrap' }}>
+                <label className="btn btn-secondary" style={{ cursor: 'pointer', padding: '5px 12px', fontSize: '0.78rem', display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}>
+                  <UploadCloud size={14} color="var(--accent-gold)" />
+                  <span>{uploadingImage ? 'Uploading to Supabase Media...' : 'Upload Image to Supabase'}</span>
+                  <input 
+                    type="file" 
+                    accept="image/*" 
+                    style={{ display: 'none' }} 
+                    onChange={handleImageUpload} 
+                    disabled={uploadingImage}
+                  />
+                </label>
+                <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Uploads to sovereign cloud bucket or select below</span>
+              </div>
               
               <div style={{ marginTop: '0.6rem' }}>
                 <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)', fontWeight: 700, textTransform: 'uppercase' }}>
