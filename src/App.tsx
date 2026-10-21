@@ -12,6 +12,7 @@ import { initWebMCPTools } from './utils/webmcp';
 // Asynchronous Route Splitting for 95+ PageSpeed & Low Initial Payload
 const ArticleReaderPage = lazy(() => import('./pages/ArticleReaderPage').then(m => ({ default: m.ArticleReaderPage })));
 const FinancialToolsPage = lazy(() => import('./pages/FinancialToolsPage').then(m => ({ default: m.FinancialToolsPage })));
+const DocumentToolsPage = lazy(() => import('./pages/DocumentToolsPage').then(m => ({ default: m.DocumentToolsPage })));
 const AboutPage = lazy(() => import('./pages/AboutPage').then(m => ({ default: m.AboutPage })));
 const ContactPage = lazy(() => import('./pages/ContactPage').then(m => ({ default: m.ContactPage })));
 const LegalPage = lazy(() => import('./pages/LegalPage').then(m => ({ default: m.LegalPage })));
@@ -61,7 +62,7 @@ export const App: React.FC = () => {
     const handleHashChange = () => {
       const hash = window.location.hash.replace('#', '') as PageView;
       const validPages: PageView[] = [
-        'home', 'about', 'contact', 'tools', 'legal', 
+        'home', 'about', 'contact', 'tools', 'doc-tools', 'legal', 
         'privacy', 'terms', 'disclaimer', 'editorial', 'cookies', 'corrections'
       ];
       if (validPages.includes(hash)) {
@@ -176,6 +177,7 @@ export const App: React.FC = () => {
           onStartAudioBriefing={handleStartAudioBriefing}
           showToast={showToast}
           onNavigateToTools={() => navigateToPage('tools')}
+          onNavigateToDocTools={() => navigateToPage('doc-tools')}
         />
       )}
 
@@ -211,6 +213,11 @@ export const App: React.FC = () => {
         {/* Quantitative & Macro Intelligence Tools Suite */}
         {currentPage === 'tools' && (
           <FinancialToolsPage setCurrentPage={navigateToPage} showToast={showToast} />
+        )}
+
+        {/* Document & Media AI Utilities Suite */}
+        {currentPage === 'doc-tools' && (
+          <DocumentToolsPage setCurrentPage={navigateToPage} showToast={showToast} />
         )}
 
         {/* Legal & Compliance Suite Portal Hub */}

@@ -356,7 +356,17 @@ export const Navbar: React.FC<NavbarProps> = ({
                 >
                   <Calculator size={13} />
                   <span>Financial Tools</span>
-                  <span className="nav-new-badge">New</span>
+                </button>
+              </li>
+              <li className="nav-item">
+                <button 
+                  type="button"
+                  className={`nav-link ${currentPage === 'doc-tools' ? 'active' : ''} nav-tools-link`}
+                  onClick={() => handleNavClick('doc-tools')}
+                >
+                  <FileText size={13} />
+                  <span>AI & Doc Tools</span>
+                  <span className="nav-hot-badge">AI</span>
                 </button>
               </li>
             </ul>
@@ -504,7 +514,18 @@ export const Navbar: React.FC<NavbarProps> = ({
                     >
                       <Calculator size={16} color="var(--accent-gold)" />
                       <span className="nav-tools-link">Financial Tools & Calculators</span>
-                      <span className="nav-new-badge">New</span>
+                      <ChevronRight size={14} className="chevron" style={{ marginLeft: 'auto' }} />
+                    </button>
+
+                    <button 
+                      type="button"
+                      className={`mobile-nav-link ${currentPage === 'doc-tools' ? 'active' : ''}`}
+                      onClick={() => handleNavClick('doc-tools')}
+                      style={{ background: 'rgba(180, 83, 9, 0.08)', border: '1px solid rgba(180, 83, 9, 0.25)', marginTop: '0.45rem' }}
+                    >
+                      <Sparkles size={16} color="var(--accent-gold)" />
+                      <span className="nav-tools-link">PDF, Word & AI Image Studio</span>
+                      <span className="nav-hot-badge">AI</span>
                       <ChevronRight size={14} className="chevron" style={{ marginLeft: 'auto' }} />
                     </button>
                   </div>

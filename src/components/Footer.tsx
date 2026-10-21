@@ -178,6 +178,11 @@ export const Footer: React.FC<FooterProps> = ({ setCurrentPage, setSelectedCateg
                   Quantitative Tools & Forensics →
                 </button>
               </li>
+              <li>
+                <button type="button" className="footer-link-btn suite-hub-link" onClick={() => navigate('doc-tools')}>
+                  PDF, Word & AI Image Studio →
+                </button>
+              </li>
             </ul>
           </div>
 

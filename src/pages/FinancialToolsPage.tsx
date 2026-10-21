@@ -358,6 +358,15 @@ Generated via BullMonk Financial Intelligence Suite (bullmonk.org)`;
             <span>{copied ? 'Dossier Copied' : 'Export Calculation Dossier'}</span>
           </button>
 
+          <button 
+            type="button" 
+            className="btn btn-secondary"
+            onClick={() => setCurrentPage('doc-tools')}
+            style={{ fontSize: '0.82rem', padding: '0.5rem 1rem' }}
+          >
+            <span>PDF, Word & AI Image Studio →</span>
+          </button>
+
           <span style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>
             Selected Engine: <strong>{activeTab === 'bond' ? 'Sovereign Bond Terminal' : activeTab === 'inflation' ? 'Real Inflation Forecaster' : activeTab === 'fx' ? 'FX & PPP Matrix' : 'Compound Capital Forecaster'}</strong>
           </span>

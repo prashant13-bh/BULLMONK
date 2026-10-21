@@ -5,7 +5,7 @@ import { AdBanner } from '../components/AdBanner';
 import { 
   Search, Bookmark, Clock, Eye, Sparkles, TrendingUp, Cpu, Globe2, 
   Zap, BookOpen, Send, MapPin, Volume2, ShieldCheck, Activity, 
-  Flame, ArrowUpRight, BarChart3, ChevronRight, Calculator
+  Flame, ArrowUpRight, BarChart3, ChevronRight, Calculator, FileText, Scissors
 } from 'lucide-react';
 
 interface HomePageProps {
@@ -18,6 +18,7 @@ interface HomePageProps {
   onStartAudioBriefing?: (article: Article) => void;
   showToast: (msg: string) => void;
   onNavigateToTools?: () => void;
+  onNavigateToDocTools?: () => void;
 }
 
 export const HomePage: React.FC<HomePageProps> = ({
@@ -29,7 +30,8 @@ export const HomePage: React.FC<HomePageProps> = ({
   isBookmarked,
   onStartAudioBriefing,
   showToast,
-  onNavigateToTools
+  onNavigateToTools,
+  onNavigateToDocTools
 }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedRegion, setSelectedRegion] = useState<string>('all');
@@ -712,17 +714,30 @@ export const HomePage: React.FC<HomePageProps> = ({
           </div>
 
           <div className="tools-gateway-footer">
-            <button 
-              type="button" 
-              className="btn btn-primary"
-              onClick={onNavigateToTools}
-              style={{ padding: '0.75rem 1.75rem', fontSize: '0.92rem' }}
-            >
-              <span>Open Quantitative Intelligence Terminal</span>
-              <ArrowUpRight size={16} />
-            </button>
+            <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
+              <button 
+                type="button" 
+                className="btn btn-primary"
+                onClick={onNavigateToTools}
+                style={{ padding: '0.75rem 1.4rem', fontSize: '0.90rem' }}
+              >
+                <span>Quantitative Finance Suite</span>
+                <ArrowUpRight size={15} />
+              </button>
+
+              <button 
+                type="button" 
+                className="btn btn-secondary"
+                onClick={onNavigateToDocTools}
+                style={{ padding: '0.75rem 1.4rem', fontSize: '0.90rem' }}
+              >
+                <FileText size={15} color="var(--accent-gold)" />
+                <span>PDF, Word & AI Image Studio</span>
+                <ArrowUpRight size={15} />
+              </button>
+            </div>
             <span style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>
-              Zero Latency • Fiduciary Mathematical Standard • 100% Free Open Access
+              Zero Cloud Logging • 100% Client-Side Privacy Standard • Free Open Access
             </span>
           </div>
         </div>

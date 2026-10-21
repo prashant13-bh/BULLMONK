@@ -52,6 +52,32 @@
         "Evaluate critical mineral trade corridor vulnerability",
         "Analyze maritime shipping choke points"
       ]
+    },
+    {
+      "identifier": "bullmonk-pdf-word-converter-tool",
+      "type": "tool",
+      "name": "PDF & Document Conversion Studio",
+      "description": "Convert PDF documents to editable Microsoft Word format and compile rich text or markdown into publication-ready PDF dossiers.",
+      "url": "https://www.govtnaukri4u.com/#doc-tools",
+      "representativeQueries": [
+        "Convert PDF to Word document",
+        "Convert Word doc to PDF",
+        "Extract text and tables from PDF",
+        "Compress PDF file size"
+      ]
+    },
+    {
+      "identifier": "bullmonk-image-enhancer-tool",
+      "type": "tool",
+      "name": "AI Image Enhancer & 2x Super-Resolution",
+      "description": "Client-side image restoration, Laplacian high-pass sharpening, contrast optimization, and 2x resolution upscaling.",
+      "url": "https://www.govtnaukri4u.com/#doc-tools",
+      "representativeQueries": [
+        "Enhance image quality and sharpness",
+        "Upscale image resolution 2x",
+        "Clean and restore low-resolution photo",
+        "Extract text from image using OCR"
+      ]
     }
   ]
 }

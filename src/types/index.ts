@@ -77,6 +77,7 @@ export type PageView =
   | 'about' 
   | 'contact' 
   | 'tools'
+  | 'doc-tools'
   | 'legal'
   | 'privacy'
   | 'terms'
