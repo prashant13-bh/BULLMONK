@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Article, Comment, PageView, AdminUser } from '../types';
 import { AdminAuth } from '../utils/adminAuth';
 import { SupabaseDB, isSupabaseConfigured } from '../utils/supabase';
+import { LiveMarketService } from '../utils/liveMarketService';
 import { 
   ShieldCheck, Lock, LogOut, PenTool, Trash2, Eye, RefreshCw, 
   CheckCircle2, AlertTriangle, Database, Cloud, FileText, 
-  MessageSquare, BookOpen, Key, ArrowLeft, TrendingUp, Sparkles, Filter
+  MessageSquare, BookOpen, Key, ArrowLeft, TrendingUp, Sparkles, Filter, Activity, Radio
 } from 'lucide-react';
 
 interface AdminDashboardPageProps {
@@ -36,6 +37,20 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
   const [loadingComments, setLoadingComments] = useState(false);
   const [filterCategory, setFilterCategory] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState('');
+  const [finnhubKey, setFinnhubKey] = useState(() => LiveMarketService.getFinnhubKey());
+  const [alphaVantageKey, setAlphaVantageKey] = useState(() => LiveMarketService.getAlphaVantageKey());
+
+  const handleSaveFinnhubKey = (e: React.FormEvent) => {
+    e.preventDefault();
+    LiveMarketService.setFinnhubKey(finnhubKey);
+    showToast(finnhubKey.trim() ? 'Finnhub API key saved! Live stock feeds active.' : 'Finnhub API key cleared.');
+  };
+
+  const handleSaveAlphaVantageKey = (e: React.FormEvent) => {
+    e.preventDefault();
+    LiveMarketService.setAlphaVantageKey(alphaVantageKey);
+    showToast(alphaVantageKey.trim() ? 'Alpha Vantage API key saved!' : 'Alpha Vantage key cleared.');
+  };
 
   // Sync auth state
   useEffect(() => {
@@ -594,6 +609,73 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
                 <span style={{ fontFamily: 'var(--font-mono)', fontWeight: 600 }}>G-CKPQGSX23W</span>
               </li>
             </ul>
+          </div>
+
+          {/* Market Data APIs Card */}
+          <div className="card" style={{ padding: '1.5rem', gridColumn: '1 / -1' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1rem', flexWrap: 'wrap', gap: '0.5rem' }}>
+              <h3 style={{ fontSize: '1.1rem', fontWeight: 800, margin: 0, display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <Activity size={18} color="var(--accent-green)" />
+                <span>Live Financial Market Data &amp; API Key Integrations</span>
+              </h3>
+              <span className="badge" style={{ background: 'rgba(4, 120, 87, 0.1)', color: 'var(--accent-green)', fontWeight: 700 }}>
+                Streaming Rails Active
+              </span>
+            </div>
+
+            <p style={{ fontSize: '0.84rem', color: 'var(--text-secondary)', marginBottom: '1.25rem', lineHeight: '1.5' }}>
+              BULLMONK streams real-time financial market data across multi-asset rails. Real-time Crypto (Bitcoin, Ethereum, Solana) and European Central Bank FX rates (EUR/USD, USD/INR, USD/JPY) stream automatically out-of-the-box. Connect your free Finnhub or Alpha Vantage API keys below to activate live millisecond US equity and commodity ticks.
+            </p>
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.25rem' }}>
+              {/* Active Zero-Key Rails */}
+              <div style={{ background: 'var(--bg-surface-elevated)', border: '1px solid var(--border-medium)', borderRadius: 'var(--radius-sm)', padding: '1.25rem' }}>
+                <div style={{ fontSize: '0.74rem', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 800, color: 'var(--accent-gold)', marginBottom: '0.5rem' }}>
+                  Native Streaming Rails (0 Keys Required)
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem', fontSize: '0.84rem' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <span>CoinGecko Digital Asset API:</span>
+                    <span style={{ color: 'var(--accent-green)', fontWeight: 700 }}>● Active (BTC/ETH/SOL)</span>
+                  </div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <span>Frankfurter ECB Forex API:</span>
+                    <span style={{ color: 'var(--accent-green)', fontWeight: 700 }}>● Active (EUR/USD/INR)</span>
+                  </div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <span>Polling Frequency:</span>
+                    <span style={{ fontFamily: 'var(--font-mono)' }}>Every 45 seconds</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Finnhub Integration */}
+              <form onSubmit={handleSaveFinnhubKey} style={{ background: 'var(--bg-surface-elevated)', border: '1px solid var(--border-medium)', borderRadius: 'var(--radius-sm)', padding: '1.25rem' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
+                  <span style={{ fontSize: '0.74rem', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 800, color: 'var(--accent-gold)' }}>
+                    Finnhub Stock Market API
+                  </span>
+                  <a href="https://finnhub.io" target="_blank" rel="noopener noreferrer" style={{ fontSize: '0.72rem', color: '#2962FF', textDecoration: 'none' }}>
+                    Get Free Key ↗
+                  </a>
+                </div>
+                <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)', margin: '0 0 0.75rem' }}>
+                  Provides live S&P 500, Nasdaq, and NYSE stock quotes (60 free calls/min).
+                </p>
+                <div style={{ display: 'flex', gap: '0.5rem' }}>
+                  <input 
+                    type="password"
+                    placeholder="Paste Finnhub API Key..."
+                    value={finnhubKey}
+                    onChange={(e) => setFinnhubKey(e.target.value)}
+                    style={{ flex: 1, padding: '0.45rem 0.75rem', fontSize: '0.82rem', borderRadius: 'var(--radius-xs)', border: '1px solid var(--border-medium)', background: 'var(--bg-surface)', color: 'var(--text-primary)' }}
+                  />
+                  <button type="submit" className="btn btn-primary btn-sm" style={{ padding: '0.45rem 0.9rem', fontSize: '0.8rem' }}>
+                    Save
+                  </button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       )}

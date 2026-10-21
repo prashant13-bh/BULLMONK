@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { PageView, MarketTicker, AdminUser } from '../types';
+import { MarketTickerBar } from './MarketTickerBar';
 import { 
   Sun, Moon, Menu, X, Globe, Shield, Sparkles, 
   Search, Radio, TrendingUp, Cpu, Flame, Lock, ChevronRight,
@@ -679,6 +680,9 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
         )}
       </header>
+
+      {/* 5. Live Global Market Ticker Strip (Streaming Crypto, FX & Indices) */}
+      <MarketTickerBar initialTickers={tickers} />
     </>
   );
 };
