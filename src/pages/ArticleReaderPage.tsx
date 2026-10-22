@@ -509,10 +509,10 @@ export const ArticleReaderPage: React.FC<ArticleReaderPageProps> = ({
         >
           {isPlayingAudio ? <Pause size={18} /> : <Play size={18} fill="currentColor" />}
         </button>
-        <div style={{ flex: 1 }}>
-          <div style={{ fontSize: '0.82rem', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-            <span>🎙️ BullMonk Audio Briefing: Synthetic Voice Dispatch</span>
-            <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)', fontWeight: 'normal' }}>({article.readTime})</span>
+        <div style={{ flex: 1, minWidth: 0, overflow: 'hidden' }}>
+          <div className="audio-bar-title" style={{ fontSize: '0.82rem', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '0.4rem', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+            <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>🎙️ BullMonk Audio Briefing: Synthetic Voice Dispatch</span>
+            <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)', fontWeight: 'normal', flexShrink: 0 }}>({article.readTime})</span>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '3px', height: '16px', marginTop: '4px' }}>
             <div className="wave-bar"></div>
@@ -525,7 +525,7 @@ export const ArticleReaderPage: React.FC<ArticleReaderPageProps> = ({
             <div className="wave-bar"></div>
           </div>
         </div>
-        <span style={{ fontSize: '0.76rem', fontFamily: 'var(--font-mono)', color: 'var(--accent-gold)' }}>
+        <span className="audio-time-stamp" style={{ fontSize: '0.76rem', fontFamily: 'var(--font-mono)', color: 'var(--accent-gold)', flexShrink: 0, whiteSpace: 'nowrap' }}>
           {formatAudioTime(audioSeconds)} / 4:15
         </span>
       </div>
@@ -604,19 +604,8 @@ export const ArticleReaderPage: React.FC<ArticleReaderPageProps> = ({
 
       {/* Quantitative Suite Cross-Link Callout */}
       {onNavigateToTools && (
-        <div style={{
-          background: 'linear-gradient(135deg, rgba(180, 83, 9, 0.08) 0%, var(--bg-surface) 100%)',
-          border: '1px solid var(--border-medium)',
-          borderRadius: 'var(--radius-md)',
-          padding: '1.5rem 1.75rem',
-          margin: '2.5rem 0',
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          flexWrap: 'wrap',
-          gap: '1.25rem'
-        }}>
-          <div>
+        <div className="article-quant-callout">
+          <div style={{ flex: '1 1 300px', minWidth: 0 }}>
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', fontSize: '0.76rem', fontWeight: 800, color: 'var(--accent-gold)', textTransform: 'uppercase', marginBottom: '0.35rem' }}>
               <Calculator size={14} /> BullMonk Quantitative Suite Integration
             </div>
@@ -680,17 +669,7 @@ export const ArticleReaderPage: React.FC<ArticleReaderPageProps> = ({
       </div>
 
       {/* Author & Bureau Chief Dossier Card */}
-      <div style={{
-        background: 'var(--bg-surface)',
-        border: '1px solid var(--border-medium)',
-        borderRadius: 'var(--radius-md)',
-        padding: '1.75rem',
-        margin: '2.5rem 0',
-        display: 'flex',
-        alignItems: 'center',
-        gap: '1.5rem',
-        flexWrap: 'wrap'
-      }}>
+      <div className="article-author-dossier">
         <img 
           src={article.author.avatar} 
           alt={article.author.name} 
@@ -698,19 +677,19 @@ export const ArticleReaderPage: React.FC<ArticleReaderPageProps> = ({
           height={64}
           loading="lazy"
           decoding="async"
-          style={{ width: '64px', height: '64px', borderRadius: '50%', objectFit: 'cover', border: '2px solid var(--accent-gold)' }} 
+          style={{ width: '64px', height: '64px', borderRadius: '50%', objectFit: 'cover', border: '2px solid var(--accent-gold)', flexShrink: 0 }} 
         />
-        <div style={{ flex: 1, minWidth: '220px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
+        <div className="author-dossier-info" style={{ flex: 1, minWidth: 0 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px', flexWrap: 'wrap' }}>
             <span style={{ fontWeight: 800, fontSize: '1.1rem' }}>{article.author.name}</span>
             <span style={{ fontSize: '0.72rem', background: 'rgba(16, 185, 129, 0.12)', color: 'var(--accent-green)', padding: '0.15rem 0.5rem', borderRadius: '4px', fontWeight: 700 }}>
               ✓ Bureau Fellow
             </span>
           </div>
-          <div style={{ fontSize: '0.82rem', color: 'var(--accent-gold)', fontWeight: 600, marginBottom: '0.5rem' }}>
+          <div style={{ fontSize: '0.82rem', color: 'var(--accent-gold)', fontWeight: 600, marginBottom: '0.5rem', overflowWrap: 'break-word' }}>
             {article.author.title} • {article.author.location} Bureau
           </div>
-          <p style={{ margin: 0, fontSize: '0.86rem', color: 'var(--text-secondary)', lineHeight: '1.55' }}>
+          <p style={{ margin: 0, fontSize: '0.86rem', color: 'var(--text-secondary)', lineHeight: '1.55', overflowWrap: 'break-word' }}>
             {article.author.bio || `Specializing in cross-border forensic capital audits, semiconductor supply networks, and sovereign monetary mechanisms for the BULLMONK International Bureau.`}
           </p>
         </div>
@@ -807,82 +786,66 @@ export const ArticleReaderPage: React.FC<ArticleReaderPageProps> = ({
     {/* Floating Responsive Mobile / Tablet Reading Dock (Bloomberg / FT Mobile ergonomics) */}
     {scrollProgress > 5 && (
       <div 
-        className="hide-on-desktop"
-        style={{
-          position: 'fixed',
-          bottom: '1.25rem',
-          left: '50%',
-          transform: 'translateX(-50%)',
-          zIndex: 990,
-          background: 'var(--bg-surface-elevated)',
-          backdropFilter: 'blur(16px)',
-          border: '1px solid var(--border-medium)',
-          borderRadius: 'var(--radius-full)',
-          padding: '0.45rem 1rem',
-          display: 'flex',
-          alignItems: 'center',
-          gap: '0.75rem',
-          boxShadow: '0 8px 30px rgba(0, 0, 0, 0.22)',
-          maxWidth: '92vw',
-          animation: 'fadeIn 0.2s ease-out'
-        }}
+        className="hide-on-desktop article-mobile-dock"
       >
         <button 
           type="button"
-          className="btn-icon" 
+          className="btn-icon dock-btn" 
           onClick={onBackToWire}
           title="Return to Wire"
-          style={{ width: '32px', height: '32px', padding: 0 }}
+          aria-label="Return to Global Wire"
         >
-          <ArrowLeft size={15} />
+          <ArrowLeft size={14} />
         </button>
 
-        <div style={{ height: '18px', width: '1px', background: 'var(--border-medium)' }} />
+        <div className="dock-divider" />
 
-        <span style={{ fontSize: '0.72rem', fontWeight: 800, fontFamily: 'var(--font-mono)', color: 'var(--accent-gold)' }}>
-          {Math.round(scrollProgress)}% READ
+        <span className="dock-progress">
+          {Math.round(scrollProgress)}%
         </span>
 
-        <div style={{ height: '18px', width: '1px', background: 'var(--border-medium)' }} />
+        <div className="dock-divider" />
 
         <button 
           type="button"
-          className="btn-icon" 
+          className="btn-icon dock-btn" 
           onClick={() => onToggleBookmark(article.id)}
-          style={{ width: '32px', height: '32px', padding: 0, color: isBookmarked ? 'var(--accent-gold)' : 'inherit' }}
+          style={{ color: isBookmarked ? 'var(--accent-gold)' : 'inherit' }}
           title="Bookmark"
+          aria-label="Bookmark article"
         >
-          <Bookmark size={15} fill={isBookmarked ? 'currentColor' : 'none'} />
+          <Bookmark size={14} fill={isBookmarked ? 'currentColor' : 'none'} />
         </button>
 
         <button 
           type="button"
-          className="btn-icon" 
+          className="btn-icon dock-btn" 
           onClick={handleShare}
-          style={{ width: '32px', height: '32px', padding: 0 }}
           title="Share"
+          aria-label="Share dispatch"
         >
-          <Share2 size={15} />
+          <Share2 size={14} />
         </button>
 
         <button 
           type="button"
-          className="btn-icon" 
+          className="btn-icon dock-btn" 
           onClick={() => setLargeFont(!largeFont)}
-          style={{ width: '32px', height: '32px', padding: 0, color: largeFont ? 'var(--accent-gold)' : 'inherit' }}
+          style={{ color: largeFont ? 'var(--accent-gold)' : 'inherit' }}
           title="Font Size"
+          aria-label="Toggle font size"
         >
-          <Type size={15} />
+          <Type size={14} />
         </button>
 
         <button 
           type="button"
-          className="btn-icon" 
+          className="btn-icon dock-btn hide-on-xs" 
           onClick={() => setIsPrintOpen(true)}
-          style={{ width: '32px', height: '32px', padding: 0 }}
           title="Print Dispatch / PDF"
+          aria-label="Print Dispatch or Export PDF"
         >
-          <Printer size={15} />
+          <Printer size={14} />
         </button>
       </div>
     )}

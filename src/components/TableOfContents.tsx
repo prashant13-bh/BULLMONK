@@ -34,7 +34,7 @@ export const TableOfContents: React.FC<TableOfContentsProps> = ({
         background: 'var(--bg-surface-elevated)',
         border: '1px solid var(--border-medium)',
         borderRadius: 'var(--radius-md)',
-        padding: '1.25rem 1.5rem',
+        padding: 'clamp(0.85rem, 2.5vw, 1.25rem) clamp(0.85rem, 3vw, 1.5rem)',
         margin: '2rem 0',
         boxShadow: 'var(--shadow-sm)',
         transition: 'all var(--transition-fast)'
@@ -162,7 +162,7 @@ export const TableOfContents: React.FC<TableOfContentsProps> = ({
                   }}>
                     {index + 1}.
                   </span>
-                  <span style={{ flex: 1 }}>{item.text}</span>
+                  <span style={{ flex: 1, minWidth: 0, wordBreak: 'break-word', overflowWrap: 'break-word' }}>{item.text}</span>
                   {isActive && <BookmarkCheck size={13} style={{ color: 'var(--accent-gold)', flexShrink: 0 }} />}
                 </button>
               </li>

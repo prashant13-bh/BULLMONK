@@ -93,20 +93,10 @@ export const TradingViewBanner: React.FC<TradingViewBannerProps> = ({
     <aside 
       className={`tradingview-partner-full ${className}`}
       aria-label="Institutional Charting Partner - TradingView"
-      style={{
-        background: 'linear-gradient(135deg, rgba(41, 98, 255, 0.06) 0%, var(--bg-surface) 60%, rgba(180, 83, 9, 0.05) 100%)',
-        border: '1px solid var(--border-medium)',
-        borderRadius: 'var(--radius-md)',
-        padding: '1.75rem 2rem',
-        margin: '2.5rem 0',
-        boxShadow: 'var(--shadow-sm)',
-        position: 'relative',
-        overflow: 'hidden'
-      }}
     >
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '1.5rem' }}>
-        <div style={{ flex: '1 1 480px', minWidth: '280px' }}>
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginBottom: '0.75rem' }}>
+      <div className="tradingview-full-inner">
+        <div className="tv-col-main">
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginBottom: '0.75rem', flexWrap: 'wrap' }}>
             <span style={{ 
               fontWeight: 900, 
               fontSize: '1.15rem', 
@@ -133,7 +123,7 @@ export const TradingViewBanner: React.FC<TradingViewBannerProps> = ({
             </span>
           </div>
 
-          <h3 style={{ fontFamily: 'var(--font-brand)', fontSize: '1.35rem', margin: '0 0 0.5rem', color: 'var(--text-primary)', lineHeight: '1.35' }}>
+          <h3 style={{ fontFamily: 'var(--font-brand)', fontSize: 'clamp(1.15rem, 3vw, 1.35rem)', margin: '0 0 0.5rem', color: 'var(--text-primary)', lineHeight: '1.35' }}>
             Forensic Technical Analysis & Global Real-Time Market Infrastructure
           </h3>
 
@@ -151,12 +141,12 @@ export const TradingViewBanner: React.FC<TradingViewBannerProps> = ({
           </div>
         </div>
 
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', justifyContent: 'center', minWidth: '220px' }}>
+        <div className="tv-col-cta">
           <a 
             href={TRADINGVIEW_AFFILIATE_URL}
             target="_blank"
             rel="sponsored noopener noreferrer"
-            className="btn btn-primary"
+            className="btn btn-primary tv-cta-btn"
             style={{ 
               background: '#2962FF', 
               borderColor: '#2962FF',

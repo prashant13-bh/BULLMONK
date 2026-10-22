@@ -2547,15 +2547,20 @@ html, body {
 .reader-container {
   max-width: 860px;
   margin: 2.5rem auto 5rem;
-  padding: 0 clamp(1rem, 3vw, 1.5rem);
+  padding: 0 clamp(0.85rem, 3.5vw, 1.5rem);
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .article-main-title {
   font-family: var(--font-serif);
-  font-size: clamp(1.9rem, 4vw, 2.85rem);
+  font-size: clamp(1.75rem, 4.5vw, 2.85rem);
   line-height: 1.2;
   font-weight: 800;
   margin-bottom: 1rem;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
 }
 
 .audio-bar {
@@ -2568,6 +2573,8 @@ html, body {
   gap: 1rem;
   margin: 1.75rem 0;
   box-shadow: var(--shadow-sm);
+  box-sizing: border-box;
+  max-width: 100%;
 }
 
 .audio-play-btn {
@@ -2583,6 +2590,7 @@ html, body {
   cursor: pointer;
   box-shadow: 0 2px 8px var(--accent-gold-glow);
   transition: transform var(--transition-fast);
+  flex-shrink: 0;
 }
 
 .audio-play-btn:hover {
@@ -2610,6 +2618,10 @@ html, body {
   font-size: 1.15rem;
   line-height: 1.82;
   color: var(--text-primary);
+  overflow-wrap: break-word;
+  word-break: break-word;
+  word-wrap: break-word;
+  max-width: 100%;
 }
 
 .article-prose p {
@@ -2636,6 +2648,9 @@ html, body {
   font-size: 1.28rem;
   font-style: italic;
   color: var(--text-primary);
+  overflow-wrap: break-word;
+  word-break: break-word;
+  box-sizing: border-box;
 }
 
 .article-prose h3 {
@@ -2645,6 +2660,8 @@ html, body {
   color: var(--text-primary);
   line-height: 1.35;
   letter-spacing: -0.015em;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .article-prose h4 {
@@ -2653,6 +2670,8 @@ html, body {
   font-weight: 700;
   margin: 1.8rem 0 0.8rem;
   color: var(--text-primary);
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .article-prose ul, .article-prose ol {
@@ -2779,6 +2798,126 @@ html, body {
   font-family: var(--font-mono);
   font-weight: 600;
   color: var(--text-primary);
+}
+
+/* Status Badges in Tables */
+.status-fail {
+  color: var(--accent-red) !important;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.status-pass {
+  color: var(--accent-green) !important;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* --- Institutional TradingView Full Partner Card --- */
+.tradingview-partner-full {
+  background: linear-gradient(135deg, rgba(41, 98, 255, 0.06) 0%, var(--bg-surface) 60%, rgba(180, 83, 9, 0.05) 100%);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-md);
+  padding: 1.75rem 2rem;
+  margin: 2.5rem 0;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.tradingview-full-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.tv-col-main {
+  flex: 1 1 420px;
+  min-width: 0;
+}
+
+.tv-col-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  min-width: 0;
+}
+
+/* --- Quantitative Suite Cross-Link Callout --- */
+.article-quant-callout {
+  background: linear-gradient(135deg, rgba(180, 83, 9, 0.08) 0%, var(--bg-surface) 100%);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-md);
+  padding: 1.5rem 1.75rem;
+  margin: 2.5rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  box-sizing: border-box;
+}
+
+/* --- Author & Bureau Chief Dossier Card --- */
+.article-author-dossier {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-md);
+  padding: 1.75rem;
+  margin: 2.5rem 0;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+}
+
+/* --- Floating Mobile Reading Ergonomics Dock --- */
+.article-mobile-dock {
+  position: fixed;
+  bottom: 1.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 990;
+  background: var(--bg-surface-elevated);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-full);
+  padding: 0.45rem 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.22);
+  max-width: calc(100vw - 1.5rem);
+  box-sizing: border-box;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.article-mobile-dock .dock-btn {
+  width: 32px !important;
+  height: 32px !important;
+  padding: 0 !important;
+  flex-shrink: 0;
+}
+
+.article-mobile-dock .dock-divider {
+  height: 18px;
+  width: 1px;
+  background: var(--border-medium);
+  flex-shrink: 0;
+}
+
+.article-mobile-dock .dock-progress {
+  font-size: 0.72rem;
+  font-weight: 800;
+  font-family: var(--font-mono);
+  color: var(--accent-gold);
+  white-space: nowrap;
 }
 
 
@@ -3431,15 +3570,76 @@ html, body {
   }
   .reader-container {
     margin: 1.25rem auto 3.5rem;
-    padding: 0 1rem;
+    padding: 0 clamp(0.75rem, 3vw, 1rem);
   }
   .article-main-title {
-    font-size: 1.75rem;
+    font-size: clamp(1.45rem, 4.5vw, 1.85rem);
     line-height: 1.25;
   }
   .article-prose {
     font-size: 1.05rem;
     line-height: 1.75;
+  }
+  .article-quote {
+    margin: 1.6rem 0;
+    padding: 1rem 1.2rem;
+    font-size: 1.05rem;
+  }
+  .executive-takeaways-box {
+    padding: 1.15rem 1rem !important;
+    margin-bottom: 1.75rem !important;
+  }
+  .executive-takeaways-box ul {
+    padding-left: 1rem !important;
+    font-size: 0.92rem !important;
+  }
+  .investigative-sources-card {
+    padding: 1.15rem 1rem !important;
+    margin: 1.75rem 0 !important;
+  }
+  .tradingview-partner-full {
+    padding: 1.25rem 1rem !important;
+    margin: 1.75rem 0 !important;
+  }
+  .tv-col-main {
+    flex: 1 1 100% !important;
+    width: 100% !important;
+  }
+  .tv-col-cta {
+    width: 100% !important;
+    margin-top: 1rem;
+    align-items: stretch !important;
+  }
+  .tv-cta-btn {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+  .article-quant-callout {
+    padding: 1.25rem 1rem !important;
+    margin: 1.75rem 0 !important;
+    flex-direction: column;
+    align-items: stretch !important;
+  }
+  .article-quant-callout button {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+  .article-author-dossier {
+    padding: 1.25rem 1rem !important;
+    margin: 1.75rem 0 !important;
+    gap: 1rem !important;
+  }
+  .ymyl-disclaimer-box {
+    padding: 1rem 1rem !important;
+    margin: 1.75rem 0 !important;
+  }
+  .prose-table-wrapper {
+    margin: 1.5rem 0;
+  }
+  .prose-data-table th,
+  .prose-data-table td {
+    padding: 0.55rem 0.75rem;
+    font-size: 0.8rem;
   }
   .toast-box {
     left: 1rem;
@@ -3481,6 +3681,56 @@ html, body {
   .audio-pill-btn {
     padding: 0.45rem 0.85rem;
     font-size: 0.72rem;
+  }
+  .article-main-title {
+    font-size: clamp(1.35rem, 5.5vw, 1.6rem);
+    line-height: 1.25;
+  }
+  .article-prose p.lead-paragraph::first-letter {
+    font-size: 2.85rem;
+    line-height: 0.85;
+    margin: 0.05rem 0.35rem 0 0;
+  }
+  .article-quote {
+    padding: 0.85rem 0.95rem;
+    font-size: 0.96rem;
+    border-left-width: 3px;
+  }
+  .audio-bar {
+    padding: 0.65rem 0.85rem;
+    gap: 0.65rem;
+    margin: 1.25rem 0;
+  }
+  .audio-play-btn {
+    width: 36px;
+    height: 36px;
+  }
+  .audio-bar-title {
+    font-size: 0.75rem;
+  }
+  .audio-time-stamp {
+    font-size: 0.68rem !important;
+  }
+  .article-mobile-dock {
+    padding: 0.35rem 0.65rem;
+    gap: 0.45rem;
+    bottom: 0.85rem;
+  }
+  .article-mobile-dock .dock-btn {
+    width: 28px !important;
+    height: 28px !important;
+  }
+  .article-mobile-dock .dock-progress {
+    font-size: 0.68rem !important;
+  }
+}
+
+@media (max-width: 360px) {
+  .article-mobile-dock .hide-on-xs {
+    display: none !important;
+  }
+  .reader-container {
+    padding: 0 0.5rem;
   }
 }
 
