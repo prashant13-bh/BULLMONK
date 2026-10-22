@@ -272,10 +272,12 @@ function generateRssFeed(items) {
   const xmlItems = items.map(item => {
     const pubDate = new Date(item.publishedAt).toUTCString();
     const link = `https://govtnaukri4u.com/article/${item.id}`;
-    const escapedTitle = xmlEscape(item.title);
-    const escapedDeck = xmlEscape(item.deck);
-    const escapedAuthor = xmlEscape(item.authorName);
-    const escapedCategory = xmlEscape(item.category);
+    const escapedImage = xmlEscape(item.heroImage);
+    const mimeType = item.heroImage.includes('.webp') || item.heroImage.includes('fm=webp') ? 'image/webp' : 'image/jpeg';
+    const escapedEntities = item.tags.slice(0, 5).map(t => xmlEscape(t)).join(', ');
+    const escapedRegion = xmlEscape(item.region);
+    const escapedAuthorName = xmlEscape(item.authorName);
+    const escapedDeckText = xmlEscape(item.deck);
 
     return `    <item>
       <title><![CDATA[${item.title}]]></title>
@@ -286,14 +288,14 @@ function generateRssFeed(items) {
       <category><![CDATA[${item.category}]]></category>
       <description><![CDATA[${item.deck}]]></description>
       <content:encoded><![CDATA[
-        <p>${item.deck}</p>
-        <p><strong>Primary Entities:</strong> ${item.tags.slice(0, 5).join(', ')}</p>
-        <p><strong>Bureau:</strong> ${item.region} | <strong>Author:</strong> ${item.authorName}</p>
+        <p>${escapedDeckText}</p>
+        <p><strong>Primary Entities:</strong> ${escapedEntities}</p>
+        <p><strong>Bureau:</strong> ${escapedRegion} | <strong>Author:</strong> ${escapedAuthorName}</p>
       ]]></content:encoded>
-      <media:content url="${item.heroImage}" medium="image" type="image/jpeg" width="1200" height="800">
+      <media:content url="${escapedImage}" medium="image" type="${mimeType}" width="1200" height="800">
         <media:title><![CDATA[${item.title}]]></media:title>
       </media:content>
-      <enclosure url="${item.heroImage}" length="145000" type="image/jpeg" />
+      <enclosure url="${escapedImage}" length="145000" type="${mimeType}" />
     </item>`;
   }).join('\n');
 
@@ -315,8 +317,8 @@ function generateRssFeed(items) {
       <url>https://govtnaukri4u.com/logo192.png</url>
       <title>BULLMONK Intelligence</title>
       <link>https://govtnaukri4u.com/</link>
-      <width>192</width>
-      <height>192</height>
+      <width>144</width>
+      <height>144</height>
     </image>
 ${xmlItems}
   </channel>
@@ -394,7 +396,7 @@ function generateMasterSitemap(items) {
   <!-- Core Portal -->
 ${staticUrls}
 
-  <!-- Investigative Dispatches & Global Intelligence (All 35 Dispatches) -->
+  <!-- Investigative Dispatches and Global Intelligence (All 35 Dispatches) -->
 ${articleUrls}
 </urlset>`;
 }
