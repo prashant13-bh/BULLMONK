@@ -449,3 +449,19 @@ ${categorySections}
 const llmsContent = generateLlmsTxt(articles);
 fs.writeFileSync('public/llms.txt', llmsContent, 'utf8');
 console.log('Generated comprehensive public/llms.txt with all 35 dispatches.');
+
+// Synchronize public/public/ directory for search console submissions with /public/ prefix
+try {
+  if (!fs.existsSync('public/public')) {
+    fs.mkdirSync('public/public', { recursive: true });
+  }
+  const xmlFiles = ['rss.xml', 'feed.xml', 'news-sitemap.xml', 'sitemap.xml'];
+  for (const file of xmlFiles) {
+    if (fs.existsSync(`public/${file}`)) {
+      fs.copyFileSync(`public/${file}`, `public/public/${file}`);
+    }
+  }
+  console.log('Synchronized public/public/ fallback directory with all 4 XML feeds.');
+} catch (e) {
+  console.error('Error syncing public/public:', e);
+}

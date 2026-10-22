@@ -3012,12 +3012,14 @@ html, body {
   font-family: var(--font-sans);
 }
 
-.breadcrumb-btn:hover {
+.breadcrumb-btn:hover,
+.breadcrumb-link:hover {
   color: var(--accent-gold) !important;
   text-decoration: underline;
 }
 
-.breadcrumb-btn:focus-visible {
+.breadcrumb-btn:focus-visible,
+.breadcrumb-link:focus-visible {
   outline: 2px solid var(--accent-gold);
   outline-offset: 2px;
 }

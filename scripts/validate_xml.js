@@ -64,7 +64,10 @@ function validateXmlString(xmlContent, filename) {
   return true;
 }
 
-const files = ['public/rss.xml', 'public/feed.xml', 'public/news-sitemap.xml', 'public/sitemap.xml'];
+const files = [
+  'public/rss.xml', 'public/feed.xml', 'public/news-sitemap.xml', 'public/sitemap.xml',
+  'public/public/rss.xml', 'public/public/feed.xml', 'public/public/news-sitemap.xml', 'public/public/sitemap.xml'
+];
 let allValid = true;
 for (const f of files) {
   if (fs.existsSync(f)) {

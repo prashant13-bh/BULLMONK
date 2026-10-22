@@ -1,1 +1,6 @@
-/*    /index.html   200
+/public/rss.xml          /rss.xml          200
+/public/feed.xml         /feed.xml         200
+/public/sitemap.xml      /sitemap.xml      200
+/public/news-sitemap.xml /news-sitemap.xml 200
+/public/*                /:splat           200
+/*                       /index.html       200

@@ -31,6 +31,17 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ items, setCurrentPage 
     }
   };
 
+  const getUrl = (item: BreadcrumbItem, isHome = false): string => {
+    if (isHome) return 'https://govtnaukri4u.com/';
+    if (item.href) return item.href;
+    if (item.page) {
+      return item.page === 'home' 
+        ? 'https://govtnaukri4u.com/' 
+        : `https://govtnaukri4u.com/#${item.page}`;
+    }
+    return `https://govtnaukri4u.com/#${encodeURIComponent(item.label.toLowerCase().replace(/\s+/g, '-'))}`;
+  };
+
   return (
     <nav 
       aria-label="Breadcrumb" 
@@ -66,9 +77,10 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ items, setCurrentPage 
           itemType="https://schema.org/ListItem"
           style={{ display: 'inline-flex', alignItems: 'center' }}
         >
-          <button
-            type="button"
-            className="breadcrumb-btn"
+          <a
+            href="https://govtnaukri4u.com/"
+            itemProp="item"
+            className="breadcrumb-link"
             onClick={(e) => handleClick({ label: 'Home Wire', page: 'home' }, e)}
             style={{
               display: 'inline-flex',
@@ -82,19 +94,22 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ items, setCurrentPage 
               fontSize: 'inherit',
               fontFamily: 'inherit',
               borderRadius: 'var(--radius-xs)',
+              textDecoration: 'none',
               transition: 'color var(--transition-fast)'
             }}
             aria-label="Navigate to Home Wire"
           >
             <Home size={13} style={{ color: 'var(--accent-gold)' }} />
             <span itemProp="name">Home Wire</span>
-          </button>
+          </a>
+          <link itemProp="item" href="https://govtnaukri4u.com/" />
           <meta itemProp="position" content="1" />
         </li>
 
         {items.map((item, index) => {
           const isLast = index === items.length - 1 || item.active;
           const position = index + 2;
+          const targetUrl = getUrl(item);
 
           return (
             <li 
@@ -107,21 +122,28 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ items, setCurrentPage 
               <ChevronRight size={12} style={{ color: 'var(--border-medium)', flexShrink: 0 }} aria-hidden="true" />
               
               {isLast ? (
-                <span 
-                  itemProp="name" 
+                <a 
+                  href={targetUrl}
+                  itemProp="item"
                   aria-current="page"
+                  onClick={(e) => handleClick(item, e)}
                   style={{ 
                     fontWeight: 700, 
                     color: 'var(--text-primary)',
-                    letterSpacing: '0.01em'
+                    letterSpacing: '0.01em',
+                    textDecoration: 'none',
+                    cursor: 'default',
+                    display: 'inline-flex',
+                    alignItems: 'center'
                   }}
                 >
-                  {item.label}
-                </span>
+                  <span itemProp="name">{item.label}</span>
+                </a>
               ) : (
-                <button
-                  type="button"
-                  className="breadcrumb-btn"
+                <a
+                  href={targetUrl}
+                  itemProp="item"
+                  className="breadcrumb-link"
                   onClick={(e) => handleClick(item, e)}
                   style={{
                     background: 'none',
@@ -132,12 +154,16 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ items, setCurrentPage 
                     fontSize: 'inherit',
                     fontFamily: 'inherit',
                     borderRadius: 'var(--radius-xs)',
-                    transition: 'color var(--transition-fast)'
+                    textDecoration: 'none',
+                    transition: 'color var(--transition-fast)',
+                    display: 'inline-flex',
+                    alignItems: 'center'
                   }}
                 >
                   <span itemProp="name">{item.label}</span>
-                </button>
+                </a>
               )}
+              <link itemProp="item" href={targetUrl} />
               <meta itemProp="position" content={String(position)} />
             </li>
           );

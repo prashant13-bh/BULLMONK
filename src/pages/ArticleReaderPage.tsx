@@ -94,12 +94,12 @@ export const ArticleReaderPage: React.FC<ArticleReaderPageProps> = ({
     }
   };
 
+  const canonicalUrl = `https://govtnaukri4u.com/article/${article.id}`;
+
   // Google News & Search Schema.org/NewsArticle JSON-LD structured data injection
   useEffect(() => {
     const originalTitle = document.title;
     document.title = `${article.title} | BULLMONK Intelligence`;
-
-    const canonicalUrl = `https://govtnaukri4u.com/article/${article.id}`;
 
     // Update Meta Description
     let metaDesc = document.querySelector('meta[name="description"]') as HTMLMetaElement | null;
@@ -195,6 +195,48 @@ export const ArticleReaderPage: React.FC<ArticleReaderPageProps> = ({
     };
     script.textContent = JSON.stringify(jsonLd);
 
+    // Google Search Console Compliant BreadcrumbList Schema
+    const breadcrumbScriptId = 'bullmonk-breadcrumb-schema';
+    let bScript = document.getElementById(breadcrumbScriptId) as HTMLScriptElement | null;
+    if (!bScript) {
+      bScript = document.createElement('script');
+      bScript.id = breadcrumbScriptId;
+      bScript.type = 'application/ld+json';
+      document.head.appendChild(bScript);
+    }
+
+    const breadcrumbJsonLd = {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home Wire",
+          "item": "https://govtnaukri4u.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": article.category,
+          "item": `https://govtnaukri4u.com/#category/${encodeURIComponent(article.category.toLowerCase().replace(/\s+/g, '-'))}`
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": article.region,
+          "item": `https://govtnaukri4u.com/#region/${encodeURIComponent(article.region.toLowerCase().replace(/\s+/g, '-'))}`
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": article.title,
+          "item": canonicalUrl
+        }
+      ]
+    };
+    bScript.textContent = JSON.stringify(breadcrumbJsonLd);
+
     return () => {
       document.title = originalTitle;
       if (metaDesc) metaDesc.content = originalDesc;
@@ -206,6 +248,8 @@ export const ArticleReaderPage: React.FC<ArticleReaderPageProps> = ({
       if (canonicalLink) canonicalLink.href = originalCanonical;
       const el = document.getElementById(scriptId);
       if (el) el.remove();
+      const bEl = document.getElementById(breadcrumbScriptId);
+      if (bEl) bEl.remove();
     };
   }, [article]);
 
@@ -398,9 +442,21 @@ export const ArticleReaderPage: React.FC<ArticleReaderPageProps> = ({
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.25rem', flexWrap: 'wrap', gap: '0.75rem' }}>
         <Breadcrumbs 
           items={[
-            { label: article.category, onClick: onBackToWire },
-            { label: article.region, onClick: onBackToWire },
-            { label: article.title.length > 45 ? article.title.slice(0, 42) + '...' : article.title, active: true }
+            { 
+              label: article.category, 
+              href: `https://govtnaukri4u.com/#category/${encodeURIComponent(article.category.toLowerCase().replace(/\s+/g, '-'))}`,
+              onClick: onBackToWire 
+            },
+            { 
+              label: article.region, 
+              href: `https://govtnaukri4u.com/#region/${encodeURIComponent(article.region.toLowerCase().replace(/\s+/g, '-'))}`,
+              onClick: onBackToWire 
+            },
+            { 
+              label: article.title.length > 50 ? article.title.slice(0, 47) + '...' : article.title, 
+              href: canonicalUrl,
+              active: true 
+            }
           ]}
         />
 
