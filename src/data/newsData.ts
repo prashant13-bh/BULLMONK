@@ -70,7 +70,9 @@ export const DEFAULT_ARTICLES: Article[] = [
     imageCaption: "Architectural lines of Wall Street financial towers in Lower Manhattan, New York.",
     featured: true,
     breaking: false,
-    tags: ["US Economy", "Federal Reserve", "Treasury Yields", "Wall Street", "Bonds"],
+    tags: [
+      "US Treasury Yields", "Wall Street Bond Market", "Federal Reserve Rate Cut", "Sovereign Debt Rebalancing", "10-Year Treasury Auction", "Foreign Central Bank Reserves", "Fixed Income Spreads", "NY Fed Custodial Holdings", "Primary Dealer Bidding", "Macroeconomics"
+    ],
     views: 28410,
     bookmarks: 1420
   },
@@ -118,7 +120,9 @@ export const DEFAULT_ARTICLES: Article[] = [
     imageCaption: "Automated wafer handling robot in cleanroom microelectronics fabrication.",
     featured: true,
     breaking: true,
-    tags: ["India Economy", "RBI", "Semiconductors", "FDI", "Make In India"],
+    tags: [
+      "India Semiconductor Mission", "Dholera Silicon Cleanroom", "Tata Electronics Chip Fab", "DUV Lithography India", "Foreign Direct Investment FDI", "RBI Forex Reserves 2026", "Retail SIP Inflows", "India Chip Manufacturing", "Subcontinent Tech Corridor", "Semiconductors"
+    ],
     views: 34850,
     bookmarks: 2190
   },
@@ -163,7 +167,9 @@ export const DEFAULT_ARTICLES: Article[] = [
     imageCaption: "Financial towers in the City of London banking quarter.",
     featured: false,
     breaking: false,
-    tags: ["Europe", "ECB", "Banking Union", "Eurozone", "Commodities"],
+    tags: [
+      "ECB Target2 Clearing", "Frankfurt Interbank Settlement", "European Central Bank", "Bundesbank Liquidity", "Eurozone Sovereign Spreads", "Cross-Border Banking Friction", "European Debt Markets", "Interbank Lending Rates", "Christine Lagarde Policy", "Euro Currency"
+    ],
     views: 19420,
     bookmarks: 870
   },
@@ -203,7 +209,9 @@ export const DEFAULT_ARTICLES: Article[] = [
     imageCaption: "Remote mining operation and mineral processing site in northern Canadian shield.",
     featured: false,
     breaking: false,
-    tags: ["Canada", "Bay Street", "Critical Minerals", "Energy", "Mining"],
+    tags: [
+      "Canada Critical Minerals", "Bay Street Defense Capital", "Lithium and Nickel Reserves", "Rare Earth Elements Canada", "TSX Mining Finance", "Sovereign Strategic Stockpiles", "North American Supply Chain", "Defense Industrial Base", "Critical Mineral Extraction", "Clean Energy Metals"
+    ],
     views: 16750,
     bookmarks: 730
   },
@@ -243,7 +251,9 @@ export const DEFAULT_ARTICLES: Article[] = [
     imageCaption: "Heavy industrial rail haulage and export terminals along the Western Australian coastline.",
     featured: false,
     breaking: false,
-    tags: ["Australia", "ASX", "Iron Ore", "Lithium", "RBA"],
+    tags: [
+      "Pilbara Iron Ore Exports", "Australia Commodity Re-Denomination", "BHP Rio Tinto China", "Yuan Iron Ore Settlements", "Reserve Bank of Australia RBA", "Australia China Trade", "Iron Ore Spot Prices", "Bulk Commodity Freight", "Currency Clearing Corridors", "Resource Sovereignty"
+    ],
     views: 14890,
     bookmarks: 640
   },
@@ -283,7 +293,9 @@ export const DEFAULT_ARTICLES: Article[] = [
     imageCaption: "Crude oil tanker navigating international commercial shipping channel.",
     featured: false,
     breaking: true,
-    tags: ["Russia", "Energy", "Sanctions", "Shadow Fleet", "Geopolitics"],
+    tags: [
+      "Baltic Ghost Fleet", "Russian Oil Sanctions Evasion", "Dark Tanker Fleet Shipping", "Yuan-Ruble Bilateral Clearing", "G7 Oil Price Cap", "Urals Crude Discount", "Maritime Insurance P&I", "Shadow Fleet Logistics", "Energy Geopolitics", "Sanctions Architecture"
+    ],
     views: 26340,
     bookmarks: 1810
   },
@@ -328,7 +340,9 @@ export const DEFAULT_ARTICLES: Article[] = [
     imageCaption: "Physical allocated gold bars in subterranean institutional vaults.",
     featured: false,
     breaking: false,
-    tags: ["Gold", "Central Banks", "Foreign Reserves", "De-Dollarization", "Commodities"],
+    tags: [
+      "Central Bank Gold Repatriation", "London LBMA Physical Bullion", "New York Fed Vault Reserves", "Sovereign Gold Reserves", "De-Dollarization Reserve Assets", "Physical Gold Shortage", "Monetary Gold Allocations", "Gold Vault Audit", "Precious Metals Custody", "Reserve Asset Diversification"
+    ],
     views: 41900,
     bookmarks: 3120
   },
@@ -377,7 +391,9 @@ export const DEFAULT_ARTICLES: Article[] = [
     imageCaption: "High-voltage switchyard and cooling infrastructure at commercial baseload generation facility.",
     featured: true,
     breaking: true,
-    tags: ["Nuclear Energy", "AI Compute", "Hyperscalers", "Gulf Sovereign Wealth", "Macroeconomics"],
+    tags: [
+      "Hyperscale Nuclear Power", "AI Data Center Energy PPA", "Small Modular Reactors SMR", "Tech Hyperscaler Baseload", "Gulf Sovereign Wealth Energy", "Nuclear Grid Capacity", "Uranium Fuel Supply", "Data Center Clean Energy", "Constellation Amazon Nuclear", "Compute Power Infrastructure"
+    ],
     views: 48920,
     bookmarks: 3840
   },
@@ -426,7 +442,9 @@ export const DEFAULT_ARTICLES: Article[] = [
     imageCaption: "Automated robotic wafer transit track inside atmospheric sub-nanometer cleanroom.",
     featured: false,
     breaking: false,
-    tags: ["Semiconductors", "High-NA EUV", "ASML", "Supply Chains", "Geopolitics"],
+    tags: [
+      "High-NA EUV Lithography", "ASML 3nm Chokepoint", "Sovereign Semiconductor Buffer", "TSMC Advanced Nodes", "Wafer Fab Equipment Export", "Extreme Ultraviolet Lithography", "Semiconductor Supply Security", "Sub-3nm Chip Packaging", "Foundry Capex Cycles", "Microchip Geopolitics"
+    ],
     views: 39150,
     bookmarks: 2980
   },
@@ -475,7 +493,9 @@ export const DEFAULT_ARTICLES: Article[] = [
     imageCaption: "Institutional trading desks and fixed-income syndication floors in Midtown Manhattan.",
     featured: false,
     breaking: false,
-    tags: ["Private Credit", "Direct Lending", "Wall Street", "Federal Reserve", "Banking"],
+    tags: [
+      "Private Credit Direct Lending", "Wall Street Bank Hedges", "$1.7 Trillion Shadow Banking", "Distressed Debt Spreads", "Business Development Companies BDC", "Private Debt Default Rates", "Investment Bank Synthetic Risk", "Leveraged Loan Refinancing", "Credit Liquidity Squeeze", "Non-Bank Financial Intermediation"
+    ],
     views: 31200,
     bookmarks: 2410
   },
@@ -524,7 +544,9 @@ export const DEFAULT_ARTICLES: Article[] = [
     imageCaption: "Twilight skyline of Lower Manhattan and Wall Street financial district financial institutions.",
     featured: false,
     breaking: true,
-    tags: ["US Economy", "Commercial Real Estate", "Treasury Yields", "Wall Street", "Private Credit"],
+    tags: [
+      "US Refinancing Maturity Wall", "Distressed Debt Syndicates", "Corporate Bond Yields", "High Yield Debt Rollover", "Wall Street Syndicated Loans", "Corporate Default Risk", "Credit Spread Compression", "Leveraged Finance Market", "Fixed Income Allocation", "US Corporate Balance Sheets"
+    ],
     views: 38700,
     bookmarks: 2890
   },
@@ -572,7 +594,9 @@ export const DEFAULT_ARTICLES: Article[] = [
     imageCaption: "Aerial photojournalism of Western Australia Pilbara red dirt iron ore mine and bulk rail export corridor.",
     featured: false,
     breaking: false,
-    tags: ["Australia", "ASX", "Iron Ore", "Critical Minerals", "RBA"],
+    tags: [
+      "RBA 4.60% Cash Rate", "Pilbara Iron Ore Slump", "Sub-$90 Iron Ore Squeeze", "Australian Sovereign Wealth", "Mining Royalty Deficits", "Australia Inflation Forecast", "Sydney Melbourne Housing Impact", "Commodity Revenue Shocks", "Reserve Bank Governor", "Australian Dollar AUD"
+    ],
     views: 31400,
     bookmarks: 2310
   },
@@ -620,7 +644,9 @@ export const DEFAULT_ARTICLES: Article[] = [
     imageCaption: "Bay Street corporate towers and Toronto financial core reflecting modern sovereign capital architecture.",
     featured: false,
     breaking: false,
-    tags: ["Canada", "Bay Street", "Bank of Canada", "Housing Market", "Critical Minerals"],
+    tags: [
+      "Bank of Canada Rate Decision", "$340B Canadian Mortgage Cliff", "Toronto Housing Market Stress", "Bay Street Rate Plateau", "US-Canada Tariff Crosscurrents", "Five-Year Mortgage Renewals", "Canadian Consumer Debt", "Bank of Canada 2.25%", "Canadian Real Estate Vulnerability", "Canadian Dollar CAD"
+    ],
     views: 29800,
     bookmarks: 2150
   },
@@ -669,7 +695,9 @@ export const DEFAULT_ARTICLES: Article[] = [
     imageCaption: "Floodlights illuminate a packed NFL stadium as private equity consortiums and streaming hyperscalers reshape franchise balance sheets.",
     featured: false,
     breaking: true,
-    tags: ["NFL", "Sports Finance", "Private Equity", "Media Rights", "Wall Street"],
+    tags: [
+      "NFL Private Equity Ownership", "Sports Franchise Debt Financing", "Wall Street Gridiron Bonds", "NFL Streaming Rights War", "Private Equity Sports Investment", "Team Valuation Multiples", "Sports Media Broadcast Rights", "Alternative Asset Classes", "Institutional Sports Capital", "NFL Team Equity"
+    ],
     views: 44200,
     bookmarks: 3180
   },
@@ -717,7 +745,9 @@ export const DEFAULT_ARTICLES: Article[] = [
     imageCaption: "Catwalk models and high-fashion production on the runway as Victoria's Secret engineers an international retail turnaround.",
     featured: false,
     breaking: false,
-    tags: ["Retail", "Fashion", "Corporate Turnaround", "Amazon", "Consumer Discretionary"],
+    tags: [
+      "Victoria's Secret Runway Rebrand", "Retail Intimates Market Share", "$8 Billion Apparel Revival", "Direct to Consumer Fashion", "Department Store Footprint", "Consumer Discretionary Spending", "Apparel Supply Chain", "Brand Equity Turnaround", "Fashion Retail Turnaround", "Retail Equity Analysis"
+    ],
     views: 36800,
     bookmarks: 2420
   },
@@ -766,7 +796,9 @@ export const DEFAULT_ARTICLES: Article[] = [
     imageCaption: "High-voltage electrical transmission substation and natural gas flow manifold operating under blizzard snow conditions.",
     featured: false,
     breaking: false,
-    tags: ["Energy", "Natural Gas", "Winter Storm", "Power Grid", "Commodities"],
+    tags: [
+      "Polar Vortex Henry Hub Gas", "Natural Gas Futures Surge", "North American Grid Winter Stress", "ERCOT Texas Power Demand", "PJM Interconnection Heating", "LNG Export Feedgas Demand", "Natural Gas Storage Withdrawals", "Winter Power Grid Reliability", "Energy Commodity Spikes", "US Utilities Power Generation"
+    ],
     views: 39100,
     bookmarks: 2740
   },
@@ -817,7 +849,9 @@ export const DEFAULT_ARTICLES: Article[] = [
     imageCaption: "Mumbai Police tactical vehicles and security barricades outside a luxury residential enclave in Juhu following Sunday night's gunfire.",
     featured: false,
     breaking: true,
-    tags: ["India", "National Security", "Mumbai Police", "Crime Branch", "Hawala", "Bollywood"],
+    tags: [
+      "Lawrence Bishnoi Syndicate", "Mumbai Bollywood Extortion", "Cross-Border Hawala Channels", "Organized Crime Financial Nexus", "Mumbai Police Investigation", "Extortion Protection Rackets", "Underworld Hawala Transfers", "National Investigation Agency NIA", "Financial Intelligence Unit FIU", "India Security Affairs"
+    ],
     views: 48600,
     bookmarks: 3410
   },

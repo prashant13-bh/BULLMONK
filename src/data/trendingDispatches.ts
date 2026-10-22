@@ -113,7 +113,9 @@ export const TRENDING_DISPATCHES: Article[] = [
     imageCaption: "Steam plumes rise from a dual-unit nuclear generation complex in the mid-Atlantic power corridor adjacent to newly built hyperscale compute facilities.",
     featured: true,
     breaking: false,
-    tags: ["Nuclear Energy", "Artificial Intelligence", "PJM Interconnection", "FERC", "Big Tech"],
+    tags: [
+      "Hyperscale Nuclear Reactor Race", "PJM Interconnection Nuclear PPA", "AI Compute Baseload Power", "Constellation Energy Microsoft", "Three Mile Island Nuclear Restart", "Small Modular Reactors SMR", "Data Center Power Demand 2026", "Nuclear Power Clean Energy", "Tech Giant Nuclear Contracts", "Carbon-Free Baseload Grid"
+    ],
     views: 34190,
     bookmarks: 2180
   },
@@ -193,7 +195,9 @@ export const TRENDING_DISPATCHES: Article[] = [
     imageCaption: "Close-up macro view of silicon wafer circuitry undergoing deep-ultraviolet spectroscopic inspection in a cleanroom environment.",
     featured: false,
     breaking: true,
-    tags: ["Semiconductors", "TSMC", "Nvidia", "Hardware", "Geopolitics"],
+    tags: [
+      "TSMC 2-Nanometer Process", "Advanced CoWoS Packaging Bottleneck", "Kaohsiung Fab Yields", "Phoenix Arizona TSMC Fab", "Sovereign AI Chip Supremacy", "NVIDIA AI Accelerator Supply", "Sub-2nm Transistor Density", "High-Bandwidth Memory HBM", "Foundry Yield Curves", "Semiconductor Geopolitics"
+    ],
     views: 41250,
     bookmarks: 2840
   },
@@ -312,7 +316,9 @@ export const TRENDING_DISPATCHES: Article[] = [
     imageCaption: "Solid 400-ounce fine gold bullion bars stacked inside a high-security subterranean depository awaiting sovereign transfer.",
     featured: true,
     breaking: false,
-    tags: ["Gold", "Central Banks", "Sovereign Reserves", "De-Dollarization", "Commodities"],
+    tags: [
+      "Swiss Gold Vault Repatriation", "Physical Gold Above $2700", "Central Bank Gold Reserves", "1400 Metric Ton Bullion Shift", "De-Dollarization Reserve Shift", "LBMA Allocated Gold Storage", "Sovereign Gold Buying Wave", "Safe Haven Physical Bullion", "London Zurich Gold Corridors", "Gold Spot Highs"
+    ],
     views: 38920,
     bookmarks: 2470
   },
@@ -392,7 +398,9 @@ export const TRENDING_DISPATCHES: Article[] = [
     imageCaption: "Tokyo skyline and financial district illuminated at dusk as fixed income dealing desks trade overnight interest rate swaps.",
     featured: false,
     breaking: false,
-    tags: ["Japan", "Bank of Japan", "Yen", "Carry Trade", "Global Bonds"],
+    tags: [
+      "Yen Carry Trade Unwinding", "Bank of Japan Yield Normalization", "$20 Trillion Carry Trade", "Governor Kazuo Ueda Rate Hikes", "JGB 10-Year Bond Yields", "Tokyo Financial Markets", "Global Forex Volatility", "USD-JPY Currency Arbitrage", "Japanese Institutional Capital", "Central Bank Divergence"
+    ],
     views: 29840,
     bookmarks: 1890
   },
@@ -505,7 +513,9 @@ export const TRENDING_DISPATCHES: Article[] = [
     imageCaption: "Digital payments smartphone interface being scanned at a commercial retail terminal in downtown Mumbai.",
     featured: false,
     breaking: false,
-    tags: ["India", "Fintech", "UPI", "Digital Rupee", "Reserve Bank of India"],
+    tags: [
+      "India Sovereign Stack", "UPI Unified Payments Interface", "ONDC Open Network Commerce", "Digital Public Infrastructure DPI", "Reserve Bank of India CBDC", "Fintech Payment Rails", "India Digital Economy Growth", "Subcontinent Digital Payments", "Open API Banking Architecture", "Cross-Border UPI Links"
+    ],
     views: 36480,
     bookmarks: 2310
   },
@@ -585,7 +595,9 @@ export const TRENDING_DISPATCHES: Article[] = [
     imageCaption: "Terraced benches of a massive open-pit copper mine showing industrial haul trucks transporting raw ore for flotation processing.",
     featured: false,
     breaking: false,
-    tags: ["Copper", "Mining", "Energy Transition", "Commodities", "Chile"],
+    tags: [
+      "Red Metal Copper Chokepoint", "$11000 Metric Ton Copper", "Global Electrification Deficit", "Codelco Chile Copper Production", "AI Data Center Copper Wiring", "EV Battery Pack Copper Demand", "Smelter TC/RC Treatment Charges", "Copper Supply Deficit 2026", "Grasberg Escondida Mine Yields", "Industrial Metals Bull Run"
+    ],
     views: 26140,
     bookmarks: 1650
   },
@@ -665,7 +677,9 @@ export const TRENDING_DISPATCHES: Article[] = [
     imageCaption: "Towering glass financial skyscrapers in Lower Manhattan where private debt syndication and credit restructuring desks operate.",
     featured: false,
     breaking: false,
-    tags: ["Private Credit", "Wall Street", "Federal Reserve", "Banking", "Distressed Debt"],
+    tags: [
+      "Private Credit Shadow Syndicates", "$1.7 Trillion Liquidity Crunch", "Direct Lending Fund Redemptions", "BDC Valuation Pressures", "Wall Street Non-Bank Lending", "Private Debt Default Surge", "Payment-in-Kind PIK Loan Risks", "Private Equity Sponsor Defaults", "Shadow Banking Vulnerability", "Alternative Credit Stress"
+    ],
     views: 31200,
     bookmarks: 1940
   },
@@ -778,7 +792,9 @@ export const TRENDING_DISPATCHES: Article[] = [
     imageCaption: "Industrial chemical processing towers and steam pipelines along the Rhine river corridor in western Germany.",
     featured: false,
     breaking: false,
-    tags: ["Germany", "Europe", "Manufacturing", "Energy", "BASF"],
+    tags: [
+      "Germany De-Industrialization Crisis", "BASF Ludwigshafen Chemical Plant", "$10B Capital Reallocation", "German Mittelstand Energy Squeeze", "North Sea Wind Power Tariffs", "European Chemical Production", "German Industrial Competitiveness", "High Electricity Cost Industry", "Rhine Industrial Valley", "European Industrial Policy"
+    ],
     views: 33450,
     bookmarks: 2050
   },
@@ -858,7 +874,9 @@ export const TRENDING_DISPATCHES: Article[] = [
     imageCaption: "Modern high-rise financial district and tech development towers in Dubai illuminated during evening operations.",
     featured: false,
     breaking: false,
-    tags: ["Gulf", "Sovereign Wealth", "Artificial Intelligence", "Saudi Arabia", "UAE"],
+    tags: [
+      "Gulf Sovereign AI Arbitrage", "Riyadh PIF Compute Strategy", "Abu Dhabi MGX Tech Fund", "Compute-for-Capital Diplomacy", "Middle East AI Data Centers", "Saudi Vision 2030 Tech Funds", "Semiconductor Sovereign Alliances", "Global AI Compute Allocation", "Gulf Capital Meets Silicon Valley", "Petrodollar to Compute Pivot"
+    ],
     views: 37810,
     bookmarks: 2420
   },
@@ -938,7 +956,9 @@ export const TRENDING_DISPATCHES: Article[] = [
     imageCaption: "Sterile laboratory cleanroom with automated pharmaceutical filling machinery dispensing precision therapeutic solutions.",
     featured: false,
     breaking: false,
-    tags: ["Pharma", "GLP-1", "Healthcare", "Biotech", "Wall Street"],
+    tags: [
+      "GLP-1 Weight Loss Drugs", "$150 Billion Metabolic Market", "Novo Nordisk Wegovy Supply", "Eli Lilly Zepbound Production", "Peptide CMO Fill-Finish Bottlenecks", "Biopharma API Shortages", "Semaglutide Tirzepatide Demand", "Healthcare Supply Chain War", "Global Metabolic Therapeutics", "Pharmaceutical Capacity Expansion"
+    ],
     views: 35120,
     bookmarks: 2190
   },
@@ -1051,7 +1071,9 @@ export const TRENDING_DISPATCHES: Article[] = [
     imageCaption: "Large commercial container vessel loaded with multi-colored freight containers navigating coastal shipping corridors.",
     featured: false,
     breaking: false,
-    tags: ["Shipping", "Red Sea", "Supply Chain", "Global Trade", "Logistics"],
+    tags: [
+      "Red Sea Shipping Reroute", "Cape of Good Hope Diversion", "Bunker Fuel Surcharge $400k", "Suez Canal Transit Collapse", "Global Maritime Freight Rates", "Container Shipping Congestion", "Bab el-Mandeb Houthi Disruption", "Supply Chain Inflation Shock", "Maritime Insurance Premiums", "Global Trade Chokepoints"
+    ],
     views: 31940,
     bookmarks: 1870
   },
@@ -1131,7 +1153,9 @@ export const TRENDING_DISPATCHES: Article[] = [
     imageCaption: "Commercial passenger aircraft lined up at an airport maintenance ramp undergoing engine inspections.",
     featured: false,
     breaking: false,
-    tags: ["Aviation", "Airlines", "Boeing", "Airbus", "Aerospace"],
+    tags: [
+      "Commercial Aviation Ghost Fleet", "Pratt & Whitney GTF Engine Defect", "Powdered Metal Turbine Flaw", "Airbus A320neo Groundings", "Airline Capacity Bottlenecks", "FAA EASA Airworthiness Directives", "Commercial Aircraft Maintenance MRO", "Global Jet Engine Supply Chain", "Aviation Fleet Inspection Backlog", "Airline Earnings Impact"
+    ],
     views: 28450,
     bookmarks: 1730
   },
@@ -1248,7 +1272,9 @@ export const TRENDING_DISPATCHES: Article[] = [
     imageCaption: "Illuminated digital currency transaction ledger screens inside a sovereign foreign exchange dealing room.",
     featured: true,
     breaking: true,
-    tags: ["Project mBridge", "De-Dollarization", "CBDC", "SWIFT", "Central Banks", "Crude Oil"],
+    tags: [
+      "Project mBridge Cross-Border CBDC", "Multi-CBDC Oil Settlement", "De-Dollarization SWIFT Alternative", "Wholesale Digital Currency Clearing", "Bank for International Settlements BIS", "PBOC UAE Central Bank Digital Dirham", "Atomic Foreign Exchange Settlement", "Cross-Border Energy Invoicing", "Bilateral Central Bank Currency", "Sovereign Payment Corridors"
+    ],
     views: 41280,
     bookmarks: 2840
   },
@@ -1372,7 +1398,9 @@ export const TRENDING_DISPATCHES: Article[] = [
     imageCaption: "Quantum computing processor dilution refrigerator inside a cryogenic research facility.",
     featured: false,
     breaking: false,
-    tags: ["Quantum Computing", "Fedwire", "SWIFT", "Cybersecurity", "Wall Street", "Cryptography"],
+    tags: [
+      "Post-Quantum Cryptography Banking", "Fedwire NIST Migration Deadline 2026", "Lattice-Based Cryptography", "Wall Street Quantum Decryption Threat", "$12 Trillion-a-Day Fedwire", "Quantum Computer Encryption Hack", "Financial Infrastructure Cyber Defense", "Post-Quantum Key Exchange", "Federal Reserve Cybersecurity", "Banking Encryption Overhaul"
+    ],
     views: 33740,
     bookmarks: 2410
   },
@@ -1489,7 +1517,9 @@ export const TRENDING_DISPATCHES: Article[] = [
     imageCaption: "Aerial view of evaporation brine ponds and processing facilities in the Salar de Atacama salt flats, Chile.",
     featured: false,
     breaking: false,
-    tags: ["Lithium", "Critical Minerals", "Clean Energy", "Chile", "EV Batteries", "Commodities"],
+    tags: [
+      "Atacama Sovereign Lithium Squeeze", "Chile Direct Lithium Extraction DLE", "SQM Codelco Lithium Joint Venture", "Salar de Atacama Brine Extraction", "EV Battery Grade Lithium Hydroxide", "Chilean Resource Nationalism", "Water Rights Lithium Mining", "Global Battery Raw Materials", "White Gold Lithium Reserves", "Clean Energy Metal Diplomacy"
+    ],
     views: 31220,
     bookmarks: 1890
   },
@@ -1613,7 +1643,9 @@ export const TRENDING_DISPATCHES: Article[] = [
     imageCaption: "Planet Earth viewed from low-Earth orbit showing satellite communication orbital tracks.",
     featured: false,
     breaking: false,
-    tags: ["Satellite Telecom", "Starlink", "Project Kuiper", "Space Economy", "FCC", "Aerospace"],
+    tags: [
+      "Orbital Spectrum War", "60,000 Satellite LEO Mega-Constellations", "Low Earth Orbit Satellite Congestion", "Direct-to-Cell Satellite Telecom", "SpaceX Starlink vs Kuiper vs AST SpaceMobile", "ITU Satellite Orbital Filings", "Ku Ka Band Spectrum Rights", "Space-Based Cellular Connectivity", "Satellite Telecom Infrastructure", "Orbital Sovereignty"
+    ],
     views: 29840,
     bookmarks: 1950
   },
@@ -1730,7 +1762,9 @@ export const TRENDING_DISPATCHES: Article[] = [
     imageCaption: "Industrial pure silver bullion bars stacked inside a high-security precious metals depository vault.",
     featured: false,
     breaking: false,
-    tags: ["Silver", "Solar Energy", "Clean Technology", "Commodities", "LBMA", "Mining"],
+    tags: [
+      "Physical Silver Vault Run", "TOPCon Solar Cell Metallization", "Silver Paste Consumption Deficit", "AI Chip Heat Sink Thermal Silver", "LBMA COMEX Silver Inventory Depletion", "Photovoltaic Solar Manufacturing Demand", "Physical Silver Spot Squeeze", "Precious Industrial Metals", "Subterranean Silver Mining Deficit", "Silver Price Forecast 2026"
+    ],
     views: 36490,
     bookmarks: 2340
   },
@@ -1854,7 +1888,9 @@ export const TRENDING_DISPATCHES: Article[] = [
     imageCaption: "Industrial robotic arm operating a precision aerospace metallurgical forging tool inside an advanced foundry.",
     featured: false,
     breaking: false,
-    tags: ["Defense", "India Economy", "Aerospace", "Make In India", "Metallurgy", "Titanium"],
+    tags: [
+      "India Defense Metallurgy Foundries", "Advanced Titanium Superalloy Casting", "Single-Crystal Turbine Blades", "Hindustan Aeronautics Limited HAL", "Midhani Special Metals Foundry", "DRDO Defense Material Research", "Next-Gen Fighter Jet Engines", "Aerospace Titanium Exports", "Defense Indigenization Corridor", "Strategic Military Metallurgy"
+    ],
     views: 38920,
     bookmarks: 2610
   }

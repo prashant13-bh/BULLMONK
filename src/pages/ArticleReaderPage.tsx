@@ -108,6 +108,20 @@ export const ArticleReaderPage: React.FC<ArticleReaderPageProps> = ({
       metaDesc.content = article.deck;
     }
 
+    // Update Meta Keywords
+    let metaKeywords = document.querySelector('meta[name="keywords"]') as HTMLMetaElement | null;
+    const originalKeywords = metaKeywords ? metaKeywords.content : '';
+    if (article.tags && article.tags.length > 0) {
+      if (metaKeywords) {
+        metaKeywords.content = article.tags.join(', ');
+      } else {
+        metaKeywords = document.createElement('meta');
+        metaKeywords.name = 'keywords';
+        metaKeywords.content = article.tags.join(', ');
+        document.head.appendChild(metaKeywords);
+      }
+    }
+
     // Update OpenGraph Tags
     let ogTitle = document.querySelector('meta[property="og:title"]') as HTMLMetaElement | null;
     const originalOgTitle = ogTitle ? ogTitle.content : '';
@@ -184,6 +198,7 @@ export const ArticleReaderPage: React.FC<ArticleReaderPageProps> = ({
     return () => {
       document.title = originalTitle;
       if (metaDesc) metaDesc.content = originalDesc;
+      if (metaKeywords) metaKeywords.content = originalKeywords;
       if (ogTitle) ogTitle.content = originalOgTitle;
       if (ogDesc) ogDesc.content = originalOgDesc;
       if (ogUrl) ogUrl.content = originalOgUrl;

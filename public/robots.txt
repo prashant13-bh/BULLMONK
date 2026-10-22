@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://govtnaukri4u.com/sitemap.xml
+Sitemap: https://govtnaukri4u.com/news-sitemap.xml
