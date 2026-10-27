@@ -385,7 +385,7 @@ console.log('Generated public/rss.xml and public/feed.xml');
 // 4. Generate Google News Sitemap (public/news-sitemap.xml)
 // Google News guidelines require publication dates to be within the last 48 hours
 function generateNewsSitemap(items) {
-  const now = new Date('2026-10-27T18:00:00Z').getTime();
+  const now = Date.now();
   const fortyEightHoursAgo = now - 46 * 3600 * 1000; // 46 hours back window
 
   const urlNodes = items.map((item, idx) => {
@@ -439,7 +439,7 @@ function generateMasterSitemap(items) {
     { loc: `${BASE_URL}/corrections`, priority: '0.70', changefreq: 'weekly' }
   ];
 
-  const currentDate = '2026-10-27';
+  const currentDate = new Date().toISOString().split('T')[0];
 
   const staticUrls = staticPages.map(p => `  <url>
     <loc>${p.loc}</loc>
@@ -471,6 +471,26 @@ ${articleUrls}
 const masterSitemapContent = generateMasterSitemap(articles);
 fs.writeFileSync('public/sitemap.xml', masterSitemapContent, 'utf8');
 console.log(`Updated public/sitemap.xml with all ${articles.length} dispatches.`);
+
+// 5b. Generate Master Sitemap Index (public/sitemap_index.xml)
+function generateSitemapIndex() {
+  const currentDate = new Date().toISOString().split('T')[0];
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <sitemap>
+    <loc>${BASE_URL}/sitemap.xml</loc>
+    <lastmod>${currentDate}</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>${BASE_URL}/news-sitemap.xml</loc>
+    <lastmod>${currentDate}</lastmod>
+  </sitemap>
+</sitemapindex>`;
+}
+
+const sitemapIndexContent = generateSitemapIndex();
+fs.writeFileSync('public/sitemap_index.xml', sitemapIndexContent, 'utf8');
+console.log('Generated public/sitemap_index.xml (Master Sitemap Index).');
 
 // 6. Generate Comprehensive public/llms.txt for Generative Engine Optimization (GEO)
 function generateLlmsTxt(items) {
@@ -522,13 +542,13 @@ try {
   if (!fs.existsSync('public/public')) {
     fs.mkdirSync('public/public', { recursive: true });
   }
-  const xmlFiles = ['rss.xml', 'feed.xml', 'news-sitemap.xml', 'sitemap.xml'];
+  const xmlFiles = ['rss.xml', 'feed.xml', 'news-sitemap.xml', 'sitemap.xml', 'sitemap_index.xml'];
   for (const file of xmlFiles) {
     if (fs.existsSync(`public/${file}`)) {
       fs.copyFileSync(`public/${file}`, `public/public/${file}`);
     }
   }
-  console.log('Synchronized public/public/ fallback directory with all 4 XML feeds.');
+  console.log('Synchronized public/public/ fallback directory with all 5 XML feeds.');
 } catch (e) {
   console.error('Error syncing public/public:', e);
 }

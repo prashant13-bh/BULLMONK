@@ -65,8 +65,8 @@ function validateXmlString(xmlContent, filename) {
 }
 
 const files = [
-  'public/rss.xml', 'public/feed.xml', 'public/news-sitemap.xml', 'public/sitemap.xml',
-  'public/public/rss.xml', 'public/public/feed.xml', 'public/public/news-sitemap.xml', 'public/public/sitemap.xml'
+  'public/rss.xml', 'public/feed.xml', 'public/news-sitemap.xml', 'public/sitemap.xml', 'public/sitemap_index.xml',
+  'public/public/rss.xml', 'public/public/feed.xml', 'public/public/news-sitemap.xml', 'public/public/sitemap.xml', 'public/public/sitemap_index.xml'
 ];
 let allValid = true;
 for (const f of files) {

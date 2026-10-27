@@ -1,6 +1,7 @@
 User-agent: *
 Allow: /
 
+Sitemap: https://bullmonk.live/sitemap_index.xml
 Sitemap: https://bullmonk.live/sitemap.xml
 Sitemap: https://bullmonk.live/news-sitemap.xml
 Sitemap: https://bullmonk.live/rss.xml

@@ -1,6 +1,29 @@
-/public/rss.xml          /rss.xml          200
-/public/feed.xml         /feed.xml         200
-/public/sitemap.xml      /sitemap.xml      200
-/public/news-sitemap.xml /news-sitemap.xml 200
-/public/*                /:splat           200
-/*                       /index.html       200
+# Explicit Static Assets & Feeds (Guaranteed 200, Bypass SPA Fallback)
+/sitemap.xml              /sitemap.xml              200
+/sitemap_index.xml        /sitemap_index.xml        200
+/news-sitemap.xml         /news-sitemap.xml         200
+/rss.xml                  /rss.xml                  200
+/feed.xml                 /feed.xml                 200
+/llms.txt                 /llms.txt                 200
+/robots.txt               /robots.txt               200
+/ads.txt                  /ads.txt                  200
+/google*.html             /:splat                   200
+
+# Convenient Sitemap & RSS Feed Aliases (301 Permanent Redirect)
+/sitemap                  /sitemap.xml              301
+/news-sitemap             /news-sitemap.xml         301
+/sitemapindex.xml         /sitemap_index.xml        301
+/sitemap-index.xml        /sitemap_index.xml        301
+/rss                      /rss.xml                  301
+/feed                     /feed.xml                 301
+
+# Public Mirror Fallbacks
+/public/rss.xml           /rss.xml                  200
+/public/feed.xml          /feed.xml                 200
+/public/sitemap.xml       /sitemap.xml              200
+/public/news-sitemap.xml  /news-sitemap.xml         200
+/public/sitemap_index.xml /sitemap_index.xml        200
+/public/*                 /:splat                   200
+
+# Single Page Application Catch-All
+/*                        /index.html               200
