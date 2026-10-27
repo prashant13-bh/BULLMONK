@@ -444,16 +444,19 @@ export const ArticleReaderPage: React.FC<ArticleReaderPageProps> = ({
           items={[
             { 
               label: article.category, 
+              title: `Intelligence Desk: ${article.category}`,
               href: `https://bullmonk.live/#category/${encodeURIComponent(article.category.toLowerCase().replace(/\s+/g, '-'))}`,
               onClick: onBackToWire 
             },
             { 
               label: article.region, 
+              title: `International Bureau: ${article.region}`,
               href: `https://bullmonk.live/#region/${encodeURIComponent(article.region.toLowerCase().replace(/\s+/g, '-'))}`,
               onClick: onBackToWire 
             },
             { 
-              label: article.title.length > 50 ? article.title.slice(0, 47) + '...' : article.title, 
+              label: article.title.length > 55 ? article.title.slice(0, 52) + '...' : article.title, 
+              title: article.title,
               href: canonicalUrl,
               active: true 
             }

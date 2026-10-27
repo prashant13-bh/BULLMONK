@@ -27,6 +27,60 @@ const EditorialStandardsPage = lazy(() => import('./pages/EditorialStandardsPage
 const CookiePolicyPage = lazy(() => import('./pages/CookiePolicyPage').then(m => ({ default: m.CookiePolicyPage })));
 const CorrectionsPage = lazy(() => import('./pages/CorrectionsPage').then(m => ({ default: m.CorrectionsPage })));
 
+export const PAGE_TITLES: Record<PageView, string> = {
+  home: "BULLMONK | Global News, Geopolitical Intelligence & Financial Truth",
+  article: "Global Dispatch | BULLMONK Intelligence",
+  tools: "Sovereign Quantitative Financial Suite & Yield Calculators | BULLMONK",
+  'doc-tools': "PDF Studio & Client-Side Document Security Suite | BULLMONK",
+  about: "About BULLMONK | Editorial Board, Leadership & International Bureaus",
+  contact: "Contact BULLMONK | Editorial Bureau Directory & Secure Leaks",
+  legal: "Master Compliance Hub & International Regulatory Framework | BULLMONK",
+  privacy: "Privacy Policy & Google AdSense Publisher Disclosures | BULLMONK",
+  terms: "Terms of Service & AI Content Moratorium | BULLMONK Legal",
+  disclaimer: "YMYL Financial Disclaimer & Capital Risk Disclosures | BULLMONK",
+  editorial: "Editorial Standards, Sourcing & 72-Hour Trading Moratorium | BULLMONK",
+  cookies: "Cookie Policy & Interactive Client-Side Consent Manager | BULLMONK",
+  corrections: "Corrections Protocol & Public Errata Log | BULLMONK Newsroom",
+  write: "Dispatch Drafting Studio & Editorial Filing Console | BULLMONK",
+  admin: "Editorial Command Terminal & Bureau Operations Console | BULLMONK"
+};
+
+export const PAGE_DESCRIPTIONS: Record<PageView, string> = {
+  home: "BullMonk delivers unfiltered global journalism, macroeconomics, geopolitical dispatches, semiconductor diplomacy, and deep analytical columns from world bureaus.",
+  article: "Deep investigative reporting, macroeconomic forensic data, and sovereign intelligence from BULLMONK international correspondents.",
+  tools: "Quantitative financial tools including Sovereign Real Yield, Bond Duration, Inflation Purchasing Power, and PPP FX Arbitrage valuation models.",
+  'doc-tools': "High-precision client-side document processing, PDF conversion, image super-resolution, and secure local file triage.",
+  about: "BULLMONK international newsroom, editorial leadership, charter of editorial independence, and global bureau locations.",
+  contact: "Official communication channels, international bureau phone lines, press syndication desk, and cryptographic whistleblower submission gateway.",
+  legal: "Central compliance and governance directory for BULLMONK International Intelligence Group.",
+  privacy: "Comprehensive privacy framework detailing GDPR, CCPA, and Google AdSense third-party cookie and advertisement disclosures.",
+  terms: "Terms of service, fair-use quotation allowance, prohibited AI scraping policies, and dispute resolution mechanisms.",
+  disclaimer: "Crucial regulatory financial dispatches disclaimer regarding non-advisory journalism and market volatility warnings.",
+  editorial: "Newsroom ethics, mandatory two-source verification protocol, commercial separation, and 72-hour financial trading moratorium.",
+  cookies: "Client-side consent management console and detailed audit table of essential and analytical cookies.",
+  corrections: "Transparent errata procedure, retraction protocols, and publicly logged corrections log.",
+  write: "Authoring studio for accredited correspondents and sovereign analysts filing verified field dispatches.",
+  admin: "Managing editor administrative terminal for headline review, wire curation, and author credential management."
+};
+
+const PAGE_CANONICALS: Record<PageView, string> = {
+  home: 'https://bullmonk.live/',
+  article: 'https://bullmonk.live/',
+  tools: 'https://bullmonk.live/tools',
+  'doc-tools': 'https://bullmonk.live/doc-tools',
+  about: 'https://bullmonk.live/about',
+  contact: 'https://bullmonk.live/contact',
+  legal: 'https://bullmonk.live/legal',
+  privacy: 'https://bullmonk.live/privacy',
+  terms: 'https://bullmonk.live/terms',
+  disclaimer: 'https://bullmonk.live/disclaimer',
+  editorial: 'https://bullmonk.live/editorial',
+  cookies: 'https://bullmonk.live/cookies',
+  corrections: 'https://bullmonk.live/corrections',
+  write: 'https://bullmonk.live/#write',
+  admin: 'https://bullmonk.live/#admin'
+};
+
 export const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<PageView>('home');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
@@ -62,6 +116,37 @@ export const App: React.FC = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  // Synchronize document.title, OpenGraph, and meta descriptions across all page transitions
+  useEffect(() => {
+    let title = PAGE_TITLES[currentPage] || "BULLMONK | Global News & Macro Intelligence";
+    let desc = PAGE_DESCRIPTIONS[currentPage] || "Unfiltered global journalism, financial intelligence, and geopolitical dispatches.";
+
+    if (currentPage === 'article' && selectedArticle) {
+      title = `${selectedArticle.title} | BULLMONK Intelligence`;
+      if (selectedArticle.deck) desc = selectedArticle.deck;
+    }
+
+    document.title = title;
+
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) metaDesc.setAttribute('content', desc);
+
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) ogTitle.setAttribute('content', title);
+
+    const ogDesc = document.querySelector('meta[property="og:description"]');
+    if (ogDesc) ogDesc.setAttribute('content', desc);
+
+    const canonicalLink = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
+    if (canonicalLink) {
+      if (currentPage === 'article' && selectedArticle) {
+        canonicalLink.href = `https://bullmonk.live/article/${selectedArticle.id}`;
+      } else {
+        canonicalLink.href = PAGE_CANONICALS[currentPage] || 'https://bullmonk.live/';
+      }
+    }
+  }, [currentPage, selectedArticle]);
+
   useEffect(() => {
     const handleNavigation = () => {
       const hash = window.location.hash.replace(/^#\/?/, '') as PageView;
@@ -72,11 +157,13 @@ export const App: React.FC = () => {
         'privacy', 'terms', 'disclaimer', 'editorial', 'cookies', 'corrections'
       ];
 
-      // Handle article deep links e.g. /article/bm-nuc-018 or #article/bm-nuc-018
+      // Handle article deep links e.g. /article/bm-nuc-018 or #article/bm-nuc-018/slug
       const raw = window.location.hash || window.location.pathname;
-      const match = raw.match(/article\/([a-zA-Z0-9_-]+)/);
-      if (match && match[1]) {
-        const found = articles.find((a) => a.id === match[1] || a.slug === match[1]);
+      const match = raw.match(/article\/([^/?#]+)(?:\/([^/?#]+))?/);
+      if (match) {
+        const p1 = match[1];
+        const p2 = match[2];
+        const found = articles.find((a) => a.id === p1 || a.slug === p1 || (p2 && (a.id === p2 || a.slug === p2)));
         if (found) {
           setSelectedArticle(found);
           setCurrentPage('article');
@@ -191,6 +278,8 @@ export const App: React.FC = () => {
     BullMonkStorage.incrementViews(article.id);
     setSelectedArticle(article);
     setCurrentPage('article');
+    const slug = article.slug || article.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+    window.location.hash = `article/${article.id}/${slug}`;
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 

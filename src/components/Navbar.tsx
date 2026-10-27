@@ -266,6 +266,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   type="button"
                   className={`nav-link ${currentPage === 'home' && selectedCategory === 'Markets & Finance' ? 'active' : ''}`}
                   onClick={() => handleNavClick('home', 'Markets & Finance')}
+                  title="Markets & Rates — Sovereign Debt & Global Capital Flows"
                 >
                   <TrendingUp size={13} />
                   <span>Markets & Rates</span>
@@ -276,6 +277,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   type="button"
                   className={`nav-link ${currentPage === 'home' && selectedCategory === 'Technology & AI' ? 'active' : ''}`}
                   onClick={() => handleNavClick('home', 'Technology & AI')}
+                  title="Tech & Semis — Artificial Intelligence & Semiconductor Geopolitics"
                 >
                   <Cpu size={13} />
                   <span>Tech & Semis</span>
@@ -287,6 +289,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   type="button"
                   className={`nav-link ${currentPage === 'home' && selectedCategory === 'World Affairs' ? 'active' : ''}`}
                   onClick={() => handleNavClick('home', 'World Affairs')}
+                  title="Geopolitics — Sovereign Corridors & World Affairs"
                 >
                   <Globe size={13} />
                   <span>Geopolitics</span>
@@ -297,6 +300,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   type="button"
                   className={`nav-link ${currentPage === 'home' && selectedCategory === 'Energy & Climate' ? 'active' : ''}`}
                   onClick={() => handleNavClick('home', 'Energy & Climate')}
+                  title="Commodities & Energy — Critical Minerals, Oil & Energy Transition"
                 >
                   <Flame size={13} />
                   <span>Commodities & Energy</span>
@@ -307,6 +311,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   type="button"
                   className={`nav-link ${currentPage === 'home' && selectedCategory === 'Culture & Ideas' ? 'active' : ''}`}
                   onClick={() => handleNavClick('home', 'Culture & Ideas')}
+                  title="Culture & Ideas — Industrial Systems & Strategic Essays"
                 >
                   <BookOpen size={13} />
                   <span>Culture & Ideas</span>
@@ -317,6 +322,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   type="button"
                   className={`nav-link ${currentPage === 'tools' ? 'active' : ''} nav-tools-link`}
                   onClick={() => handleNavClick('tools')}
+                  title="Financial Tools — Sovereign Yield, Bond Duration & Inflation Calculators"
                 >
                   <Calculator size={13} />
                   <span>Financial Tools</span>
@@ -327,6 +333,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   type="button"
                   className={`nav-link ${currentPage === 'doc-tools' ? 'active' : ''} nav-tools-link`}
                   onClick={() => handleNavClick('doc-tools')}
+                  title="AI & Doc Tools — PDF Studio & Client-Side File Triage"
                 >
                   <FileText size={13} />
                   <span>AI & Doc Tools</span>
@@ -341,6 +348,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   type="button"
                   className={`nav-secondary-link ${currentPage === 'admin' ? 'active' : ''}`} 
                   onClick={() => handleNavClick('admin')}
+                  title="Managing Desk — Editorial Command & Curation Console"
                   style={{ color: 'var(--accent-gold)', fontWeight: 800, display: 'inline-flex', alignItems: 'center', gap: '4px' }}
                 >
                   <ShieldCheck size={13} color="var(--accent-gold)" />
@@ -351,6 +359,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 type="button"
                 className={`nav-secondary-link ${currentPage === 'about' ? 'active' : ''}`} 
                 onClick={() => handleNavClick('about')}
+                title="Bureaus & Board — Editorial Leadership & Global Bureau Directory"
               >
                 Bureaus & Board
               </button>
@@ -358,6 +367,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 type="button"
                 className={`nav-secondary-link ${currentPage === 'legal' ? 'active' : ''}`} 
                 onClick={() => handleNavClick('legal')}
+                title="Compliance Hub — Master Legal, Privacy & Governance Suite"
               >
                 Compliance Hub
               </button>

@@ -324,8 +324,11 @@ function generateRssFeed(items) {
   const xmlItems = items.map(item => {
     const pubDate = new Date(item.publishedAt).toUTCString();
     const link = `${BASE_URL}/article/${item.id}`;
-    const escapedImage = xmlEscape(item.heroImage);
-    const mimeType = item.heroImage.includes('.webp') || item.heroImage.includes('fm=webp') ? 'image/webp' : 'image/jpeg';
+    const rawImage = item.heroImage.startsWith('http') 
+      ? item.heroImage 
+      : `${BASE_URL}${item.heroImage.startsWith('/') ? '' : '/'}${item.heroImage}`;
+    const escapedImage = xmlEscape(rawImage);
+    const mimeType = rawImage.includes('.webp') || rawImage.includes('fm=webp') ? 'image/webp' : 'image/jpeg';
     const escapedEntities = item.tags.slice(0, 5).map(t => xmlEscape(t)).join(', ');
     const escapedRegion = xmlEscape(item.region);
     const escapedAuthorName = xmlEscape(item.authorName);

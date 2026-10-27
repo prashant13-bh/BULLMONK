@@ -150,37 +150,37 @@ export const Footer: React.FC<FooterProps> = ({ setCurrentPage, setSelectedCateg
             <h3 className="footer-col-heading">Intelligence Desks</h3>
             <ul className="footer-nav-list">
               <li>
-                <button type="button" className="footer-link-btn" onClick={() => navigate('home', 'Markets & Finance')}>
+                <button type="button" className="footer-link-btn" onClick={() => navigate('home', 'Markets & Finance')} title="Global Macro & Sovereign Rates — Central Bank Liquidity & Yield Curves">
                   Global Macro & Sovereign Rates
                 </button>
               </li>
               <li>
-                <button type="button" className="footer-link-btn" onClick={() => navigate('home', 'Technology & AI')}>
+                <button type="button" className="footer-link-btn" onClick={() => navigate('home', 'Technology & AI')} title="Semiconductor Corridors & AI — Fab Capex & Edge Infrastructure">
                   Semiconductor Corridors & AI
                 </button>
               </li>
               <li>
-                <button type="button" className="footer-link-btn" onClick={() => navigate('home', 'World Affairs')}>
+                <button type="button" className="footer-link-btn" onClick={() => navigate('home', 'World Affairs')} title="Geopolitics & Bilateral Treaties — Sovereign Corridors & Trade Treaties">
                   Geopolitics & Bilateral Treaties
                 </button>
               </li>
               <li>
-                <button type="button" className="footer-link-btn" onClick={() => navigate('home', 'Energy & Climate')}>
+                <button type="button" className="footer-link-btn" onClick={() => navigate('home', 'Energy & Climate')} title="Energy Transition & Critical Minerals — Lithium, Copper & Power Grids">
                   Energy Transition & Critical Minerals
                 </button>
               </li>
               <li>
-                <button type="button" className="footer-link-btn" onClick={() => navigate('home', 'Culture & Ideas')}>
+                <button type="button" className="footer-link-btn" onClick={() => navigate('home', 'Culture & Ideas')} title="Culture & Macroeconomic Philosophy — Industrial Systems & Long-Form Essays">
                   Culture & Macroeconomic Philosophy
                 </button>
               </li>
               <li>
-                <button type="button" className="footer-link-btn suite-hub-link" onClick={() => navigate('tools')}>
+                <button type="button" className="footer-link-btn suite-hub-link" onClick={() => navigate('tools')} title="Quantitative Tools & Forensics — Sovereign Yield & Bond Duration Calculators">
                   Quantitative Tools & Forensics →
                 </button>
               </li>
               <li>
-                <button type="button" className="footer-link-btn suite-hub-link" onClick={() => navigate('doc-tools')}>
+                <button type="button" className="footer-link-btn suite-hub-link" onClick={() => navigate('doc-tools')} title="PDF, Word & AI Image Studio — High-Precision Client-Side File Processing">
                   PDF, Word & AI Image Studio →
                 </button>
               </li>
@@ -192,32 +192,32 @@ export const Footer: React.FC<FooterProps> = ({ setCurrentPage, setSelectedCateg
             <h3 className="footer-col-heading">Newsroom & Board</h3>
             <ul className="footer-nav-list">
               <li>
-                <button type="button" className="footer-link-btn" onClick={() => navigate('about')}>
+                <button type="button" className="footer-link-btn" onClick={() => navigate('about')} title="About BullMonk Newsroom — Leadership & Bureau Charter">
                   About BullMonk Newsroom
                 </button>
               </li>
               <li>
-                <button type="button" className="footer-link-btn" onClick={() => navigate('about')}>
+                <button type="button" className="footer-link-btn" onClick={() => navigate('about')} title="Editorial Board & Bureau Chiefs — International Intelligence Correspondents">
                   Editorial Board & Bureau Chiefs
                 </button>
               </li>
               <li>
-                <button type="button" className="footer-link-btn" onClick={() => navigate('contact')}>
+                <button type="button" className="footer-link-btn" onClick={() => navigate('contact')} title="Press Contacts & Syndication Desk — Editorial Bureau Inquiries">
                   Press Contacts & Syndication Desk
                 </button>
               </li>
               <li>
-                <button type="button" className="footer-link-btn" onClick={() => navigate('contact')}>
+                <button type="button" className="footer-link-btn" onClick={() => navigate('contact')} title="Whistleblower PGP Gateway — Secure Cryptographic Leak Channel">
                   Whistleblower PGP Gateway
                 </button>
               </li>
               <li>
-                <button type="button" className="footer-link-btn" onClick={() => navigate('editorial')}>
+                <button type="button" className="footer-link-btn" onClick={() => navigate('editorial')} title="Newsroom Code of Honor — Sourcing & Moratorium Standards">
                   Newsroom Code of Honor
                 </button>
               </li>
               <li>
-                <button type="button" className="footer-link-btn" onClick={() => navigate('corrections')}>
+                <button type="button" className="footer-link-btn" onClick={() => navigate('corrections')} title="Corrections & Public Errata Log — Public Record Standards">
                   Corrections & Public Errata Log
                 </button>
               </li>
@@ -226,6 +226,7 @@ export const Footer: React.FC<FooterProps> = ({ setCurrentPage, setSelectedCateg
                   type="button" 
                   className="footer-link-btn suite-hub-link" 
                   onClick={() => navigate('admin')} 
+                  title={adminUser ? 'Managing Editor Terminal — Headline Curation & Bureau Management' : 'Bureau Staff Portal — Internal Editorial Login'}
                   style={{ color: 'var(--accent-gold)', fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: '5px' }}
                 >
                   <Lock size={12} />
@@ -240,37 +241,37 @@ export const Footer: React.FC<FooterProps> = ({ setCurrentPage, setSelectedCateg
             <h3 className="footer-col-heading">Governance & Legal</h3>
             <ul className="footer-nav-list">
               <li>
-                <button type="button" className="footer-link-btn legal-highlight" onClick={() => navigate('disclaimer')}>
+                <button type="button" className="footer-link-btn legal-highlight" onClick={() => navigate('disclaimer')} title="Financial & YMYL Disclaimer — Non-Advisory Market Risk Disclosures">
                   Financial & YMYL Disclaimer
                 </button>
               </li>
               <li>
-                <button type="button" className="footer-link-btn" onClick={() => navigate('privacy')}>
+                <button type="button" className="footer-link-btn" onClick={() => navigate('privacy')} title="Privacy Policy — Google AdSense & GDPR Data Protection Disclosures">
                   Privacy Policy (AdSense & GDPR)
                 </button>
               </li>
               <li>
-                <button type="button" className="footer-link-btn" onClick={() => navigate('terms')}>
+                <button type="button" className="footer-link-btn" onClick={() => navigate('terms')} title="Terms of Service — Syndication Rights & AI Content Moratorium">
                   Terms of Service & Syndication
                 </button>
               </li>
               <li>
-                <button type="button" className="footer-link-btn" onClick={() => navigate('editorial')}>
+                <button type="button" className="footer-link-btn" onClick={() => navigate('editorial')} title="Editorial Ethics & Independence — Mandatory Two-Source Corroboration">
                   Editorial Ethics & Independence
                 </button>
               </li>
               <li>
-                <button type="button" className="footer-link-btn" onClick={() => navigate('cookies')}>
+                <button type="button" className="footer-link-btn" onClick={() => navigate('cookies')} title="Cookie Telemetry & Preferences — Interactive Client-Side Consent Manager">
                   Cookie Telemetry & Preferences
                 </button>
               </li>
               <li>
-                <button type="button" className="footer-link-btn" onClick={() => navigate('corrections')}>
+                <button type="button" className="footer-link-btn" onClick={() => navigate('corrections')} title="Corrections Policy & Errata — SLA & Retraction Protocol">
                   Corrections Policy & Errata
                 </button>
               </li>
               <li>
-                <button type="button" className="footer-link-btn suite-hub-link" onClick={() => navigate('legal')}>
+                <button type="button" className="footer-link-btn suite-hub-link" onClick={() => navigate('legal')} title="Master Compliance Hub — Global Corporate Governance Directory">
                   All Compliance Charters →
                 </button>
               </li>

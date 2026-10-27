@@ -23,9 +23,10 @@ export const ShareModal: React.FC<ShareModalProps> = ({
   const [citationFormat, setCitationFormat] = useState<'ap' | 'bibtex'>('ap');
   const [showQr, setShowQr] = useState(false);
 
+  const slug = article.slug || article.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
   const shareUrl = typeof window !== 'undefined' 
-    ? `${window.location.origin}/#article-${article.id}`
-    : `https://bullmonk.live/#article-${article.id}`;
+    ? `${window.location.origin}/#article/${article.id}/${slug}`
+    : `https://bullmonk.live/#article/${article.id}/${slug}`;
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {

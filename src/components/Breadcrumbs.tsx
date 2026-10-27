@@ -4,6 +4,7 @@ import { Home, ChevronRight } from 'lucide-react';
 
 export interface BreadcrumbItem {
   label: string;
+  title?: string;
   page?: PageView;
   href?: string;
   onClick?: () => void;
@@ -81,7 +82,8 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ items, setCurrentPage 
             href="https://bullmonk.live/"
             itemProp="item"
             className="breadcrumb-link"
-            onClick={(e) => handleClick({ label: 'Home Wire', page: 'home' }, e)}
+            title="Home Wire — Return to BullMonk Front Page"
+            onClick={(e) => handleClick({ label: 'Home Wire', page: 'home', title: 'Home Wire' }, e)}
             style={{
               display: 'inline-flex',
               alignItems: 'center',
@@ -110,6 +112,7 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ items, setCurrentPage 
           const isLast = index === items.length - 1 || item.active;
           const position = index + 2;
           const targetUrl = getUrl(item);
+          const linkTitle = item.title || item.label;
 
           return (
             <li 
@@ -126,6 +129,7 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ items, setCurrentPage 
                   href={targetUrl}
                   itemProp="item"
                   aria-current="page"
+                  title={linkTitle}
                   onClick={(e) => handleClick(item, e)}
                   style={{ 
                     fontWeight: 700, 
@@ -144,6 +148,7 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ items, setCurrentPage 
                   href={targetUrl}
                   itemProp="item"
                   className="breadcrumb-link"
+                  title={linkTitle}
                   onClick={(e) => handleClick(item, e)}
                   style={{
                     background: 'none',

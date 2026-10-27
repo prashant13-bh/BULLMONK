@@ -345,6 +345,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                   <div 
                     key={item.id} 
                     className="wire-dispatch-card"
+                    title={item.title}
                     onClick={() => onSelectArticle(item)}
                   >
                     <div className="wire-card-meta">
@@ -376,6 +377,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               {leadArticle && (
                 <article 
                   className="grand-hero-card"
+                  title={leadArticle.title}
                   onClick={() => onSelectArticle(leadArticle)}
                 >
                   <div className="grand-hero-media">
@@ -522,6 +524,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                       <article 
                         key={art.id}
                         className="center-subcard"
+                        title={art.title}
                         onClick={() => onSelectArticle(art)}
                       >
                         <div className="center-subcard-media">

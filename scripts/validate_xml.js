@@ -21,6 +21,23 @@ function validateXmlString(xmlContent, filename) {
     return false;
   }
 
+  // Check for invalid relative URLs in media:content, enclosure, loc, and atom:link
+  const relativeUrlRegex = /(?:url="(?!\s*https?:\/\/)[^"]+"|href="(?!\s*https?:\/\/)[^"]+"|<loc>(?!\s*https?:\/\/)[^<]+<\/loc>)/;
+  const relativeMatches = [];
+  lines.forEach((line, lineIdx) => {
+    if (line.includes('<media:content') || line.includes('<enclosure') || line.includes('<loc>') || line.includes('<atom:link')) {
+      if (relativeUrlRegex.test(line)) {
+        relativeMatches.push({ line: lineIdx + 1, snippet: line.trim() });
+      }
+    }
+  });
+
+  if (relativeMatches.length > 0) {
+    console.error(`❌ ${filename} has ${relativeMatches.length} relative or invalid URLs (Google Search Console requires absolute URLs):`);
+    relativeMatches.forEach(e => console.error(`   Line ${e.line}: ${e.snippet}`));
+    return false;
+  }
+
   // Check tag matching stack
   const tagRegex = /<(\/?[a-zA-Z0-9:_-]+)([^>]*)>/g;
   const stack = [];
