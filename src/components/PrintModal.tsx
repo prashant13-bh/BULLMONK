@@ -96,7 +96,7 @@ BUREAU / DESK: ${article.region} • ${article.category}
 AUTHOR: ${article.author.name} (${article.author.title}, ${article.author.location})
 PUBLISHED: ${dateStr}
 ESTIMATED READING DURATION: ${article.readTime}
-CANONICAL ARCHIVE: https://govtnaukri4u.com/#article-${article.id}
+CANONICAL ARCHIVE: https://bullmonk.live/#article-${article.id}
 ${takeawaysText}
 
 --------------------------------------------------------------------------------

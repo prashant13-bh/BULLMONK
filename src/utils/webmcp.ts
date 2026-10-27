@@ -55,7 +55,7 @@ export function initWebMCPTools(
               category: r.category,
               region: r.region,
               deck: r.deck,
-              url: `https://www.govtnaukri4u.com/`
+              url: `https://bullmonk.live/`
             }))
           };
         }
@@ -135,7 +135,7 @@ export function initWebMCPTools(
   (window as any).webMCP = {
     version: '1.0',
     specification: 'https://agenticresourcediscovery.org/spec/',
-    catalogUrl: 'https://www.govtnaukri4u.com/.well-known/ai-catalog.json',
+    catalogUrl: 'https://bullmonk.live/.well-known/ai-catalog.json',
     tools: [
       {
         name: 'search_intelligence_dispatches',

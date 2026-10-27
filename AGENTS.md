@@ -5,6 +5,7 @@ BULLMONK is a premier international news and financial intelligence platform del
 
 ## 2. Core Technical Mandates
 - **Technology Stack**: React 19 + TypeScript + Vite. Pure Vanilla CSS (`src/styles/index.css`). No Tailwind CSS.
+- **Production Domain**: `https://bullmonk.live/` (Strict canonical URL, OpenGraph, sitemaps, RSS feeds, and schema.org).
 - **Theme Default**: Prestige Paper (`#F8F9FA` background, `#FFFFFF` surfaces, `#0F172A` text, `#B45309` bronze gold). Optional Night Terminal theme stored in `BULLMONK_REACT_THEME`.
 - **Performance Targets**: 95+ PageSpeed on Mobile and Desktop, 100 Accessibility, 100 SEO, 100 Best Practices.
 - **Monetization & Analytics**:

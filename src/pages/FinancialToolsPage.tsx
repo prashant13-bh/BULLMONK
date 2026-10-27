@@ -259,7 +259,7 @@ Modified Duration: ${bondMetrics.modDuration} yrs | Macaulay Duration: ${bondMet
 Convexity: ${bondMetrics.convexity}
 Yield Shock (${bondShiftBps > 0 ? '+' : ''}${bondShiftBps} bps): ${bondMetrics.pctPriceChange}% ($${bondMetrics.dollarPriceChange})
 Post-Shock Price: $${bondMetrics.postShockPrice}
-Generated via BullMonk Financial Intelligence Suite (bullmonk.org)`;
+Generated via BullMonk Financial Intelligence Suite (bullmonk.live)`;
     } else if (activeTab === 'inflation') {
       summaryText = `BULLMONK REAL PURCHASING POWER FORECAST
 Principal: $${infPrincipal.toLocaleString()} | Horizon: ${infHorizonYears} Years
@@ -270,7 +270,7 @@ Real Purchasing Power: $${inflationMetrics.realPurchasingPowerFinal.toLocaleStri
 Inflation Drag (Purchasing Power Lost): $${inflationMetrics.inflationDrag.toLocaleString()}
 Tax Drag: $${inflationMetrics.taxDrag.toLocaleString()}
 Effective Real Annualized CAGR: ${inflationMetrics.realCAGR}%
-Generated via BullMonk Financial Intelligence Suite (bullmonk.org)`;
+Generated via BullMonk Financial Intelligence Suite (bullmonk.live)`;
     } else if (activeTab === 'fx') {
       summaryText = `BULLMONK FX ARBITRAGE & PPP VALUATION DOSSIER
 Exchange: ${fxAmount.toLocaleString()} ${fxBase} ➔ ${fxConversion.convertedAmount.toLocaleString()} ${fxTarget}
@@ -278,7 +278,7 @@ Spot Rate: 1 ${fxBase} = ${fxConversion.directRate} ${fxTarget}
 Implied PPP Benchmark Rate: 1 ${fxBase} = ${fxConversion.pppRate} ${fxTarget}
 Valuation Assessment: ${fxTarget} is ${Math.abs(fxConversion.valuationDiff)}% ${fxConversion.isOvervalued ? 'OVERVALUED' : 'UNDERVALUED'} vs ${fxBase}
 Real Policy Rate Spread: ${fxConversion.realRateSpread}%
-Generated via BullMonk Financial Intelligence Suite (bullmonk.org)`;
+Generated via BullMonk Financial Intelligence Suite (bullmonk.live)`;
     } else {
       summaryText = `BULLMONK COMPOUND CAPITAL FORECAST
 Starting Capital: $${compInitial.toLocaleString()} | Monthly Addition: $${compMonthly.toLocaleString()}
@@ -286,7 +286,7 @@ Duration: ${compYears} Years | Net Compounding Rate: ${(compGrowthRate + (compRe
 Final Portfolio Value: $${compoundMetrics.finalBalance.toLocaleString()}
 Total Capital Deposited: $${compoundMetrics.totalDeposited.toLocaleString()}
 Total Compound Growth Earned: $${compoundMetrics.totalInterestEarned.toLocaleString()}
-Generated via BullMonk Financial Intelligence Suite (bullmonk.org)`;
+Generated via BullMonk Financial Intelligence Suite (bullmonk.live)`;
     }
 
     navigator.clipboard.writeText(summaryText);

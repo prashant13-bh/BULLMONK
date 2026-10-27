@@ -25,7 +25,7 @@ export const ShareModal: React.FC<ShareModalProps> = ({
 
   const shareUrl = typeof window !== 'undefined' 
     ? `${window.location.origin}/#article-${article.id}`
-    : `https://govtnaukri4u.com/#article-${article.id}`;
+    : `https://bullmonk.live/#article-${article.id}`;
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {

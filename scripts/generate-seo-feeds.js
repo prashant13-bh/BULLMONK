@@ -1,6 +1,8 @@
 import fs from 'fs';
 import path from 'path';
 
+const BASE_URL = 'https://bullmonk.live';
+
 // Authoritative Keyword Mapping for All 35 BULLMONK Dispatches
 const KEYWORD_MAP = {
   // Bureau Dispatches (newsData.ts)
@@ -321,7 +323,7 @@ function generateRssFeed(items) {
 
   const xmlItems = items.map(item => {
     const pubDate = new Date(item.publishedAt).toUTCString();
-    const link = `https://govtnaukri4u.com/article/${item.id}`;
+    const link = `${BASE_URL}/article/${item.id}`;
     const escapedImage = xmlEscape(item.heroImage);
     const mimeType = item.heroImage.includes('.webp') || item.heroImage.includes('fm=webp') ? 'image/webp' : 'image/jpeg';
     const escapedEntities = item.tags.slice(0, 5).map(t => xmlEscape(t)).join(', ');
@@ -357,16 +359,16 @@ function generateRssFeed(items) {
      xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>BULLMONK | Global News &amp; Macro Intelligence</title>
-    <link>https://govtnaukri4u.com/</link>
-    <atom:link href="https://govtnaukri4u.com/rss.xml" rel="self" type="application/rss+xml" />
+    <link>${BASE_URL}/</link>
+    <atom:link href="${BASE_URL}/rss.xml" rel="self" type="application/rss+xml" />
     <description>International macroeconomic intelligence, sovereign bond flows, semiconductor diplomacy, and central bank dispatches from world bureaus.</description>
     <language>en-us</language>
     <copyright>© 2026 BULLMONK Intelligence. All rights reserved.</copyright>
     <lastBuildDate>${buildDate}</lastBuildDate>
     <image>
-      <url>https://govtnaukri4u.com/logo192.png</url>
+      <url>${BASE_URL}/logo192.png</url>
       <title>BULLMONK Intelligence</title>
-      <link>https://govtnaukri4u.com/</link>
+      <link>${BASE_URL}/</link>
       <width>144</width>
       <height>144</height>
     </image>
@@ -387,7 +389,7 @@ function generateNewsSitemap(items) {
   const fortyEightHoursAgo = now - 46 * 3600 * 1000; // 46 hours back window
 
   const urlNodes = items.map((item, idx) => {
-    const link = `https://govtnaukri4u.com/article/${item.id}`;
+    const link = `${BASE_URL}/article/${item.id}`;
     let pubDate = new Date(item.publishedAt);
     // If older than 48 hours, distribute fresh timestamp over the last 46 hours for Google News eligibility
     if (pubDate.getTime() < fortyEightHoursAgo || isNaN(pubDate.getTime())) {
@@ -422,19 +424,19 @@ console.log(`Generated public/news-sitemap.xml with ${articles.length} dispatche
 // 5. Generate Master Sitemap (public/sitemap.xml) with all articles + legal
 function generateMasterSitemap(items) {
   const staticPages = [
-    { loc: 'https://govtnaukri4u.com/', priority: '1.0', changefreq: 'hourly' },
-    { loc: 'https://govtnaukri4u.com/tools', priority: '0.90', changefreq: 'weekly' },
-    { loc: 'https://govtnaukri4u.com/doc-tools', priority: '0.90', changefreq: 'weekly' },
-    { loc: 'https://govtnaukri4u.com/about', priority: '0.80', changefreq: 'monthly' },
-    { loc: 'https://govtnaukri4u.com/contact', priority: '0.80', changefreq: 'monthly' },
+    { loc: `${BASE_URL}/`, priority: '1.0', changefreq: 'hourly' },
+    { loc: `${BASE_URL}/tools`, priority: '0.90', changefreq: 'weekly' },
+    { loc: `${BASE_URL}/doc-tools`, priority: '0.90', changefreq: 'weekly' },
+    { loc: `${BASE_URL}/about`, priority: '0.80', changefreq: 'monthly' },
+    { loc: `${BASE_URL}/contact`, priority: '0.80', changefreq: 'monthly' },
     // Legal & Compliance
-    { loc: 'https://govtnaukri4u.com/legal', priority: '0.70', changefreq: 'monthly' },
-    { loc: 'https://govtnaukri4u.com/privacy', priority: '0.70', changefreq: 'monthly' },
-    { loc: 'https://govtnaukri4u.com/terms', priority: '0.70', changefreq: 'monthly' },
-    { loc: 'https://govtnaukri4u.com/disclaimer', priority: '0.70', changefreq: 'monthly' },
-    { loc: 'https://govtnaukri4u.com/editorial', priority: '0.70', changefreq: 'monthly' },
-    { loc: 'https://govtnaukri4u.com/cookies', priority: '0.70', changefreq: 'monthly' },
-    { loc: 'https://govtnaukri4u.com/corrections', priority: '0.70', changefreq: 'weekly' }
+    { loc: `${BASE_URL}/legal`, priority: '0.70', changefreq: 'monthly' },
+    { loc: `${BASE_URL}/privacy`, priority: '0.70', changefreq: 'monthly' },
+    { loc: `${BASE_URL}/terms`, priority: '0.70', changefreq: 'monthly' },
+    { loc: `${BASE_URL}/disclaimer`, priority: '0.70', changefreq: 'monthly' },
+    { loc: `${BASE_URL}/editorial`, priority: '0.70', changefreq: 'monthly' },
+    { loc: `${BASE_URL}/cookies`, priority: '0.70', changefreq: 'monthly' },
+    { loc: `${BASE_URL}/corrections`, priority: '0.70', changefreq: 'weekly' }
   ];
 
   const currentDate = '2026-10-27';
@@ -449,7 +451,7 @@ function generateMasterSitemap(items) {
   const articleUrls = items.map(item => {
     const itemDate = item.publishedAt ? item.publishedAt.split('T')[0] : currentDate;
     return `  <url>
-    <loc>https://govtnaukri4u.com/article/${item.id}</loc>
+    <loc>${BASE_URL}/article/${item.id}</loc>
     <lastmod>${itemDate}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
@@ -460,7 +462,7 @@ function generateMasterSitemap(items) {
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Core Portal -->
 ${staticUrls}
-
+ 
   <!-- Investigative Dispatches and Global Intelligence (${items.length} Dispatches) -->
 ${articleUrls}
 </urlset>`;
@@ -483,7 +485,7 @@ function generateLlmsTxt(items) {
   for (const [cat, catArticles] of Object.entries(categories)) {
     categorySections += `### ${cat}\n`;
     catArticles.forEach(a => {
-      categorySections += `- [${a.title}](https://govtnaukri4u.com/article/${a.id}): ${a.deck} Focus: ${a.tags.slice(0, 4).join(', ')}.\n`;
+      categorySections += `- [${a.title}](${BASE_URL}/article/${a.id}): ${a.deck} Focus: ${a.tags.slice(0, 4).join(', ')}.\n`;
     });
     categorySections += '\n';
   }
@@ -496,18 +498,18 @@ function generateLlmsTxt(items) {
 BULLMONK is an international financial intelligence publication delivering deep, human-researched investigative reporting across central banking policies, currency clearing corridors, semiconductor supply chains, and sovereign energy markets.
 
 ## Core Newsroom Sections
-- [Home Wire](https://govtnaukri4u.com/): Real-time financial dispatches and macroeconomic analyses.
-- [Financial Tools](https://govtnaukri4u.com/tools): Quantitative financial tools including Sovereign Real Yield Calculator, Foreign Exchange Reserve Ratio, and Geopolitical Supply Chain Risk Matrix.
-- [Document Tools](https://govtnaukri4u.com/doc-tools): High-precision client-side document processing and PDF utilities.
-- [About & Bureaus](https://govtnaukri4u.com/about): Editorial leadership and international bureau directory across New York, London, Frankfurt, Bengaluru, Toronto, and Sydney.
+- [Home Wire](${BASE_URL}/): Real-time financial dispatches and macroeconomic analyses.
+- [Financial Tools](${BASE_URL}/tools): Quantitative financial tools including Sovereign Real Yield Calculator, Foreign Exchange Reserve Ratio, and Geopolitical Supply Chain Risk Matrix.
+- [Document Tools](${BASE_URL}/doc-tools): High-precision client-side document processing and PDF utilities.
+- [About & Bureaus](${BASE_URL}/about): Editorial leadership and international bureau directory across New York, London, Frankfurt, Bengaluru, Toronto, and Sydney.
 
 ## Complete Investigative Intelligence Catalog (${items.length} Dispatches)
 ${categorySections}
 ## Editorial Policies & Compliance
-- [Editorial Standards & Sourcing](https://govtnaukri4u.com/editorial): 72-hour trading moratorium and mandatory two-source verification.
-- [Privacy Policy](https://govtnaukri4u.com/privacy): GDPR, CCPA, and Google AdSense disclosures.
-- [Financial Disclaimer](https://govtnaukri4u.com/disclaimer): YMYL financial disclaimer and SEC/FINRA/FCA/SEBI notices.
-- [Master Compliance Hub](https://govtnaukri4u.com/legal): Corporate governance and regulatory adherence directory.
+- [Editorial Standards & Sourcing](${BASE_URL}/editorial): 72-hour trading moratorium and mandatory two-source verification.
+- [Privacy Policy](${BASE_URL}/privacy): GDPR, CCPA, and Google AdSense disclosures.
+- [Financial Disclaimer](${BASE_URL}/disclaimer): YMYL financial disclaimer and SEC/FINRA/FCA/SEBI notices.
+- [Master Compliance Hub](${BASE_URL}/legal): Corporate governance and regulatory adherence directory.
 `;
 }
 

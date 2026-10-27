@@ -94,7 +94,7 @@ export const ArticleReaderPage: React.FC<ArticleReaderPageProps> = ({
     }
   };
 
-  const canonicalUrl = `https://govtnaukri4u.com/article/${article.id}`;
+  const canonicalUrl = `https://bullmonk.live/article/${article.id}`;
 
   // Google News & Search Schema.org/NewsArticle JSON-LD structured data injection
   useEffect(() => {
@@ -141,7 +141,7 @@ export const ArticleReaderPage: React.FC<ArticleReaderPageProps> = ({
 
     // Update Canonical Link
     let canonicalLink = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
-    const originalCanonical = canonicalLink ? canonicalLink.href : 'https://govtnaukri4u.com/';
+    const originalCanonical = canonicalLink ? canonicalLink.href : 'https://bullmonk.live/';
     if (canonicalLink) {
       canonicalLink.href = canonicalUrl;
     }
@@ -182,10 +182,10 @@ export const ArticleReaderPage: React.FC<ArticleReaderPageProps> = ({
       "publisher": {
         "@type": "NewsMediaOrganization",
         "name": "BULLMONK",
-        "url": "https://govtnaukri4u.com",
+        "url": "https://bullmonk.live",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://govtnaukri4u.com/logo192.png",
+          "url": "https://bullmonk.live/logo192.png",
           "width": 192,
           "height": 192
         }
@@ -213,19 +213,19 @@ export const ArticleReaderPage: React.FC<ArticleReaderPageProps> = ({
           "@type": "ListItem",
           "position": 1,
           "name": "Home Wire",
-          "item": "https://govtnaukri4u.com/"
+          "item": "https://bullmonk.live/"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": article.category,
-          "item": `https://govtnaukri4u.com/#category/${encodeURIComponent(article.category.toLowerCase().replace(/\s+/g, '-'))}`
+          "item": `https://bullmonk.live/#category/${encodeURIComponent(article.category.toLowerCase().replace(/\s+/g, '-'))}`
         },
         {
           "@type": "ListItem",
           "position": 3,
           "name": article.region,
-          "item": `https://govtnaukri4u.com/#region/${encodeURIComponent(article.region.toLowerCase().replace(/\s+/g, '-'))}`
+          "item": `https://bullmonk.live/#region/${encodeURIComponent(article.region.toLowerCase().replace(/\s+/g, '-'))}`
         },
         {
           "@type": "ListItem",
@@ -444,12 +444,12 @@ export const ArticleReaderPage: React.FC<ArticleReaderPageProps> = ({
           items={[
             { 
               label: article.category, 
-              href: `https://govtnaukri4u.com/#category/${encodeURIComponent(article.category.toLowerCase().replace(/\s+/g, '-'))}`,
+              href: `https://bullmonk.live/#category/${encodeURIComponent(article.category.toLowerCase().replace(/\s+/g, '-'))}`,
               onClick: onBackToWire 
             },
             { 
               label: article.region, 
-              href: `https://govtnaukri4u.com/#region/${encodeURIComponent(article.region.toLowerCase().replace(/\s+/g, '-'))}`,
+              href: `https://bullmonk.live/#region/${encodeURIComponent(article.region.toLowerCase().replace(/\s+/g, '-'))}`,
               onClick: onBackToWire 
             },
             { 

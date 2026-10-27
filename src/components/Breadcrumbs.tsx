@@ -32,14 +32,14 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ items, setCurrentPage 
   };
 
   const getUrl = (item: BreadcrumbItem, isHome = false): string => {
-    if (isHome) return 'https://govtnaukri4u.com/';
+    if (isHome) return 'https://bullmonk.live/';
     if (item.href) return item.href;
     if (item.page) {
       return item.page === 'home' 
-        ? 'https://govtnaukri4u.com/' 
-        : `https://govtnaukri4u.com/#${item.page}`;
+        ? 'https://bullmonk.live/' 
+        : `https://bullmonk.live/#${item.page}`;
     }
-    return `https://govtnaukri4u.com/#${encodeURIComponent(item.label.toLowerCase().replace(/\s+/g, '-'))}`;
+    return `https://bullmonk.live/#${encodeURIComponent(item.label.toLowerCase().replace(/\s+/g, '-'))}`;
   };
 
   return (
@@ -78,7 +78,7 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ items, setCurrentPage 
           style={{ display: 'inline-flex', alignItems: 'center' }}
         >
           <a
-            href="https://govtnaukri4u.com/"
+            href="https://bullmonk.live/"
             itemProp="item"
             className="breadcrumb-link"
             onClick={(e) => handleClick({ label: 'Home Wire', page: 'home' }, e)}
@@ -102,7 +102,7 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ items, setCurrentPage 
             <Home size={13} style={{ color: 'var(--accent-gold)' }} />
             <span itemProp="name">Home Wire</span>
           </a>
-          <link itemProp="item" href="https://govtnaukri4u.com/" />
+          <link itemProp="item" href="https://bullmonk.live/" />
           <meta itemProp="position" content="1" />
         </li>
 

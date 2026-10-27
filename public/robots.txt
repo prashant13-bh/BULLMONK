@@ -1,7 +1,7 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://govtnaukri4u.com/sitemap.xml
-Sitemap: https://govtnaukri4u.com/news-sitemap.xml
-Sitemap: https://govtnaukri4u.com/rss.xml
-Sitemap: https://govtnaukri4u.com/feed.xml
+Sitemap: https://bullmonk.live/sitemap.xml
+Sitemap: https://bullmonk.live/news-sitemap.xml
+Sitemap: https://bullmonk.live/rss.xml
+Sitemap: https://bullmonk.live/feed.xml
