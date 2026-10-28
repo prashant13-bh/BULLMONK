@@ -262,6 +262,46 @@ const KEYWORD_MAP = {
     "Snowflake Warehouse Credit Optimization", "BigQuery Serverless Slot Utilization FinOps", "AWS Databricks Cross Region Egress Fees", 
     "Cloud Data Warehouse Cost Reduction", "Iceberg Parquet Zero Copy Architecture", "Enterprise Data Pipeline Bandwidth Taxes", 
     "Multi-Cloud FinOps Strategy 2026", "VPC Gateway Endpoint Egress Elimination", "Data Lakehouse Table Formats", "Cloud Infrastructure Billing Triage"
+  ],
+  "bm-gpu-057": [
+    "NVIDIA Blackwell GB200 Liquid Cooling", "120kW Server Rack Direct-to-Chip CDU", "Coolant Distribution Unit Manifold Pressure", 
+    "Data Center Quick Disconnect Coupling Leaks", "Propylene Glycol Water PGW50 Dielectric Cooling", "Vertiv Schneider Hyperscale Liquid Cooling", 
+    "Facility Water System FWS vs Technology Cooling TCS", "GB200 NVL72 Thermal Management", "AI Cluster Cooling Water Sizing", "Data Center Mechanical Infrastructure 2026"
+  ],
+  "bm-forex-058": [
+    "Petroyuan Bilateral Settlement Architecture", "Cross-Border Interbank Payment System CIPS", "Sovereign Yuan Currency Swaps GCC Crude", 
+    "De-Dollarization Petrocurrency Clearing", "PBOC Digital Yuan Energy Invoicing", "Offshore Yuan Liquidity Pools Hong Kong UAE", 
+    "Non-SWIFT Financial Telecommunications", "Saudi Aramco Sinopec Yuan Crude Contracts", "BRICS Bridge Atomic Clearing", "Global Petrocurrency Geopolitics"
+  ],
+  "bm-defense-059": [
+    "Hypersonic Wind Tunnel High-Enthalpy Test", "Mach 8 Aerothermal Boundary Layer Shock", "Arc Jet Facility Stagnation Temperature 3000K", 
+    "Scramjet Combustion Test Cell Bottleneck", "AEDC Arnold Engineering Development Complex", "Hypersonic Glide Vehicle Carbon-Carbon Leading Edges", 
+    "Defense Production Act Wind Tunnel Infrastructure", "Sovereign Aerodynamic Testing Capacity", "High-Temperature Ceramic Matrix Composites CMC", "Hypersonic Flight Physics Telemetry"
+  ],
+  "bm-quantum-060": [
+    "Dilution Refrigerator 10 Millikelvin Cryogenics", "Helium-3 Shortage Superconducting Qubits", "Tritium Decay Helium-3 Sovereign Stockpiles", 
+    "BlueFors Oxford Instruments Cryostat Backlog", "Quantum Processor Thermal Noise Suppression", "Coaxial Attenuator High-Density Cryogenic Wiring", 
+    "Pulse Tube Cryocooler Vibration Dampening", "Quantum Supercomputing Cleanroom Cryogenics", "Helium-3 Isotope Separation Logistics", "Superconducting Quantum Circuit Coherence"
+  ],
+  "bm-space-061": [
+    "FCC Starlink Direct to Cell interference", "AST SpaceMobile BlueBird 100MHz spectrum", "aggregate power flux density EPFD limit", 
+    "T-Mobile Starlink PCS G-Block cellular", "AT&T AST SpaceMobile terrestrial carrier sharing", "3GPP Release 17 NTN Non-Terrestrial Network", 
+    "satellite direct-to-device smartphone broadband", "Ku-Band vs SMR 800MHz space link", "SpaceX Starlink orbital beamforming antenna", "LEO cellular satellite spectrum allocation"
+  ],
+  "bm-cable-062": [
+    "525kV HVDC subsea power cable shortage", "Prysmian Nexans NKT high voltage extrusion", "cross-linked polyethylene XLPE cable lead time", 
+    "North Sea offshore wind grid connection delay", "TenneT 2GW HVDC standard interconnector", "subsea cable laying vessel CLV availability", 
+    "HVDC converter station voltage source converter VSC", "trans-continental supergrid power transmission", "copper conductor subsea power cable pricing", "European offshore grid investment bottleneck"
+  ],
+  "bm-cowos-063": [
+    "Glass substrate semiconductor advanced packaging", "Through Glass Via TGV laser drilling density", "Intel glass substrate fab Chandler Arizona", 
+    "TSMC CoWoS organic interposer warpage limit", "AMD Instinct next-gen glass interposer", "Corning Schott glass core wafer packaging", 
+    "thermal expansion coefficient CTE silicon match", "1000 watt AI processor power delivery glass", "sub-micrometer interconnect pitch glass substrates", "next-generation semiconductor packaging race"
+  ],
+  "bm-silver-064": [
+    "TOPCon solar cell silver paste consumption", "photovoltaic silver demand deficit 2026", "silver metallization paste conductive screen print", 
+    "Shanghai Gold Exchange physical silver inventory drain", "COMEX silver registered vault stock draw", "heterojunction HJT silver-coated copper paste", 
+    "industrial silver supply demand deficit", "Longi JinkoSolar N-type silver thrifting", "silver price squeeze photovoltaic manufacturing", "solar gigawatt silver loadings per watt"
   ]
 };
 

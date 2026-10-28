@@ -74,7 +74,7 @@
     <priority>0.70</priority>
   </url>
  
-  <!-- Investigative Dispatches and Global Intelligence (51 Dispatches) -->
+  <!-- Investigative Dispatches and Global Intelligence (59 Dispatches) -->
   <url>
     <loc>https://bullmonk.live/article/bm-usa-001</loc>
     <lastmod>2026-10-18</lastmod>
@@ -377,6 +377,54 @@
   </url>
   <url>
     <loc>https://bullmonk.live/article/bm-cloud-056</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://bullmonk.live/article/bm-gpu-057</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://bullmonk.live/article/bm-forex-058</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://bullmonk.live/article/bm-defense-059</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://bullmonk.live/article/bm-quantum-060</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://bullmonk.live/article/bm-space-061</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://bullmonk.live/article/bm-cable-062</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://bullmonk.live/article/bm-cowos-063</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://bullmonk.live/article/bm-silver-064</loc>
     <lastmod>2026-10-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>

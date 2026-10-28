@@ -2,16 +2,23 @@ import React, { useState, useMemo } from 'react';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { AdBanner } from '../components/AdBanner';
 import { TradingViewBanner } from '../components/TradingViewBanner';
+import { AiComputePowerSizer } from '../components/tools/AiComputePowerSizer';
+import { TreasuryBasisArbitrage } from '../components/tools/TreasuryBasisArbitrage';
+import { DataCenterWaterCoolingCalculator } from '../components/tools/DataCenterWaterCoolingCalculator';
+import { ForexTariffPassThroughCalculator } from '../components/tools/ForexTariffPassThroughCalculator';
 import { 
   Calculator, TrendingUp, ShieldAlert, DollarSign, Percent, 
   ArrowRight, RefreshCw, Copy, Check, BarChart2, Globe, 
-  Sliders, Layers, ArrowUpRight, ArrowDownRight, Clock, Info, ShieldCheck
+  Sliders, Layers, ArrowUpRight, ArrowDownRight, Clock, Info, ShieldCheck,
+  Zap, GitCompare, Droplets
 } from 'lucide-react';
+
+export type FinancialToolTab = 'bond' | 'inflation' | 'fx' | 'compound' | 'ai-power' | 'repo-spread' | 'water-cooling' | 'forex-tariff';
 
 interface FinancialToolsPageProps {
   setCurrentPage: (page: any) => void;
   showToast: (msg: string) => void;
-  initialTab?: 'bond' | 'inflation' | 'fx' | 'compound';
+  initialTab?: FinancialToolTab;
 }
 
 export const FinancialToolsPage: React.FC<FinancialToolsPageProps> = ({
@@ -19,7 +26,7 @@ export const FinancialToolsPage: React.FC<FinancialToolsPageProps> = ({
   showToast,
   initialTab = 'bond'
 }) => {
-  const [activeTab, setActiveTab] = useState<'bond' | 'inflation' | 'fx' | 'compound'>(initialTab);
+  const [activeTab, setActiveTab] = useState<FinancialToolTab>(initialTab);
   const [copied, setCopied] = useState(false);
 
   // -------------------------------------------------------------
@@ -369,7 +376,16 @@ Generated via BullMonk Financial Intelligence Suite (bullmonk.live)`;
           </button>
 
           <span style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>
-            Selected Engine: <strong>{activeTab === 'bond' ? 'Sovereign Bond Terminal' : activeTab === 'inflation' ? 'Real Inflation Forecaster' : activeTab === 'fx' ? 'FX & PPP Matrix' : 'Compound Capital Forecaster'}</strong>
+            Selected Engine: <strong>
+              {activeTab === 'bond' ? 'Sovereign Bond Terminal' : 
+               activeTab === 'inflation' ? 'Real Inflation Forecaster' : 
+               activeTab === 'fx' ? 'FX & PPP Matrix' : 
+               activeTab === 'compound' ? 'Compound Capital Forecaster' : 
+               activeTab === 'ai-power' ? 'AI Compute Power & PPA Sizer' : 
+               activeTab === 'repo-spread' ? 'Treasury Basis & Repo Arbitrage' :
+               activeTab === 'water-cooling' ? 'Data Center Water & WUE Sizer' :
+               'Forex Tariff & Currency Pass-Through Arbitrage'}
+            </strong>
           </span>
         </div>
       </header>
@@ -425,7 +441,47 @@ Generated via BullMonk Financial Intelligence Suite (bullmonk.live)`;
           style={{ fontSize: '0.85rem', padding: '0.65rem 1.1rem', whiteSpace: 'nowrap' }}
         >
           <Layers size={15} />
-          <span>4. Compound Capital Forecaster</span>
+          <span>4. Compound Capital</span>
+        </button>
+
+        <button
+          type="button"
+          onClick={() => setActiveTab('ai-power')}
+          className={`cat-tab ${activeTab === 'ai-power' ? 'active' : ''}`}
+          style={{ fontSize: '0.85rem', padding: '0.65rem 1.1rem', whiteSpace: 'nowrap' }}
+        >
+          <Zap size={15} color={activeTab === 'ai-power' ? undefined : 'var(--accent-gold)'} />
+          <span>5. AI Compute Power & PPA Sizer</span>
+        </button>
+
+        <button
+          type="button"
+          onClick={() => setActiveTab('repo-spread')}
+          className={`cat-tab ${activeTab === 'repo-spread' ? 'active' : ''}`}
+          style={{ fontSize: '0.85rem', padding: '0.65rem 1.1rem', whiteSpace: 'nowrap' }}
+        >
+          <GitCompare size={15} color={activeTab === 'repo-spread' ? undefined : 'var(--accent-green)'} />
+          <span>6. Treasury Basis & Repo Arbitrage</span>
+        </button>
+
+        <button
+          type="button"
+          onClick={() => setActiveTab('water-cooling')}
+          className={`cat-tab ${activeTab === 'water-cooling' ? 'active' : ''}`}
+          style={{ fontSize: '0.85rem', padding: '0.65rem 1.1rem', whiteSpace: 'nowrap' }}
+        >
+          <Droplets size={15} color={activeTab === 'water-cooling' ? undefined : '#0284c7'} />
+          <span>7. Data Center Water & WUE Sizer</span>
+        </button>
+
+        <button
+          type="button"
+          onClick={() => setActiveTab('forex-tariff')}
+          className={`cat-tab ${activeTab === 'forex-tariff' ? 'active' : ''}`}
+          style={{ fontSize: '0.85rem', padding: '0.65rem 1.1rem', whiteSpace: 'nowrap' }}
+        >
+          <Globe size={15} color={activeTab === 'forex-tariff' ? undefined : '#d97706'} />
+          <span>8. Forex Tariff & Pass-Through</span>
         </button>
       </div>
 
@@ -1264,6 +1320,34 @@ Generated via BullMonk Financial Intelligence Suite (bullmonk.live)`;
 
           </div>
         </section>
+      )}
+
+      {/* ============================================================ */}
+      {/* 5. AI COMPUTE CLUSTER POWER & PPA SIZER TAB */}
+      {/* ============================================================ */}
+      {activeTab === 'ai-power' && (
+        <AiComputePowerSizer showToast={showToast} />
+      )}
+
+      {/* ============================================================ */}
+      {/* 6. TREASURY BASIS & REVERSE REPO ARBITRAGE TAB */}
+      {/* ============================================================ */}
+      {activeTab === 'repo-spread' && (
+        <TreasuryBasisArbitrage showToast={showToast} />
+      )}
+
+      {/* ============================================================ */}
+      {/* 7. DATA CENTER WATER INTENSITY & WUE SIZER TAB */}
+      {/* ============================================================ */}
+      {activeTab === 'water-cooling' && (
+        <DataCenterWaterCoolingCalculator showToast={showToast} />
+      )}
+
+      {/* ============================================================ */}
+      {/* 8. FOREX TARIFF & CURRENCY PASS-THROUGH ARBITRAGE TAB */}
+      {/* ============================================================ */}
+      {activeTab === 'forex-tariff' && (
+        <ForexTariffPassThroughCalculator showToast={showToast} />
       )}
 
       {/* Official Financial Charting Partner: TradingView */}

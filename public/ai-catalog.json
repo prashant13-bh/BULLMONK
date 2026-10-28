@@ -54,6 +54,58 @@
       ]
     },
     {
+      "identifier": "bullmonk-ai-cluster-power-tool",
+      "type": "tool",
+      "name": "AI Compute Cluster Power & PPA Sizer",
+      "description": "Model megawatt power consumption, liquid-cooling tons, annual electricity expenditure, and SMR nuclear reactor requirements for GPU clusters.",
+      "url": "https://bullmonk.live/tools",
+      "representativeQueries": [
+        "Calculate AI data center power draw in megawatts",
+        "Size GPU cluster electricity bill and PPA cost",
+        "Model NVIDIA GB200 NVL72 rack power density and cooling PUE",
+        "Estimate SMR modular nuclear capacity for AI compute"
+      ]
+    },
+    {
+      "identifier": "bullmonk-treasury-basis-arbitrage-tool",
+      "type": "tool",
+      "name": "Treasury Basis & Repo Spread Arbitrage Engine",
+      "description": "Quantitative fixed income model calculating cash-futures gross basis, net basis net of carry (BNOC), implied repo rate (IRR), and SOFR arbitrage spreads.",
+      "url": "https://bullmonk.live/tools",
+      "representativeQueries": [
+        "Calculate Treasury cash futures basis net of carry",
+        "Model implied repo rate IRR vs SOFR",
+        "Analyze basis trade arbitrage signal",
+        "Evaluate Treasury futures conversion factor pricing"
+      ]
+    },
+    {
+      "identifier": "bullmonk-data-center-water-tool",
+      "type": "tool",
+      "name": "Data Center Water Usage & WUE Sizer",
+      "description": "Calculate annual megaliters, daily peak draw, household water equivalents, Water Usage Effectiveness (WUE L/kWh), and watershed utility OPEX for hyperscale data centers.",
+      "url": "https://bullmonk.live/tools",
+      "representativeQueries": [
+        "Calculate data center water consumption in gallons",
+        "Model WUE Water Usage Effectiveness for AI cooling",
+        "Compare Direct-to-Chip cooling vs evaporative cooling towers water use",
+        "Estimate hyperscale data center municipal water bill"
+      ]
+    },
+    {
+      "identifier": "bullmonk-forex-tariff-arbitrage-tool",
+      "type": "tool",
+      "name": "Forex Tariff & Currency Pass-Through Arbitrage Engine",
+      "description": "Model custom tariffs, foreign currency depreciation offsets, exchange rate pass-through elasticity (ERPT), landed unit costs, and domestic reshoring parity pricing.",
+      "url": "https://bullmonk.live/tools",
+      "representativeQueries": [
+        "Calculate effective landed cost under customs tariffs",
+        "Model currency depreciation offset against import tariffs",
+        "Evaluate exchange rate pass-through ERPT to retail CPI",
+        "Estimate domestic reshoring price parity threshold"
+      ]
+    },
+    {
       "identifier": "bullmonk-pdf-word-converter-tool",
       "type": "tool",
       "name": "PDF & Document Conversion Studio",
