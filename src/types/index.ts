@@ -18,7 +18,9 @@ export type Region =
   | 'Canada'
   | 'India'
   | 'Australia & NZ'
-  | 'Russia & Eurasia';
+  | 'Russia & Eurasia'
+  | 'Asia-Pacific'
+  | 'Middle East';
 
 export interface Article {
   id: string;

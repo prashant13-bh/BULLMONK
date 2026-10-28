@@ -11,7 +11,7 @@
     <description>International macroeconomic intelligence, sovereign bond flows, semiconductor diplomacy, and central bank dispatches from world bureaus.</description>
     <language>en-us</language>
     <copyright>© 2026 BULLMONK Intelligence. All rights reserved.</copyright>
-    <lastBuildDate>Wed, 28 Oct 2026 05:04:23 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 28 Oct 2026 05:25:15 GMT</lastBuildDate>
     <image>
       <url>https://bullmonk.live/logo192.png</url>
       <title>BULLMONK Intelligence</title>
@@ -1080,6 +1080,78 @@
         <media:title><![CDATA[The 28-Gram Photovoltaic Squeeze: How TOPCon Solar Cell Expansion Is Draining COMEX and Shanghai Physical Silver Vaults]]></media:title>
       </media:content>
       <enclosure url="https://images.unsplash.com/photo-1610375461246-83df859d849d?auto=format&amp;fit=crop&amp;w=800&amp;q=75&amp;fm=webp" length="145000" type="image/webp" />
+    </item>
+    <item>
+      <title><![CDATA[The HBM4 Packaging Bottleneck: How TSMC and SK Hynix Re-Engineered the 2,048-Bit Base Die Interface]]></title>
+      <link>https://bullmonk.live/article/bm-hbm-065</link>
+      <guid isPermaLink="true">https://bullmonk.live/article/bm-hbm-065</guid>
+      <pubDate>Wed, 28 Oct 2026 10:15:00 GMT</pubDate>
+      <dc:creator><![CDATA[Helena Brandt]]></dc:creator>
+      <category><![CDATA[Technology & AI]]></category>
+      <description><![CDATA[As memory bandwidth outstrips conventional micro-bump thermal physics, memory titans and foundries have abandoned micro-bumps for direct copper-to-copper hybrid bonding, triggering an unprecedented capital expenditure war across advanced packaging lines in Taichung and Icheon.]]></description>
+      <content:encoded><![CDATA[
+        <p>As memory bandwidth outstrips conventional micro-bump thermal physics, memory titans and foundries have abandoned micro-bumps for direct copper-to-copper hybrid bonding, triggering an unprecedented capital expenditure war across advanced packaging lines in Taichung and Icheon.</p>
+        <p><strong>Primary Entities:</strong> HBM4 high-bandwidth memory, CoWoS hybrid bonding, TSMC foundry packaging, SK Hynix 16-layer stack, Micron HBM3E thermal barrier</p>
+        <p><strong>Bureau:</strong> Asia-Pacific | <strong>Author:</strong> Helena Brandt</p>
+      ]]></content:encoded>
+      <media:content url="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=800&amp;q=75&amp;fm=webp" medium="image" type="image/webp" width="1200" height="800">
+        <media:title><![CDATA[The HBM4 Packaging Bottleneck: How TSMC and SK Hynix Re-Engineered the 2,048-Bit Base Die Interface]]></media:title>
+      </media:content>
+      <enclosure url="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=800&amp;q=75&amp;fm=webp" length="145000" type="image/webp" />
+    </item>
+    <item>
+      <title><![CDATA[Behind the Perimeter Fence: How Tech Hyperscalers Triggered the Nuclear Regulatory Commission's Part 53 Licensing Crisis]]></title>
+      <link>https://bullmonk.live/article/bm-smr-066</link>
+      <guid isPermaLink="true">https://bullmonk.live/article/bm-smr-066</guid>
+      <pubDate>Wed, 28 Oct 2026 10:20:00 GMT</pubDate>
+      <dc:creator><![CDATA[Marcus Vance]]></dc:creator>
+      <category><![CDATA[Energy & Infrastructure]]></category>
+      <description><![CDATA[Seeking zero-carbon 24/7 baseload for gigawatt-scale AI campuses, cloud titans are signing direct multi-reactor SMR purchase agreements, forcing federal regulators into a bitter ideological dispute over the Nuclear Regulatory Commission's proposed Part 53 risk framework.]]></description>
+      <content:encoded><![CDATA[
+        <p>Seeking zero-carbon 24/7 baseload for gigawatt-scale AI campuses, cloud titans are signing direct multi-reactor SMR purchase agreements, forcing federal regulators into a bitter ideological dispute over the Nuclear Regulatory Commission&apos;s proposed Part 53 risk framework.</p>
+        <p><strong>Primary Entities:</strong> SMR nuclear licensing NRC Part 53, hyperscale nuclear microgrids, behind-the-meter capacity charge, Kairos Power fluoride salt reactor, Westinghouse eVinci microreactor</p>
+        <p><strong>Bureau:</strong> United States | <strong>Author:</strong> Marcus Vance</p>
+      ]]></content:encoded>
+      <media:content url="https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&amp;fit=crop&amp;w=800&amp;q=75&amp;fm=webp" medium="image" type="image/webp" width="1200" height="800">
+        <media:title><![CDATA[Behind the Perimeter Fence: How Tech Hyperscalers Triggered the Nuclear Regulatory Commission's Part 53 Licensing Crisis]]></media:title>
+      </media:content>
+      <enclosure url="https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&amp;fit=crop&amp;w=800&amp;q=75&amp;fm=webp" length="145000" type="image/webp" />
+    </item>
+    <item>
+      <title><![CDATA[The Sovereign Gold Ingot Protocol: Inside the BRICS+ Distributed Custody Settlement Matrix]]></title>
+      <link>https://bullmonk.live/article/bm-brics-067</link>
+      <guid isPermaLink="true">https://bullmonk.live/article/bm-brics-067</guid>
+      <pubDate>Wed, 28 Oct 2026 10:25:00 GMT</pubDate>
+      <dc:creator><![CDATA[Siddharth Rao]]></dc:creator>
+      <category><![CDATA[Geopolitics]]></category>
+      <description><![CDATA[Seeking immunity from Western asset-freeze sanctions, nine central banks have operationalized a distributed gold vault clearing architecture, allowing bilateral oil, fertilizer, and semiconductor invoices to be settled atomically in physical bullion certificates without touching SWIFT.]]></description>
+      <content:encoded><![CDATA[
+        <p>Seeking immunity from Western asset-freeze sanctions, nine central banks have operationalized a distributed gold vault clearing architecture, allowing bilateral oil, fertilizer, and semiconductor invoices to be settled atomically in physical bullion certificates without touching SWIFT.</p>
+        <p><strong>Primary Entities:</strong> BRICS gold tokenization, sovereign bilateral currency clearing, de-dollarization oil settlements, mBridge atomic clearing, central bank gold reserves</p>
+        <p><strong>Bureau:</strong> Middle East | <strong>Author:</strong> Siddharth Rao</p>
+      ]]></content:encoded>
+      <media:content url="https://images.unsplash.com/photo-1610375461246-83df859d849d?auto=format&amp;fit=crop&amp;w=800&amp;q=75&amp;fm=webp" medium="image" type="image/webp" width="1200" height="800">
+        <media:title><![CDATA[The Sovereign Gold Ingot Protocol: Inside the BRICS+ Distributed Custody Settlement Matrix]]></media:title>
+      </media:content>
+      <enclosure url="https://images.unsplash.com/photo-1610375461246-83df859d849d?auto=format&amp;fit=crop&amp;w=800&amp;q=75&amp;fm=webp" length="145000" type="image/webp" />
+    </item>
+    <item>
+      <title><![CDATA[The Harmonic Drive Shortage: Inside the Sub-Micron Gear Metallurgy Crippling Humanoid Robotics Assembly]]></title>
+      <link>https://bullmonk.live/article/bm-robot-068</link>
+      <guid isPermaLink="true">https://bullmonk.live/article/bm-robot-068</guid>
+      <pubDate>Wed, 28 Oct 2026 10:30:00 GMT</pubDate>
+      <dc:creator><![CDATA[Kenji Sato]]></dc:creator>
+      <category><![CDATA[Technology & AI]]></category>
+      <description><![CDATA[While artificial intelligence software models for embodied robots advance at breakneck speed, physical mass manufacturing has slammed into an unexpected physical roadblock: a severe global deficit of high-yield strain wave gears and ultra-precision planetary speed reducers.]]></description>
+      <content:encoded><![CDATA[
+        <p>While artificial intelligence software models for embodied robots advance at breakneck speed, physical mass manufacturing has slammed into an unexpected physical roadblock: a severe global deficit of high-yield strain wave gears and ultra-precision planetary speed reducers.</p>
+        <p><strong>Primary Entities:</strong> humanoid robot harmonic drive shortage, strain wave gear precision metallurgy, planetary gearbox actuator torque density, Tesla Optimus Figure AI supply chain, Harmonic Drive SE titanium tooth fatigue</p>
+        <p><strong>Bureau:</strong> Asia-Pacific | <strong>Author:</strong> Kenji Sato</p>
+      ]]></content:encoded>
+      <media:content url="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&amp;fit=crop&amp;w=800&amp;q=75&amp;fm=webp" medium="image" type="image/webp" width="1200" height="800">
+        <media:title><![CDATA[The Harmonic Drive Shortage: Inside the Sub-Micron Gear Metallurgy Crippling Humanoid Robotics Assembly]]></media:title>
+      </media:content>
+      <enclosure url="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&amp;fit=crop&amp;w=800&amp;q=75&amp;fm=webp" length="145000" type="image/webp" />
     </item>
   </channel>
 </rss>

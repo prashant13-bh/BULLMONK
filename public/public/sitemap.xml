@@ -134,7 +134,7 @@
     <priority>0.70</priority>
   </url>
  
-  <!-- Investigative Dispatches and Global Intelligence (59 Dispatches) -->
+  <!-- Investigative Dispatches and Global Intelligence (63 Dispatches) -->
   <url>
     <loc>https://bullmonk.live/article/bm-usa-001</loc>
     <lastmod>2026-10-18</lastmod>
@@ -485,6 +485,30 @@
   </url>
   <url>
     <loc>https://bullmonk.live/article/bm-silver-064</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://bullmonk.live/article/bm-hbm-065</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://bullmonk.live/article/bm-smr-066</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://bullmonk.live/article/bm-brics-067</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://bullmonk.live/article/bm-robot-068</loc>
     <lastmod>2026-10-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>

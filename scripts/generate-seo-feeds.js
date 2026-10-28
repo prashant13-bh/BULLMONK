@@ -302,6 +302,26 @@ const KEYWORD_MAP = {
     "TOPCon solar cell silver paste consumption", "photovoltaic silver demand deficit 2026", "silver metallization paste conductive screen print", 
     "Shanghai Gold Exchange physical silver inventory drain", "COMEX silver registered vault stock draw", "heterojunction HJT silver-coated copper paste", 
     "industrial silver supply demand deficit", "Longi JinkoSolar N-type silver thrifting", "silver price squeeze photovoltaic manufacturing", "solar gigawatt silver loadings per watt"
+  ],
+  "bm-hbm-065": [
+    "HBM4 high-bandwidth memory", "CoWoS hybrid bonding", "TSMC foundry packaging", 
+    "SK Hynix 16-layer stack", "Micron HBM3E thermal barrier", "through-silicon via TSV pitch", 
+    "direct copper hybrid bonding", "AI accelerator memory bandwidth", "wafer-level packaging yield", "NVIDIA Rubin GPU memory architecture"
+  ],
+  "bm-smr-066": [
+    "SMR nuclear licensing NRC Part 53", "hyperscale nuclear microgrids", "behind-the-meter capacity charge", 
+    "Kairos Power fluoride salt reactor", "Westinghouse eVinci microreactor", "FERC PJM capacity auction", 
+    "co-located data center nuclear", "high-assay low-enriched uranium HALEU", "atomic baseload power agreement", "grid reliability transmission queue"
+  ],
+  "bm-brics-067": [
+    "BRICS gold tokenization", "sovereign bilateral currency clearing", "de-dollarization oil settlements", 
+    "mBridge atomic clearing", "central bank gold reserves", "Shanghai Gold Exchange physical delivery", 
+    "depository receipt bullion clearing", "petrodollar structural dislocation", "cross-border sovereign payment corridors", "non-SWIFT central bank messaging"
+  ],
+  "bm-robot-068": [
+    "humanoid robot harmonic drive shortage", "strain wave gear precision metallurgy", "planetary gearbox actuator torque density", 
+    "Tesla Optimus Figure AI supply chain", "Harmonic Drive SE titanium tooth fatigue", "cycloidal speed reducer backlash", 
+    "mass production robotic actuator bottleneck", "automotive robot joint assembly", "rare earth neodymium motor magnets", "sub-micron wire EDM gear cutting"
   ]
 };
 

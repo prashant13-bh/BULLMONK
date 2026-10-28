@@ -247,6 +247,18 @@ export const App: React.FC = () => {
         return;
       }
 
+      // Handle URL search parameter ?id=... (legacy and syndicated feed compatibility)
+      const searchParams = new URLSearchParams(window.location.search);
+      const queryId = searchParams.get('id');
+      if (queryId) {
+        const found = articles.find((a) => a.id === queryId || a.slug === queryId);
+        if (found) {
+          setSelectedArticle(found);
+          setCurrentPage('article');
+          return;
+        }
+      }
+
       // Handle article deep links e.g. /article/bm-nuc-018 or #article/bm-nuc-018/slug
       const raw = window.location.hash || window.location.pathname;
       const match = raw.match(/article\/([^/?#]+)(?:\/([^/?#]+))?/);
@@ -260,6 +272,13 @@ export const App: React.FC = () => {
           return;
         }
       }
+
+      // Legacy HTML page path redirects
+      const pathStr = window.location.pathname.replace(/^\//, '').replace(/\/$/, '');
+      if (pathStr === 'write.html') { setCurrentPage('write'); return; }
+      if (pathStr === 'about.html') { setCurrentPage('about'); return; }
+      if (pathStr === 'contact.html') { setCurrentPage('contact'); return; }
+      if (pathStr === 'legal.html') { setCurrentPage('legal'); return; }
 
       if (validPages.includes(hash)) {
         setCurrentPage(hash);
