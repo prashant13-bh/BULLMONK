@@ -498,7 +498,17 @@ console.log(`Generated public/news-sitemap.xml with ${articles.length} dispatche
 function generateMasterSitemap(items) {
   const staticPages = [
     { loc: `${BASE_URL}/`, priority: '1.0', changefreq: 'hourly' },
-    { loc: `${BASE_URL}/tools`, priority: '0.90', changefreq: 'weekly' },
+    { loc: `${BASE_URL}/tools`, priority: '0.95', changefreq: 'weekly' },
+    { loc: `${BASE_URL}/tools/bond`, priority: '0.85', changefreq: 'weekly' },
+    { loc: `${BASE_URL}/tools/inflation`, priority: '0.85', changefreq: 'weekly' },
+    { loc: `${BASE_URL}/tools/fx`, priority: '0.85', changefreq: 'weekly' },
+    { loc: `${BASE_URL}/tools/compound`, priority: '0.85', changefreq: 'weekly' },
+    { loc: `${BASE_URL}/tools/ai-power`, priority: '0.85', changefreq: 'weekly' },
+    { loc: `${BASE_URL}/tools/repo-spread`, priority: '0.85', changefreq: 'weekly' },
+    { loc: `${BASE_URL}/tools/water-cooling`, priority: '0.85', changefreq: 'weekly' },
+    { loc: `${BASE_URL}/tools/forex-tariff`, priority: '0.85', changefreq: 'weekly' },
+    { loc: `${BASE_URL}/tools/pdf`, priority: '0.85', changefreq: 'weekly' },
+    { loc: `${BASE_URL}/tools/image`, priority: '0.85', changefreq: 'weekly' },
     { loc: `${BASE_URL}/doc-tools`, priority: '0.90', changefreq: 'weekly' },
     { loc: `${BASE_URL}/about`, priority: '0.80', changefreq: 'monthly' },
     { loc: `${BASE_URL}/contact`, priority: '0.80', changefreq: 'monthly' },
@@ -592,8 +602,18 @@ BULLMONK is an international financial intelligence publication delivering deep,
 
 ## Core Newsroom Sections
 - [Home Wire](${BASE_URL}/): Real-time financial dispatches and macroeconomic analyses.
-- [Financial Tools](${BASE_URL}/tools): Quantitative financial tools including Sovereign Real Yield Calculator, Foreign Exchange Reserve Ratio, and Geopolitical Supply Chain Risk Matrix.
-- [Document Tools](${BASE_URL}/doc-tools): High-precision client-side document processing and PDF utilities.
+- [Quantitative Intelligence Hub](${BASE_URL}/tools): Institutional quantitative analytics suite.
+  - [Sovereign Bond Yield & Duration Terminal](${BASE_URL}/tools/bond): Macaulay duration, modified duration, convexity, and basis point yield shock modeling.
+  - [Monetary Debasement & Inflation Forecaster](${BASE_URL}/tools/inflation): Fisher equation, purchasing power trajectory, and inflation shocks.
+  - [Spot FX & Central Bank Real Rate Arbitrage](${BASE_URL}/tools/fx): PPP valuation differentials and sovereign policy rate spreads.
+  - [Sovereign Reserve & Capital Growth Simulator](${BASE_URL}/tools/compound): Long-horizon compound capital, volatility decay, and DRIP modeling.
+  - [Hyperscale AI Compute Power Sizer](${BASE_URL}/tools/ai-power): GPU cluster MW draw, PUE cooling loads, PPA energy pricing, and SMR nuclear sizer.
+  - [Treasury Cash-Futures Basis Arbitrage](${BASE_URL}/tools/repo-spread): Net basis, basis net of carry (BNOC), and implied repo rate (IRR) vs SOFR.
+  - [Data Center Water Consumption Sizer](${BASE_URL}/tools/water-cooling): Megaliters per annum, WUE (L/kWh), and watershed utility OPEX.
+  - [FX Tariff & Devaluation Pass-Through Sizer](${BASE_URL}/tools/forex-tariff): Landed duty-paid cost, ERPT elasticity, and domestic reshoring parity.
+- [Document Intelligence Suite](${BASE_URL}/doc-tools): High-precision client-side document processing and PDF utilities.
+  - [High-Resolution PDF Converter](${BASE_URL}/tools/pdf): Zero-server, client-side PDF document compiler.
+  - [Neural Image Enhancer](${BASE_URL}/tools/image): Lossless image filter and color matrix calibration.
 - [About & Bureaus](${BASE_URL}/about): Editorial leadership and international bureau directory across New York, London, Frankfurt, Bengaluru, Toronto, and Sydney.
 
 ## Complete Investigative Intelligence Catalog (${items.length} Dispatches)

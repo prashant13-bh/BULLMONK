@@ -175,8 +175,28 @@ export const Footer: React.FC<FooterProps> = ({ setCurrentPage, setSelectedCateg
                 </button>
               </li>
               <li>
-                <button type="button" className="footer-link-btn suite-hub-link" onClick={() => navigate('tools')} title="Quantitative Tools & Forensics — Sovereign Yield & Bond Duration Calculators">
-                  Quantitative Tools & Forensics →
+                <button type="button" className="footer-link-btn suite-hub-link" onClick={() => navigate('tools')} title="Quantitative Suite Hub — Master Directory of 8 Financial & Infrastructure Engines">
+                  Quantitative Intelligence Hub (8 Tools) →
+                </button>
+              </li>
+              <li>
+                <button type="button" className="footer-link-btn" onClick={() => navigate('tool-bond')} title="Sovereign Bond Yield, Duration & Convexity Terminal">
+                  ↳ Sovereign Bond & Duration Terminal
+                </button>
+              </li>
+              <li>
+                <button type="button" className="footer-link-btn" onClick={() => navigate('tool-ai-power')} title="AI Compute Cluster Power, PUE & PPA Sizing Terminal">
+                  ↳ AI Compute Power & PPA Sizer
+                </button>
+              </li>
+              <li>
+                <button type="button" className="footer-link-btn" onClick={() => navigate('tool-water-cooling')} title="Data Center Water Usage & WUE Environmental Sizer">
+                  ↳ Data Center Water & WUE Sizer
+                </button>
+              </li>
+              <li>
+                <button type="button" className="footer-link-btn" onClick={() => navigate('tool-forex-tariff')} title="Forex Tariff & Currency Pass-Through Arbitrage Engine">
+                  ↳ Forex Tariff & Pass-Through Engine
                 </button>
               </li>
               <li>

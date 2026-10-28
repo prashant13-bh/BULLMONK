@@ -27,6 +27,18 @@ const EditorialStandardsPage = lazy(() => import('./pages/EditorialStandardsPage
 const CookiePolicyPage = lazy(() => import('./pages/CookiePolicyPage').then(m => ({ default: m.CookiePolicyPage })));
 const CorrectionsPage = lazy(() => import('./pages/CorrectionsPage').then(m => ({ default: m.CorrectionsPage })));
 
+// Standalone Quantitative & Infrastructure Tool Pages
+const BondYieldPage = lazy(() => import('./pages/tools/BondYieldPage').then(m => ({ default: m.BondYieldPage })));
+const InflationForecasterPage = lazy(() => import('./pages/tools/InflationForecasterPage').then(m => ({ default: m.InflationForecasterPage })));
+const FxArbitragePage = lazy(() => import('./pages/tools/FxArbitragePage').then(m => ({ default: m.FxArbitragePage })));
+const CompoundCapitalPage = lazy(() => import('./pages/tools/CompoundCapitalPage').then(m => ({ default: m.CompoundCapitalPage })));
+const AiPowerSizerPage = lazy(() => import('./pages/tools/AiPowerSizerPage').then(m => ({ default: m.AiPowerSizerPage })));
+const TreasuryBasisPage = lazy(() => import('./pages/tools/TreasuryBasisPage').then(m => ({ default: m.TreasuryBasisPage })));
+const WaterCoolingSizerPage = lazy(() => import('./pages/tools/WaterCoolingSizerPage').then(m => ({ default: m.WaterCoolingSizerPage })));
+const ForexTariffPage = lazy(() => import('./pages/tools/ForexTariffPage').then(m => ({ default: m.ForexTariffPage })));
+const PdfConverterPage = lazy(() => import('./pages/tools/PdfConverterPage').then(m => ({ default: m.PdfConverterPage })));
+const ImageEnhancerPage = lazy(() => import('./pages/tools/ImageEnhancerPage').then(m => ({ default: m.ImageEnhancerPage })));
+
 export const PAGE_TITLES: Record<PageView, string> = {
   home: "BULLMONK | Global News, Geopolitical Intelligence & Financial Truth",
   article: "Global Dispatch | BULLMONK Intelligence",
@@ -42,7 +54,17 @@ export const PAGE_TITLES: Record<PageView, string> = {
   cookies: "Cookie Policy & Interactive Client-Side Consent Manager | BULLMONK",
   corrections: "Corrections Protocol & Public Errata Log | BULLMONK Newsroom",
   write: "Dispatch Drafting Studio & Editorial Filing Console | BULLMONK",
-  admin: "Editorial Command Terminal & Bureau Operations Console | BULLMONK"
+  admin: "Editorial Command Terminal & Bureau Operations Console | BULLMONK",
+  'tool-bond': "Sovereign Bond Yield, Duration & Convexity Terminal | BULLMONK",
+  'tool-inflation': "Inflation Drag & Real Wealth Preservation Forecaster | BULLMONK",
+  'tool-fx': "Global FX Arbitrage & Purchasing Power Parity Matrix | BULLMONK",
+  'tool-compound': "Multi-Decade Compound Capital & Reserve Forecaster | BULLMONK",
+  'tool-ai-power': "AI Compute Cluster Power, PUE & PPA Sizing Terminal | BULLMONK",
+  'tool-repo-spread': "Treasury Cash-Futures Basis & Reverse Repo Arbitrage | BULLMONK",
+  'tool-water-cooling': "Data Center Water Usage & WUE Environmental Sizer | BULLMONK",
+  'tool-forex-tariff': "Forex Tariff & Currency Pass-Through Arbitrage Engine | BULLMONK",
+  'tool-pdf': "PDF to Word Converter & Document Security Studio | BULLMONK",
+  'tool-image': "AI Image Enhancer & 2x Super-Resolution Studio | BULLMONK"
 };
 
 export const PAGE_DESCRIPTIONS: Record<PageView, string> = {
@@ -60,7 +82,17 @@ export const PAGE_DESCRIPTIONS: Record<PageView, string> = {
   cookies: "Client-side consent management console and detailed audit table of essential and analytical cookies.",
   corrections: "Transparent errata procedure, retraction protocols, and publicly logged corrections log.",
   write: "Authoring studio for accredited correspondents and sovereign analysts filing verified field dispatches.",
-  admin: "Managing editor administrative terminal for headline review, wire curation, and author credential management."
+  admin: "Managing editor administrative terminal for headline review, wire curation, and author credential management.",
+  'tool-bond': "Model clean bond prices, Macaulay & Modified duration, second-order convexity curvature, and basis point yield shock sensitivities.",
+  'tool-inflation': "Calculate real capital purchasing power degradation, cumulative monetary inflation drag, and after-tax capital erosion.",
+  'tool-fx': "Analyze spot foreign exchange cross-rates, Purchasing Power Parity (PPP) valuation mispricings, and central bank real policy rate spreads.",
+  'tool-compound': "Simulate multi-decade exponential reserve compounding with periodic cash inflows and dividend reinvestment (DRIP).",
+  'tool-ai-power': "Model continuous megawatt electrical draw, annual GWh consumption, cooling tons, and SMR nuclear modules for GPU clusters.",
+  'tool-repo-spread': "Quantitative fixed income relative-value terminal modeling cash-futures basis, net basis net of carry (BNOC), and SOFR spreads.",
+  'tool-water-cooling': "Simulate data center water consumption, peak evaporative draws, and Water Usage Effectiveness (WUE L/kWh) across cooling architectures.",
+  'tool-forex-tariff': "Model custom tariffs, foreign currency depreciation offsets, exchange rate pass-through elasticity, and reshoring parity pricing.",
+  'tool-pdf': "Client-side high-precision PDF to editable Word (.docx) document conversion and institutional PDF compiler.",
+  'tool-image': "Client-side image restoration, Laplacian high-pass sharpening, contrast optimization, and 2x resolution upscaling."
 };
 
 const PAGE_CANONICALS: Record<PageView, string> = {
@@ -78,7 +110,17 @@ const PAGE_CANONICALS: Record<PageView, string> = {
   cookies: 'https://bullmonk.live/cookies',
   corrections: 'https://bullmonk.live/corrections',
   write: 'https://bullmonk.live/#write',
-  admin: 'https://bullmonk.live/#admin'
+  admin: 'https://bullmonk.live/#admin',
+  'tool-bond': 'https://bullmonk.live/#tools/bond',
+  'tool-inflation': 'https://bullmonk.live/#tools/inflation',
+  'tool-fx': 'https://bullmonk.live/#tools/fx',
+  'tool-compound': 'https://bullmonk.live/#tools/compound',
+  'tool-ai-power': 'https://bullmonk.live/#tools/ai-power',
+  'tool-repo-spread': 'https://bullmonk.live/#tools/repo-spread',
+  'tool-water-cooling': 'https://bullmonk.live/#tools/water-cooling',
+  'tool-forex-tariff': 'https://bullmonk.live/#tools/forex-tariff',
+  'tool-pdf': 'https://bullmonk.live/#tools/pdf',
+  'tool-image': 'https://bullmonk.live/#tools/image'
 };
 
 export const App: React.FC = () => {
@@ -154,8 +196,56 @@ export const App: React.FC = () => {
 
       const validPages: PageView[] = [
         'home', 'admin', 'write', 'about', 'contact', 'tools', 'doc-tools', 'legal', 
-        'privacy', 'terms', 'disclaimer', 'editorial', 'cookies', 'corrections'
+        'privacy', 'terms', 'disclaimer', 'editorial', 'cookies', 'corrections',
+        'tool-bond', 'tool-inflation', 'tool-fx', 'tool-compound', 'tool-ai-power',
+        'tool-repo-spread', 'tool-water-cooling', 'tool-forex-tariff', 'tool-pdf', 'tool-image'
       ];
+
+      // Handle standalone tool deep links e.g. #tools/bond, #tools/ai-power, /tools/water-cooling
+      const toolMap: Record<string, PageView> = {
+        'tools/bond': 'tool-bond',
+        'tool-bond': 'tool-bond',
+        'tools-bond': 'tool-bond',
+        'tools/inflation': 'tool-inflation',
+        'tool-inflation': 'tool-inflation',
+        'tools-inflation': 'tool-inflation',
+        'tools/fx': 'tool-fx',
+        'tool-fx': 'tool-fx',
+        'tools-fx': 'tool-fx',
+        'tools/compound': 'tool-compound',
+        'tool-compound': 'tool-compound',
+        'tools-compound': 'tool-compound',
+        'tools/ai-power': 'tool-ai-power',
+        'tool-ai-power': 'tool-ai-power',
+        'tools-ai-power': 'tool-ai-power',
+        'tools/repo-spread': 'tool-repo-spread',
+        'tool-repo-spread': 'tool-repo-spread',
+        'tools-repo-spread': 'tool-repo-spread',
+        'tools/basis': 'tool-repo-spread',
+        'tools/water-cooling': 'tool-water-cooling',
+        'tool-water-cooling': 'tool-water-cooling',
+        'tools-water-cooling': 'tool-water-cooling',
+        'tools/water': 'tool-water-cooling',
+        'tools/forex-tariff': 'tool-forex-tariff',
+        'tool-forex-tariff': 'tool-forex-tariff',
+        'tools-forex-tariff': 'tool-forex-tariff',
+        'tools/tariff': 'tool-forex-tariff',
+        'tools/pdf': 'tool-pdf',
+        'tool-pdf': 'tool-pdf',
+        'doc-tools/pdf': 'tool-pdf',
+        'tools/image': 'tool-image',
+        'tool-image': 'tool-image',
+        'doc-tools/image': 'tool-image'
+      };
+
+      if (toolMap[hash]) {
+        setCurrentPage(toolMap[hash]);
+        return;
+      }
+      if (toolMap[pathname]) {
+        setCurrentPage(toolMap[pathname]);
+        return;
+      }
 
       // Handle article deep links e.g. /article/bm-nuc-018 or #article/bm-nuc-018/slug
       const raw = window.location.hash || window.location.pathname;
@@ -469,6 +559,47 @@ export const App: React.FC = () => {
 
         {currentPage === 'corrections' && (
           <CorrectionsPage setCurrentPage={navigateToPage} />
+        )}
+
+        {/* 10 Dedicated Standalone Tool Pages */}
+        {currentPage === 'tool-bond' && (
+          <BondYieldPage setCurrentPage={navigateToPage} showToast={showToast} />
+        )}
+
+        {currentPage === 'tool-inflation' && (
+          <InflationForecasterPage setCurrentPage={navigateToPage} showToast={showToast} />
+        )}
+
+        {currentPage === 'tool-fx' && (
+          <FxArbitragePage setCurrentPage={navigateToPage} showToast={showToast} />
+        )}
+
+        {currentPage === 'tool-compound' && (
+          <CompoundCapitalPage setCurrentPage={navigateToPage} showToast={showToast} />
+        )}
+
+        {currentPage === 'tool-ai-power' && (
+          <AiPowerSizerPage setCurrentPage={navigateToPage} showToast={showToast} />
+        )}
+
+        {currentPage === 'tool-repo-spread' && (
+          <TreasuryBasisPage setCurrentPage={navigateToPage} showToast={showToast} />
+        )}
+
+        {currentPage === 'tool-water-cooling' && (
+          <WaterCoolingSizerPage setCurrentPage={navigateToPage} showToast={showToast} />
+        )}
+
+        {currentPage === 'tool-forex-tariff' && (
+          <ForexTariffPage setCurrentPage={navigateToPage} showToast={showToast} />
+        )}
+
+        {currentPage === 'tool-pdf' && (
+          <PdfConverterPage setCurrentPage={navigateToPage} showToast={showToast} />
+        )}
+
+        {currentPage === 'tool-image' && (
+          <ImageEnhancerPage setCurrentPage={navigateToPage} showToast={showToast} />
         )}
       </Suspense>
 

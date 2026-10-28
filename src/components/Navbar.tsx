@@ -96,6 +96,18 @@ export const Navbar: React.FC<NavbarProps> = ({
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const isToolsActive = currentPage === 'tools' || 
+    currentPage === 'tool-bond' || 
+    currentPage === 'tool-inflation' || 
+    currentPage === 'tool-fx' || 
+    currentPage === 'tool-compound' || 
+    currentPage === 'tool-ai-power' || 
+    currentPage === 'tool-repo-spread' || 
+    currentPage === 'tool-water-cooling' || 
+    currentPage === 'tool-forex-tariff';
+
+  const isDocToolsActive = currentPage === 'doc-tools' || currentPage === 'tool-pdf' || currentPage === 'tool-image';
+
   // Helper to render SVG mini sparkline polyline points
   const generateSvgPoints = (data: number[], width = 36, height = 13) => {
     if (!data || data.length === 0) return '';
@@ -320,7 +332,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               <li className="nav-item">
                 <button 
                   type="button"
-                  className={`nav-link ${currentPage === 'tools' ? 'active' : ''} nav-tools-link`}
+                  className={`nav-link ${isToolsActive ? 'active' : ''} nav-tools-link`}
                   onClick={() => handleNavClick('tools')}
                   title="Financial Tools — Sovereign Yield, Bond Duration & Inflation Calculators"
                 >
@@ -331,7 +343,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               <li className="nav-item">
                 <button 
                   type="button"
-                  className={`nav-link ${currentPage === 'doc-tools' ? 'active' : ''} nav-tools-link`}
+                  className={`nav-link ${isDocToolsActive ? 'active' : ''} nav-tools-link`}
                   onClick={() => handleNavClick('doc-tools')}
                   title="AI & Doc Tools — PDF Studio & Client-Side File Triage"
                 >
@@ -479,7 +491,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
                     <button 
                       type="button"
-                      className={`mobile-nav-link ${currentPage === 'tools' ? 'active' : ''}`}
+                      className={`mobile-nav-link ${isToolsActive ? 'active' : ''}`}
                       onClick={() => handleNavClick('tools')}
                       style={{ background: 'rgba(180, 83, 9, 0.08)', border: '1px solid rgba(180, 83, 9, 0.25)' }}
                     >
@@ -490,7 +502,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
                     <button 
                       type="button"
-                      className={`mobile-nav-link ${currentPage === 'doc-tools' ? 'active' : ''}`}
+                      className={`mobile-nav-link ${isDocToolsActive ? 'active' : ''}`}
                       onClick={() => handleNavClick('doc-tools')}
                       style={{ background: 'rgba(180, 83, 9, 0.08)', border: '1px solid rgba(180, 83, 9, 0.25)', marginTop: '0.45rem' }}
                     >

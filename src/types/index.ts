@@ -85,7 +85,17 @@ export type PageView =
   | 'disclaimer'
   | 'editorial'
   | 'cookies'
-  | 'corrections';
+  | 'corrections'
+  | 'tool-bond'
+  | 'tool-inflation'
+  | 'tool-fx'
+  | 'tool-compound'
+  | 'tool-ai-power'
+  | 'tool-repo-spread'
+  | 'tool-water-cooling'
+  | 'tool-forex-tariff'
+  | 'tool-pdf'
+  | 'tool-image';
 
 export type LegalTab = 'terms' | 'privacy' | 'editorial' | 'cookies' | 'corrections' | 'financial-disclaimer';
 

@@ -20,37 +20,49 @@
     {
       "identifier": "bullmonk-sovereign-yield-tool",
       "type": "tool",
-      "name": "Sovereign Real Yield Calculator",
-      "description": "Quantitative financial tool calculating real bond yield after adjusting for domestic inflation drag, currency risk, and tax haircuts.",
-      "url": "https://bullmonk.live/tools",
+      "name": "Sovereign Bond Yield, Duration & Convexity Terminal",
+      "description": "Model clean bond prices, Macaulay & Modified duration, second-order convexity curvature, and basis point yield shock sensitivities across US Treasuries, Bunds, and Gilts.",
+      "url": "https://bullmonk.live/#tools/bond",
       "representativeQueries": [
-        "Calculate sovereign real yield",
-        "Calculate bond yield after inflation and taxes",
+        "Calculate sovereign bond duration and clean price",
+        "Model bond convexity curvature and yield shock",
         "Evaluate treasury return across G10 economies"
       ]
     },
     {
-      "identifier": "bullmonk-fx-import-cover-tool",
+      "identifier": "bullmonk-inflation-forecaster-tool",
       "type": "tool",
-      "name": "FX Reserve Import Cover Ratio",
-      "description": "Model central bank foreign exchange reserve adequacy in months of import cover and evaluate currency defense capability against external capital shocks.",
-      "url": "https://bullmonk.live/tools",
+      "name": "Inflation Drag & Real Wealth Preservation Forecaster",
+      "description": "Calculate real purchasing power degradation, cumulative monetary inflation drag, and after-tax capital erosion across multi-decade accumulation horizons.",
+      "url": "https://bullmonk.live/#tools/inflation",
       "representativeQueries": [
-        "Calculate foreign exchange reserve import cover duration",
-        "Check central bank foreign reserve adequacy",
-        "Model foreign exchange import cover ratio"
+        "Calculate capital purchasing power net of inflation",
+        "Model Fisher equation real CAGR return",
+        "Forecast multi-decade monetary debasement loss"
       ]
     },
     {
-      "identifier": "bullmonk-supply-chain-risk-tool",
+      "identifier": "bullmonk-fx-ppp-tool",
       "type": "tool",
-      "name": "Geopolitical Supply Chain Risk Matrix",
-      "description": "Evaluate semiconductor, critical mineral, and maritime shipping choke points across critical transit corridors.",
-      "url": "https://bullmonk.live/tools",
+      "name": "Global FX Arbitrage & Purchasing Power Parity Matrix",
+      "description": "Analyze spot foreign exchange cross-rates, Purchasing Power Parity (PPP) valuation mispricings, central bank real policy rate spreads, and carry trade yield differentials.",
+      "url": "https://bullmonk.live/#tools/fx",
       "representativeQueries": [
-        "Assess semiconductor supply chain risk",
-        "Evaluate critical mineral trade corridor vulnerability",
-        "Analyze maritime shipping choke points"
+        "Calculate currency purchasing power parity PPP rate",
+        "Evaluate central bank real policy rate spread",
+        "Model forex carry trade yield differential"
+      ]
+    },
+    {
+      "identifier": "bullmonk-compound-capital-tool",
+      "type": "tool",
+      "name": "Multi-Decade Compound Capital & Reserve Forecaster",
+      "description": "Simulate multi-decade exponential reserve compounding with periodic cash inflows and dividend reinvestment (DRIP).",
+      "url": "https://bullmonk.live/#tools/compound",
+      "representativeQueries": [
+        "Calculate compound interest with monthly deposits",
+        "Model DRIP dividend reinvestment wealth accumulation",
+        "Forecast long-term sovereign reserve growth"
       ]
     },
     {
@@ -58,7 +70,7 @@
       "type": "tool",
       "name": "AI Compute Cluster Power & PPA Sizer",
       "description": "Model megawatt power consumption, liquid-cooling tons, annual electricity expenditure, and SMR nuclear reactor requirements for GPU clusters.",
-      "url": "https://bullmonk.live/tools",
+      "url": "https://bullmonk.live/#tools/ai-power",
       "representativeQueries": [
         "Calculate AI data center power draw in megawatts",
         "Size GPU cluster electricity bill and PPA cost",
@@ -71,7 +83,7 @@
       "type": "tool",
       "name": "Treasury Basis & Repo Spread Arbitrage Engine",
       "description": "Quantitative fixed income model calculating cash-futures gross basis, net basis net of carry (BNOC), implied repo rate (IRR), and SOFR arbitrage spreads.",
-      "url": "https://bullmonk.live/tools",
+      "url": "https://bullmonk.live/#tools/repo-spread",
       "representativeQueries": [
         "Calculate Treasury cash futures basis net of carry",
         "Model implied repo rate IRR vs SOFR",
@@ -84,7 +96,7 @@
       "type": "tool",
       "name": "Data Center Water Usage & WUE Sizer",
       "description": "Calculate annual megaliters, daily peak draw, household water equivalents, Water Usage Effectiveness (WUE L/kWh), and watershed utility OPEX for hyperscale data centers.",
-      "url": "https://bullmonk.live/tools",
+      "url": "https://bullmonk.live/#tools/water-cooling",
       "representativeQueries": [
         "Calculate data center water consumption in gallons",
         "Model WUE Water Usage Effectiveness for AI cooling",
@@ -97,7 +109,7 @@
       "type": "tool",
       "name": "Forex Tariff & Currency Pass-Through Arbitrage Engine",
       "description": "Model custom tariffs, foreign currency depreciation offsets, exchange rate pass-through elasticity (ERPT), landed unit costs, and domestic reshoring parity pricing.",
-      "url": "https://bullmonk.live/tools",
+      "url": "https://bullmonk.live/#tools/forex-tariff",
       "representativeQueries": [
         "Calculate effective landed cost under customs tariffs",
         "Model currency depreciation offset against import tariffs",
@@ -110,7 +122,7 @@
       "type": "tool",
       "name": "PDF & Document Conversion Studio",
       "description": "Convert PDF documents to editable Microsoft Word format and compile rich text or markdown into publication-ready PDF dossiers.",
-      "url": "https://bullmonk.live/doc-tools",
+      "url": "https://bullmonk.live/#tools/pdf",
       "representativeQueries": [
         "Convert PDF to Word document",
         "Convert Word doc to PDF",
@@ -123,7 +135,7 @@
       "type": "tool",
       "name": "AI Image Enhancer & 2x Super-Resolution",
       "description": "Client-side image restoration, Laplacian high-pass sharpening, contrast optimization, and 2x resolution upscaling.",
-      "url": "https://bullmonk.live/doc-tools",
+      "url": "https://bullmonk.live/#tools/image",
       "representativeQueries": [
         "Enhance image quality and sharpness",
         "Upscale image resolution 2x",

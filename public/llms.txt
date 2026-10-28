@@ -7,8 +7,18 @@ BULLMONK is an international financial intelligence publication delivering deep,
 
 ## Core Newsroom Sections
 - [Home Wire](https://bullmonk.live/): Real-time financial dispatches and macroeconomic analyses.
-- [Financial Tools](https://bullmonk.live/tools): Quantitative financial tools including Sovereign Real Yield Calculator, Foreign Exchange Reserve Ratio, and Geopolitical Supply Chain Risk Matrix.
-- [Document Tools](https://bullmonk.live/doc-tools): High-precision client-side document processing and PDF utilities.
+- [Quantitative Intelligence Hub](https://bullmonk.live/tools): Institutional quantitative analytics suite.
+  - [Sovereign Bond Yield & Duration Terminal](https://bullmonk.live/tools/bond): Macaulay duration, modified duration, convexity, and basis point yield shock modeling.
+  - [Monetary Debasement & Inflation Forecaster](https://bullmonk.live/tools/inflation): Fisher equation, purchasing power trajectory, and inflation shocks.
+  - [Spot FX & Central Bank Real Rate Arbitrage](https://bullmonk.live/tools/fx): PPP valuation differentials and sovereign policy rate spreads.
+  - [Sovereign Reserve & Capital Growth Simulator](https://bullmonk.live/tools/compound): Long-horizon compound capital, volatility decay, and DRIP modeling.
+  - [Hyperscale AI Compute Power Sizer](https://bullmonk.live/tools/ai-power): GPU cluster MW draw, PUE cooling loads, PPA energy pricing, and SMR nuclear sizer.
+  - [Treasury Cash-Futures Basis Arbitrage](https://bullmonk.live/tools/repo-spread): Net basis, basis net of carry (BNOC), and implied repo rate (IRR) vs SOFR.
+  - [Data Center Water Consumption Sizer](https://bullmonk.live/tools/water-cooling): Megaliters per annum, WUE (L/kWh), and watershed utility OPEX.
+  - [FX Tariff & Devaluation Pass-Through Sizer](https://bullmonk.live/tools/forex-tariff): Landed duty-paid cost, ERPT elasticity, and domestic reshoring parity.
+- [Document Intelligence Suite](https://bullmonk.live/doc-tools): High-precision client-side document processing and PDF utilities.
+  - [High-Resolution PDF Converter](https://bullmonk.live/tools/pdf): Zero-server, client-side PDF document compiler.
+  - [Neural Image Enhancer](https://bullmonk.live/tools/image): Lossless image filter and color matrix calibration.
 - [About & Bureaus](https://bullmonk.live/about): Editorial leadership and international bureau directory across New York, London, Frankfurt, Bengaluru, Toronto, and Sydney.
 
 ## Complete Investigative Intelligence Catalog (59 Dispatches)
