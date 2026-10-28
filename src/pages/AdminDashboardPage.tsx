@@ -39,6 +39,19 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
   const [searchQuery, setSearchQuery] = useState('');
   const [finnhubKey, setFinnhubKey] = useState(() => LiveMarketService.getFinnhubKey());
   const [alphaVantageKey, setAlphaVantageKey] = useState(() => LiveMarketService.getAlphaVantageKey());
+  const [syncingSupabase, setSyncingSupabase] = useState(false);
+
+  const handleSyncSupabase = async () => {
+    setSyncingSupabase(true);
+    try {
+      const res = await SupabaseDB.syncAllArticles(articles);
+      showToast(`Supabase: ${res.success} dispatches synchronized, ${res.failed} errors.`);
+    } catch (err: any) {
+      showToast(`Supabase sync failed: ${err.message || 'Network error'}`);
+    } finally {
+      setSyncingSupabase(false);
+    }
+  };
 
   const handleSaveFinnhubKey = (e: React.FormEvent) => {
     e.preventDefault();
@@ -584,6 +597,22 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
                 <span style={{ color: 'var(--accent-green)', fontWeight: 600 }}>Active (Postgres RLS)</span>
               </li>
             </ul>
+
+            <div style={{ marginTop: '1.25rem', paddingTop: '1rem', borderTop: '1px solid var(--border-subtle)' }}>
+              <button
+                type="button"
+                className="btn btn-primary"
+                onClick={handleSyncSupabase}
+                disabled={syncingSupabase}
+                style={{ width: '100%', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', fontSize: '0.85rem' }}
+              >
+                <RefreshCw size={14} className={syncingSupabase ? 'spin-animation' : ''} />
+                <span>{syncingSupabase ? 'Syncing Dispatches...' : 'Sync All Dispatches to Supabase'}</span>
+              </button>
+              <div style={{ fontSize: '0.74rem', color: 'var(--text-muted)', textAlign: 'center', marginTop: '0.4rem' }}>
+                Synchronizes local newsroom repository with Supabase PostgreSQL cloud
+              </div>
+            </div>
           </div>
 
           <div className="card" style={{ padding: '1.5rem' }}>

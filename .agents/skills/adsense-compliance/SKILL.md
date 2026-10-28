@@ -10,7 +10,7 @@ Enforces full compliance with Google Publisher Policies, Google Search Quality R
 ## 1. Google AdSense Publisher Parameters
 - **Publisher Client ID**: `ca-pub-7155174810446636`
 - **Global Google Analytics ID**: `G-CKPQGSX23W`
-- **Canonical Root**: `https://bullmonk.intelligence/`
+- **Canonical Root**: `https://bullmonk.live/`
 - **ads.txt**: Must exist in `/public/ads.txt` containing:
   ```
   google.com, pub-7155174810446636, DIRECT, f08c47fec0942fa0

@@ -11,7 +11,7 @@
     <description>International macroeconomic intelligence, sovereign bond flows, semiconductor diplomacy, and central bank dispatches from world bureaus.</description>
     <language>en-us</language>
     <copyright>© 2026 BULLMONK Intelligence. All rights reserved.</copyright>
-    <lastBuildDate>Tue, 27 Oct 2026 15:27:04 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 28 Oct 2026 03:52:57 GMT</lastBuildDate>
     <image>
       <url>https://bullmonk.live/logo192.png</url>
       <title>BULLMONK Intelligence</title>
@@ -828,6 +828,114 @@
         <media:title><![CDATA[Bosch Dishwasher Error E15 vs E09: The Hidden Sump Gasket Capillary Leak and $12 O-Ring Fix Protocol]]></media:title>
       </media:content>
       <enclosure url="https://images.unsplash.com/photo-1585659722983-3a675dabf23d?auto=format&amp;fit=crop&amp;w=800&amp;q=75&amp;fm=webp" length="145000" type="image/webp" />
+    </item>
+    <item>
+      <title><![CDATA[The Backside Power Frontier: Inside TSMC's A16 Architecture and the $30 Billion Silicon Packaging War]]></title>
+      <link>https://bullmonk.live/article/bm-semi-051</link>
+      <guid isPermaLink="true">https://bullmonk.live/article/bm-semi-051</guid>
+      <pubDate>Wed, 28 Oct 2026 04:15:00 GMT</pubDate>
+      <dc:creator><![CDATA[Julian Thorne]]></dc:creator>
+      <category><![CDATA[Technology & AI]]></category>
+      <description><![CDATA[By routing copper power rails beneath active transistor channels rather than through interconnect wiring layers above, foundry engineers eliminated a 15% voltage drop—triggering a 3-nanometer fab overhaul across Hsinchu and Oregon.]]></description>
+      <content:encoded><![CDATA[
+        <p>By routing copper power rails beneath active transistor channels rather than through interconnect wiring layers above, foundry engineers eliminated a 15% voltage drop—triggering a 3-nanometer fab overhaul across Hsinchu and Oregon.</p>
+        <p><strong>Primary Entities:</strong> TSMC A16 Backside Power Delivery, SuperPower BSPDN Power Rails, Intel 14A PowerVia Transistors, High-NA EUV Advanced Packaging CoWoS, Sub-2nm Semiconductor Node Yields</p>
+        <p><strong>Bureau:</strong> Global | <strong>Author:</strong> Julian Thorne</p>
+      ]]></content:encoded>
+      <media:content url="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=800&amp;q=75&amp;fm=webp" medium="image" type="image/webp" width="1200" height="800">
+        <media:title><![CDATA[The Backside Power Frontier: Inside TSMC's A16 Architecture and the $30 Billion Silicon Packaging War]]></media:title>
+      </media:content>
+      <enclosure url="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=800&amp;q=75&amp;fm=webp" length="145000" type="image/webp" />
+    </item>
+    <item>
+      <title><![CDATA[The $2.1 Trillion Repo Floor: Inside the Federal Reserve's Secret Liquidity Buffer as Reverse Repo Hits Zero]]></title>
+      <link>https://bullmonk.live/article/bm-fed-052</link>
+      <guid isPermaLink="true">https://bullmonk.live/article/bm-fed-052</guid>
+      <pubDate>Wed, 28 Oct 2026 05:00:00 GMT</pubDate>
+      <dc:creator><![CDATA[Marcus Vance]]></dc:creator>
+      <category><![CDATA[Markets & Finance]]></category>
+      <description><![CDATA[With the Fed's overnight reverse repo facility draining toward zero, primary dealers in Lower Manhattan are testing the Standing Repo Facility to avert a repeat of the September 2019 interbank funding seizure.]]></description>
+      <content:encoded><![CDATA[
+        <p>With the Fed&apos;s overnight reverse repo facility draining toward zero, primary dealers in Lower Manhattan are testing the Standing Repo Facility to avert a repeat of the September 2019 interbank funding seizure.</p>
+        <p><strong>Primary Entities:</strong> Federal Reserve Overnight Reverse Repo ON RRP, Standing Repo Facility SRF Fedwire, Treasury General Account TGA Liquidity Drain, Quantitative Tightening QT Terminal Date, SOFR Spike Bank Reserves Scarcity</p>
+        <p><strong>Bureau:</strong> United States | <strong>Author:</strong> Marcus Vance</p>
+      ]]></content:encoded>
+      <media:content url="https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&amp;fit=crop&amp;w=800&amp;q=75&amp;fm=webp" medium="image" type="image/webp" width="1200" height="800">
+        <media:title><![CDATA[The $2.1 Trillion Repo Floor: Inside the Federal Reserve's Secret Liquidity Buffer as Reverse Repo Hits Zero]]></media:title>
+      </media:content>
+      <enclosure url="https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&amp;fit=crop&amp;w=800&amp;q=75&amp;fm=webp" length="145000" type="image/webp" />
+    </item>
+    <item>
+      <title><![CDATA[The 20% Uranium Chokepoint: Inside the Frantic Western Race to Break Rosatom's HALEU Monopoly for SMR Reactors]]></title>
+      <link>https://bullmonk.live/article/bm-nuc-053</link>
+      <guid isPermaLink="true">https://bullmonk.live/article/bm-nuc-053</guid>
+      <pubDate>Wed, 28 Oct 2026 05:45:00 GMT</pubDate>
+      <dc:creator><![CDATA[Helena Brandt]]></dc:creator>
+      <category><![CDATA[Energy & Geopolitics]]></category>
+      <description><![CDATA[Small Modular Reactors promised to power the AI data center expansion, but over 90% of commercial High-Assay Low-Enriched Uranium remains controlled by a single state entity in Siberia, prompting emergency centrifuge cascades in Ohio and France.]]></description>
+      <content:encoded><![CDATA[
+        <p>Small Modular Reactors promised to power the AI data center expansion, but over 90% of commercial High-Assay Low-Enriched Uranium remains controlled by a single state entity in Siberia, prompting emergency centrifuge cascades in Ohio and France.</p>
+        <p><strong>Primary Entities:</strong> HALEU High Assay Low Enriched Uranium, Centrus Energy Piketon Centrifuge Cascade, Orano Georges Besse II Nuclear Enrichment, Small Modular Reactor SMR Commercial Fuel, Rosatom Uranium Enrichment Sanctions Ban</p>
+        <p><strong>Bureau:</strong> Europe | <strong>Author:</strong> Helena Brandt</p>
+      ]]></content:encoded>
+      <media:content url="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&amp;fit=crop&amp;w=800&amp;q=75&amp;fm=webp" medium="image" type="image/webp" width="1200" height="800">
+        <media:title><![CDATA[The 20% Uranium Chokepoint: Inside the Frantic Western Race to Break Rosatom's HALEU Monopoly for SMR Reactors]]></media:title>
+      </media:content>
+      <enclosure url="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&amp;fit=crop&amp;w=800&amp;q=75&amp;fm=webp" length="145000" type="image/webp" />
+    </item>
+    <item>
+      <title><![CDATA[The Smelter Siege: How Western Chipmakers Are Secretly Stockpiling Gallium and Dysprosium as Export Bans Bite]]></title>
+      <link>https://bullmonk.live/article/bm-rare-054</link>
+      <guid isPermaLink="true">https://bullmonk.live/article/bm-rare-054</guid>
+      <pubDate>Wed, 28 Oct 2026 06:30:00 GMT</pubDate>
+      <dc:creator><![CDATA[Siddharth Rao]]></dc:creator>
+      <category><![CDATA[Technology & AI]]></category>
+      <description><![CDATA[Defense radar manufacturers and semiconductor foundries are quietly dispatching procurement agents to secondary zinc and alumina smelters in British Columbia and Norway as tightened export restrictions hit 6N-purity gallium supplies.]]></description>
+      <content:encoded><![CDATA[
+        <p>Defense radar manufacturers and semiconductor foundries are quietly dispatching procurement agents to secondary zinc and alumina smelters in British Columbia and Norway as tightened export restrictions hit 6N-purity gallium supplies.</p>
+        <p><strong>Primary Entities:</strong> Gallium Germanium Export Ban Semiconductor, Heavy Rare Earths Dysprosium Neodymium, Bauxite Residue Gallium Smelting Byproduct, Military Radar GaN Transistor Stockpile, Sovereign Critical Mineral Buffer</p>
+        <p><strong>Bureau:</strong> Global | <strong>Author:</strong> Siddharth Rao</p>
+      ]]></content:encoded>
+      <media:content url="https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&amp;fit=crop&amp;w=800&amp;q=75&amp;fm=webp" medium="image" type="image/webp" width="1200" height="800">
+        <media:title><![CDATA[The Smelter Siege: How Western Chipmakers Are Secretly Stockpiling Gallium and Dysprosium as Export Bans Bite]]></media:title>
+      </media:content>
+      <enclosure url="https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&amp;fit=crop&amp;w=800&amp;q=75&amp;fm=webp" length="145000" type="image/webp" />
+    </item>
+    <item>
+      <title><![CDATA[The MT103 Sunset: Inside Wall Street's High-Stakes Panic Over the November 2026 ISO 20022 Clearing Mandate]]></title>
+      <link>https://bullmonk.live/article/bm-swift-055</link>
+      <guid isPermaLink="true">https://bullmonk.live/article/bm-swift-055</guid>
+      <pubDate>Wed, 28 Oct 2026 07:15:00 GMT</pubDate>
+      <dc:creator><![CDATA[Julian Thorne]]></dc:creator>
+      <category><![CDATA[Markets & Finance]]></category>
+      <description><![CDATA[As correspondent banking rails prepare to decommission legacy SWIFT MT text formats for mandatory XML pacs.008 messages, Tier-1 custodians are racing against a 14-month deadline that threatens to trap billions in manual repair queues.]]></description>
+      <content:encoded><![CDATA[
+        <p>As correspondent banking rails prepare to decommission legacy SWIFT MT text formats for mandatory XML pacs.008 messages, Tier-1 custodians are racing against a 14-month deadline that threatens to trap billions in manual repair queues.</p>
+        <p><strong>Primary Entities:</strong> ISO 20022 SWIFT MX Migration Mandate, MT103 vs pacs 008 Payment Formatting, Fedwire CHIPS Cross Border Clearing Friction, Bank Core Legacy COBOL Message Truncation, High Value Real Time Gross Settlement RTGS</p>
+        <p><strong>Bureau:</strong> Global | <strong>Author:</strong> Julian Thorne</p>
+      ]]></content:encoded>
+      <media:content url="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&amp;fit=crop&amp;w=800&amp;q=75&amp;fm=webp" medium="image" type="image/webp" width="1200" height="800">
+        <media:title><![CDATA[The MT103 Sunset: Inside Wall Street's High-Stakes Panic Over the November 2026 ISO 20022 Clearing Mandate]]></media:title>
+      </media:content>
+      <enclosure url="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&amp;fit=crop&amp;w=800&amp;q=75&amp;fm=webp" length="145000" type="image/webp" />
+    </item>
+    <item>
+      <title><![CDATA[The 400% Egress Extortion: How Enterprise Data Warehouses Bleed Millions to Cross-Cloud Query Sprawls]]></title>
+      <link>https://bullmonk.live/article/bm-cloud-056</link>
+      <guid isPermaLink="true">https://bullmonk.live/article/bm-cloud-056</guid>
+      <pubDate>Wed, 28 Oct 2026 08:00:00 GMT</pubDate>
+      <dc:creator><![CDATA[Marcus Vance]]></dc:creator>
+      <category><![CDATA[Technology & AI]]></category>
+      <description><![CDATA[Enterprise FinOps teams discovering six-figure monthly billing surprises are abandoning proprietary cloud warehouse formats for Apache Iceberg metadata catalogs, bypassing $0.09-per-gigabyte transit penalties.]]></description>
+      <content:encoded><![CDATA[
+        <p>Enterprise FinOps teams discovering six-figure monthly billing surprises are abandoning proprietary cloud warehouse formats for Apache Iceberg metadata catalogs, bypassing $0.09-per-gigabyte transit penalties.</p>
+        <p><strong>Primary Entities:</strong> Snowflake Warehouse Credit Optimization, BigQuery Serverless Slot Utilization FinOps, AWS Databricks Cross Region Egress Fees, Cloud Data Warehouse Cost Reduction, Iceberg Parquet Zero Copy Architecture</p>
+        <p><strong>Bureau:</strong> United States | <strong>Author:</strong> Marcus Vance</p>
+      ]]></content:encoded>
+      <media:content url="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&amp;fit=crop&amp;w=800&amp;q=75&amp;fm=webp" medium="image" type="image/webp" width="1200" height="800">
+        <media:title><![CDATA[The 400% Egress Extortion: How Enterprise Data Warehouses Bleed Millions to Cross-Cloud Query Sprawls]]></media:title>
+      </media:content>
+      <enclosure url="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&amp;fit=crop&amp;w=800&amp;q=75&amp;fm=webp" length="145000" type="image/webp" />
     </item>
   </channel>
 </rss>

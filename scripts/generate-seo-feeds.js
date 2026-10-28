@@ -232,6 +232,36 @@ const KEYWORD_MAP = {
     "Bosch Dishwasher Error E15 Water Tap Symbol", "Bosch Error E09 Heat Pump Element Failure", "Bosch E15 Styrofoam Float Switch Base Pan", 
     "Bosch Sump Gasket Leak Silicone Seal Kit", "Bosch Dishwasher Drain Error E24 E25 Impeller", "Dishwasher Base Pan Water Removal Protocol", 
     "AquaStop Error Code E15 Fix", "Dishwasher Sump Seal Replacement Part 12005744", "Bosch Continuous Drain Pump Running", "Appliance DIY Diagnostic Triage"
+  ],
+  "bm-semi-051": [
+    "TSMC A16 Backside Power Delivery", "SuperPower BSPDN Power Rails", "Intel 14A PowerVia Transistors", 
+    "High-NA EUV Advanced Packaging CoWoS", "Sub-2nm Semiconductor Node Yields", "ASML Twinscan EXE 5200 Wafer Throughput", 
+    "Nano-Through-Silicon Vias nTSV", "IR Drop Voltage Sag AI Chips", "Hsinchu Science Park Fab 20", "Next-Gen Transistor Architecture"
+  ],
+  "bm-fed-052": [
+    "Federal Reserve Overnight Reverse Repo ON RRP", "Standing Repo Facility SRF Fedwire", "Treasury General Account TGA Liquidity Drain", 
+    "Quantitative Tightening QT Terminal Date", "SOFR Spike Bank Reserves Scarcity", "Primary Dealer Bidding Treasury Auctions", 
+    "Interbank Funding Market Volatility", "Lowest Comfortable Level of Reserves LCLOR", "SOMA Portfolio Roll-Off", "Wall Street Money Market Liquidity"
+  ],
+  "bm-nuc-053": [
+    "HALEU High Assay Low Enriched Uranium", "Centrus Energy Piketon Centrifuge Cascade", "Orano Georges Besse II Nuclear Enrichment", 
+    "Small Modular Reactor SMR Commercial Fuel", "Rosatom Uranium Enrichment Sanctions Ban", "Tenex UF6 Nuclear Fuel Supply Chain", 
+    "TerraPower Natrium Nuclear SMR Fuel", "Oklo Fast Fission Reactor Powerhouse", "Advanced Reactor Demonstration Program ARDP", "Civilian Nuclear Supply Chain Sovereignty"
+  ],
+  "bm-rare-054": [
+    "Gallium Germanium Export Ban Semiconductor", "Heavy Rare Earths Dysprosium Neodymium", "Bauxite Residue Gallium Smelting Byproduct", 
+    "Military Radar GaN Transistor Stockpile", "Sovereign Critical Mineral Buffer", "Western Zinc Residue Extraction Refineries", 
+    "Teck Resources Trail Smelter Gallium", "Defense Production Act Critical Metals", "AESA Radar Semiconductor Material Chokepoints", "Compound Semiconductor Substrate Supply"
+  ],
+  "bm-swift-055": [
+    "ISO 20022 SWIFT MX Migration Mandate", "MT103 vs pacs 008 Payment Formatting", "Fedwire CHIPS Cross Border Clearing Friction", 
+    "Bank Core Legacy COBOL Message Truncation", "High Value Real Time Gross Settlement RTGS", "Sanctions Screening Field 50K Parsing", 
+    "Straight Through Processing STP Exception Costs", "TARGET2 CHAPS ISO 20022 Migration", "Correspondent Banking Liquidity Settlement", "Financial Messaging Architecture 2026"
+  ],
+  "bm-cloud-056": [
+    "Snowflake Warehouse Credit Optimization", "BigQuery Serverless Slot Utilization FinOps", "AWS Databricks Cross Region Egress Fees", 
+    "Cloud Data Warehouse Cost Reduction", "Iceberg Parquet Zero Copy Architecture", "Enterprise Data Pipeline Bandwidth Taxes", 
+    "Multi-Cloud FinOps Strategy 2026", "VPC Gateway Endpoint Egress Elimination", "Data Lakehouse Table Formats", "Cloud Infrastructure Billing Triage"
   ]
 };
 

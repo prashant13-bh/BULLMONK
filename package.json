@@ -7,7 +7,8 @@
     "dev": "vite",
     "prebuild": "node scripts/generate-seo-feeds.js",
     "build": "tsc -b && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "sync:supabase": "node scripts/sync-supabase.js"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.118.0",

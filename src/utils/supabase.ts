@@ -240,14 +240,51 @@ export const SupabaseDB = {
   },
 
   /**
+   * Batch synchronize newsroom articles to Supabase database
+   */
+  async syncAllArticles(articles: Article[]): Promise<{ success: number; failed: number }> {
+    let success = 0;
+    let failed = 0;
+    for (const a of articles) {
+      try {
+        const { error } = await supabase
+          .from('articles')
+          .upsert({
+            id: a.id,
+            slug: a.slug,
+            title: a.title,
+            category: a.category,
+            region: a.region,
+            deck: a.deck,
+            content: a.content,
+            key_takeaways: a.keyTakeaways,
+            author: a.author,
+            published_at: a.publishedAt,
+            read_time: a.readTime,
+            hero_image: a.heroImage,
+            image_caption: a.imageCaption,
+            tags: a.tags,
+            views: a.views,
+            bookmarks: a.bookmarks
+          }, { onConflict: 'id' });
+        if (error) failed++;
+        else success++;
+      } catch {
+        failed++;
+      }
+    }
+    return { success, failed };
+  },
+
+  /**
    * Delete a comment by ID (for admin moderation)
    */
-  async deleteComment(id: string): Promise<boolean> {
+  async deleteComment(commentId: string): Promise<boolean> {
     try {
       const { error } = await supabase
         .from('comments')
         .delete()
-        .eq('id', id);
+        .eq('id', commentId);
       return !error;
     } catch (e) {
       return false;
