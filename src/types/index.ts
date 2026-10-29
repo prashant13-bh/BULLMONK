@@ -96,6 +96,8 @@ export type PageView =
   | 'tool-repo-spread'
   | 'tool-water-cooling'
   | 'tool-forex-tariff'
+  | 'tool-cloud-finops'
+  | 'tool-iso20022'
   | 'tool-pdf'
   | 'tool-image';
 

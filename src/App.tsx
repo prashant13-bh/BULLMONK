@@ -36,6 +36,8 @@ const AiPowerSizerPage = lazy(() => import('./pages/tools/AiPowerSizerPage').the
 const TreasuryBasisPage = lazy(() => import('./pages/tools/TreasuryBasisPage').then(m => ({ default: m.TreasuryBasisPage })));
 const WaterCoolingSizerPage = lazy(() => import('./pages/tools/WaterCoolingSizerPage').then(m => ({ default: m.WaterCoolingSizerPage })));
 const ForexTariffPage = lazy(() => import('./pages/tools/ForexTariffPage').then(m => ({ default: m.ForexTariffPage })));
+const FinOpsCalculatorPage = lazy(() => import('./pages/tools/FinOpsCalculatorPage').then(m => ({ default: m.FinOpsCalculatorPage })));
+const Iso20022ModelerPage = lazy(() => import('./pages/tools/Iso20022ModelerPage').then(m => ({ default: m.Iso20022ModelerPage })));
 const PdfConverterPage = lazy(() => import('./pages/tools/PdfConverterPage').then(m => ({ default: m.PdfConverterPage })));
 const ImageEnhancerPage = lazy(() => import('./pages/tools/ImageEnhancerPage').then(m => ({ default: m.ImageEnhancerPage })));
 
@@ -63,6 +65,8 @@ export const PAGE_TITLES: Record<PageView, string> = {
   'tool-repo-spread': "Treasury Cash-Futures Basis & Reverse Repo Arbitrage | BULLMONK",
   'tool-water-cooling': "Data Center Water Usage & WUE Environmental Sizer | BULLMONK",
   'tool-forex-tariff': "Forex Tariff & Currency Pass-Through Arbitrage Engine | BULLMONK",
+  'tool-cloud-finops': "Cloud FinOps Compute & LLM Cluster TCO Optimizer | BULLMONK",
+  'tool-iso20022': "ISO 20022 Cross-Border Liquidity & RTGS Clearing Modeler | BULLMONK",
   'tool-pdf': "PDF to Word Converter & Document Security Studio | BULLMONK",
   'tool-image': "AI Image Enhancer & 2x Super-Resolution Studio | BULLMONK"
 };
@@ -91,6 +95,8 @@ export const PAGE_DESCRIPTIONS: Record<PageView, string> = {
   'tool-repo-spread': "Quantitative fixed income relative-value terminal modeling cash-futures basis, net basis net of carry (BNOC), and SOFR spreads.",
   'tool-water-cooling': "Simulate data center water consumption, peak evaporative draws, and Water Usage Effectiveness (WUE L/kWh) across cooling architectures.",
   'tool-forex-tariff': "Model custom tariffs, foreign currency depreciation offsets, exchange rate pass-through elasticity, and reshoring parity pricing.",
+  'tool-cloud-finops': "Simulate multi-cloud GPU/CPU instance expenditure, Reserved Instance commitment arbitrage, data egress tax penalties, and LLM token unit economics.",
+  'tool-iso20022': "Simulate capital velocity, intraday nostro/vostro buffer haircuts, straight-through processing (STP) exceptions, and RTGS clearing velocity.",
   'tool-pdf': "Client-side high-precision PDF to editable Word (.docx) document conversion and institutional PDF compiler.",
   'tool-image': "Client-side image restoration, Laplacian high-pass sharpening, contrast optimization, and 2x resolution upscaling."
 };
@@ -119,6 +125,8 @@ const PAGE_CANONICALS: Record<PageView, string> = {
   'tool-repo-spread': 'https://bullmonk.live/#tools/repo-spread',
   'tool-water-cooling': 'https://bullmonk.live/#tools/water-cooling',
   'tool-forex-tariff': 'https://bullmonk.live/#tools/forex-tariff',
+  'tool-cloud-finops': 'https://bullmonk.live/#tools/finops',
+  'tool-iso20022': 'https://bullmonk.live/#tools/iso20022',
   'tool-pdf': 'https://bullmonk.live/#tools/pdf',
   'tool-image': 'https://bullmonk.live/#tools/image'
 };
@@ -182,7 +190,7 @@ export const App: React.FC = () => {
     const canonicalLink = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
     if (canonicalLink) {
       if (currentPage === 'article' && selectedArticle) {
-        canonicalLink.href = `https://bullmonk.live/article/${selectedArticle.id}`;
+        canonicalLink.href = `https://bullmonk.live/article/${selectedArticle.slug || selectedArticle.id}`;
       } else {
         canonicalLink.href = PAGE_CANONICALS[currentPage] || 'https://bullmonk.live/';
       }
@@ -198,7 +206,8 @@ export const App: React.FC = () => {
         'home', 'admin', 'write', 'about', 'contact', 'tools', 'doc-tools', 'legal', 
         'privacy', 'terms', 'disclaimer', 'editorial', 'cookies', 'corrections',
         'tool-bond', 'tool-inflation', 'tool-fx', 'tool-compound', 'tool-ai-power',
-        'tool-repo-spread', 'tool-water-cooling', 'tool-forex-tariff', 'tool-pdf', 'tool-image'
+        'tool-repo-spread', 'tool-water-cooling', 'tool-forex-tariff', 'tool-cloud-finops',
+        'tool-iso20022', 'tool-pdf', 'tool-image'
       ];
 
       // Handle standalone tool deep links e.g. #tools/bond, #tools/ai-power, /tools/water-cooling
@@ -230,6 +239,15 @@ export const App: React.FC = () => {
         'tool-forex-tariff': 'tool-forex-tariff',
         'tools-forex-tariff': 'tool-forex-tariff',
         'tools/tariff': 'tool-forex-tariff',
+        'tools/finops': 'tool-cloud-finops',
+        'tool-finops': 'tool-cloud-finops',
+        'tools-finops': 'tool-cloud-finops',
+        'tools/cloud-finops': 'tool-cloud-finops',
+        'tool-cloud-finops': 'tool-cloud-finops',
+        'tools/iso20022': 'tool-iso20022',
+        'tool-iso20022': 'tool-iso20022',
+        'tools-iso20022': 'tool-iso20022',
+        'tools/iso': 'tool-iso20022',
         'tools/pdf': 'tool-pdf',
         'tool-pdf': 'tool-pdf',
         'doc-tools/pdf': 'tool-pdf',
@@ -388,7 +406,10 @@ export const App: React.FC = () => {
     setSelectedArticle(article);
     setCurrentPage('article');
     const slug = article.slug || article.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
-    window.location.hash = `article/${article.id}/${slug}`;
+    window.location.hash = `article/${slug}`;
+    try {
+      history.pushState(null, '', `/article/${slug}`);
+    } catch (e) {}
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -611,6 +632,14 @@ export const App: React.FC = () => {
 
         {currentPage === 'tool-forex-tariff' && (
           <ForexTariffPage setCurrentPage={navigateToPage} showToast={showToast} />
+        )}
+
+        {currentPage === 'tool-cloud-finops' && (
+          <FinOpsCalculatorPage setCurrentPage={navigateToPage} showToast={showToast} />
+        )}
+
+        {currentPage === 'tool-iso20022' && (
+          <Iso20022ModelerPage setCurrentPage={navigateToPage} showToast={showToast} />
         )}
 
         {currentPage === 'tool-pdf' && (

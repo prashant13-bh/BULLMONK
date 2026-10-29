@@ -62,6 +62,18 @@
     <priority>0.85</priority>
   </url>
   <url>
+    <loc>https://bullmonk.live/tools/finops</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://bullmonk.live/tools/iso20022</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
     <loc>https://bullmonk.live/tools/pdf</loc>
     <lastmod>2026-10-29</lastmod>
     <changefreq>weekly</changefreq>
@@ -134,381 +146,405 @@
     <priority>0.70</priority>
   </url>
  
-  <!-- Investigative Dispatches and Global Intelligence (63 Dispatches) -->
+  <!-- Investigative Dispatches and Global Intelligence (67 Dispatches) -->
   <url>
-    <loc>https://bullmonk.live/article/bm-usa-001</loc>
+    <loc>https://bullmonk.live/article/wall-street-treasury-bidding-sovereign-reserve-shifts</loc>
     <lastmod>2026-10-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://bullmonk.live/article/bm-ind-002</loc>
+    <loc>https://bullmonk.live/article/inside-dholera-cleanrooms-india-semiconductor-corridor</loc>
     <lastmod>2026-10-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://bullmonk.live/article/bm-eur-003</loc>
+    <loc>https://bullmonk.live/article/frankfurts-quiet-schism-ecb-interbank-clearing-friction</loc>
     <lastmod>2026-10-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://bullmonk.live/article/bm-can-004</loc>
+    <loc>https://bullmonk.live/article/critical-minerals-pipeline-bay-street-defense-capital</loc>
     <lastmod>2026-10-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://bullmonk.live/article/bm-au-005</loc>
+    <loc>https://bullmonk.live/article/red-dirt-renminbi-lithium-volatility-pilbara</loc>
     <lastmod>2026-10-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://bullmonk.live/article/bm-rus-006</loc>
+    <loc>https://bullmonk.live/article/baltic-ghost-fleet-unflagged-tankers-evade-sanctions</loc>
     <lastmod>2026-10-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://bullmonk.live/article/bm-glo-007</loc>
+    <loc>https://bullmonk.live/article/subterranean-vault-exodus-central-banks-repatriate-bullion</loc>
     <lastmod>2026-10-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://bullmonk.live/article/bm-nuc-008</loc>
+    <loc>https://bullmonk.live/article/gigawatt-sovereign-pact-nuclear-baseload-ai-compute</loc>
     <lastmod>2026-10-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://bullmonk.live/article/bm-semi-009</loc>
+    <loc>https://bullmonk.live/article/three-nanometer-chokepoint-high-na-lithography-airlift-stockpile</loc>
     <lastmod>2026-10-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://bullmonk.live/article/bm-cred-010</loc>
+    <loc>https://bullmonk.live/article/private-credit-mirage-investment-banks-hedging-direct-lending</loc>
     <lastmod>2026-10-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://bullmonk.live/article/bm-usa-011</loc>
+    <loc>https://bullmonk.live/article/the-trillion-dollar-refinancing-wall-inside-wall-streets-debt-workouts</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://bullmonk.live/article/bm-au-012</loc>
+    <loc>https://bullmonk.live/article/the-pilbara-dilemma-rba-cash-rate-squeeze-and-the-sub-90-iron-ore-pivot</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://bullmonk.live/article/bm-can-013</loc>
+    <loc>https://bullmonk.live/article/bay-streets-rate-plateau-inside-the-340b-mortgage-renewal-cliff</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://bullmonk.live/article/bm-usa-014</loc>
+    <loc>https://bullmonk.live/article/the-110-billion-gridiron-bond-inside-private-equity-invasion-of-nfl-franchises</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://bullmonk.live/article/bm-usa-015</loc>
+    <loc>https://bullmonk.live/article/the-8-billion-retail-rebrand-inside-victoria-secret-runway-turnaround</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://bullmonk.live/article/bm-usa-016</loc>
+    <loc>https://bullmonk.live/article/the-polar-vortex-squeeze-how-winter-storm-watches-sent-henry-hub-surging</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://bullmonk.live/article/bm-ind-017</loc>
+    <loc>https://bullmonk.live/article/mumbai-under-armed-guard-inside-lawrence-bishnoi-extortion-syndicate-tiger-shroff-shooting</loc>
     <lastmod>2026-10-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://bullmonk.live/article/bm-nuc-018</loc>
+    <loc>https://bullmonk.live/article/hyperscale-reactor-race-big-tech-corners-nuclear-baseload-pjm</loc>
     <lastmod>2026-10-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://bullmonk.live/article/bm-semi-019</loc>
+    <loc>https://bullmonk.live/article/kaohsiung-to-phoenix-2nm-packaging-chokepoint-sovereign-ai</loc>
     <lastmod>2026-10-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://bullmonk.live/article/bm-gold-020</loc>
+    <loc>https://bullmonk.live/article/swiss-vault-run-central-banks-repatriate-physical-gold-2700</loc>
     <lastmod>2026-10-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://bullmonk.live/article/bm-tok-021</loc>
+    <loc>https://bullmonk.live/article/unwinding-the-twenty-trillion-carry-engine-bank-of-japan-normalization</loc>
     <lastmod>2026-10-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://bullmonk.live/article/bm-ind-022</loc>
+    <loc>https://bullmonk.live/article/sovereign-stack-how-upi-and-open-network-re-engineered-india-commerce</loc>
     <lastmod>2026-10-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://bullmonk.live/article/bm-cop-023</loc>
+    <loc>https://bullmonk.live/article/red-metal-chokepoint-copper-threatens-global-electrification-timetable</loc>
     <lastmod>2026-10-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://bullmonk.live/article/bm-cr-024</loc>
+    <loc>https://bullmonk.live/article/shadow-syndicate-reckoning-private-credit-seventeen-trillion-liquidity-wall</loc>
     <lastmod>2026-10-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://bullmonk.live/article/bm-ger-025</loc>
+    <loc>https://bullmonk.live/article/rhine-deindustrialization-inside-basf-ten-billion-reallocation</loc>
     <lastmod>2026-10-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://bullmonk.live/article/bm-gulf-026</loc>
+    <loc>https://bullmonk.live/article/four-trillion-sovereign-ai-arbitrage-riyadh-abu-dhabi-compute-diplomacy</loc>
     <lastmod>2026-10-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://bullmonk.live/article/bm-bio-027</loc>
+    <loc>https://bullmonk.live/article/one-hundred-fifty-billion-metabolic-landgrab-glp1-fill-finish-war</loc>
     <lastmod>2026-10-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://bullmonk.live/article/bm-sea-028</loc>
+    <loc>https://bullmonk.live/article/red-sea-reroute-four-hundred-thousand-dollar-bunker-toll-cape-diversion</loc>
     <lastmod>2026-10-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://bullmonk.live/article/bm-air-029</loc>
+    <loc>https://bullmonk.live/article/ghost-fleet-commercial-aviation-inside-multi-billion-engine-inspection-bottleneck</loc>
     <lastmod>2026-10-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://bullmonk.live/article/bm-bridge-030</loc>
+    <loc>https://bullmonk.live/article/project-mbridge-de-dollarization-atomic-energy-settlement-saudi-china</loc>
     <lastmod>2026-10-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://bullmonk.live/article/bm-quantum-031</loc>
+    <loc>https://bullmonk.live/article/post-quantum-encryption-wall-street-swift-fedwire-nist-migration</loc>
     <lastmod>2026-10-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://bullmonk.live/article/bm-lith-032</loc>
+    <loc>https://bullmonk.live/article/lithium-triangle-sovereign-nationalization-atacama-refining-squeeze</loc>
     <lastmod>2026-10-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://bullmonk.live/article/bm-space-033</loc>
+    <loc>https://bullmonk.live/article/orbital-spectrum-war-inside-the-sixty-thousand-satellite-low-earth-orbit-landgrab</loc>
     <lastmod>2026-10-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://bullmonk.live/article/bm-silver-034</loc>
+    <loc>https://bullmonk.live/article/the-subterranean-silver-run-solar-cell-metallization-exhausts-comex-inventories</loc>
     <lastmod>2026-10-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://bullmonk.live/article/bm-ind-035</loc>
+    <loc>https://bullmonk.live/article/inside-indias-titanium-defense-foundries-tata-bharat-forge-hypersonic-metallurgy</loc>
     <lastmod>2026-10-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://bullmonk.live/article/bm-calc-036</loc>
+    <loc>https://bullmonk.live/article/aws-nat-gateway-cloud-egress-cost-finops-calculator</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://bullmonk.live/article/bm-calc-037</loc>
+    <loc>https://bullmonk.live/article/local-llm-vram-quantization-calculator-cuda-oom-triage</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://bullmonk.live/article/bm-ev-041</loc>
+    <loc>https://bullmonk.live/article/nacs-adapter-stuck-tesla-charger-release-protocol</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://bullmonk.live/article/bm-solar-046</loc>
+    <loc>https://bullmonk.live/article/solaredge-error-18x86-low-riso-isolation-fault-triage</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://bullmonk.live/article/bm-calc-038</loc>
+    <loc>https://bullmonk.live/article/erlang-b-telecom-capacity-wall-fintech-sip-trunk-sizing</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://bullmonk.live/article/bm-calc-039</loc>
+    <loc>https://bullmonk.live/article/interchange-surcharge-leak-level-3-processing-calculator</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://bullmonk.live/article/bm-calc-040</loc>
+    <loc>https://bullmonk.live/article/quickbooks-error-80070057-6000-83-multi-user-database-repair</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://bullmonk.live/article/bm-iot-043</loc>
+    <loc>https://bullmonk.live/article/matter-multi-admin-smartthings-39-517-alexa-gs014-triage</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://bullmonk.live/article/bm-semi-039</loc>
+    <loc>https://bullmonk.live/article/gallium-nitride-1200v-data-center-pdu-thermal-bottleneck</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://bullmonk.live/article/bm-hvac-050</loc>
+    <loc>https://bullmonk.live/article/bosch-dishwasher-error-e15-e09-sump-gasket-triage</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://bullmonk.live/article/bm-semi-051</loc>
+    <loc>https://bullmonk.live/article/backside-power-delivery-tsmc-a16-intel-14a-packaging-war</loc>
     <lastmod>2026-10-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://bullmonk.live/article/bm-fed-052</loc>
+    <loc>https://bullmonk.live/article/fed-repo-floor-liquidity-buffer-soma-reverse-repo-zero</loc>
     <lastmod>2026-10-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://bullmonk.live/article/bm-nuc-053</loc>
+    <loc>https://bullmonk.live/article/haleu-uranium-chokepoint-western-smr-reactors-rosatom-monopoly</loc>
     <lastmod>2026-10-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://bullmonk.live/article/bm-rare-054</loc>
+    <loc>https://bullmonk.live/article/gallium-dysprosium-smelter-siege-chipmakers-stockpiling-export-bans</loc>
     <lastmod>2026-10-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://bullmonk.live/article/bm-swift-055</loc>
+    <loc>https://bullmonk.live/article/iso-20022-swift-mt103-sunset-fedwire-chips-clearing-mandate</loc>
     <lastmod>2026-10-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://bullmonk.live/article/bm-cloud-056</loc>
+    <loc>https://bullmonk.live/article/enterprise-data-warehouse-finops-cross-cloud-query-egress-arbitrage</loc>
     <lastmod>2026-10-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://bullmonk.live/article/bm-gpu-057</loc>
+    <loc>https://bullmonk.live/article/blackwell-thermal-barrier-liquid-cooling-cdu-120kw-rack</loc>
     <lastmod>2026-10-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://bullmonk.live/article/bm-forex-058</loc>
+    <loc>https://bullmonk.live/article/petroyuan-clearing-corridor-cips-renminbi-gulf-oil-settlement</loc>
     <lastmod>2026-10-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://bullmonk.live/article/bm-defense-059</loc>
+    <loc>https://bullmonk.live/article/hypersonic-wind-tunnel-gap-mach-8-high-enthalpy-test-cells</loc>
     <lastmod>2026-10-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://bullmonk.live/article/bm-quantum-060</loc>
+    <loc>https://bullmonk.live/article/superconducting-qubit-cold-war-dilution-refrigerators-helium-3</loc>
     <lastmod>2026-10-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://bullmonk.live/article/bm-space-061</loc>
+    <loc>https://bullmonk.live/article/direct-to-cell-spectrum-war-spacex-ast-spacemobile-fcc-interference</loc>
     <lastmod>2026-10-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://bullmonk.live/article/bm-cable-062</loc>
+    <loc>https://bullmonk.live/article/525kv-subsea-cable-deficit-offshore-wind-supergrid-lead-time</loc>
     <lastmod>2026-10-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://bullmonk.live/article/bm-cowos-063</loc>
+    <loc>https://bullmonk.live/article/glass-substrate-race-intel-amd-tsmc-tgv-1000w-ai-superchips</loc>
     <lastmod>2026-10-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://bullmonk.live/article/bm-silver-064</loc>
+    <loc>https://bullmonk.live/article/28-gram-photovoltaic-squeeze-topcon-silver-paste-vault-drain</loc>
     <lastmod>2026-10-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://bullmonk.live/article/bm-hbm-065</loc>
+    <loc>https://bullmonk.live/article/hbm4-hybrid-bonding-packaging-tsmc-sk-hynix-thermal-chokepoint</loc>
     <lastmod>2026-10-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://bullmonk.live/article/bm-smr-066</loc>
+    <loc>https://bullmonk.live/article/behind-meter-nuclear-smr-nrc-part-53-licensing-hyperscale-grid-clash</loc>
     <lastmod>2026-10-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://bullmonk.live/article/bm-brics-067</loc>
+    <loc>https://bullmonk.live/article/brics-sovereign-gold-custody-settlement-matrix-de-dollarization</loc>
     <lastmod>2026-10-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://bullmonk.live/article/bm-robot-068</loc>
+    <loc>https://bullmonk.live/article/harmonic-drive-shortage-humanoid-robotics-planetary-actuator-metallurgy</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://bullmonk.live/article/cloud-finops-hyperscale-datacenter-tco-audit-aws-snowflake-egress-crisis</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://bullmonk.live/article/iso-20022-swift-mt103-migration-chaps-fedwire-liquidity-squeeze</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://bullmonk.live/article/high-na-euv-lithography-asml-tsmc-2nm-wafer-yield-chokepoint</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://bullmonk.live/article/rare-earth-dysprosium-terbium-permanent-magnet-export-curbs</loc>
     <lastmod>2026-10-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>

@@ -25,8 +25,8 @@ export const ShareModal: React.FC<ShareModalProps> = ({
 
   const slug = article.slug || article.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
   const shareUrl = typeof window !== 'undefined' 
-    ? `${window.location.origin}/#article/${article.id}/${slug}`
-    : `https://bullmonk.live/#article/${article.id}/${slug}`;
+    ? `${window.location.origin}/article/${slug}`
+    : `https://bullmonk.live/article/${slug}`;
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { 
-  BarChart2, TrendingUp, Globe, Layers, Zap, GitCompare, Droplets, ArrowRight, ShieldCheck 
+  BarChart2, TrendingUp, Globe, Layers, Zap, GitCompare, Droplets, ArrowRight, ShieldCheck, Cloud, GitCommit 
 } from 'lucide-react';
 import { PageView } from '../../types';
 
@@ -82,6 +82,24 @@ export const ToolsNavigationGrid: React.FC<ToolsNavigationGridProps> = ({ curren
       desc: 'Custom tariffs, currency depreciation offsets, ERPT elasticity, and domestic reshoring parity pricing.',
       icon: Globe,
       color: '#D97706'
+    },
+    {
+      id: 'tool-cloud-finops',
+      hash: '#tools/finops',
+      title: 'Cloud FinOps & LLM Cluster TCO Optimizer',
+      category: 'Hyperscale Cloud & Infrastructure',
+      desc: 'GPU instance commitments, network egress tax, Apache Iceberg storage tiering, and inference $/1M tokens.',
+      icon: Cloud,
+      color: '#0284c7'
+    },
+    {
+      id: 'tool-iso20022',
+      hash: '#tools/iso20022',
+      title: 'ISO 20022 Liquidity & Clearing Modeler',
+      category: 'Interbank Payments & Messaging',
+      desc: 'Nostro/vostro buffer haircuts, SWIFT MT103 vs pacs.008 XML exceptions, and RTGS clearing velocity.',
+      icon: GitCommit,
+      color: '#10B981'
     }
   ];
 

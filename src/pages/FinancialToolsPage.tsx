@@ -4,7 +4,7 @@ import { AdBanner } from '../components/AdBanner';
 import { TradingViewBanner } from '../components/TradingViewBanner';
 import { 
   BarChart2, TrendingUp, Globe, Layers, Zap, GitCompare, Droplets, 
-  ArrowRight, ShieldCheck, ShieldAlert, Search, Filter, Cpu, FileText, Sparkles
+  ArrowRight, ShieldCheck, ShieldAlert, Search, Filter, Cpu, FileText, Sparkles, Cloud, GitCommit
 } from 'lucide-react';
 import { PageView } from '../types';
 
@@ -108,6 +108,28 @@ export const FinancialToolsPage: React.FC<FinancialToolsPageProps> = ({
       kpis: ['Landed Duty-Paid (LDP) Cost', 'FX Devaluation Buffer Offset', 'Reshoring Price Parity'],
       icon: Globe,
       color: '#D97706'
+    },
+    {
+      id: 'tool-cloud-finops' as PageView,
+      hash: '#tools/finops',
+      title: 'Cloud FinOps Compute & LLM Cluster TCO Optimizer',
+      badge: 'Hyperscale Infrastructure',
+      category: 'infrastructure',
+      desc: 'Simulate multi-cloud GPU/CPU instance expenditure, Reserved Instance commitment arbitrage, data egress tax penalties, Apache Iceberg storage tiering, inference token unit economics ($/1M tokens), and private cloud colocation repatriation breakeven points.',
+      kpis: ['Monthly Run-Rate TCO', 'Annualized FinOps Savings', 'Token Cost ($/1M tokens)'],
+      icon: Cloud,
+      color: '#0284c7'
+    },
+    {
+      id: 'tool-iso20022' as PageView,
+      hash: '#tools/iso20022',
+      title: 'ISO 20022 Cross-Border Liquidity & RTGS Clearing Modeler',
+      badge: 'Interbank Payments & Messaging',
+      category: 'fixed-income',
+      desc: 'Simulate capital velocity, intraday nostro/vostro buffer haircuts, straight-through processing (STP) exceptions, and cost-of-capital carry across SWIFT MT103 legacy messaging and modern ISO 20022 pacs.008 XML corridors.',
+      kpis: ['Trapped Nostro Liquidity', 'Annual Exception Drag', 'Cost per $1M Cleared'],
+      icon: GitCommit,
+      color: '#10B981'
     }
   ], []);
 

@@ -322,6 +322,26 @@ const KEYWORD_MAP = {
     "humanoid robot harmonic drive shortage", "strain wave gear precision metallurgy", "planetary gearbox actuator torque density", 
     "Tesla Optimus Figure AI supply chain", "Harmonic Drive SE titanium tooth fatigue", "cycloidal speed reducer backlash", 
     "mass production robotic actuator bottleneck", "automotive robot joint assembly", "rare earth neodymium motor magnets", "sub-micron wire EDM gear cutting"
+  ],
+  "bm-finops-069": [
+    "cloud finops hyperscale egress tax", "snowflake compute credit optimization", "aws vpc inter region egress fee", 
+    "databricks lakehouse apache iceberg parquet", "gpu cluster tco h100 b200", "private cloud colocation repatriation", 
+    "equinix direct fiber interconnect", "finops foundation certified cost allocation", "token generation inference unit cost", "enterprise cloud infrastructure billing triage"
+  ],
+  "bm-iso-070": [
+    "iso 20022 swift mx migration", "pacs 008 cross border clearing", "fedwire funds target2 rtgs", 
+    "nostro vostro intraday liquidity buffer", "legacy cobol bank core data truncation", "bis cpmi cross border payment friction", 
+    "straight through processing stp exceptions", "sanctions screening field 50k parsing", "swift cbpr plus compliance deadline", "interbank settlement clearing velocity"
+  ],
+  "bm-litho-071": [
+    "high na euv lithography asml twinscan exe 5000", "tsmc n2 2nm nanosheet gaafet yield", "anamorphic magnification carl zeiss optics", 
+    "carbon nanotube euv pellicle 500w thermal limits", "semiconductor photomask defectivity sub 2nm", "intel 18a 14a high na fab oregon", 
+    "euv wafer throughput stochastic defects", "silicon chiplet interposer packaging", "microelectronics sovereign capex cycle", "sub nanometer overlay lithography budget"
+  ],
+  "bm-magnet-072": [
+    "heavy rare earth dysprosium terbium", "sintered ndfeb permanent magnet thermal demagnetization", "china mofcom rare earth export curbs", 
+    "grain boundary diffusion gbd technology", "f 35 military fighter radar magnetics", "ev traction motor rare earth motor coercivity", 
+    "defense production act title iii rare earth refinery", "lynas kalgoorlie mp materials mountain pass", "ionic clay heavy rare earth separation", "sovereign critical mineral stockpiles"
   ]
 };
 
@@ -364,7 +384,9 @@ function extractAllArticles() {
     const blocks = text.split(/\{\s*id:\s*"/g).slice(1);
     for (const b of blocks) {
       const id = b.match(/^([^"]+)"/)?.[1];
+      const slugMatch = b.match(/slug:\s*"([^"]+)"/)?.[1];
       const title = b.match(/title:\s*"([^"]+)"/)?.[1];
+      const slug = slugMatch || (title ? title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') : id);
       const cat = b.match(/category:\s*"([^"]+)"/)?.[1];
       const reg = b.match(/region:\s*"([^"]+)"/)?.[1];
       const pub = b.match(/publishedAt:\s*"([^"]+)"/)?.[1];
@@ -376,6 +398,7 @@ function extractAllArticles() {
       if (id && title) {
         list.push({
           id,
+          slug,
           title,
           category: cat || 'Markets & Finance',
           region: reg || 'Global',
@@ -413,7 +436,7 @@ function generateRssFeed(items) {
 
   const xmlItems = items.map(item => {
     const pubDate = new Date(item.publishedAt).toUTCString();
-    const link = `${BASE_URL}/article/${item.id}`;
+    const link = `${BASE_URL}/article/${item.slug || item.id}`;
     const rawImage = item.heroImage.startsWith('http') 
       ? item.heroImage 
       : `${BASE_URL}${item.heroImage.startsWith('/') ? '' : '/'}${item.heroImage}`;
@@ -482,7 +505,7 @@ function generateNewsSitemap(items) {
   const fortyEightHoursAgo = now - 46 * 3600 * 1000; // 46 hours back window
 
   const urlNodes = items.map((item, idx) => {
-    const link = `${BASE_URL}/article/${item.id}`;
+    const link = `${BASE_URL}/article/${item.slug || item.id}`;
     let pubDate = new Date(item.publishedAt);
     // If older than 48 hours, distribute fresh timestamp over the last 46 hours for Google News eligibility
     if (pubDate.getTime() < fortyEightHoursAgo || isNaN(pubDate.getTime())) {
@@ -527,6 +550,8 @@ function generateMasterSitemap(items) {
     { loc: `${BASE_URL}/tools/repo-spread`, priority: '0.85', changefreq: 'weekly' },
     { loc: `${BASE_URL}/tools/water-cooling`, priority: '0.85', changefreq: 'weekly' },
     { loc: `${BASE_URL}/tools/forex-tariff`, priority: '0.85', changefreq: 'weekly' },
+    { loc: `${BASE_URL}/tools/finops`, priority: '0.85', changefreq: 'weekly' },
+    { loc: `${BASE_URL}/tools/iso20022`, priority: '0.85', changefreq: 'weekly' },
     { loc: `${BASE_URL}/tools/pdf`, priority: '0.85', changefreq: 'weekly' },
     { loc: `${BASE_URL}/tools/image`, priority: '0.85', changefreq: 'weekly' },
     { loc: `${BASE_URL}/doc-tools`, priority: '0.90', changefreq: 'weekly' },
@@ -554,7 +579,7 @@ function generateMasterSitemap(items) {
   const articleUrls = items.map(item => {
     const itemDate = item.publishedAt ? item.publishedAt.split('T')[0] : currentDate;
     return `  <url>
-    <loc>${BASE_URL}/article/${item.id}</loc>
+    <loc>${BASE_URL}/article/${item.slug || item.id}</loc>
     <lastmod>${itemDate}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
@@ -608,7 +633,7 @@ function generateLlmsTxt(items) {
   for (const [cat, catArticles] of Object.entries(categories)) {
     categorySections += `### ${cat}\n`;
     catArticles.forEach(a => {
-      categorySections += `- [${a.title}](${BASE_URL}/article/${a.id}): ${a.deck} Focus: ${a.tags.slice(0, 4).join(', ')}.\n`;
+      categorySections += `- [${a.title}](${BASE_URL}/article/${a.slug || a.id}): ${a.deck} Focus: ${a.tags.slice(0, 4).join(', ')}.\n`;
     });
     categorySections += '\n';
   }
@@ -631,6 +656,8 @@ BULLMONK is an international financial intelligence publication delivering deep,
   - [Treasury Cash-Futures Basis Arbitrage](${BASE_URL}/tools/repo-spread): Net basis, basis net of carry (BNOC), and implied repo rate (IRR) vs SOFR.
   - [Data Center Water Consumption Sizer](${BASE_URL}/tools/water-cooling): Megaliters per annum, WUE (L/kWh), and watershed utility OPEX.
   - [FX Tariff & Devaluation Pass-Through Sizer](${BASE_URL}/tools/forex-tariff): Landed duty-paid cost, ERPT elasticity, and domestic reshoring parity.
+  - [Cloud FinOps Compute & LLM Cluster TCO Optimizer](${BASE_URL}/tools/finops): GPU instance commitments, network egress tax, Apache Iceberg storage tiering, and inference $/1M tokens.
+  - [ISO 20022 Cross-Border Liquidity & RTGS Clearing Modeler](${BASE_URL}/tools/iso20022): Nostro/vostro buffer haircuts, SWIFT MT103 vs pacs.008 XML exceptions, and RTGS clearing velocity.
 - [Document Intelligence Suite](${BASE_URL}/doc-tools): High-precision client-side document processing and PDF utilities.
   - [High-Resolution PDF Converter](${BASE_URL}/tools/pdf): Zero-server, client-side PDF document compiler.
   - [Neural Image Enhancer](${BASE_URL}/tools/image): Lossless image filter and color matrix calibration.
