@@ -269,39 +269,6 @@ export const HomePage: React.FC<HomePageProps> = ({
       {/* Semantic H1 for 100% SEO & Screen Reader Accessibility */}
       <h1 className="sr-only">BULLMONK | Global News, Macroeconomic Forensics & Sovereign Financial Journal</h1>
 
-      {/* 1. Regional Bureau Fast Navigation Bar */}
-      <section className="regional-desks-bar" aria-label="International Bureaus">
-        <div className="container">
-          <div className="regional-desks-inner">
-            <span className="regional-desks-label">
-              <MapPin size={12} /> GLOBAL BUREAUS:
-            </span>
-            <div className="regional-buttons-track">
-              {REGIONAL_BUREAUS.map((reg) => {
-                const count = reg.id === 'all' 
-                  ? articles.length 
-                  : articles.filter(a => a.region === reg.id || (reg.id === 'Global' && (!a.region || a.region === 'Global'))).length;
-                const isActive = activeRegion === reg.id;
-                return (
-                  <button
-                    key={reg.id}
-                    type="button"
-                    onClick={() => setActiveRegion(reg.id)}
-                    className={`regional-pill-btn ${isActive ? 'active' : ''}`}
-                    title={`Filter by ${reg.label} — ${reg.bureau}`}
-                    aria-pressed={isActive}
-                  >
-                    <span className="regional-pill-flag">{reg.flag}</span>
-                    <span className="regional-pill-name">{reg.shortLabel}</span>
-                    <span className="regional-pill-count">{count}</span>
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* 2. Bloomberg-Caliber 3-Column Hero Centerpiece */}
       <section className="hero-dispatch-section">
         <div className="container">

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { PageView, MarketTicker, AdminUser, Article, REGIONAL_BUREAUS } from '../types';
 import { MarketTickerBar } from './MarketTickerBar';
+import { BureauFlag } from './BureauFlag';
 import { 
   Sun, Moon, Menu, X, Globe, Shield, Sparkles, 
   Search, Radio, TrendingUp, Cpu, Flame, Lock, ChevronRight,
@@ -211,7 +212,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         <div className="container">
           <div className="header-top">
             
-            {/* Left Tools: Search & Interactive Edition Badge */}
+            {/* Left Tools: Search Intelligence Modal Trigger */}
             <div className="header-left-tools">
               <button 
                 type="button"
@@ -223,18 +224,6 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <Search size={14} className="search-icon-gold" />
                 <span className="hide-on-mobile">Search Intelligence</span>
                 <kbd className="search-shortcut hide-on-mobile">⌘K</kbd>
-              </button>
-
-              <button
-                type="button"
-                className="header-active-edition-btn hide-on-tablet"
-                onClick={() => handleRegionClick(selectedRegion === 'all' ? 'United States' : 'all')}
-                title={`Active Edition: ${activeRegion.label} (${activeRegion.bureau}) — Click to toggle edition`}
-                aria-label={`Active edition: ${activeRegion.shortLabel}`}
-              >
-                <span className="active-edition-flag">{activeRegion.flag}</span>
-                <span className="active-edition-text">{activeRegion.shortLabel} EDITION</span>
-                <span className="active-edition-dot"></span>
               </button>
             </div>
 
@@ -296,37 +285,39 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           {/* 3b. Bloomberg-Caliber 1-by-1 Desktop Header Edition Buttons */}
           <div className="header-editions-bar hide-on-mobile" role="navigation" aria-label="International Regional Editions">
-            <div className="header-editions-inner">
-              <div className="header-editions-label">
-                <Globe size={13} className="editions-pulse-icon" />
-                <span>EDITIONS:</span>
-              </div>
-              <div className="header-editions-track">
-                {REGIONAL_BUREAUS.map((reg) => {
-                  const isActive = selectedRegion === reg.id;
-                  const count = getRegionArticleCount(reg.id);
-                  return (
-                    <button
-                      key={reg.id}
-                      type="button"
-                      onClick={() => handleRegionClick(reg.id)}
-                      className={`header-edition-pill-btn ${isActive ? 'active' : ''}`}
-                      title={`Filter by ${reg.label} — Lead Bureau: ${reg.bureau}`}
-                      aria-pressed={isActive}
-                    >
-                      <span className="edition-flag">{reg.flag}</span>
-                      <span className="edition-short">{reg.shortLabel}</span>
-                      {count > 0 && <span className="edition-badge-count">{count}</span>}
-                      {isActive && <span className="edition-active-dot" />}
-                    </button>
-                  );
-                })}
-              </div>
-              <div className="header-editions-status">
-                <span className="editions-live-pill">
-                  <span className="live-dot-mini" />
-                  <span>24/7 WIRE</span>
-                </span>
+            <div className="container">
+              <div className="header-editions-inner">
+                <div className="header-editions-label">
+                  <Globe size={13} className="editions-pulse-icon" />
+                  <span>EDITIONS:</span>
+                </div>
+                <div className="header-editions-track">
+                  {REGIONAL_BUREAUS.map((reg) => {
+                    const isActive = selectedRegion === reg.id;
+                    const count = getRegionArticleCount(reg.id);
+                    return (
+                      <button
+                        key={reg.id}
+                        type="button"
+                        onClick={() => handleRegionClick(reg.id)}
+                        className={`header-edition-pill-btn ${isActive ? 'active' : ''}`}
+                        title={`Filter by ${reg.label} — Lead Bureau: ${reg.bureau}`}
+                        aria-pressed={isActive}
+                      >
+                        <BureauFlag id={reg.id} size="sm" />
+                        <span className="edition-short">{reg.shortLabel}</span>
+                        {count > 0 && <span className="edition-badge-count">{count}</span>}
+                        {isActive && <span className="edition-active-dot" />}
+                      </button>
+                    );
+                  })}
+                </div>
+                <div className="header-editions-status">
+                  <span className="editions-live-pill">
+                    <span className="live-dot-mini" />
+                    <span>24/7 WIRE</span>
+                  </span>
+                </div>
               </div>
             </div>
           </div>
@@ -517,10 +508,10 @@ export const Navbar: React.FC<NavbarProps> = ({
                           title={`Switch to ${reg.label} — ${reg.bureau}`}
                         >
                           <div className="mobile-edition-btn-left">
-                            <span className="mobile-edition-flag">{reg.flag}</span>
+                            <BureauFlag id={reg.id} size="md" />
                             <div className="mobile-edition-info">
                               <div className="mobile-edition-title-row">
-                                <span className="mobile-edition-name">{reg.shortLabel} • {reg.label.replace(/\(.*?\)/g, '').trim()}</span>
+                                <span className="mobile-edition-name">{reg.label}</span>
                                 {isActive && <span className="mobile-edition-active-tag">ACTIVE</span>}
                               </div>
                               <span className="mobile-edition-bureau">{reg.bureau}</span>
