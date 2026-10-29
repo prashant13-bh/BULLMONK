@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { PageView, MarketTicker, AdminUser } from '../types';
+import { PageView, MarketTicker, AdminUser, Article, REGIONAL_BUREAUS } from '../types';
 import { MarketTickerBar } from './MarketTickerBar';
 import { 
   Sun, Moon, Menu, X, Globe, Shield, Sparkles, 
   Search, Radio, TrendingUp, Cpu, Flame, Lock, ChevronRight,
   BookOpen, Landmark, Clock, ExternalLink, ArrowRight, FileText,
-  DollarSign, Cookie, AlertCircle, Calculator, PenTool, ShieldCheck
+  DollarSign, Cookie, AlertCircle, Calculator, PenTool, ShieldCheck, MapPin
 } from 'lucide-react';
 
 interface NavbarProps {
@@ -13,6 +13,9 @@ interface NavbarProps {
   setCurrentPage: (page: PageView) => void;
   selectedCategory: string;
   setSelectedCategory: (cat: string) => void;
+  selectedRegion?: string;
+  setSelectedRegion?: (region: string) => void;
+  articles?: Article[];
   tickers: MarketTicker[];
   theme: 'dark' | 'light';
   toggleTheme: () => void;
@@ -25,6 +28,9 @@ export const Navbar: React.FC<NavbarProps> = ({
   setCurrentPage,
   selectedCategory,
   setSelectedCategory,
+  selectedRegion = 'all',
+  setSelectedRegion,
+  articles = [],
   tickers,
   theme,
   toggleTheme,
@@ -35,6 +41,25 @@ export const Navbar: React.FC<NavbarProps> = ({
   const [currentTimeStr, setCurrentTimeStr] = useState('');
   const [worldTimes, setWorldTimes] = useState<{ city: string; time: string }[]>([]);
   const [mobileSearchQuery, setMobileSearchQuery] = useState('');
+
+  // Active Region Helper
+  const activeRegion = REGIONAL_BUREAUS.find(r => r.id === selectedRegion) || REGIONAL_BUREAUS[0];
+
+  // Helper to count articles per region
+  const getRegionArticleCount = (regionId: string) => {
+    if (!articles || articles.length === 0) return 0;
+    if (regionId === 'all') return articles.length;
+    return articles.filter(a => a.region === regionId || (regionId === 'Global' && (!a.region || a.region === 'Global'))).length;
+  };
+
+  const handleRegionClick = (regionId: string) => {
+    setSelectedRegion?.(regionId);
+    if (currentPage !== 'home') {
+      setCurrentPage('home');
+    }
+    setMobileMenuOpen(false);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   // Real-time world clocks
   useEffect(() => {
@@ -186,24 +211,31 @@ export const Navbar: React.FC<NavbarProps> = ({
         <div className="container">
           <div className="header-top">
             
-            {/* Left Tools: Search & Global Wire Indicator */}
+            {/* Left Tools: Search & Interactive Edition Badge */}
             <div className="header-left-tools">
               <button 
                 type="button"
                 className="btn-search-trigger"
                 onClick={onOpenSearch}
-                title="Search dispatches (Ctrl+K or ⌘K)"
+                title="Search dispatches & market tickers (Ctrl+K or ⌘K)"
                 aria-label="Open Search Intelligence Modal"
               >
-                <Search size={15} />
+                <Search size={14} className="search-icon-gold" />
                 <span className="hide-on-mobile">Search Intelligence</span>
                 <kbd className="search-shortcut hide-on-mobile">⌘K</kbd>
               </button>
 
-              <span className="header-edition-tag hide-on-tablet">
-                <Globe size={12} color="var(--accent-gold)" />
-                <span>Global Edition</span>
-              </span>
+              <button
+                type="button"
+                className="header-active-edition-btn hide-on-tablet"
+                onClick={() => handleRegionClick(selectedRegion === 'all' ? 'United States' : 'all')}
+                title={`Active Edition: ${activeRegion.label} (${activeRegion.bureau}) — Click to toggle edition`}
+                aria-label={`Active edition: ${activeRegion.shortLabel}`}
+              >
+                <span className="active-edition-flag">{activeRegion.flag}</span>
+                <span className="active-edition-text">{activeRegion.shortLabel} EDITION</span>
+                <span className="active-edition-dot"></span>
+              </button>
             </div>
 
             {/* Center: Majestic Brand Crest */}
@@ -237,6 +269,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               >
                 <Lock size={13} />
                 <span>Tip Line</span>
+                <span className="header-btn-pulse-dot" />
               </button>
 
               <button 
@@ -258,6 +291,43 @@ export const Navbar: React.FC<NavbarProps> = ({
               >
                 {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
               </button>
+            </div>
+          </div>
+
+          {/* 3b. Bloomberg-Caliber 1-by-1 Desktop Header Edition Buttons */}
+          <div className="header-editions-bar hide-on-mobile" role="navigation" aria-label="International Regional Editions">
+            <div className="header-editions-inner">
+              <div className="header-editions-label">
+                <Globe size={13} className="editions-pulse-icon" />
+                <span>EDITIONS:</span>
+              </div>
+              <div className="header-editions-track">
+                {REGIONAL_BUREAUS.map((reg) => {
+                  const isActive = selectedRegion === reg.id;
+                  const count = getRegionArticleCount(reg.id);
+                  return (
+                    <button
+                      key={reg.id}
+                      type="button"
+                      onClick={() => handleRegionClick(reg.id)}
+                      className={`header-edition-pill-btn ${isActive ? 'active' : ''}`}
+                      title={`Filter by ${reg.label} — Lead Bureau: ${reg.bureau}`}
+                      aria-pressed={isActive}
+                    >
+                      <span className="edition-flag">{reg.flag}</span>
+                      <span className="edition-short">{reg.shortLabel}</span>
+                      {count > 0 && <span className="edition-badge-count">{count}</span>}
+                      {isActive && <span className="edition-active-dot" />}
+                    </button>
+                  );
+                })}
+              </div>
+              <div className="header-editions-status">
+                <span className="editions-live-pill">
+                  <span className="live-dot-mini" />
+                  <span>24/7 WIRE</span>
+                </span>
+              </div>
             </div>
           </div>
 
@@ -424,6 +494,48 @@ export const Navbar: React.FC<NavbarProps> = ({
               {/* Drawer Content Scrollable Area */}
               <div className="mobile-drawer-content">
                 
+                {/* 1-by-1 Regional Editions & Bureaus on Sidebar */}
+                <div className="mobile-drawer-section">
+                  <div className="mobile-drawer-section-header">
+                    <span className="mobile-drawer-section-title">
+                      <Globe size={13} style={{ marginRight: '6px', color: 'var(--accent-gold)' }} />
+                      Regional Editions (1-by-1)
+                    </span>
+                    <span className="mobile-section-badge">EDITION SELECTOR</span>
+                  </div>
+                  <div className="mobile-edition-list">
+                    {REGIONAL_BUREAUS.map((reg) => {
+                      const isActive = selectedRegion === reg.id;
+                      const count = getRegionArticleCount(reg.id);
+                      return (
+                        <button
+                          key={reg.id}
+                          type="button"
+                          className={`mobile-edition-btn ${isActive ? 'active' : ''}`}
+                          onClick={() => handleRegionClick(reg.id)}
+                          aria-pressed={isActive}
+                          title={`Switch to ${reg.label} — ${reg.bureau}`}
+                        >
+                          <div className="mobile-edition-btn-left">
+                            <span className="mobile-edition-flag">{reg.flag}</span>
+                            <div className="mobile-edition-info">
+                              <div className="mobile-edition-title-row">
+                                <span className="mobile-edition-name">{reg.shortLabel} • {reg.label.replace(/\(.*?\)/g, '').trim()}</span>
+                                {isActive && <span className="mobile-edition-active-tag">ACTIVE</span>}
+                              </div>
+                              <span className="mobile-edition-bureau">{reg.bureau}</span>
+                            </div>
+                          </div>
+                          <div className="mobile-edition-btn-right">
+                            {count > 0 && <span className="mobile-edition-count">{count}</span>}
+                            <ChevronRight size={14} className="chevron" />
+                          </div>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+
                 {/* Desks Navigation */}
                 <div className="mobile-drawer-section">
                   <span className="mobile-drawer-section-title">Intelligence Desks</span>

@@ -22,6 +22,26 @@ export type Region =
   | 'Asia-Pacific'
   | 'Middle East';
 
+export interface RegionBureau {
+  id: string;
+  shortLabel: string;
+  label: string;
+  flag: string;
+  bureau: string;
+}
+
+export const REGIONAL_BUREAUS: RegionBureau[] = [
+  { id: 'all', shortLabel: 'GLOBAL', label: 'Global Macro Wire', flag: '🌐', bureau: 'All International Bureaus' },
+  { id: 'United States', shortLabel: 'USA', label: 'United States (Wall St / DC)', flag: '🇺🇸', bureau: 'New York & Washington' },
+  { id: 'Europe', shortLabel: 'EUROPE', label: 'Europe (ECB / London)', flag: '🇪🇺', bureau: 'Frankfurt & London' },
+  { id: 'India', shortLabel: 'INDIA', label: 'India (Dalal St / GIFT City)', flag: '🇮🇳', bureau: 'Mumbai & GIFT City' },
+  { id: 'Asia-Pacific', shortLabel: 'ASIA-PAC', label: 'Asia-Pacific (Tokyo / HK)', flag: '🌏', bureau: 'Tokyo, Taipei & Singapore' },
+  { id: 'Middle East', shortLabel: 'MID-EAST', label: 'Middle East (Gulf Capital)', flag: '🌍', bureau: 'Dubai & Riyadh' },
+  { id: 'Canada', shortLabel: 'CANADA', label: 'Canada (Bay St / TSX)', flag: '🇨🇦', bureau: 'Toronto & Montreal' },
+  { id: 'Australia & NZ', shortLabel: 'AUSTRALIA', label: 'Australia & NZ (ASX)', flag: '🇦🇺', bureau: 'Sydney & Melbourne' },
+  { id: 'Russia & Eurasia', shortLabel: 'EURASIA', label: 'Russia & Eurasia Corridors', flag: '🇷🇺', bureau: 'Eurasia Desks' }
+];
+
 export interface Article {
   id: string;
   slug: string;

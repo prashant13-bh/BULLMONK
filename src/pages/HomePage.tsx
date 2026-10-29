@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Article, Region } from '../types';
+import { Article, Region, REGIONAL_BUREAUS } from '../types';
 import { SECTOR_HEATMAP } from '../data/newsData';
 import { AdBanner } from '../components/AdBanner';
 import { TradingViewBanner } from '../components/TradingViewBanner';
@@ -14,6 +14,8 @@ interface HomePageProps {
   articles: Article[];
   selectedCategory: string;
   setSelectedCategory: (cat: string) => void;
+  selectedRegion?: string;
+  setSelectedRegion?: (region: string) => void;
   onSelectArticle: (article: Article) => void;
   onToggleBookmark: (id: string) => void;
   isBookmarked: (id: string) => boolean;
@@ -27,6 +29,8 @@ export const HomePage: React.FC<HomePageProps> = ({
   articles,
   selectedCategory,
   setSelectedCategory,
+  selectedRegion: selectedRegionProp,
+  setSelectedRegion: setSelectedRegionProp,
   onSelectArticle,
   onToggleBookmark,
   isBookmarked,
@@ -36,7 +40,9 @@ export const HomePage: React.FC<HomePageProps> = ({
   onNavigateToDocTools
 }) => {
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedRegion, setSelectedRegion] = useState<string>('all');
+  const [internalRegion, setInternalRegion] = useState<string>('all');
+  const activeRegion = selectedRegionProp !== undefined ? selectedRegionProp : internalRegion;
+  const setActiveRegion = setSelectedRegionProp || setInternalRegion;
   const [wireFilter, setWireFilter] = useState<'all' | 'macro' | 'tech'>('all');
   const [viewMode, setViewMode] = useState<'grid' | 'blotter'>('grid');
   const [triageOnly, setTriageOnly] = useState<boolean>(false);
@@ -152,20 +158,12 @@ export const HomePage: React.FC<HomePageProps> = ({
     return articles.filter(a => a.category.toLowerCase().includes(id.toLowerCase())).length;
   };
 
-  const regions: { id: string; label: string; flag: string }[] = [
-    { id: 'all', label: 'Global Macro', flag: '🌐' },
-    { id: 'United States', label: 'USA (Wall St)', flag: '🇺🇸' },
-    { id: 'Europe', label: 'Europe (ECB)', flag: '🇪🇺' },
-    { id: 'India', label: 'India (Dalal St)', flag: '🇮🇳' },
-    { id: 'Canada', label: 'Canada (Bay St)', flag: '🇨🇦' },
-    { id: 'Australia & NZ', label: 'Australia & NZ', flag: '🇦🇺' },
-    { id: 'Russia & Eurasia', label: 'Russia & Eurasia', flag: '🇷🇺' }
-  ];
-
   // Filtering by category, region, search query, triage mode, and sub-tags
   const filteredArticles = articles.filter(art => {
     const matchCat = selectedCategory === 'all' || art.category.toLowerCase().includes(selectedCategory.toLowerCase());
-    const matchRegion = selectedRegion === 'all' || art.region === selectedRegion;
+    const matchRegion = activeRegion === 'all' || 
+      art.region === activeRegion ||
+      (activeRegion === 'Global' && (!art.region || art.region === 'Global'));
     const query = searchQuery.trim().toLowerCase();
     const matchQuery = !query ||
       art.title.toLowerCase().includes(query) ||
@@ -197,7 +195,7 @@ export const HomePage: React.FC<HomePageProps> = ({
   }
 
   // Curated Category Showcases (Displayed when browsing All Desks)
-  const isAllDesksActive = selectedCategory === 'all' && !searchQuery.trim() && !triageOnly && selectedRegion === 'all';
+  const isAllDesksActive = selectedCategory === 'all' && !searchQuery.trim() && !triageOnly && activeRegion === 'all';
 
   // Showcase 1: Tech & AI
   const showcaseTech = articles.filter(a => a.category === 'Technology & AI' || isTriageArticle(a));
@@ -272,27 +270,29 @@ export const HomePage: React.FC<HomePageProps> = ({
       <h1 className="sr-only">BULLMONK | Global News, Macroeconomic Forensics & Sovereign Financial Journal</h1>
 
       {/* 1. Regional Bureau Fast Navigation Bar */}
-      <section className="regional-desks-bar">
+      <section className="regional-desks-bar" aria-label="International Bureaus">
         <div className="container">
           <div className="regional-desks-inner">
             <span className="regional-desks-label">
               <MapPin size={12} /> GLOBAL BUREAUS:
             </span>
             <div className="regional-buttons-track">
-              {regions.map((reg) => {
+              {REGIONAL_BUREAUS.map((reg) => {
                 const count = reg.id === 'all' 
                   ? articles.length 
-                  : articles.filter(a => a.region === reg.id).length;
-                const isActive = selectedRegion === reg.id;
+                  : articles.filter(a => a.region === reg.id || (reg.id === 'Global' && (!a.region || a.region === 'Global'))).length;
+                const isActive = activeRegion === reg.id;
                 return (
                   <button
                     key={reg.id}
-                    onClick={() => setSelectedRegion(reg.id)}
+                    type="button"
+                    onClick={() => setActiveRegion(reg.id)}
                     className={`regional-pill-btn ${isActive ? 'active' : ''}`}
-                    title={`Filter by ${reg.label}`}
+                    title={`Filter by ${reg.label} — ${reg.bureau}`}
+                    aria-pressed={isActive}
                   >
                     <span className="regional-pill-flag">{reg.flag}</span>
-                    <span className="regional-pill-name">{reg.label}</span>
+                    <span className="regional-pill-name">{reg.shortLabel}</span>
                     <span className="regional-pill-count">{count}</span>
                   </button>
                 );
@@ -1330,7 +1330,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               Global Dispatches &amp; Analytical Archive
             </h2>
             <span className="section-sub-filter-info">
-              Surveillance Desk: {selectedRegion !== 'all' ? selectedRegion : 'Global Desks'} • {selectedCategory !== 'all' ? selectedCategory : 'All Categories'}
+              Surveillance Desk: {activeRegion !== 'all' ? activeRegion : 'Global Desks'} • {selectedCategory !== 'all' ? selectedCategory : 'All Categories'}
             </span>
           </div>
           <span className="section-count-badge">
@@ -1410,7 +1410,7 @@ export const HomePage: React.FC<HomePageProps> = ({
             </p>
             <button 
               className="btn btn-primary"
-              onClick={() => { setSearchQuery(''); setSelectedCategory('all'); setSelectedRegion('all'); setTriageOnly(false); }}
+              onClick={() => { setSearchQuery(''); setSelectedCategory('all'); setActiveRegion('all'); setTriageOnly(false); }}
             >
               Reset All Filters
             </button>

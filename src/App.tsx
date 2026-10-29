@@ -134,6 +134,7 @@ const PAGE_CANONICALS: Record<PageView, string> = {
 export const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<PageView>('home');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const [selectedRegion, setSelectedRegion] = useState<string>('all');
   const [articles, setArticles] = useState<Article[]>(() => BullMonkStorage.getAllArticles());
   const [selectedArticle, setSelectedArticle] = useState<Article | null>(() => {
     const loaded = BullMonkStorage.getAllArticles();
@@ -485,6 +486,9 @@ export const App: React.FC = () => {
         setCurrentPage={navigateToPage}
         selectedCategory={selectedCategory}
         setSelectedCategory={setSelectedCategory}
+        selectedRegion={selectedRegion}
+        setSelectedRegion={setSelectedRegion}
+        articles={articles}
         tickers={MARKET_TICKERS}
         theme={theme}
         toggleTheme={toggleTheme}
@@ -498,6 +502,8 @@ export const App: React.FC = () => {
           articles={articles}
           selectedCategory={selectedCategory}
           setSelectedCategory={setSelectedCategory}
+          selectedRegion={selectedRegion}
+          setSelectedRegion={setSelectedRegion}
           onSelectArticle={handleSelectArticle}
           onToggleBookmark={handleToggleBookmark}
           isBookmarked={(id) => BullMonkStorage.isBookmarked(id)}
