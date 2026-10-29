@@ -635,7 +635,7 @@ export const AdminDashboardPage: React.FC<AdminDashboardPageProps> = ({
               </li>
               <li style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid var(--border-subtle)', paddingBottom: '0.4rem' }}>
                 <span style={{ color: 'var(--text-muted)' }}>Analytics Engine:</span>
-                <span style={{ fontFamily: 'var(--font-mono)', fontWeight: 600 }}>G-CKPQGSX23W</span>
+                <span style={{ fontFamily: 'var(--font-mono)', fontWeight: 600 }}>G-8WWR7L7RKZ</span>
               </li>
             </ul>
           </div>

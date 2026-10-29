@@ -124,7 +124,7 @@ export const PrivacyPolicyPage: React.FC<PrivacyPolicyPageProps> = ({ setCurrent
                   📊 Anonymized Web Metrics
                 </span>
                 <span style={{ fontSize: '0.84rem', color: 'var(--text-secondary)' }}>
-                  Google Analytics (gtag.js ID: <code>G-CKPQGSX23W</code>) operates with IP anonymization to compute aggregated latency, reader engagement, and geographic bureau reach.
+                  Google Analytics (gtag.js ID: <code>G-8WWR7L7RKZ</code>) operates with IP anonymization to compute aggregated latency, reader engagement, and geographic bureau reach.
                 </span>
               </div>
             </div>

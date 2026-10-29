@@ -10,7 +10,7 @@ BULLMONK is a premier international news and financial intelligence platform del
 - **Performance Targets**: 95+ PageSpeed on Mobile and Desktop, 100 Accessibility, 100 SEO, 100 Best Practices.
 - **Monetization & Analytics**:
   - Google AdSense ID: `ca-pub-7155174810446636`
-  - Google Analytics ID: `G-CKPQGSX23W`
+  - Google Analytics ID: `G-8WWR7L7RKZ`
   - Public `ads.txt` present in `/public/ads.txt`.
 
 ## 3. Dedicated Legal Architecture
