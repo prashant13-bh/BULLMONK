@@ -552,6 +552,8 @@ function generateMasterSitemap(items) {
     { loc: `${BASE_URL}/tools/forex-tariff`, priority: '0.85', changefreq: 'weekly' },
     { loc: `${BASE_URL}/tools/finops`, priority: '0.85', changefreq: 'weekly' },
     { loc: `${BASE_URL}/tools/iso20022`, priority: '0.85', changefreq: 'weekly' },
+    { loc: `${BASE_URL}/tools/global-tax`, priority: '0.90', changefreq: 'weekly' },
+    { loc: `${BASE_URL}/tools/mortgage-reset`, priority: '0.90', changefreq: 'weekly' },
     { loc: `${BASE_URL}/tools/pdf`, priority: '0.85', changefreq: 'weekly' },
     { loc: `${BASE_URL}/tools/image`, priority: '0.85', changefreq: 'weekly' },
     { loc: `${BASE_URL}/doc-tools`, priority: '0.90', changefreq: 'weekly' },

@@ -40,6 +40,8 @@ const FinOpsCalculatorPage = lazy(() => import('./pages/tools/FinOpsCalculatorPa
 const Iso20022ModelerPage = lazy(() => import('./pages/tools/Iso20022ModelerPage').then(m => ({ default: m.Iso20022ModelerPage })));
 const PdfConverterPage = lazy(() => import('./pages/tools/PdfConverterPage').then(m => ({ default: m.PdfConverterPage })));
 const ImageEnhancerPage = lazy(() => import('./pages/tools/ImageEnhancerPage').then(m => ({ default: m.ImageEnhancerPage })));
+const GlobalExpatTaxPage = lazy(() => import('./pages/tools/GlobalExpatTaxPage').then(m => ({ default: m.GlobalExpatTaxPage })));
+const MortgageResetPage = lazy(() => import('./pages/tools/MortgageResetPage').then(m => ({ default: m.MortgageResetPage })));
 
 export const PAGE_TITLES: Record<PageView, string> = {
   home: "BULLMONK | Global News, Geopolitical Intelligence & Financial Truth",
@@ -67,6 +69,8 @@ export const PAGE_TITLES: Record<PageView, string> = {
   'tool-forex-tariff': "Forex Tariff & Currency Pass-Through Arbitrage Engine | BULLMONK",
   'tool-cloud-finops': "Cloud FinOps Compute & LLM Cluster TCO Optimizer | BULLMONK",
   'tool-iso20022': "ISO 20022 Cross-Border Liquidity & RTGS Clearing Modeler | BULLMONK",
+  'tool-global-tax': "Global Expat & Cross-Border Take-Home Pay Terminal | BULLMONK",
+  'tool-mortgage-reset': "Mortgage Reset Cliff & Net Rental Yield Terminal | BULLMONK",
   'tool-pdf': "PDF to Word Converter & Document Security Studio | BULLMONK",
   'tool-image': "AI Image Enhancer & 2x Super-Resolution Studio | BULLMONK"
 };
@@ -97,6 +101,8 @@ export const PAGE_DESCRIPTIONS: Record<PageView, string> = {
   'tool-forex-tariff': "Model custom tariffs, foreign currency depreciation offsets, exchange rate pass-through elasticity, and reshoring parity pricing.",
   'tool-cloud-finops': "Simulate multi-cloud GPU/CPU instance expenditure, Reserved Instance commitment arbitrage, data egress tax penalties, and LLM token unit economics.",
   'tool-iso20022': "Simulate capital velocity, intraday nostro/vostro buffer haircuts, straight-through processing (STP) exceptions, and RTGS clearing velocity.",
+  'tool-global-tax': "Institutional compensation and purchasing power parity modeling across the US, Australia, Canada, United Kingdom, Germany, and Switzerland.",
+  'tool-mortgage-reset': "Simulate Canadian & UK 5-year rollover mortgage renewal payment shocks, Australian 100% offset interest savings, US 30-year refi, and DSCR stress tests.",
   'tool-pdf': "Client-side high-precision PDF to editable Word (.docx) document conversion and institutional PDF compiler.",
   'tool-image': "Client-side image restoration, Laplacian high-pass sharpening, contrast optimization, and 2x resolution upscaling."
 };
@@ -127,6 +133,8 @@ const PAGE_CANONICALS: Record<PageView, string> = {
   'tool-forex-tariff': 'https://bullmonk.live/#tools/forex-tariff',
   'tool-cloud-finops': 'https://bullmonk.live/#tools/finops',
   'tool-iso20022': 'https://bullmonk.live/#tools/iso20022',
+  'tool-global-tax': 'https://bullmonk.live/#tools/global-tax',
+  'tool-mortgage-reset': 'https://bullmonk.live/#tools/mortgage-reset',
   'tool-pdf': 'https://bullmonk.live/#tools/pdf',
   'tool-image': 'https://bullmonk.live/#tools/image'
 };
@@ -208,7 +216,7 @@ export const App: React.FC = () => {
         'privacy', 'terms', 'disclaimer', 'editorial', 'cookies', 'corrections',
         'tool-bond', 'tool-inflation', 'tool-fx', 'tool-compound', 'tool-ai-power',
         'tool-repo-spread', 'tool-water-cooling', 'tool-forex-tariff', 'tool-cloud-finops',
-        'tool-iso20022', 'tool-pdf', 'tool-image'
+        'tool-iso20022', 'tool-global-tax', 'tool-mortgage-reset', 'tool-pdf', 'tool-image'
       ];
 
       // Handle standalone tool deep links e.g. #tools/bond, #tools/ai-power, /tools/water-cooling
@@ -249,6 +257,15 @@ export const App: React.FC = () => {
         'tool-iso20022': 'tool-iso20022',
         'tools-iso20022': 'tool-iso20022',
         'tools/iso': 'tool-iso20022',
+        'tools/global-tax': 'tool-global-tax',
+        'tool-global-tax': 'tool-global-tax',
+        'tools-global-tax': 'tool-global-tax',
+        'tools/expat-tax': 'tool-global-tax',
+        'tools/tax': 'tool-global-tax',
+        'tools/mortgage-reset': 'tool-mortgage-reset',
+        'tool-mortgage-reset': 'tool-mortgage-reset',
+        'tools-mortgage-reset': 'tool-mortgage-reset',
+        'tools/mortgage': 'tool-mortgage-reset',
         'tools/pdf': 'tool-pdf',
         'tool-pdf': 'tool-pdf',
         'doc-tools/pdf': 'tool-pdf',
@@ -646,6 +663,14 @@ export const App: React.FC = () => {
 
         {currentPage === 'tool-iso20022' && (
           <Iso20022ModelerPage setCurrentPage={navigateToPage} showToast={showToast} />
+        )}
+
+        {currentPage === 'tool-global-tax' && (
+          <GlobalExpatTaxPage setCurrentPage={navigateToPage} showToast={showToast} />
+        )}
+
+        {currentPage === 'tool-mortgage-reset' && (
+          <MortgageResetPage setCurrentPage={navigateToPage} showToast={showToast} />
         )}
 
         {currentPage === 'tool-pdf' && (

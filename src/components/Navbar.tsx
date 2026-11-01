@@ -122,15 +122,12 @@ export const Navbar: React.FC<NavbarProps> = ({
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const isToolsActive = currentPage === 'tools' || 
-    currentPage === 'tool-bond' || 
-    currentPage === 'tool-inflation' || 
-    currentPage === 'tool-fx' || 
-    currentPage === 'tool-compound' || 
-    currentPage === 'tool-ai-power' || 
-    currentPage === 'tool-repo-spread' || 
-    currentPage === 'tool-water-cooling' || 
-    currentPage === 'tool-forex-tariff';
+  const isToolsActive = currentPage === 'tools' || (
+    typeof currentPage === 'string' && 
+    currentPage.startsWith('tool-') && 
+    currentPage !== 'tool-pdf' && 
+    currentPage !== 'tool-image'
+  );
 
   const isDocToolsActive = currentPage === 'doc-tools' || currentPage === 'tool-pdf' || currentPage === 'tool-image';
 

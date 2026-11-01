@@ -78,14 +78,15 @@ export const FinOpsCloudComputeCalculator: React.FC<FinOpsCalculatorProps> = ({ 
     const equivalentHardwareCapex = (nodeCount * 320000) + 150000; // Server + InfiniBand switch fabric
     const monthlyColoPowerOpex = (nodeCount * 10.2 * 730 * 0.085); // 10.2 kW per node @ $0.085/kWh
     const monthlyOnPremTco = (equivalentHardwareCapex / 48) + monthlyColoPowerOpex;
-    const privateCloudBreakevenMonths = totalMonthlyTco > monthlyOnPremTco 
-      ? Math.round(equivalentHardwareCapex / (totalMonthlyTco - monthlyColoPowerOpex))
+    const netMonthlySavingsOverColo = totalMonthlyTco - monthlyColoPowerOpex;
+    const privateCloudBreakevenMonths = (totalMonthlyTco > monthlyOnPremTco && netMonthlySavingsOverColo > 0)
+      ? Math.max(1, Math.round(equivalentHardwareCapex / netMonthlySavingsOverColo))
       : 48;
 
     // Percent breakdown
-    const computePct = Math.round((computeMonthlyActual / totalMonthlyTco) * 100);
-    const egressPct = Math.round((egressMonthlyCost / totalMonthlyTco) * 100);
-    const storagePct = 100 - computePct - egressPct;
+    const computePct = totalMonthlyTco > 0 ? Math.round((computeMonthlyActual / totalMonthlyTco) * 100) : 0;
+    const egressPct = totalMonthlyTco > 0 ? Math.round((egressMonthlyCost / totalMonthlyTco) * 100) : 0;
+    const storagePct = Math.max(0, 100 - computePct - egressPct);
 
     return {
       totalGpus,

@@ -4,7 +4,7 @@ import { AdBanner } from '../components/AdBanner';
 import { TradingViewBanner } from '../components/TradingViewBanner';
 import { 
   BarChart2, TrendingUp, Globe, Layers, Zap, GitCompare, Droplets, 
-  ArrowRight, ShieldCheck, ShieldAlert, Search, Filter, Cpu, FileText, Sparkles, Cloud, GitCommit
+  ArrowRight, ShieldCheck, ShieldAlert, Search, Filter, Cpu, FileText, Sparkles, Cloud, GitCommit, Home
 } from 'lucide-react';
 import { PageView } from '../types';
 
@@ -130,6 +130,28 @@ export const FinancialToolsPage: React.FC<FinancialToolsPageProps> = ({
       kpis: ['Trapped Nostro Liquidity', 'Annual Exception Drag', 'Cost per $1M Cleared'],
       icon: GitCommit,
       color: '#10B981'
+    },
+    {
+      id: 'tool-global-tax' as PageView,
+      hash: '#tools/global-tax',
+      title: 'Global Expat & Cross-Border Take-Home Pay Terminal',
+      badge: 'Global Mobility & Wealth',
+      category: 'macro',
+      desc: 'Institutional compensation and purchasing power parity modeling across the US, Australia, Canada, United Kingdom, Germany, and Switzerland. Calculate exact net take-home pay, statutory pension deductions, and cost-of-living parity benchmarks.',
+      kpis: ['Net Monthly Cash Flow', 'Statutory Pension Deductions', 'PPP Lifestyle Parity'],
+      icon: Globe,
+      color: '#B45309'
+    },
+    {
+      id: 'tool-mortgage-reset' as PageView,
+      hash: '#tools/mortgage-reset',
+      title: 'Mortgage Reset Cliff & Net Rental Yield Terminal',
+      badge: 'Cross-Border Real Estate & Debt',
+      category: 'fixed-income',
+      desc: 'Model Canadian & UK 5-year mortgage renewal payment shock, Australian 100% offset interest savings, US 30-year fixed refinance breakeven, and institutional Net Rental Yield & Debt Service Coverage Ratio (DSCR) under central bank rate shock stress.',
+      kpis: ['Renewal Payment Jump', 'Offset Tax-Free Savings', 'DSCR Coverage Ratio'],
+      icon: Home,
+      color: '#0284c7'
     }
   ], []);
 

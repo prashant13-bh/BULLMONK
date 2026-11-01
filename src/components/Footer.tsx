@@ -175,8 +175,18 @@ export const Footer: React.FC<FooterProps> = ({ setCurrentPage, setSelectedCateg
                 </button>
               </li>
               <li>
-                <button type="button" className="footer-link-btn suite-hub-link" onClick={() => navigate('tools')} title="Quantitative Suite Hub — Master Directory of 8 Financial & Infrastructure Engines">
-                  Quantitative Intelligence Hub (8 Tools) →
+                <button type="button" className="footer-link-btn suite-hub-link" onClick={() => navigate('tools')} title="Quantitative Suite Hub — Master Directory of 12 Financial & Infrastructure Engines">
+                  Quantitative Intelligence Hub (12 Tools) →
+                </button>
+              </li>
+              <li>
+                <button type="button" className="footer-link-btn" onClick={() => navigate('tool-global-tax')} title="Global Expat & Cross-Border Take-Home Pay Terminal">
+                  ↳ Global Expat & Cross-Border Tax
+                </button>
+              </li>
+              <li>
+                <button type="button" className="footer-link-btn" onClick={() => navigate('tool-mortgage-reset')} title="Mortgage Reset Cliff & Net Rental Yield Terminal">
+                  ↳ Mortgage Reset Cliff & Net Yield
                 </button>
               </li>
               <li>

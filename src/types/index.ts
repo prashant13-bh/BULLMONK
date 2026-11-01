@@ -118,6 +118,8 @@ export type PageView =
   | 'tool-forex-tariff'
   | 'tool-cloud-finops'
   | 'tool-iso20022'
+  | 'tool-global-tax'
+  | 'tool-mortgage-reset'
   | 'tool-pdf'
   | 'tool-image';
 

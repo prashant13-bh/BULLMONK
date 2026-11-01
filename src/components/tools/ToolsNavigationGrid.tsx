@@ -1,6 +1,6 @@
 import React from 'react';
 import { 
-  BarChart2, TrendingUp, Globe, Layers, Zap, GitCompare, Droplets, ArrowRight, ShieldCheck, Cloud, GitCommit 
+  BarChart2, TrendingUp, Globe, Layers, Zap, GitCompare, Droplets, ArrowRight, ShieldCheck, Cloud, GitCommit, Home 
 } from 'lucide-react';
 import { PageView } from '../../types';
 
@@ -100,6 +100,24 @@ export const ToolsNavigationGrid: React.FC<ToolsNavigationGridProps> = ({ curren
       desc: 'Nostro/vostro buffer haircuts, SWIFT MT103 vs pacs.008 XML exceptions, and RTGS clearing velocity.',
       icon: GitCommit,
       color: '#10B981'
+    },
+    {
+      id: 'tool-global-tax',
+      hash: '#tools/global-tax',
+      title: 'Global Expat & Cross-Border Tax Terminal',
+      category: 'Global Mobility & Wealth',
+      desc: 'Net take-home pay, statutory pension deductions, and PPP lifestyle equivalence across US, AU, CA, UK, DE, and CH.',
+      icon: Globe,
+      color: '#B45309'
+    },
+    {
+      id: 'tool-mortgage-reset',
+      hash: '#tools/mortgage-reset',
+      title: 'Mortgage Reset Cliff & Net Yield Terminal',
+      category: 'Cross-Border Real Estate & Debt',
+      desc: 'Canadian/UK 5-yr renewal cliff payment shock, Australian offset savings, US 30-yr refi, and DSCR stress tests.',
+      icon: Home,
+      color: '#0284c7'
     }
   ];
 
