@@ -42,6 +42,7 @@ const PdfConverterPage = lazy(() => import('./pages/tools/PdfConverterPage').the
 const ImageEnhancerPage = lazy(() => import('./pages/tools/ImageEnhancerPage').then(m => ({ default: m.ImageEnhancerPage })));
 const GlobalExpatTaxPage = lazy(() => import('./pages/tools/GlobalExpatTaxPage').then(m => ({ default: m.GlobalExpatTaxPage })));
 const MortgageResetPage = lazy(() => import('./pages/tools/MortgageResetPage').then(m => ({ default: m.MortgageResetPage })));
+const SafeWithdrawalRatePage = lazy(() => import('./pages/tools/SafeWithdrawalRatePage').then(m => ({ default: m.SafeWithdrawalRatePage })));
 
 export const PAGE_TITLES: Record<PageView, string> = {
   home: "BULLMONK | Global News, Geopolitical Intelligence & Financial Truth",
@@ -71,6 +72,7 @@ export const PAGE_TITLES: Record<PageView, string> = {
   'tool-iso20022': "ISO 20022 Cross-Border Liquidity & RTGS Clearing Modeler | BULLMONK",
   'tool-global-tax': "Global Expat & Cross-Border Take-Home Pay Terminal | BULLMONK",
   'tool-mortgage-reset': "Mortgage Reset Cliff & Net Rental Yield Terminal | BULLMONK",
+  'tool-swr': "Safe Withdrawal Rate (SWR) & Sequence of Returns Simulator | BULLMONK",
   'tool-pdf': "PDF to Word Converter & Document Security Studio | BULLMONK",
   'tool-image': "AI Image Enhancer & 2x Super-Resolution Studio | BULLMONK"
 };
@@ -103,6 +105,7 @@ export const PAGE_DESCRIPTIONS: Record<PageView, string> = {
   'tool-iso20022': "Simulate capital velocity, intraday nostro/vostro buffer haircuts, straight-through processing (STP) exceptions, and RTGS clearing velocity.",
   'tool-global-tax': "Institutional compensation and purchasing power parity modeling across the US, Australia, Canada, United Kingdom, Germany, and Switzerland.",
   'tool-mortgage-reset': "Simulate Canadian & UK 5-year rollover mortgage renewal payment shocks, Australian 100% offset interest savings, US 30-year refi, and DSCR stress tests.",
+  'tool-swr': "Institutional retirement decumulation terminal comparing Bengen 4% Rule, Guyton-Klinger dynamic guardrails, and VPW under stagflation stress.",
   'tool-pdf': "Client-side high-precision PDF to editable Word (.docx) document conversion and institutional PDF compiler.",
   'tool-image': "Client-side image restoration, Laplacian high-pass sharpening, contrast optimization, and 2x resolution upscaling."
 };
@@ -135,6 +138,7 @@ const PAGE_CANONICALS: Record<PageView, string> = {
   'tool-iso20022': 'https://bullmonk.live/#tools/iso20022',
   'tool-global-tax': 'https://bullmonk.live/#tools/global-tax',
   'tool-mortgage-reset': 'https://bullmonk.live/#tools/mortgage-reset',
+  'tool-swr': 'https://bullmonk.live/#tools/swr',
   'tool-pdf': 'https://bullmonk.live/#tools/pdf',
   'tool-image': 'https://bullmonk.live/#tools/image'
 };
@@ -216,7 +220,7 @@ export const App: React.FC = () => {
         'privacy', 'terms', 'disclaimer', 'editorial', 'cookies', 'corrections',
         'tool-bond', 'tool-inflation', 'tool-fx', 'tool-compound', 'tool-ai-power',
         'tool-repo-spread', 'tool-water-cooling', 'tool-forex-tariff', 'tool-cloud-finops',
-        'tool-iso20022', 'tool-global-tax', 'tool-mortgage-reset', 'tool-pdf', 'tool-image'
+        'tool-iso20022', 'tool-global-tax', 'tool-mortgage-reset', 'tool-swr', 'tool-pdf', 'tool-image'
       ];
 
       // Handle standalone tool deep links e.g. #tools/bond, #tools/ai-power, /tools/water-cooling
@@ -266,6 +270,11 @@ export const App: React.FC = () => {
         'tool-mortgage-reset': 'tool-mortgage-reset',
         'tools-mortgage-reset': 'tool-mortgage-reset',
         'tools/mortgage': 'tool-mortgage-reset',
+        'tools/swr': 'tool-swr',
+        'tool-swr': 'tool-swr',
+        'tools-swr': 'tool-swr',
+        'tools/safe-withdrawal': 'tool-swr',
+        'tools/retirement': 'tool-swr',
         'tools/pdf': 'tool-pdf',
         'tool-pdf': 'tool-pdf',
         'doc-tools/pdf': 'tool-pdf',
@@ -671,6 +680,10 @@ export const App: React.FC = () => {
 
         {currentPage === 'tool-mortgage-reset' && (
           <MortgageResetPage setCurrentPage={navigateToPage} showToast={showToast} />
+        )}
+
+        {currentPage === 'tool-swr' && (
+          <SafeWithdrawalRatePage setCurrentPage={navigateToPage} showToast={showToast} />
         )}
 
         {currentPage === 'tool-pdf' && (

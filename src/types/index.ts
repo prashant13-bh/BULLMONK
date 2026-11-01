@@ -120,6 +120,7 @@ export type PageView =
   | 'tool-iso20022'
   | 'tool-global-tax'
   | 'tool-mortgage-reset'
+  | 'tool-swr'
   | 'tool-pdf'
   | 'tool-image';
 

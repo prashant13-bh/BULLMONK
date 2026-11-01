@@ -4,7 +4,7 @@ import { AdBanner } from '../components/AdBanner';
 import { TradingViewBanner } from '../components/TradingViewBanner';
 import { 
   BarChart2, TrendingUp, Globe, Layers, Zap, GitCompare, Droplets, 
-  ArrowRight, ShieldCheck, ShieldAlert, Search, Filter, Cpu, FileText, Sparkles, Cloud, GitCommit, Home
+  ArrowRight, ShieldCheck, ShieldAlert, Search, Filter, Cpu, FileText, Sparkles, Cloud, GitCommit, Home, Award
 } from 'lucide-react';
 import { PageView } from '../types';
 
@@ -152,6 +152,17 @@ export const FinancialToolsPage: React.FC<FinancialToolsPageProps> = ({
       kpis: ['Renewal Payment Jump', 'Offset Tax-Free Savings', 'DSCR Coverage Ratio'],
       icon: Home,
       color: '#0284c7'
+    },
+    {
+      id: 'tool-swr' as PageView,
+      hash: '#tools/swr',
+      title: 'Safe Withdrawal Rate (SWR) & Sequence of Returns Simulator',
+      badge: 'Retirement Decumulation & Wealth',
+      category: 'macro',
+      desc: 'Institutional-grade decumulation modeling for US 401(k)/IRAs, Canadian RRIFs, Australian Super, and UK SIPPs. Compare the Bengen 4% Rule against Guyton-Klinger dynamic guardrails, Variable Percentage Withdrawal (VPW), and stress-test sequence-of-returns stagflation regimes.',
+      kpis: ['Bengen vs Guardrails', 'Actuarial Survival Score', 'Terminal Real Purchasing Power'],
+      icon: Award,
+      color: '#B45309'
     }
   ], []);
 

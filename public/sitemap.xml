@@ -158,7 +158,7 @@
     <priority>0.70</priority>
   </url>
  
-  <!-- Investigative Dispatches and Global Intelligence (70 Dispatches) -->
+  <!-- Investigative Dispatches and Global Intelligence (78 Dispatches) -->
   <url>
     <loc>https://bullmonk.live/article/wall-street-treasury-bidding-sovereign-reserve-shifts</loc>
     <lastmod>2026-10-18</lastmod>
@@ -575,6 +575,54 @@
   </url>
   <url>
     <loc>https://bullmonk.live/article/semiconductor-cowos-substrate-bottleneck-tsmc-intel-arizona-dresden</loc>
+    <lastmod>2026-11-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://bullmonk.live/article/safe-withdrawal-rate-bengen-rule-sequence-of-returns-risk</loc>
+    <lastmod>2026-11-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://bullmonk.live/article/pilbara-iron-ore-sovereign-squeeze-rba-china-steel-destocking</loc>
+    <lastmod>2026-11-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://bullmonk.live/article/trans-mountain-pipeline-heavy-crude-discount-bay-street-arbitrage</loc>
+    <lastmod>2026-11-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://bullmonk.live/article/data-center-watershed-clash-hyperscale-cooling-aquifer-moratorium</loc>
+    <lastmod>2026-11-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://bullmonk.live/article/uk-non-dom-capital-flight-hmrc-iht-milan-dubai-exodus</loc>
+    <lastmod>2026-11-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://bullmonk.live/article/australia-division-296-superannuation-unrealised-capital-gains-trap</loc>
+    <lastmod>2026-11-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://bullmonk.live/article/16-high-hbm4-hybrid-bonding-chokepoint-tsmc-sk-hynix-samsung</loc>
+    <lastmod>2026-11-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://bullmonk.live/article/nuclear-fuel-enrichment-deficit-russian-leu-bans-swu-centrifuge-queue</loc>
     <lastmod>2026-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>

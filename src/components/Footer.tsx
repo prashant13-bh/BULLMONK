@@ -175,8 +175,13 @@ export const Footer: React.FC<FooterProps> = ({ setCurrentPage, setSelectedCateg
                 </button>
               </li>
               <li>
-                <button type="button" className="footer-link-btn suite-hub-link" onClick={() => navigate('tools')} title="Quantitative Suite Hub — Master Directory of 12 Financial & Infrastructure Engines">
-                  Quantitative Intelligence Hub (12 Tools) →
+                <button type="button" className="footer-link-btn suite-hub-link" onClick={() => navigate('tools')} title="Quantitative Suite Hub — Master Directory of 13 Financial & Infrastructure Engines">
+                  Quantitative Intelligence Hub (13 Tools) →
+                </button>
+              </li>
+              <li>
+                <button type="button" className="footer-link-btn" onClick={() => navigate('tool-swr')} title="Safe Withdrawal Rate & Sequence of Returns Retirement Terminal">
+                  ↳ Safe Withdrawal Rate (SWR) Engine
                 </button>
               </li>
               <li>

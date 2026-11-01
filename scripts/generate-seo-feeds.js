@@ -357,6 +357,46 @@ const KEYWORD_MAP = {
     "advanced packaging cowos l cowos r tsmc", "glass core substrate semiconductor packaging", "intel chandler arizona glass packaging pilot line", 
     "ajinomoto build up film abf thermal warpage", "ai accelerator chiplet interconnect density", "silicon interposer 3 3x reticle limit", 
     "us chips act advanced packaging r and d", "hbm3e hbm4 memory packaging microbumps", "semiconductor packaging warpage delamination", "hyperscale custom silicon asic packaging capacity"
+  ],
+  "bm-fire-076": [
+    "safe withdrawal rate 4 percent bengen rule", "sequence of returns risk srr retirement portfolio", "guyton klinger dynamic guardrails decumulation", 
+    "variable percentage withdrawal vpw algorithm", "fire financial independence retire early safe withdrawal", "401k ira rmd tax drag required minimum distributions", 
+    "australia superannuation pension phase transfer balance cap", "uk sipp isa retirement decumulation strategy", "monte carlo portfolio failure probability 30 year horizon", "real yield inflation preservation retirement"
+  ],
+  "bm-ore-077": [
+    "australia iron ore port hedland china cmrg", "pilbara mining royalties western australia budget", "reserve bank of australia rba terms of trade aud", 
+    "china mineral resources group cmrg centralized procurement", "bhp rio tinto spot 62 percent fe fines benchmark", "australia china commodity de dollarization cips yuan", 
+    "bulk freight shipping iron ore capesize freight rates", "sovereign fiscal revenue iron ore price elasticity", "rba cash rate monetary policy terms of trade shock", "dalian commodity exchange iron ore futures spread"
+  ],
+  "bm-tmx-078": [
+    "trans mountain pipeline tmx expansion crude discount", "western canadian select wcs wti hardisty spread", "aframax crude tanker second narrows vancouver draft limits", 
+    "bay street calgary oil sands energy trading arbitrage", "china shandong teapot refinery heavy crude demand", "california carb low carbon fuel standard lcfs penalty", 
+    "enbridge mainline pipeline capacity allocation toll", "canada energy regulator cer westridge marine terminal", "bitumen diluted dilbit synthetic crude netback", "north american heavy sour crude logistics bottlenecks"
+  ],
+  "bm-water-079": [
+    "data center water usage effectiveness wue ashrae", "hyperscale ai cooling evaporative cooling tower potable water", "loudoun county data center alley water moratorium", 
+    "dublin ireland data center grid connection cru direction", "direct liquid cooling d2c cold plate thermal dissipation", "power usage effectiveness pue vs wue trade off", 
+    "closed loop dry cooler air cooled chiller fan capex", "nvidia blackwell b200 h100 gpu liquid cooling loop", "municipal aquifer groundwater depletion data center", "esg reporting data center environmental water footprint"
+  ],
+  "bm-nondom-080": [
+    "uk non dom tax changes abolition remittance basis", "hmrc foreign income and gains fig regime inheritance tax", "italy art 24 bis 200000 euro flat tax neo resident", 
+    "mayfair london private wealth capital flight milan dubai", "worldwide estate 40 percent inheritance tax iht tail", "dubai difc family office foundation relocation tax", 
+    "switzerland forfait fiscal lump sum tax canton vaud geneva", "unrealised capital gains expat wealth planning", "laffer curve behavioral tax elasticity high net worth", "offshore excluded property trust statutory compliance"
+  ],
+  "bm-super-081": [
+    "australia division 296 superannuation tax 3 million cap", "unrealised capital gains tax superannuation paper gains", "self managed super fund smsf commercial property fire sale", 
+    "total superannuation balance tsb calculation ato guidance", "australian taxation office division 296 negative earnings carry forward", "treasury laws amendment better targeted super concessions", 
+    "smsf liquidity crisis family farm commercial warehouse valuation", "superannuation transfer balance cap 1 point 9 million comparison", "bracket creep superannuation wealth tax no indexation", "australian financial planning retirement tax structuring"
+  ],
+  "bm-hbm-082": [
+    "16 high hbm4 hybrid bonding packaging tsmc sk hynix samsung", "wafer to wafer copper to copper direct atomic bonding", "jedec jesd238 hbm4 specification 775 micron thickness", 
+    "microbump pitch thermal resistance advanced packaging", "besi be semiconductor industries hybrid bonder applied materials", "mr muf molded underfill vs tc ncf warpage delamination", 
+    "nvidia rubin blackwell ultra hbm4 3 point 2 tbps bandwidth", "tsmc cowos advanced packaging 3nm base logic die foundry", "thermal compression bonding fine pitch void formation cleanroom", "high bandwidth memory artificial intelligence gpu hardware"
+  ],
+  "bm-uran-083": [
+    "nuclear fuel enrichment deficit russian leu import ban", "separative work unit swu spot price centrifuge cascade", "urenco eunice new mexico orano tricastin expansion", 
+    "haleu high assay low enriched uranium small modular reactors smr", "three mile island restart crane clean energy center constellation", "public law 118 62 prohibiting russian uranium imports act", 
+    "centrus energy commercial haleu cascade piketon ohio", "hyperscale ai data center nuclear baseload power purchase agreement", "rosatom tenex commercial enriched uranium market share", "nuclear regulatory commission reactor fuel reload licensing"
   ]
 };
 

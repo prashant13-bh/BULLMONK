@@ -1,15 +1,17 @@
 import React from 'react';
 import { 
-  BarChart2, TrendingUp, Globe, Layers, Zap, GitCompare, Droplets, ArrowRight, ShieldCheck, Cloud, GitCommit, Home 
+  BarChart2, TrendingUp, Globe, Layers, Zap, GitCompare, Droplets, ArrowRight, ShieldCheck, Cloud, GitCommit, Home, Award 
 } from 'lucide-react';
 import { PageView } from '../../types';
 
 interface ToolsNavigationGridProps {
-  currentTool: string;
+  currentTool?: string;
+  currentToolId?: string;
   setCurrentPage: (page: PageView) => void;
 }
 
-export const ToolsNavigationGrid: React.FC<ToolsNavigationGridProps> = ({ currentTool, setCurrentPage }) => {
+export const ToolsNavigationGrid: React.FC<ToolsNavigationGridProps> = ({ currentTool, currentToolId, setCurrentPage }) => {
+  const activeToolId = currentToolId || currentTool || '';
   const tools = [
     {
       id: 'tool-bond',
@@ -118,6 +120,15 @@ export const ToolsNavigationGrid: React.FC<ToolsNavigationGridProps> = ({ curren
       desc: 'Canadian/UK 5-yr renewal cliff payment shock, Australian offset savings, US 30-yr refi, and DSCR stress tests.',
       icon: Home,
       color: '#0284c7'
+    },
+    {
+      id: 'tool-swr',
+      hash: '#tools/swr',
+      title: 'Safe Withdrawal Rate (SWR) Simulator',
+      category: 'Retirement Decumulation & Wealth',
+      desc: 'Bengen 4% Rule vs Guyton-Klinger dynamic guardrails, VPW algorithms, and stagflation sequence-of-returns stress.',
+      icon: Award,
+      color: '#B45309'
     }
   ];
 
@@ -149,7 +160,7 @@ export const ToolsNavigationGrid: React.FC<ToolsNavigationGridProps> = ({ curren
       </div>
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1.25rem' }}>
-        {tools.filter((t) => t.id !== currentTool).slice(0, 4).map((tool) => {
+        {tools.filter((t) => t.id !== activeToolId).slice(0, 4).map((tool) => {
           const IconComponent = tool.icon;
           return (
             <div 
