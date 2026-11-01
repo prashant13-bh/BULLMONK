@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Article } from '../types';
 import { Play, Pause, X, Volume2, FastForward, ExternalLink } from 'lucide-react';
+import { audioSpeechService } from '../utils/audioSpeechService';
 
 interface AudioDockProps {
   article: Article | null;
@@ -19,23 +20,25 @@ export const AudioDock: React.FC<AudioDockProps> = ({
 }) => {
   const [seconds, setSeconds] = useState(0);
   const [playbackRate, setPlaybackRate] = useState<1 | 1.25 | 1.5>(1);
-  const totalSeconds = 240; // 4 minutes simulated briefing
+  const [totalSeconds, setTotalSeconds] = useState(240);
 
   useEffect(() => {
-    let timer: any;
+    if (!article) return;
     if (isPlaying) {
-      timer = setInterval(() => {
-        setSeconds((prev) => {
-          if (prev >= totalSeconds) {
-            onTogglePlay();
-            return 0;
-          }
-          return prev + 1;
-        });
-      }, 1000 / playbackRate);
+      audioSpeechService.playArticle(article, {
+        onProgress: (sec, total) => {
+          setSeconds(sec);
+          setTotalSeconds(total);
+        },
+        onEnd: () => {
+          onTogglePlay();
+          setSeconds(0);
+        }
+      });
+    } else {
+      audioSpeechService.pause();
     }
-    return () => clearInterval(timer);
-  }, [isPlaying, playbackRate, onTogglePlay]);
+  }, [isPlaying, article]);
 
   if (!article) return null;
 
@@ -45,12 +48,17 @@ export const AudioDock: React.FC<AudioDockProps> = ({
     return `${m}:${s < 10 ? '0' : ''}${s}`;
   };
 
-  const progressPct = (seconds / totalSeconds) * 100;
+  const progressPct = totalSeconds > 0 ? (seconds / totalSeconds) * 100 : 0;
 
   const cycleSpeed = () => {
-    if (playbackRate === 1) setPlaybackRate(1.25);
-    else if (playbackRate === 1.25) setPlaybackRate(1.5);
-    else setPlaybackRate(1);
+    const nextRate: 1 | 1.25 | 1.5 = playbackRate === 1 ? 1.25 : playbackRate === 1.25 ? 1.5 : 1;
+    setPlaybackRate(nextRate);
+    audioSpeechService.setSpeed(nextRate);
+  };
+
+  const handleClose = () => {
+    audioSpeechService.stop();
+    onClose();
   };
 
   return (
@@ -193,7 +201,7 @@ export const AudioDock: React.FC<AudioDockProps> = ({
           </button>
 
           <button
-            onClick={onClose}
+            onClick={handleClose}
             style={{
               background: 'none',
               border: 'none',

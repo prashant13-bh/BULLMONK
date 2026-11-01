@@ -13,6 +13,7 @@ import { SupabaseDB } from '../utils/supabase';
 import { TableOfContents, TocItem } from '../components/TableOfContents';
 import { ShareModal } from '../components/ShareModal';
 import { PrintModal, PrintOptions } from '../components/PrintModal';
+import { audioSpeechService } from '../utils/audioSpeechService';
 
 interface ArticleReaderPageProps {
   article: Article;
@@ -37,6 +38,8 @@ export const ArticleReaderPage: React.FC<ArticleReaderPageProps> = ({
 }) => {
   const [isPlayingAudio, setIsPlayingAudio] = useState(false);
   const [audioSeconds, setAudioSeconds] = useState(0);
+  const [totalAudioSeconds, setTotalAudioSeconds] = useState(240);
+  const [audioSpeed, setAudioSpeed] = useState<1 | 1.25 | 1.5>(1);
   const [largeFont, setLargeFont] = useState(false);
   const [commentText, setCommentText] = useState('');
   const [comments, setComments] = useState<Comment[]>([
@@ -71,27 +74,51 @@ export const ArticleReaderPage: React.FC<ArticleReaderPageProps> = ({
     return () => { isMounted = false; };
   }, [article.id]);
 
+  // Stop speech synthesis when unmounting or changing article
   useEffect(() => {
-    let timer: any;
-    if (isPlayingAudio) {
-      timer = setInterval(() => {
-        setAudioSeconds((prev) => {
-          if (prev >= 255) {
-            setIsPlayingAudio(false);
-            return 0;
-          }
-          return prev + 1;
-        });
-      }, 1000);
-    }
-    return () => clearInterval(timer);
-  }, [isPlayingAudio]);
+    return () => {
+      audioSpeechService.stop();
+    };
+  }, [article.id]);
 
   const toggleAudio = () => {
-    setIsPlayingAudio(!isPlayingAudio);
-    if (!isPlayingAudio) {
-      showToast('BullMonk Audio Briefing: Synthetic Voice Stream Playing');
+    if (isPlayingAudio) {
+      audioSpeechService.pause();
+      setIsPlayingAudio(false);
+      showToast('BullMonk Audio Briefing: Synthetic Voice Paused');
+    } else {
+      const started = audioSpeechService.playArticle(article, {
+        onStart: () => {
+          setIsPlayingAudio(true);
+          showToast('🎙️ BullMonk Audio Briefing: Synthetic Voice Active');
+        },
+        onProgress: (elapsed, total) => {
+          setAudioSeconds(elapsed);
+          setTotalAudioSeconds(total);
+        },
+        onPause: () => setIsPlayingAudio(false),
+        onResume: () => setIsPlayingAudio(true),
+        onEnd: () => {
+          setIsPlayingAudio(false);
+          setAudioSeconds(0);
+          showToast('BullMonk Audio Briefing dispatch concluded.');
+        },
+        onError: (err) => {
+          setIsPlayingAudio(false);
+          showToast(`Speech System Notice: ${err}`);
+        }
+      });
+      if (started) {
+        setIsPlayingAudio(true);
+      }
     }
+  };
+
+  const cycleAudioSpeed = () => {
+    const nextSpeed: 1 | 1.25 | 1.5 = audioSpeed === 1 ? 1.25 : audioSpeed === 1.25 ? 1.5 : 1;
+    setAudioSpeed(nextSpeed);
+    audioSpeechService.setSpeed(nextSpeed);
+    showToast(`Synthetic Voice Speed: ${nextSpeed}x`);
   };
 
   const canonicalUrl = `https://bullmonk.live/article/${article.id}`;
@@ -599,9 +626,31 @@ export const ArticleReaderPage: React.FC<ArticleReaderPageProps> = ({
             <div className="wave-bar"></div>
           </div>
         </div>
-        <span className="audio-time-stamp" style={{ fontSize: '0.76rem', fontFamily: 'var(--font-mono)', color: 'var(--accent-gold)', flexShrink: 0, whiteSpace: 'nowrap' }}>
-          {formatAudioTime(audioSeconds)} / 4:15
-        </span>
+
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', flexShrink: 0 }}>
+          <button
+            type="button"
+            onClick={cycleAudioSpeed}
+            title="Cycle Voice Speed (1x, 1.25x, 1.5x)"
+            aria-label="Cycle Voice Speed"
+            style={{
+              background: 'var(--bg-surface-elevated)',
+              border: '1px solid var(--border-medium)',
+              borderRadius: 'var(--radius-sm)',
+              padding: '0.2rem 0.5rem',
+              fontSize: '0.72rem',
+              fontWeight: 700,
+              fontFamily: 'var(--font-mono)',
+              color: 'var(--accent-gold)',
+              cursor: 'pointer'
+            }}
+          >
+            {audioSpeed}x
+          </button>
+          <span className="audio-time-stamp" style={{ fontSize: '0.76rem', fontFamily: 'var(--font-mono)', color: 'var(--accent-gold)', whiteSpace: 'nowrap' }}>
+            {formatAudioTime(audioSeconds)} / {formatAudioTime(totalAudioSeconds)}
+          </span>
+        </div>
       </div>
 
       {/* Responsive Hero Media */}
