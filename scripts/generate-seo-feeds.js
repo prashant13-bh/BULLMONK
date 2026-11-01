@@ -342,6 +342,21 @@ const KEYWORD_MAP = {
     "heavy rare earth dysprosium terbium", "sintered ndfeb permanent magnet thermal demagnetization", "china mofcom rare earth export curbs", 
     "grain boundary diffusion gbd technology", "f 35 military fighter radar magnetics", "ev traction motor rare earth motor coercivity", 
     "defense production act title iii rare earth refinery", "lynas kalgoorlie mp materials mountain pass", "ionic clay heavy rare earth separation", "sovereign critical mineral stockpiles"
+  ],
+  "bm-tax-073": [
+    "global expat tax calculator", "cross border salary net take home", "uk 60 percent marginal tax trap", 
+    "australia stage 3 tax cuts division 293", "california vs texas tech salary arbitrage", "zurich cantonal tax wealth accumulation", 
+    "silicon valley expat purchasing power parity", "irs foreign earned income exclusion feie 2555", "rrsp vs superannuation vs 401k pension wrappers", "oecd double taxation relief treaties"
+  ],
+  "bm-mort-074": [
+    "canada mortgage renewal cliff 2025 2026", "bank of canada financial system review fsr", "osfi guideline b 20 stress test capital buffer", 
+    "toronto housing market payment shock amortization", "uk mortgage fixed rate expiry svr reset", "australia variable mortgage 100 percent offset interest savings", 
+    "bay street chartered bank loan loss provisions", "negative amortization residential mortgage trigger rate", "debt service coverage ratio dscr real estate stress", "central bank interest rate pass through mortgage debt"
+  ],
+  "bm-sub-075": [
+    "advanced packaging cowos l cowos r tsmc", "glass core substrate semiconductor packaging", "intel chandler arizona glass packaging pilot line", 
+    "ajinomoto build up film abf thermal warpage", "ai accelerator chiplet interconnect density", "silicon interposer 3 3x reticle limit", 
+    "us chips act advanced packaging r and d", "hbm3e hbm4 memory packaging microbumps", "semiconductor packaging warpage delamination", "hyperscale custom silicon asic packaging capacity"
   ]
 };
 

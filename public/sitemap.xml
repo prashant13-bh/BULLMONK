@@ -158,7 +158,7 @@
     <priority>0.70</priority>
   </url>
  
-  <!-- Investigative Dispatches and Global Intelligence (67 Dispatches) -->
+  <!-- Investigative Dispatches and Global Intelligence (70 Dispatches) -->
   <url>
     <loc>https://bullmonk.live/article/wall-street-treasury-bidding-sovereign-reserve-shifts</loc>
     <lastmod>2026-10-18</lastmod>
@@ -558,6 +558,24 @@
   <url>
     <loc>https://bullmonk.live/article/rare-earth-dysprosium-terbium-permanent-magnet-export-curbs</loc>
     <lastmod>2026-10-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://bullmonk.live/article/global-expat-wealth-arbitrage-silicon-valley-london-zurich-sydney</loc>
+    <lastmod>2026-11-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://bullmonk.live/article/mortgage-rollover-cliff-canada-uk-bay-street-payment-shock</loc>
+    <lastmod>2026-11-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://bullmonk.live/article/semiconductor-cowos-substrate-bottleneck-tsmc-intel-arizona-dresden</loc>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
